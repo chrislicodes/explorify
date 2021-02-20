@@ -1,0 +1,14 @@
+.SongItem {
+  display: flex;
+  align-items: center;
+}
+
+.albumCover {
+  height: 64px;
+}
+
+.duration {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}

@@ -8,3 +8,10 @@ export const getHashParams = function () {
   }
   return hashParams;
 };
+
+export const transformDuration = (ms) => {
+  return new Intl.DateTimeFormat(navigator.lang, {
+    minute: "2-digit",
+    second: "2-digit",
+  }).format(ms);
+};
