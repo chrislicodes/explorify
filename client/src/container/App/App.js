@@ -10,8 +10,8 @@ import Explorify from "../Explorify/Explorify";
 import Home from "../Home/Home";
 import Analyze from "../Analyze/Analyze";
 
-import GuardedRoute from "../GuardedRoute/GuardedRoute";
-import UngardedRoute from "../UnguardedRoute/UnguardedRoute";
+import GuardedRoute from "../../routes/GuardedRoute/GuardedRoute";
+import UngardedRoute from "../../routes/UnguardedRoute/UnguardedRoute";
 
 import "./colors.css";
 
