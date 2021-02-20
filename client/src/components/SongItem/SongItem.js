@@ -3,12 +3,14 @@ import classes from "./SongItem.module.css";
 
 import { transformDuration } from "../../utils/utils";
 
-const SongItem = (props) => {
-  const data = props.trackData;
-  const album = data.album;
-  const artist = data.artists[0];
+const SongItem = ({ trackData }) => {
+  const album = trackData.album;
   const image = album.images[2].url;
-  const duration = transformDuration(data.duration_ms);
+
+  const songTitle = trackData.name;
+
+  const artist = trackData.artists[0];
+  const duration = transformDuration(trackData.duration_ms);
 
   return (
     <article className={classes.SongItem}>
@@ -17,9 +19,9 @@ const SongItem = (props) => {
         src={image}
         alt={album.name + " Album Cover"}
       />
-      <div>
-        <p>{data.name}</p>
-        <p>
+      <div className={classes.metaInfo}>
+        <p className={classes.songTitle}>{songTitle}</p>
+        <p className={classes.additionalInfo}>
           {artist.name} | {album.name}
         </p>
       </div>

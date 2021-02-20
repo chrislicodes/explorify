@@ -1,6 +1,14 @@
 :root {
   --color-spotify-green: #1db954;
 
+  --color-black: #121212;
+
   --color-grey-1: #202020;
   --color-grey-2: #323232;
+  --color-grey-3: #5c5c5c;
+  --color-grey-4: #9c9898;
+  --color-grey-5: #a3a3a3;
+  --color-grey-6: #b6b6b6;
+
+  --color-white: #f8f8f8;
 }

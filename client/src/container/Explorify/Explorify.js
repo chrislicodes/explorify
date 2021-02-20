@@ -14,10 +14,12 @@ const Explorify = () => {
   }, []);
 
   return (
-    <div className={classes.Explorify}>
-      {recentlyPlayedSongs ? (
-        <SongContainer tracks={recentlyPlayedSongs.items} />
-      ) : null}
+    <div className={classes.Container}>
+      <div className={classes.Explorify}>
+        {recentlyPlayedSongs ? (
+          <SongContainer tracks={recentlyPlayedSongs.items} />
+        ) : null}
+      </div>
     </div>
   );
 };

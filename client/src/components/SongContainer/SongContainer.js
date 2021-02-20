@@ -1,12 +1,16 @@
 import React from "react";
 import SongItem from "../SongItem/SongItem";
 
+import classes from "./SongContainer.module.css";
+
 const SongContainer = (props) => {
   const trackArr = props.tracks.map((item) => (
-    <SongItem key={item.track.id + item.played_at} trackData={item.track} />
+    <li key={item.track.id + item.played_at}>
+      <SongItem trackData={item.track} />
+    </li>
   ));
 
-  return <>{trackArr}</>;
+  return <ul className={classes.SongContainer}>{trackArr}</ul>;
 };
 
 export default SongContainer;

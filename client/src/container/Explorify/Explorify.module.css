@@ -1,3 +1,26 @@
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem;
+
+  height: 100vh;
+
+  background-color: var(--color-black);
+}
+
 .Explorify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  width: 100%;
+
+  border-radius: 2.5rem;
+
   font-size: 1.5rem;
+
+  background-color: var(--color-grey-1);
 }

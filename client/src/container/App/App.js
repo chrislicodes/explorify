@@ -12,6 +12,7 @@ import GuardedRoute from "../GuardedRoute/GuardedRoute";
 import UngardedRoute from "../UnguardedRoute/UnguardedRoute";
 
 import "./colors.css";
+import "./base.css";
 
 const App = () => {
   const token = getAccessToken();
