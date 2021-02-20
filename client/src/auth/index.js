@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getHashParams } from "../utils/utils";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 //------------------------------------------------
 //---------> TOKENS
