@@ -79,12 +79,13 @@ app.get("/callback", (req, res, next) => {
         }
       )
       .then((response) => {
-        let { access_token, refresh_token } = response.data;
+        let { access_token, refresh_token, expires_in } = response.data;
 
         res.redirect(
           `${FRONTEND_URI}/#${querystring.stringify({
             access_token,
             refresh_token,
+            expires_in,
           })}`
         );
       })

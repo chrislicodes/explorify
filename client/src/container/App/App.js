@@ -1,34 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { getAccessToken, getMyInfo } from "../../api/index";
+import React from "react";
 
-import classes from "./App.module.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { getAccessToken } from "../../auth/index";
+
+import Login from "../../components/Login/Login";
+import Error404 from "../../components/404/404";
+
+import Explorify from "../Explorify/Explorify";
+
+import GuardedRoute from "../GuardedRoute/GuardedRoute";
+import UngardedRoute from "../UnguardedRoute/UnguardedRoute";
 
 const App = () => {
-  const [accessToken, setAccessToken] = useState("");
-  const [userInfo, setUserInfo] = useState("");
-
-  //LIFECYCLE
-  useEffect(() => {
-    const token = getAccessToken();
-    setAccessToken(token);
-  }, []);
-
-  //TEMPORARY
-  getMyInfo().then((res) => setUserInfo(JSON.stringify(res, null, 4)));
-
-  const login = accessToken ? (
-    <p>You are logged in!</p>
-  ) : (
-    <button>
-      <a href="http://localhost:8080/login">Login!</a>
-    </button>
-  );
+  const token = getAccessToken();
 
   return (
-    <div className={classes.App}>
-      {login}
-      <pre>{userInfo}</pre>
-    </div>
+    <Router>
+      <Switch>
+        {/* <Route path="/login" component={Login} /> */}
+        <UngardedRoute path="/login" component={Login} auth={token} />
+        {/* <Route path="/" component={Explorify} /> */}
+        <GuardedRoute path="/" component={Explorify} auth={token} />
+        <Route component={Error404} />
+      </Switch>
+    </Router>
   );
 };
 

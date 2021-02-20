@@ -20,7 +20,7 @@ export const getAccessToken = () => {
 export const getMyInfo = () => {
   return axios.get(`https://api.spotify.com/v1/me`, {
     headers: {
-      Authorization: "Bearer " + localStorage.getItem("access_token"),
+      Authorization: "Bearer " + localStorage.getItem("spotify_access_token"),
     },
   });
 };
