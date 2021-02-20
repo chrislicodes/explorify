@@ -1,6 +1,5 @@
 import axios from "axios";
 import { getHashParams } from "../utils/utils";
-// import { useHistory } from "react-router-dom";
 
 //------------------------------------------------
 //---------> TOKENS
@@ -80,14 +79,10 @@ export const getAccessToken = () => {
   return localAccessToken;
 };
 
-// export const token = getAccessToken()
-
 //Method to logout user from application
 export const logout = () => {
-  // const routerHistory = useHistory();
   localStorage.removeItem("spotify_expires_in");
   localStorage.removeItem("spotify_token_timestamp");
   localStorage.removeItem("spotify_access_token");
   localStorage.removeItem("spotify_refresh_token");
-  // routerHistory.push("/login");
 };
