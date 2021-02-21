@@ -1,0 +1,7 @@
+/* Sets initial size of 300px and becomes flex container */
+.SideNav {
+  display: flex;
+  flex-direction: column;
+
+  flex-basis: 30rem;
+}

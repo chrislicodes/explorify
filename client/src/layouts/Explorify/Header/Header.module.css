@@ -1,0 +1,9 @@
+/* Sets initial size of 90px and becomes flex container */
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  flex-basis: 9rem;
+  margin-right: 3rem;
+}

@@ -1,13 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { getRecentlyPlayed } from "../../api/api";
+import React from "react";
 
 const Home = () => {
-  const [recentlyPlayed, setRecentlyPlayed] = useState(null);
-
-  useEffect(() => {
-    getRecentlyPlayed().then((res) => setRecentlyPlayed(res.data));
-  }, []);
-
   return <div>Home</div>;
 };
 

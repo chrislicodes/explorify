@@ -1,17 +1,19 @@
 import React from "react";
 import classes from "./Explorify.module.css";
 
-import SideNav from "../../components/SideNav/SideNav";
-import Header from "../../components/Header/Header";
+import SideNav from "./SideNav/SideNav";
+import Header from "./Header/Header";
 
 const Explorify = ({ children }) => {
   return (
     <div className={classes.Container}>
-      <main className={classes.Explorify}>
+      <div className={classes.Explorify}>
         <SideNav />
-        <Header />
-        <div className={classes.Content}>{children}</div>
-      </main>
+        <div className={classes.Content}>
+          <Header />
+          <main className={classes.View}>{children}</main>
+        </div>
+      </div>
     </div>
   );
 };
