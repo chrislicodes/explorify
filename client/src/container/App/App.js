@@ -7,9 +7,11 @@ import Login from "../../components/Login/Login";
 import Error404 from "../../components/404/404";
 
 import Explorify from "../Explorify/Explorify";
+import Home from "../Home/Home";
+import Analyze from "../Analyze/Analyze";
 
-import GuardedRoute from "../GuardedRoute/GuardedRoute";
-import UngardedRoute from "../UnguardedRoute/UnguardedRoute";
+import GuardedRoute from "../../routes/GuardedRoute/GuardedRoute";
+import UngardedRoute from "../../routes/UnguardedRoute/UnguardedRoute";
 
 import "./colors.css";
 import "./base.css";
@@ -21,8 +23,15 @@ const App = () => {
     <Router>
       <Switch>
         <UngardedRoute path="/login" component={Login} auth={token} />
-        <GuardedRoute path="/" component={Explorify} auth={token} />
-        <Route component={Error404} />
+        <Route>
+          <Explorify>
+            <Switch>
+              <GuardedRoute exact path="/" component={Home} auth={token} />
+              <GuardedRoute path="/analyze" component={Analyze} auth={token} />
+              <Route path="*" exact component={Error404} />
+            </Switch>
+          </Explorify>
+        </Route>
       </Switch>
     </Router>
   );
