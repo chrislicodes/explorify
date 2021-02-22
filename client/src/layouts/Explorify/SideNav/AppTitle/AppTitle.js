@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 
 const AppTitle = () => {
   return (
-    <Link to="/">
-      <div className={classes.AppTitle}>
+    <div>
+      <Link to="/" className={classes.AppTitle}>
         <SpotifyIcon />
         <h1>Explorify</h1>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 
