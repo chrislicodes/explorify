@@ -1,0 +1,8 @@
+.IconContainer {
+  width: 55px;
+  height: 55px;
+}
+
+.IconContainer svg {
+  fill: var(--color-spotify-logo-green);
+}

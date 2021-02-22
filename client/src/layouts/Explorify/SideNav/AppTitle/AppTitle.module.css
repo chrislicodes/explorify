@@ -1,0 +1,17 @@
+.AppTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.AppTitle h1 {
+  text-transform: uppercase;
+  color: var(--color-white);
+  font-weight: bold;
+  font-size: 3rem;
+
+  margin-left: 1.25rem;
+}

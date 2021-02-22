@@ -1,6 +1,7 @@
-@import-normalize;
+/* @import-normalize; */
 
 :root {
+  --color-spotify-logo-green: #1ed760;
   --color-spotify-green: #1db954;
 
   --color-black: #121212;
@@ -42,6 +43,10 @@ body {
   max-width: 100%;
 }
 
+a {
+  color: var(--color-white);
+  text-decoration: none;
+}
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
