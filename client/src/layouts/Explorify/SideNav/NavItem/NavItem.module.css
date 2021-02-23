@@ -1,17 +1,10 @@
 .Icon svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 3.5rem;
   height: 3.5rem;
   fill: var(--color-grey-5);
-}
-
-.NavItemInfo {
-  width: 20rem;
-}
-
-.NavItemInfo p {
-  margin-left: 2.5rem;
-  font-size: 2.2rem;
-  color: var(--color-grey-5);
 }
 
 .NavItemInfo,
@@ -22,6 +15,35 @@
 
 .NavItem a {
   justify-content: center;
+}
+
+.NavItem {
+  position: relative;
+  padding: 1.75rem 0;
+}
+
+.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-grey-2);
+  z-index: 1;
+  border-radius: 5rem 0 0 5rem;
+  margin-left: 0.6rem;
+}
+
+.NavItemInfo {
+  width: 20rem;
+  z-index: 2;
+}
+
+.NavItemInfo p {
+  margin-left: 2.5rem;
+  font-size: 2.2rem;
+  color: var(--color-grey-5);
 }
 
 .active p {
