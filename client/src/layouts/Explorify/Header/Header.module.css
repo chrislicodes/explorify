@@ -3,14 +3,13 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
   flex-basis: 9rem;
   margin-right: 3rem;
 }
 
 .LogoutBtn{
-  color:#1DB954;
-  border:2px solid #1DB954;
+  color:var(--color-spotify-green);
+  border:2px solid var(--color-spotify-green);
   padding:10px;
   background-color: transparent;
   font-weight:bold;
@@ -20,6 +19,6 @@
 }
 
 .LogoutBtn:hover{
-  background-color:#1DB954;
-  color:white;
+  background-color:var(--color-spotify-green);
+  color:var(--color-white);
 }
