@@ -1,5 +1,5 @@
 import React from "react";
-import SpotifyIcon from "./SpotifyIcon/SpotifyIcon";
+import SpotifyIcon from "../../../../components/Icons/SpotifyIcon/SpotifyIcon";
 import classes from "./AppTitle.module.css";
 import { Link } from "react-router-dom";
 

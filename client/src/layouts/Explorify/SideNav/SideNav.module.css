@@ -6,3 +6,11 @@
   flex-basis: 29rem;
   flex-shrink: 0;
 }
+
+.NavLinks li {
+  margin-bottom: 3rem;
+}
+
+.NavLinks li:last-child {
+  margin-bottom: 0rem;
+}

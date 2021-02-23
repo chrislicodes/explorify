@@ -4,7 +4,7 @@
   align-items: center;
 
   margin-top: 2.5rem;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
 }
 
 .AppTitle h1 {
@@ -12,6 +12,5 @@
   color: var(--color-white);
   font-weight: bold;
   font-size: 3rem;
-
   margin-left: 1.75rem;
 }

@@ -1,0 +1,8 @@
+.SpotifyIcon {
+  fill: var(--color-spotify-logo-green);
+}
+
+.SpotifyIcon svg {
+  width: 5.5rem;
+  height: 5.5rem;
+}

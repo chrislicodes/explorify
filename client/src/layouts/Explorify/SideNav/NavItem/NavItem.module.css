@@ -1,0 +1,33 @@
+.Icon svg {
+  width: 3.5rem;
+  height: 3.5rem;
+  fill: var(--color-grey-5);
+}
+
+.NavItemInfo {
+  width: 20rem;
+}
+
+.NavItemInfo p {
+  margin-left: 2.5rem;
+  font-size: 2.2rem;
+  color: var(--color-grey-5);
+}
+
+.NavItemInfo,
+.NavItem a {
+  display: flex;
+  align-items: center;
+}
+
+.NavItem a {
+  justify-content: center;
+}
+
+.active p {
+  color: var(--color-white);
+}
+
+.active svg {
+  fill: var(--color-white);
+}
