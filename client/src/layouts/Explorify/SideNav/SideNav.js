@@ -3,7 +3,7 @@ import classes from "./SideNav.module.css";
 import NavItem from "./NavItem/NavItem";
 import AppTitle from "./AppTitle/AppTitle";
 
-const links = [
+const navItems = [
   { target: "/", icon: "icon-home" },
   { target: "/analyze", icon: "icon-search" },
   { target: "/explore", icon: "icon-compass" },
@@ -15,8 +15,8 @@ const Header = () => {
     <nav className={classes.SideNav}>
       <AppTitle />
       <ul className={classes.NavLinks}>
-        {links.map((link) => (
-          <NavItem target={link.target} icon={link.icon} />
+        {navItems.map((navItem) => (
+          <NavItem target={navItem.target} icon={navItem.icon} />
         ))}
       </ul>
     </nav>
