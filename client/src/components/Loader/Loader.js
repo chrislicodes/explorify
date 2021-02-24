@@ -8,8 +8,8 @@ const Loader = (props) => {
     <ReactLoaderSpinner
       type="Audio"
       color="#202020"
-      height={height ? height : ""}
-      width={width ? width : ""}
+      height={height ? height : null}
+      width={width ? width : null}
       visible={visible ? visible : true}
     />
   );

@@ -3,9 +3,10 @@
 .gridParent {
   display: grid;
   height: 100%;
+  max-height: 100%;
 
   grid-template-columns: 0.8fr 0.8fr 1fr;
-  grid-template-rows: 0.5fr 2fr 1.5fr 2fr;
+  grid-template-rows: 10rem 30rem 20rem 20rem;
   grid-column-gap: 8px;
   grid-row-gap: 8px;
 
@@ -37,6 +38,10 @@
 }
 .bottomRight {
   grid-area: 2 / 3 / 5 / 4;
+}
+
+.bottomRight {
+  background-color: var(--color-grey-2);
 }
 
 /* Style */
