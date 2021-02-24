@@ -8,41 +8,34 @@ import { getHashParams } from "../utils/utils";
 /**
  * SET methods for localstorage keys
  */
-const setLocalTokenExpiresIn = (expires_in) =>
-  localStorage.setItem("spotify_expires_in", expires_in);
+const setLocalTokenExpiresIn = (expires_in) => localStorage.setItem("spotify_expires_in", expires_in);
 
-const setLocalTokenTimestamp = () =>
-  localStorage.setItem("spotify_token_timestamp", Date.now());
+const setLocalTokenTimestamp = () => localStorage.setItem("spotify_token_timestamp", Date.now());
 
 const setLocalAccessToken = (access_token) => {
   setLocalTokenTimestamp();
   localStorage.setItem("spotify_access_token", access_token);
 };
 
-const setLocalRefreshToken = (refresh_token) =>
-  localStorage.setItem("spotify_refresh_token", refresh_token);
+const setLocalRefreshToken = (refresh_token) => localStorage.setItem("spotify_refresh_token", refresh_token);
 
 /**
  * GET methods for localstorage keys
  */
 const getLocalTokenExpiresIn = () => localStorage.getItem("spotify_expires_in");
 
-const getLocalTokenTimestamp = () =>
-  localStorage.getItem("spotify_token_timestamp");
+const getLocalTokenTimestamp = () => localStorage.getItem("spotify_token_timestamp");
 
 const getLocalAccessToken = () => localStorage.getItem("spotify_access_token");
 
-const getLocalRefreshToken = () =>
-  localStorage.getItem("spotify_refresh_token");
+const getLocalRefreshToken = () => localStorage.getItem("spotify_refresh_token");
 
 /**
  * Refresh the access_token if serveral validations in function "getAccessToken" fails
  */
 const refreshAccessToken = () => {
   axios
-    .get(
-      `http://localhost:8080/refresh-token?refresh_token=${getLocalRefreshToken()}`
-    )
+    .get(`${process.env.REACT_APP_BACKEND_URI}refresh-token?refresh_token=${getLocalRefreshToken()}`)
     .then(({ data }) => {
       const { access_token } = data;
       setLocalAccessToken(access_token);
