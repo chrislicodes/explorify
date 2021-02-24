@@ -1,26 +1,19 @@
 import React from "react";
 import classes from "./Home.module.css";
+import WelcomeUser from "./components/WelcomeUser/WelcomeUser";
 
 const Home = () => {
-  const welcomeUser = () => {
-    const currentHour = new Date().getHours();
-    let welcomeString = "";
-
-    if (currentHour >= 5 && currentHour <= 12) {
-      welcomeString = "Good Morning";
-    } else if (currentHour >= 13 && currentHour <= 18) {
-      welcomeString = "Good Afternoon";
-    } else {
-      welcomeString = "Good Evening";
-    }
-    return welcomeString;
-  };
-
-  const greetingString = welcomeUser();
-
   return (
-    <div>
-      Home <p className={classes.Greeting}>{greetingString}, Dennis</p>
+    <div className={classes.gridParent}>
+      <div className={classes.gridHeader}>
+        <WelcomeUser />
+      </div>
+      <div className={classes.topLeft}></div>
+      <div className={classes.topRight}></div>
+      <div className={classes.middleLeft}></div>
+      <div className={classes.middleRight}></div>
+      <div className={classes.bottomLeft}></div>
+      <div className={classes.bottomRight}></div>
     </div>
   );
 };

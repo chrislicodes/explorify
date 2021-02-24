@@ -16,7 +16,11 @@ const Header = () => {
       <AppTitle />
       <ul className={classes.NavLinks}>
         {navItems.map((navItem) => (
-          <NavItem target={navItem.target} icon={navItem.icon} />
+          <NavItem
+            key={navItem.target}
+            target={navItem.target}
+            icon={navItem.icon}
+          />
         ))}
       </ul>
     </nav>
