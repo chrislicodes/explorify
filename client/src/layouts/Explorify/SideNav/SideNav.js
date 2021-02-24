@@ -5,7 +5,7 @@ import AppTitle from "./AppTitle/AppTitle";
 
 const navItems = [
   { target: "/", icon: "icon-home" },
-  { target: "/analyze", icon: "icon-search" },
+  { target: "/analyze", icon: "icon-stats-bars" },
   { target: "/explore", icon: "icon-compass" },
   { target: "/about", icon: "icon-notification" },
 ];
