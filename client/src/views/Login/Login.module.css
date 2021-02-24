@@ -52,13 +52,15 @@
     margin-bottom:40px;
 }
 
-.LoginHeadline > p{
+.LoginHeadline > h1{
+    font-weight:lighter;
     font-size:5rem;
 }
 
-.LoginSubheadline > p{
+.LoginSubheadline > h2{
     font-size: 3rem;
-    color:var(--color-grey-6)
+    color:var(--color-grey-6);
+    font-weight:lighter;
 }
 
 .LoginBtnContainer{
@@ -73,7 +75,7 @@
 .LoginBtn{
     background-color:var(--color-spotify-green);
     color:var(--color-white);
-    border-radius:5px;
+    border-radius:2px;
     outline: none;
     margin-right:20px;
     transition: all 0.3s ease-in-out;
@@ -86,12 +88,15 @@
 .LoginLearnMoreBtn{
     background-color:transparent;
     border:1px solid var(--color-spotify-green);
-    color:var(--color-white);
+    color:var(--color-spotify-green);
     transition: all 0.2s ease-in-out;
+    box-sizing: border-box;
+    border-radius: 2px;
 }
 
 .LoginLearnMoreBtn:hover{
     background-color: var(--color-spotify-green);
+    color:var(--color-white)
 }
 
 .AppVersion, .AppNote{

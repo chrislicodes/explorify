@@ -3,7 +3,7 @@ import React from "react";
 import classes from "./Login.module.css";
 import SpotifyIcon from "../../layouts/Explorify/SideNav/AppTitle/SpotifyIcon/SpotifyIcon";
 
-const Login = function () {
+const Login = () => {
   return (
     <div className={classes.LoginContainer}>
       <div className={classes.LoginBackdrop}></div>
@@ -13,18 +13,18 @@ const Login = function () {
       <main className={classes.LoginContent}>
         <div className={classes.LoginWrapper}>
           <div className={classes.LoginHeadline}>
-            <p>
+            <h1>
               Welcome to
               <span>
-                <b> EXPLORIFY</b>.
+                <strong> EXPLORIFY</strong>.
               </span>
-            </p>
+            </h1>
           </div>
           <div className={classes.LoginSubheadline}>
-            <p>Explore your favorite songs and artists on Spotify</p>
+            <h2>Explore your favorite songs and artists on Spotify</h2>
           </div>
           <div className={classes.LoginBtnContainer}>
-            <a className={classes.LoginBtn} href="http://localhost:8080/login">
+            <a className={classes.LoginBtn} href={`${process.env.REACT_APP_BACKEND_URI}login`}>
               LOGIN TO SPOTIFY
             </a>
             <a className={classes.LoginLearnMoreBtn} href="/">
@@ -33,7 +33,7 @@ const Login = function () {
           </div>
         </div>
       </main>
-      <div className={classes.AppVersion}>v.0.0.1</div>
+      <div className={classes.AppVersion}>v.{process.env.REACT_APP_VERSION}</div>
       <div className={classes.AppNote}>
         This application is not an official product of Spotify, but uses Spotify's API.
       </div>
