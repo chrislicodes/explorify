@@ -3,7 +3,22 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
   flex-basis: 9rem;
   margin-right: 3rem;
+}
+
+.LogoutBtn{
+  color:var(--color-spotify-green);
+  border:2px solid var(--color-spotify-green);
+  padding:10px;
+  background-color: transparent;
+  font-weight:bold;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.LogoutBtn:hover{
+  background-color:var(--color-spotify-green);
+  color:var(--color-white);
 }

@@ -86,6 +86,7 @@ export const getAccessToken = () => {
   // If no access_token in localstorage, then set it from getHashParams
   if (!localAccessToken || localAccessToken === "undefined") {
     setLocalAccessToken(access_token);
+    window.history.replaceState({}, "", window.location.href.split("#")[0]);
     return access_token;
   }
 
