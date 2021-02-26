@@ -6,6 +6,12 @@
 
   height: 100%;
   width: 100%;
+
+  padding: 2rem;
+}
+
+.SongContainer li {
+  list-style: none;
 }
 
 .SongContainer::-webkit-scrollbar-track {

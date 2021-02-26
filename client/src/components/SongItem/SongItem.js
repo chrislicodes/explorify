@@ -6,9 +6,7 @@ import { transformDuration } from "../../utils/utils";
 const SongItem = ({ trackData }) => {
   const album = trackData.album;
   const image = album.images[2].url;
-
   const songTitle = trackData.name;
-
   const artist = trackData.artists[0];
   const duration = transformDuration(trackData.duration_ms);
 

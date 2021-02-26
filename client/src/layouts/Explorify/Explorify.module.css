@@ -4,9 +4,6 @@
   justify-content: center;
   align-items: center;
 
-  min-height: 0; /* NEW */
-  min-width: 0; /* NEW; needed for Firefox */
-
   padding: 0.75rem;
   height: 100vh; /* Is this the best way to do this? VH can behave weird on mobile */
 
@@ -38,6 +35,8 @@
 
 /* View Container - Stretches to 100% of available space */
 .View {
-  flex: 1;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
   z-index: 2;
 }

@@ -1,13 +1,14 @@
 .SongItem {
   display: flex;
   align-items: center;
+
+  margin-bottom: 1.5rem;
+
+  font-size: 1.3rem;
+  font-weight: 700;
   color: var(--color-grey-4);
-
-  margin-bottom: 1.25rem;
-
   text-transform: uppercase;
   text-overflow: ellipsis;
-  font-weight: 700;
 }
 
 .albumCover {
@@ -19,8 +20,6 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 1.2rem;
-
-  font-size: 1.3rem;
 }
 
 .metaInfo {
@@ -31,8 +30,4 @@
 .songTitle {
   font-size: 1.7rem;
   color: var(--color-white);
-}
-
-.additionalInfo {
-  font-size: 1.3rem;
 }

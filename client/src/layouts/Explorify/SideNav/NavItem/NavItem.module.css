@@ -21,14 +21,14 @@
   align-items: center;
 }
 
-.NavItem a {
-  justify-content: center;
-}
-
 .NavItem {
   position: relative;
   padding: 1.75rem 0;
   cursor: pointer;
+}
+
+.NavItem a {
+  justify-content: center;
 }
 
 .NavItem a::before {
