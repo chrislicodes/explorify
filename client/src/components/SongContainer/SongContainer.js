@@ -13,7 +13,7 @@ const SongContainer = ({ tracks, title }) => {
   return (
     <div className={classes.SongContainer}>
       <p className={classes.containerTitle}>{title}</p>
-      <ul className={classes.SongList}>{trackArr}</ul>{" "}
+      <ul className={classes.SongList}>{trackArr}</ul>
     </div>
   );
 };
