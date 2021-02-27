@@ -9,15 +9,19 @@
 }
 
 .LogoutBtn {
-  color: var(--color-spotify-green);
+  padding: 1.1rem 2.1rem;
+
   border: 2px solid var(--color-spotify-green);
-  padding: 10px;
-  background-color: transparent;
-  font-weight: bold;
-  border-radius: 20px;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
+  border-radius: 2rem;
   outline: none;
+  background-color: transparent;
+
+  font-size: 1.4rem;
+  color: var(--color-spotify-green);
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .LogoutBtn:hover {

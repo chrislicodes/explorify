@@ -29,7 +29,6 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  min-width: 0;
 }
 
 /* Image and Icon Styling */
@@ -76,14 +75,13 @@
 }
 
 .songTitle span::before {
-  content: "";
   position: absolute;
+  content: "";
   top: 2.25rem;
-  width: 0px;
   height: 0.2rem;
+  width: 0px;
   background-color: var(--color-spotify-green);
   transition: all 0.3s ease-in-out;
-  opacity: 0.9;
 }
 
 .SongItem:hover .songTitle span::before {

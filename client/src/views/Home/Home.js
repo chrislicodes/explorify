@@ -29,7 +29,7 @@ const Home = () => {
             title="Recently played songs"
           />
         ) : (
-          <Loader />
+          <Loader className={classes.loader} />
         )}
       </div>
     </div>

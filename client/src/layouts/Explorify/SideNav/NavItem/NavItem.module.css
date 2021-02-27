@@ -4,7 +4,6 @@
 }
 
 /* General NavItem Design */
-
 .Icon svg {
   display: flex;
   justify-content: center;
@@ -55,11 +54,12 @@
   transition: all var(--time-animation);
 }
 
+/* Active NavItem Design */
+
 .active::before {
   background-color: var(--color-grey-2);
 }
 
-/* Active NavItem Design */
 .active p {
   color: var(--color-white);
 }
@@ -76,6 +76,7 @@
 .NavItem:hover .NavItemInfo p {
   color: var(--color-white);
 }
+
 .NavItem:hover .NavItemInfo svg {
   fill: var(--color-white);
 }
