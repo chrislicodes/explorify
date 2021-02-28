@@ -7,8 +7,6 @@ import Home from "../views/Home/Home";
 import Analyze from "../views/Analyze/Analyze";
 import Error404 from "../views/NotFound404/NotFound404";
 
-import Explorify from "../layouts/Explorify/Explorify";
-
 import GuardedRoute from "./middleware/GuardedRoute";
 import UngardedRoute from "./middleware/UnguardedRoute";
 
@@ -19,15 +17,9 @@ const Routes = () => {
     <Router>
       <Switch>
         <UngardedRoute path="/login" component={Login} auth={token} />
-        <Route>
-          <Explorify>
-            <Switch>
-              <GuardedRoute exact path="/" component={Home} auth={token} />
-              <GuardedRoute path="/analyze" component={Analyze} auth={token} />
-              <Route path="*" exact component={Error404} />
-            </Switch>
-          </Explorify>
-        </Route>
+        <GuardedRoute exact path="/" component={Home} auth={token} />
+        <GuardedRoute path="/analyze" component={Analyze} auth={token} />
+        <Route path="*" exact component={Error404} />
       </Switch>
     </Router>
   );

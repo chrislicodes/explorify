@@ -1,19 +1,7 @@
-import React, { useContext } from "react";
-
-import Loader from "../../components/Loader/Loader";
-import { AuthContext } from "../../context/AuthContext";
+import React from "react";
 
 const Analyze = () => {
-  const { display_name: name, images } = useContext(AuthContext);
-
-  return (
-    <div>
-      Analyze {name}
-      <img src={images[0].url} alt="test" />
-
-      <Loader width="50" height="50" />
-    </div>
-  );
+  return <div>Analyze</div>;
 };
 
 export default Analyze;
