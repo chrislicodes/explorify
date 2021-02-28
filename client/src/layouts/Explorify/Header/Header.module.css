@@ -5,7 +5,10 @@
   align-items: center;
   justify-content: flex-end;
   flex-basis: 9rem;
-  margin-right: 3rem;
+}
+
+.Header > * {
+  margin-right: 2.5rem;
 }
 
 .LogoutBtn {

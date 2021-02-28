@@ -1,0 +1,16 @@
+.SearchIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4.3rem;
+  width: 4.3rem;
+  border-radius: 10rem;
+  background-color: var(--color-grey-3);
+  cursor: pointer;
+}
+
+.SearchIcon svg {
+  fill: var(--color-white);
+  width: 40%;
+  height: 40%;
+}
