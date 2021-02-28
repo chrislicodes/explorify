@@ -1,11 +1,11 @@
 import React from "react";
 import sprite from "../../../assets/sprites.svg";
 
-const Icon = (props) => {
+const Icon = ({ className, type }) => {
   return (
-    <div className={props.className}>
+    <div className={className}>
       <svg>
-        <use href={`${sprite}#${props.type}`}></use>
+        <use href={`${sprite}#${type}`}></use>
       </svg>
     </div>
   );

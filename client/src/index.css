@@ -7,13 +7,14 @@
   --color-black: #121212;
 
   --color-grey-1: #202020;
+  --color-grey-1-70: rgba(32, 32, 32, 0.7);
   --color-grey-2: #323232;
   --color-grey-3: #5c5c5c;
   --color-grey-4: #9c9898;
   --color-grey-5: #a3a3a3;
   --color-grey-6: #b6b6b6;
 
-  --color-white: #f8f8f8;
+  --color-white: #f1f1f1;
 }
 
 * {
@@ -31,10 +32,13 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem = 10px; Browser Default is 16px */
 
-  text-rendering: optimizeSpeed;
   font-family: "Roboto", sans-serif;
   line-height: 1.6;
   letter-spacing: 1.25px;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html,

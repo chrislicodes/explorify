@@ -4,7 +4,7 @@ import classes from "./LoaderScreen.module.css";
 
 const LoaderScreen = () => {
   return (
-    <div className={classes["loaderscreen-container"]}>
+    <div className={classes.loaderScreenContainer}>
       <Loader />
     </div>
   );

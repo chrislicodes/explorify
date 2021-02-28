@@ -1,8 +1,8 @@
-.loaderscreen-container{
-    width:100vw;
-    height:100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-grey-2);
+.loaderScreenContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-grey-2);
 }

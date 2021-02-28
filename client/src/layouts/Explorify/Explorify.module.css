@@ -35,6 +35,8 @@
 
 /* View Container - Stretches to 100% of available space */
 .View {
-  flex: 1;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
   z-index: 2;
 }
