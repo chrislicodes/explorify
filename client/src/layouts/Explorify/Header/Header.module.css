@@ -3,16 +3,24 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   flex-basis: 9rem;
 }
 
-.Header > * {
-  margin-right: 2.5rem;
+.contentWrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 4.1rem;
+  width: 100%;
+}
+
+.contentWrapper > * {
+  margin-right: 2rem;
 }
 
 .LogoutBtn {
-  padding: 1.1rem 2.1rem;
+  height: 100%;
+  padding: 0 2.1rem;
 
   border: 2px solid var(--color-spotify-green);
   border-radius: 2rem;

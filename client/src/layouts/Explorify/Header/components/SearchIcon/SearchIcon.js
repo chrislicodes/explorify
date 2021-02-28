@@ -4,9 +4,19 @@ import Icon from "../../../../../components/Icons/Icon/Icon";
 
 const SearchIcon = () => {
   return (
-    <div className={classes.SearchIconContainer}>
-      <Icon type="icon-search" className={classes.SearchIcon} />
-    </div>
+    <>
+      <form className={classes.searchForm}>
+        <button type="button" className={classes.button}>
+          <Icon type="icon-search" className={classes.searchIcon} />
+        </button>
+        <input
+          type="search"
+          placeholder="Search for Songs, Artists, ..."
+          className={classes.searchBar}
+          required="true"
+        />
+      </form>
+    </>
   );
 };
 

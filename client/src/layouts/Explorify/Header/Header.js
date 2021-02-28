@@ -6,10 +6,12 @@ import SearchIcon from "./components/SearchIcon/SearchIcon";
 const Header = () => {
   return (
     <header className={classes.Header}>
-      <SearchIcon />
-      <button className={classes.LogoutBtn} onClick={logout}>
-        LOGOUT
-      </button>
+      <div className={classes.contentWrapper}>
+        <SearchIcon />
+        <button className={classes.LogoutBtn} onClick={logout}>
+          LOGOUT
+        </button>
+      </div>
     </header>
   );
 };

@@ -74,6 +74,7 @@ select,
 textarea,
 button {
   font-family: inherit;
+  outline: none;
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */
