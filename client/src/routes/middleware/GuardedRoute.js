@@ -1,11 +1,18 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
+import Explorify from "../../layouts/Explorify/Explorify";
 
 const GuardedRoute = ({ component: Component, auth, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
-      auth ? <Component {...props} /> : <Redirect to="/login" />
+      auth ? (
+        <Explorify>
+          <Component {...props} />
+        </Explorify>
+      ) : (
+        <Redirect to="/login" />
+      )
     }
   />
 );
