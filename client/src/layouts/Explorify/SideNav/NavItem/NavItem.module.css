@@ -3,6 +3,47 @@
   --time-animation: 0.3s;
 }
 
+/* General */
+.NavItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+
+  height: 6.5rem;
+  cursor: pointer;
+}
+
+.NavItemInfo,
+.NavItem a {
+  display: flex;
+}
+
+.NavItem a {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  transition: all var(--time-animation);
+}
+
+.NavItem a::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0.6rem;
+  background-color: #1db954;
+  box-shadow: 3px 0px 26px -1px rgba(29, 185, 84, 0.5);
+  opacity: 0;
+  transition: all var(--time-animation);
+}
+
+.NavItemInfo {
+  width: 20rem;
+  z-index: 1;
+}
+
 /* General NavItem Design */
 .Icon svg {
   display: flex;
@@ -14,39 +55,6 @@
   transition: all var(--time-animation);
 }
 
-.NavItemInfo,
-.NavItem a {
-  display: flex;
-  align-items: center;
-}
-
-.NavItem {
-  position: relative;
-  padding: 1.75rem 0;
-  cursor: pointer;
-}
-
-.NavItem a {
-  justify-content: center;
-}
-
-.NavItem a::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 5rem 0 0 5rem;
-  margin-left: 0.6rem;
-  transition: all var(--time-animation);
-}
-
-.NavItemInfo {
-  width: 20rem;
-  z-index: 1;
-}
-
 .NavItemInfo p {
   margin-left: 2.5rem;
   font-size: 2.2rem;
@@ -55,9 +63,12 @@
 }
 
 /* Active NavItem Design */
-
-.active::before {
+.active {
   background-color: var(--color-grey-2);
+}
+
+.NavItem .active::before {
+  opacity: 1;
 }
 
 .active p {
@@ -69,8 +80,12 @@
 }
 
 /* Hover NavItem Design */
-.NavItem:hover a::before {
+.NavItem:hover a {
   background-color: var(--color-grey-2);
+}
+
+.NavItem a:hover::before {
+  opacity: 1;
 }
 
 .NavItem:hover .NavItemInfo p {
