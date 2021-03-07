@@ -12,7 +12,22 @@ const headers = {
 
 const BASE_URI = `https://api.spotify.com/v1`;
 
+//-----------------------
+// Artist API
+//-----------------------
+
+export const getArtistsTopTracks = (id) =>
+  axios.get(`${BASE_URI}/artists/${id}/top-tracks`, { headers });
+
+//-----------------------
+// User Profile API
+//-----------------------
+
 export const getMe = () => axios.get(`${BASE_URI}/me`, { headers });
+
+//-----------------------
+// Player API
+//-----------------------
 
 export const getRecentlyPlayed = () =>
   axios.get(`${BASE_URI}/me/player/recently-played?limit=50`, {
