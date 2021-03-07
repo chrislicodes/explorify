@@ -3,16 +3,15 @@ import SongItem from "../SongItem/SongItem";
 
 import classes from "./SongContainer.module.css";
 
-const SongContainer = ({ tracks, title }) => {
-  const trackArr = tracks.map((item) => (
-    <li key={item.track.id + item.played_at}>
-      <SongItem trackData={item.track} />
+const SongContainer = ({ tracks, className }) => {
+  const trackArr = tracks.map((item, index) => (
+    <li key={item.id + index}>
+      <SongItem trackData={item} pos={index} noImage={true} />
     </li>
   ));
 
   return (
-    <div className={classes.SongContainer}>
-      <p className={classes.containerTitle}>{title}</p>
+    <div className={`${classes.SongContainer} ${className}`}>
       <ul className={classes.SongList}>{trackArr}</ul>
     </div>
   );

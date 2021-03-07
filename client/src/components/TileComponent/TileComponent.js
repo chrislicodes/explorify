@@ -1,20 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import classes from "./TileComponent.module.css";
 
-const TileComponent = ({ imageURL, headline, title, subtitle, alt }) => {
+const TileComponent = ({ children, headline, link }) => {
   return (
     <div className={classes.tileComponent}>
-      <div className={classes.image}>
-        <img src={imageURL} alt={alt} />
+      <div className={classes.headline}>
+        <h2>{headline}</h2>
+        <Link to={link}>See more</Link>
       </div>
-      <div className={classes.overlay}></div>
-      <div className={classes.textBox}>
-        <p className={classes.headline}>{headline}</p>
-        <div className={classes.titleBox}>
-          <p className={classes.subtitle}>{subtitle}</p>
-          <p className={classes.title}>{title}</p>
-        </div>
-      </div>
+      {children}
     </div>
   );
 };

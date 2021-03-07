@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import classes from "./Home.module.css";
 import WelcomeUser from "./components/WelcomeUser/WelcomeUser";
 import SongContainer from "../../components/SongContainer/SongContainer";
+import TopArtist from "./components/TopArtist/TopArtist";
 
 import { AuthContext } from "../../context/AuthContext";
 
@@ -39,7 +40,11 @@ const Home = () => {
   return (
     <div className={classes.gridParent}>
       <WelcomeUser />
-      <Loader className={classes.loader} />
+      {usersTopArtistTopTracks ? (
+        <TopArtist artist={usersTopArtist} tracks={usersTopArtistTopTracks} />
+      ) : (
+        <Loader className={classes.Loader} />
+      )}
     </div>
   );
 };

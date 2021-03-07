@@ -21,7 +21,7 @@
 
 .metaInfo {
   flex: 1;
-  margin-left: 1.2rem;
+  margin-left: 1.5rem;
   min-width: 0;
 }
 
@@ -29,6 +29,10 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.pos {
+  font-size: 1.8rem;
 }
 
 /* Image and Icon Styling */
@@ -49,18 +53,18 @@
   align-items: center;
 
   opacity: 0;
-  background: var(--color-black);
+  background: var(--color-grey-2);
   transition: all 0.3s;
 }
 
 .imageIcon svg {
-  fill: var(--color-grey-6);
+  fill: var(--color-spotify-green);
   width: 3rem;
   height: 3rem;
 }
 
 .SongItem:hover .imageIcon {
-  opacity: 0.8;
+  opacity: 1;
 }
 
 /* Title Styling and Hover Effect */

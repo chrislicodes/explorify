@@ -7,3 +7,7 @@
 .loader svg {
   fill: var(--color-spotify-green);
 }
+
+.gridParent {
+  padding: 3rem;
+}
