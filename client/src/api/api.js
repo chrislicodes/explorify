@@ -16,8 +16,10 @@ const BASE_URI = `https://api.spotify.com/v1`;
 // Artist API
 //-----------------------
 
-export const getArtistsTopTracks = (id) =>
-  axios.get(`${BASE_URI}/artists/${id}/top-tracks`, { headers });
+export const getArtistsTopTracks = (id, country) =>
+  axios.get(`${BASE_URI}/artists/${id}/top-tracks?market=${country}`, {
+    headers,
+  });
 
 //-----------------------
 // User Profile API

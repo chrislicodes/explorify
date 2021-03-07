@@ -1,72 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import classes from "./Home.module.css";
 import WelcomeUser from "./components/WelcomeUser/WelcomeUser";
 import SongContainer from "../../components/SongContainer/SongContainer";
+
+import { AuthContext } from "../../context/AuthContext";
+
 import {
   getRecentlyPlayed,
   getUsersTopArtistsShort,
   getUsersTopTracksShort,
+  getArtistsTopTracks,
 } from "../../api/api";
+
 import Loader from "../../components/Loader/Loader";
-import TileComponent from "../../components/TileComponent/TileComponent";
 
 const Home = () => {
   const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState(null);
-  const [usersTopArtist, setUsersTopArtist] = useState(null);
   const [usersTopTrack, setUsersTopTrack] = useState(null);
+  const [usersTopArtist, setUsersTopArtist] = useState(null);
+  const [usersTopArtistTopTracks, setUsersTopArtistTopTracks] = useState(null);
+  const { country } = useContext(AuthContext);
 
   useEffect(() => {
     getRecentlyPlayed().then((res) => setRecentlyPlayedSongs(res.data));
-    getUsersTopArtistsShort(1).then((res) =>
-      setUsersTopArtist(res.data.items[0])
-    );
+
+    getUsersTopArtistsShort(1)
+      .then((res) => {
+        setUsersTopArtist(res.data.items[0]);
+        return getArtistsTopTracks(res.data.items[0].id, country);
+      })
+      .then((res) => setUsersTopArtistTopTracks(res.data));
+
     getUsersTopTracksShort(1).then((res) =>
       setUsersTopTrack(res.data.items[0])
     );
-  }, []);
+  }, [country]);
 
   return (
     <div className={classes.gridParent}>
-      <div className={classes.gridHeader}>
-        <WelcomeUser />
-      </div>
-      <div className={classes.topLeft}>
-        {usersTopArtist ? (
-          <TileComponent
-            imageURL={usersTopArtist.images[1].url}
-            headline={`Most played artists (last 30 days)`}
-            title={usersTopArtist.name}
-          />
-        ) : (
-          <Loader className={classes.loader} />
-        )}
-      </div>
-      <div className={classes.topRight}>
-        {usersTopTrack ? (
-          <TileComponent
-            imageURL={usersTopTrack.album.images[1].url}
-            headline={`Most played song (last 30 days)`}
-            title={usersTopTrack.name}
-            subtitle={usersTopTrack.artists[0].name}
-          />
-        ) : (
-          <Loader className={classes.loader} />
-        )}
-      </div>
-
-      <div className={classes.middleLeft}></div>
-      <div className={classes.middleRight}></div>
-      <div className={classes.bottomLeft}></div>
-      <div className={classes.bottomRight}>
-        {recentlyPlayedSongs ? (
-          <SongContainer
-            tracks={recentlyPlayedSongs.items}
-            title="Recently played songs"
-          />
-        ) : (
-          <Loader className={classes.loader} />
-        )}
-      </div>
+      <WelcomeUser />
+      <Loader className={classes.loader} />
     </div>
   );
 };
