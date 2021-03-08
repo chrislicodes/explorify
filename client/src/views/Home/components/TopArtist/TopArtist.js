@@ -1,13 +1,13 @@
 import React from "react";
 import classes from "./TopArtist.module.css";
-import TileComponent from "../../../../components/TileComponent/TileComponent";
+import TitleWrapper from "../../../../components/TitleWrapper/TitleWrapper";
 import SongContainer from "../../../../components/SongContainer/SongContainer";
 import Icon from "../../../../components/Icons/Icon/Icon";
 import { Link } from "react-router-dom";
 
 const TopArtist = ({ artist, tracks }) => {
   return (
-    <TileComponent
+    <TitleWrapper
       headline={`TOP ARTIST - ${artist.name}`}
       link={`/analyze/artists/top`}
     >
@@ -27,7 +27,7 @@ const TopArtist = ({ artist, tracks }) => {
           className={classes.songContainer}
         />
       </div>
-    </TileComponent>
+    </TitleWrapper>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ArtistScroller.module.css";
 import HorizontalCardContainer from "../../../../components/HorizontalCardContainer/HorizontalCardContainer";
-import TileComponent from "../../../../components/TileComponent/TileComponent";
+import TitleWrapper from "../../../../components/TitleWrapper/TitleWrapper";
 import ArtistCard from "../../../../components/ArtistCard/ArtistCard";
 
 const ArtistScroller = ({ artists }) => {
@@ -13,12 +13,12 @@ const ArtistScroller = ({ artists }) => {
 
   return (
     <div className={classes.content}>
-      <TileComponent
+      <TitleWrapper
         headline={"Learn more about your favorite artists"}
         link={`/analyze/artists/top`}
       >
         <HorizontalCardContainer>{cardItems}</HorizontalCardContainer>
-      </TileComponent>
+      </TitleWrapper>
     </div>
   );
 };
