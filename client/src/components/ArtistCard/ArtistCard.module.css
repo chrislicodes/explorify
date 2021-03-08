@@ -1,0 +1,56 @@
+.artistCard a {
+  height: 25rem;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-grey-1-50);
+}
+
+.imageContainer {
+  width: 160px;
+  height: 160px;
+  border-radius: 100%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.artistName {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.genre {
+  color: var(--color-grey-4);
+  font-size: 1.2rem;
+}
+
+.imageIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  background: var(--color-grey-2);
+  transition: all 0.3s;
+}
+
+.imageIcon svg {
+  fill: var(--color-white);
+  width: 3rem;
+  height: 3rem;
+}
+
+.artistCard:hover .imageIcon {
+  opacity: 0.8;
+}

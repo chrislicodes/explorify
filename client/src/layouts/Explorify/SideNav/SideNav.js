@@ -10,11 +10,11 @@ const navItems = [
   { target: "/about", icon: "icon-notification" },
 ];
 
-const Header = () => {
+const SideNav = ({ className }) => {
   return (
-    <nav className={classes.SideNav}>
+    <nav className={`${classes.sideNav} ${className}`}>
       <AppTitle />
-      <ul className={classes.NavLinks}>
+      <ul className={classes.navLinks}>
         {navItems.map((navItem) => (
           <NavItem
             key={navItem.target}
@@ -27,4 +27,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default SideNav;

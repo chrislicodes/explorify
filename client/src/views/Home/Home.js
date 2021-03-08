@@ -3,6 +3,7 @@ import classes from "./Home.module.css";
 import WelcomeUser from "./components/WelcomeUser/WelcomeUser";
 import SongContainer from "../../components/SongContainer/SongContainer";
 import TopArtist from "./components/TopArtist/TopArtist";
+import ArtistScroller from "./components/ArtistScroller/ArtistScroller";
 
 import { AuthContext } from "../../context/AuthContext";
 
@@ -18,30 +19,36 @@ import Loader from "../../components/Loader/Loader";
 const Home = () => {
   const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState(null);
   const [usersTopTrack, setUsersTopTrack] = useState(null);
-  const [usersTopArtist, setUsersTopArtist] = useState(null);
+  const [usersTopArtists, setUsersTopArtists] = useState(null);
   const [usersTopArtistTopTracks, setUsersTopArtistTopTracks] = useState(null);
   const { country } = useContext(AuthContext);
 
   useEffect(() => {
     getRecentlyPlayed().then((res) => setRecentlyPlayedSongs(res.data));
 
-    getUsersTopArtistsShort(1)
+    getUsersTopArtistsShort()
       .then((res) => {
-        setUsersTopArtist(res.data.items[0]);
+        setUsersTopArtists(res.data.items);
         return getArtistsTopTracks(res.data.items[0].id, country);
       })
       .then((res) => setUsersTopArtistTopTracks(res.data));
 
-    getUsersTopTracksShort(1).then((res) =>
-      setUsersTopTrack(res.data.items[0])
-    );
+    getUsersTopTracksShort().then((res) => setUsersTopTrack(res.data.items));
   }, [country]);
 
   return (
     <div className={classes.gridParent}>
       <WelcomeUser />
       {usersTopArtistTopTracks ? (
-        <TopArtist artist={usersTopArtist} tracks={usersTopArtistTopTracks} />
+        <TopArtist
+          artist={usersTopArtists[0]}
+          tracks={usersTopArtistTopTracks}
+        />
+      ) : (
+        <Loader className={classes.Loader} />
+      )}
+      {usersTopArtists ? (
+        <ArtistScroller artists={usersTopArtists.slice(1)} />
       ) : (
         <Loader className={classes.Loader} />
       )}

@@ -11,3 +11,7 @@
 .gridParent {
   padding: 3rem;
 }
+
+.gridParent > * {
+  margin-bottom: 5rem;
+}

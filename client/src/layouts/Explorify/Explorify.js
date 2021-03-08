@@ -6,12 +6,12 @@ import Header from "./Header/Header";
 
 const Explorify = ({ children }) => {
   return (
-    <div className={classes.Container}>
-      <div className={classes.Explorify}>
-        <SideNav />
-        <div className={classes.Content}>
+    <div className={classes.container}>
+      <div className={classes.explorify}>
+        <SideNav className={classes.sideNav} />
+        <div className={classes.content}>
           <Header />
-          <main className={classes.View}>{children}</main>
+          <main className={classes.view}>{children}</main>
         </div>
       </div>
     </div>

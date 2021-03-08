@@ -6,8 +6,8 @@
 }
 
 .SongList {
-  overflow: scroll;
   overflow-x: hidden;
+  overflow-y: auto;
   padding-right: 2rem;
 }
 

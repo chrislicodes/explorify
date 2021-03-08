@@ -13,17 +13,22 @@
   align-items: center;
   font-weight: bold;
   padding-bottom: 4rem;
+  min-width: 0;
 }
 
 .headline a {
   font-size: 1.3rem;
   color: var(--color-spotify-green);
-  margin-right: 2.2rem;
+  transition: all 0.3s;
+}
+
+.headline a:hover {
+  color: var(--color-spotify-logo-green);
 }
 
 .headline h2 {
   position: relative;
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   letter-spacing: 1.7px;
   line-height: 1.5;
   font-weight: bold;
@@ -35,6 +40,6 @@
   top: 3ch;
   left: 0;
   width: 13rem;
-  height: 0.5rem;
+  height: 0.4rem;
   background-color: var(--color-spotify-green);
 }
