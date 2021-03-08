@@ -17,7 +17,7 @@ const ArtistScroller = ({ artists }) => {
         headline={"Learn more about your favorite artists"}
         link={`/analyze/artists/top`}
       >
-        <HorizontalCardContainer cardItems={cardItems} />
+        <HorizontalCardContainer>{cardItems}</HorizontalCardContainer>
       </TileComponent>
     </div>
   );

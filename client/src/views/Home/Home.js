@@ -27,13 +27,13 @@ const Home = () => {
     getRecentlyPlayed().then((res) => setRecentlyPlayedSongs(res.data));
 
     getUsersTopArtistsShort()
-      .then((res) => {
-        setUsersTopArtists(res.data.items);
-        return getArtistsTopTracks(res.data.items[0].id, country);
+      .then(({ data }) => {
+        setUsersTopArtists(data.items);
+        return getArtistsTopTracks(data.items[0].id, country);
       })
-      .then((res) => setUsersTopArtistTopTracks(res.data));
+      .then(({ data }) => setUsersTopArtistTopTracks(data));
 
-    getUsersTopTracksShort().then((res) => setUsersTopTrack(res.data.items));
+    getUsersTopTracksShort().then(({ data }) => setUsersTopTrack(data.items));
   }, [country]);
 
   return (

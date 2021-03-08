@@ -1,10 +1,10 @@
 import React from "react";
 import classes from "./HorizontalCardContainer.module.css";
 
-const HorizontalCardContainer = ({ cardItems, className }) => {
+const HorizontalCardContainer = ({ children, className }) => {
   return (
     <div className={`${classes.cardContainer} ${className}`}>
-      <ul className={classes.cardList}>{cardItems}</ul>
+      <ul className={classes.cardList}>{children}</ul>
     </div>
   );
 };
