@@ -12,6 +12,7 @@
 
   height: 6.5rem;
   cursor: pointer;
+  flex: 1;
 }
 
 .NavItemInfo,
@@ -94,4 +95,38 @@
 
 .NavItem:hover .NavItemInfo svg {
   fill: var(--color-white);
+}
+
+@media (max-width: 900px) {
+  .NavItemInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+  }
+
+  .NavItemInfo p {
+    margin-left: 0;
+  }
+
+  .Icon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .NavItemInfo p {
+    font-size: 1.4rem;
+  }
+
+  .NavItem a::before {
+    height: 0.4rem;
+    width: 100%;
+  }
+
+  .NavItem {
+    height: 7.3rem;
+  }
 }

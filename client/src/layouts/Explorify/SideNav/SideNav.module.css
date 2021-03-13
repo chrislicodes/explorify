@@ -2,6 +2,7 @@
 .sideNav {
   display: flex;
   flex-direction: column;
+  z-index: 99;
 }
 
 .navLinks li {
@@ -10,4 +11,16 @@
 
 .navLinks li:last-child {
   margin-bottom: 0rem;
+}
+
+@media (max-width: 900px) {
+  .navLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .navLinks li {
+    margin-bottom: 0;
+  }
 }

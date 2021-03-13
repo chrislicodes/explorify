@@ -10,10 +10,10 @@ const navItems = [
   { target: "/about", icon: "icon-notification" },
 ];
 
-const SideNav = ({ className }) => {
+const SideNav = ({ className, titleClass }) => {
   return (
     <nav className={`${classes.sideNav} ${className}`}>
-      <AppTitle />
+      <AppTitle className={titleClass} />
       <ul className={classes.navLinks}>
         {navItems.map((navItem) => (
           <NavItem

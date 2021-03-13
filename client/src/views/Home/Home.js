@@ -61,6 +61,7 @@ const Home = () => {
           <TitleWrapper
             headline={"Your top tracks"}
             className={classes.topTracks}
+            link={"/analyze/top-tracks"}
           >
             <SongContainer tracks={usersTopTracks.slice(0, 10)} image={true} />
           </TitleWrapper>
@@ -71,6 +72,7 @@ const Home = () => {
           <TitleWrapper
             headline={"Recently played songs"}
             className={classes.recentlyPlayed}
+            link={"/analyze/recently-played"}
           >
             <SongContainer
               tracks={recentlyPlayedSongs.slice(0, 10)}

@@ -8,7 +8,7 @@ const Explorify = ({ children }) => {
   return (
     <div className={classes.container}>
       <div className={classes.explorify}>
-        <SideNav className={classes.sideNav} />
+        <SideNav className={classes.sideNav} titleClass={classes.navTitle} />
         <div className={classes.content}>
           <Header />
           <main className={classes.view}>{children}</main>
