@@ -1,5 +1,7 @@
-/* @import-normalize; */
+import { createGlobalStyle } from "styled-components/macro";
+import theme from "./theme";
 
+const GlobalStyle = createGlobalStyle`
 :root {
   --color-spotify-logo-green: #1ed760;
   --color-spotify-green: #1db954;
@@ -84,14 +86,23 @@ html:focus-within {
 body {
   min-height: 100%;
   overflow-x: hidden;
+  background-color: var(--color-black);
+  color: var(--color-white)
+}
+
+#root {
+    min-height: 100%;
 }
 
 /* Make images easier to work with */
 img,
 picture {
+  width: 100%;
   max-width: 100%;
   display: block;
 }
+
+vertical-align: middle;
 
 input,
 select,
@@ -99,6 +110,9 @@ textarea,
 button {
   font-family: inherit;
   outline: none;
+  &::placeholder {
+      opacity: 0.7;
+  }
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */
@@ -116,8 +130,10 @@ button {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: ${theme.bp.desktopXS}) {
   html {
-    font-size: 60.5%; /* 1rem = 10px; Browser Default is 16px */
+    font-size: 60.5%; 
   }
-}
+}`;
+
+export default GlobalStyle;
