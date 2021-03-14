@@ -1,7 +1,8 @@
 import React from "react";
-import classes from "./SideNav.module.css";
 import NavItem from "./NavItem";
 import AppTitle from "./AppTitle";
+
+import styled from "styled-components/macro";
 
 const navItems = [
   { target: "/", icon: "icon-home" },
@@ -10,11 +11,17 @@ const navItems = [
   { target: "/about", icon: "icon-notification" },
 ];
 
-const SideNav = ({ className, titleClass }) => {
+const NavLinks = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-size-md);
+`;
+
+const SideNav = () => {
   return (
-    <nav className={`${classes.sideNav} ${className}`}>
-      <AppTitle className={titleClass} />
-      <ul className={classes.navLinks}>
+    <>
+      <AppTitle />
+      <NavLinks>
         {navItems.map((navItem) => (
           <NavItem
             key={navItem.target}
@@ -22,8 +29,8 @@ const SideNav = ({ className, titleClass }) => {
             icon={navItem.icon}
           />
         ))}
-      </ul>
-    </nav>
+      </NavLinks>
+    </>
   );
 };
 

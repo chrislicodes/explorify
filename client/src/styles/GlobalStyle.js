@@ -32,6 +32,7 @@ const GlobalStyle = createGlobalStyle`
   --spacing-size-base: 2rem;
   --spacing-size-xxs: 0.25rem;
   --spacing-size-xs: 0.5rem;
+  --spacing-size-s: 0.75rem;
   --spacing-size-sm-1: 1rem;
   --spacing-size-sm-2: 1.25rem;
   --spacing-size-sm-3: 1.5rem;
