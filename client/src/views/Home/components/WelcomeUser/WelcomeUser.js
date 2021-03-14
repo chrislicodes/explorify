@@ -22,7 +22,7 @@ const WelcomeUser = () => {
 
   const greeting = determineGreeting();
 
-  return <h1 className={classes.WelcomeUser}>{`${greeting}, ${name}!`}</h1>;
+  return <h1 className={classes.welcomeUser}>{`${greeting}, ${name}!`}</h1>;
 };
 
 export default WelcomeUser;

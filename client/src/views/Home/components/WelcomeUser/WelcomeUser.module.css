@@ -1,5 +1,5 @@
-.WelcomeUser {
+.welcomeUser {
   color: var(--color-white);
-  font-size: 3rem;
-  margin-bottom: 3rem;
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--spacing-size-lg);
 }

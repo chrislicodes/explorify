@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
 
-  font-size: 1.5rem;
+  font-size: var(--font-size-sm);
   font-weight: 400;
   color: var(--color-grey-4);
   text-transform: uppercase;
@@ -21,7 +21,7 @@
 
 .metaInfo {
   flex: 1;
-  margin-left: 1.5rem;
+  margin-left: var(--spacing-size-sm-4);
   min-width: 0;
 }
 
@@ -32,13 +32,13 @@
 }
 
 .pos {
-  font-size: 1.8rem;
+  font-size: var(--font-size-lg);
 }
 
 /* Image and Icon Styling */
 .albumCover {
-  min-height: 64px;
-  min-width: 64px;
+  min-height: 6.4rem;
+  min-width: 6.4rem;
 }
 
 .imageIcon {
@@ -68,21 +68,23 @@
 }
 
 /* Title Styling and Hover Effect */
-.songTitle span {
-  position: relative;
-
-  font-size: 1.75rem;
+.songTitle {
+  font-size: var(--font-size-md);
   font-weight: 500;
   color: var(--color-white);
 
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--spacing-size-xs);
+}
+
+.songTitle span {
+  position: relative;
 }
 
 .songTitle span::before {
   position: absolute;
   content: "";
-  top: 2.25rem;
-  height: 0.2rem;
+  top: 2.1rem;
+  height: 1rem;
   width: 0px;
   background-color: var(--color-spotify-green);
   transition: all 0.3s ease-in-out;

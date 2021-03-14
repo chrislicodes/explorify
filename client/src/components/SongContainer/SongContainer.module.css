@@ -8,12 +8,12 @@
 .SongList {
   overflow-x: hidden;
   overflow-y: auto;
-  padding-right: 2rem;
+  padding-right: var(--spacing-size-md);
 }
 
 .SongList li {
   list-style: none;
-  margin-bottom: 1.25rem;
+  margin-bottom: var(--spacing-size-sm-2);
   text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
 }
 

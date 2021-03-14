@@ -14,7 +14,7 @@ const ArtistScroller = ({ artists }) => {
   return (
     <div className={classes.content}>
       <TitleWrapper
-        headline={"Learn more about your favorite artists"}
+        headline={"Your favorite artists"}
         link={`/analyze/artists/top`}
       >
         <HorizontalCardContainer>{cardItems}</HorizontalCardContainer>

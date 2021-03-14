@@ -17,6 +17,27 @@
   --color-grey-6: #b6b6b6;
 
   --color-white: #f1f1f1;
+
+  --font-size-base: 1rem;
+  --font-size-xs: 1.2rem;
+  --font-size-sm: 1.4rem;
+  --font-size-md: 1.6rem;
+  --font-size-lg: 2rem;
+  --font-size-xl: 2.4rem;
+  --font-size-xxl: 2.8rem;
+  --font-size-xxxl: 3.2rem;
+
+  --spacing-size-base: 2rem;
+  --spacing-size-xxs: 0.25rem;
+  --spacing-size-xs: 0.5rem;
+  --spacing-size-sm-1: 1rem;
+  --spacing-size-sm-2: 1.25rem;
+  --spacing-size-sm-3: 1.5rem;
+  --spacing-size-sm-4: 1.75rem;
+  --spacing-size-md: 2rem;
+  --spacing-size-lg: 3rem;
+  --spacing-size-xl: 5rem;
+  --spacing-size-xxl: 10rem;
 }
 
 * {
@@ -92,5 +113,11 @@ button {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 900px) {
+  html {
+    font-size: 60.5%; /* 1rem = 10px; Browser Default is 16px */
   }
 }

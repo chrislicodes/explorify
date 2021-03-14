@@ -17,11 +17,13 @@
 }
 
 .songOverview {
-  height: 55em;
-  justify-content: space-between;
   display: flex;
+  justify-content: space-between;
   min-width: 0;
   overflow: hidden;
+}
+.songOverview > * {
+  margin-bottom: 5rem;
 }
 
 .recentlyPlayed {
@@ -31,4 +33,14 @@
 
 .topTracks {
   min-width: 0;
+}
+
+@media (max-width: 1000px) {
+  .songOverview {
+    flex-direction: column;
+  }
+
+  .recentlyPlayed {
+    margin-left: 0;
+  }
 }
