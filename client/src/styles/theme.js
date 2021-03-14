@@ -1,5 +1,3 @@
-import mixins from "./mixins";
-
 const theme = {
   bp: {
     mobileS: `(max-width: 330px)`,
@@ -14,8 +12,6 @@ const theme = {
   },
 
   transition: `all 0.25s cubic-bezier(0.25, 0, 0.45, 1);`,
-
-  mixins,
 };
 
 export default theme;

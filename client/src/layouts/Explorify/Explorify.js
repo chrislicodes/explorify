@@ -1,7 +1,7 @@
 import React from "react";
 
 import SideNav from "./SideNav";
-import Header from "./Header";
+import HeaderComponents from "./Header/HeaderComponents";
 
 import styled from "styled-components/macro";
 import theme from "../../styles/theme";
@@ -16,7 +16,7 @@ const AppContainer = styled.div`
 
   --desktop-nav-size: 27rem;
 
-  font-size: 1.5rem;
+  font-size: var(--font-size-md);
 
   @media ${theme.bp.desktopXS} {
     height: 100%;
@@ -89,6 +89,12 @@ const NavLayout = styled.nav`
   }
 `;
 
+const Header = styled.header`
+  flex-basis: 8rem;
+  display: flex;
+  align-items: center;
+`;
+
 // ---------------------------------------
 // -------------  LOGIC
 // ---------------------------------------
@@ -100,7 +106,9 @@ const Explorify = ({ children }) => {
         <SideNav />
       </NavLayout>
       <ContentLayout>
-        <Header />
+        <Header>
+          <HeaderComponents />
+        </Header>
         <View>{children}</View>
       </ContentLayout>
     </AppContainer>

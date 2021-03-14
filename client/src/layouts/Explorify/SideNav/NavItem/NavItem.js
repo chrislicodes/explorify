@@ -1,5 +1,6 @@
 import React from "react";
 import theme from "../../../../styles/theme";
+import mixins from "../../../../styles/mixins";
 import { NavLink } from "react-router-dom";
 import Icon from "../../../../components/Icons/Icon";
 import { capitalizeWord } from "../../../../utils";
@@ -14,9 +15,7 @@ const NavLinkStyled = styled(NavLink).attrs({
   activeClassName: "active",
 })`
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${mixins.flexCenter}
   transition: ${theme.transition};
 
   &::before {
@@ -61,8 +60,8 @@ const NavItemDescription = styled.div`
   transition: ${theme.transition};
 
   & p {
-    margin-left: 2.5rem;
-    font-size: 2rem;
+    margin-left: var(--spacing-size-md-2);
+    font-size: var(--font-size-lg);
     color: var(--color-grey-5);
     transition: ${theme.transition};
   }

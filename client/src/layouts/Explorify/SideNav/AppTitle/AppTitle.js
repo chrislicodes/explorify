@@ -3,23 +3,22 @@ import SpotifyIcon from "../../../../components/Icons/SpotifyIcon";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 import theme from "../../../../styles/theme";
+import mixins from "../../../../styles/mixins";
 
 const TitleWrapper = styled.div`
   & a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    ${mixins.flexCenter}
 
-    margin-top: 2.5rem;
-    margin-bottom: 10rem;
+    margin-top: var(--spacing-size-md);
+    margin-bottom: var(--spacing-size-xxl);
   }
 
   & h1 {
     text-transform: uppercase;
     color: var(--color-white);
     font-weight: bold;
-    font-size: 2.9rem;
-    margin-left: 1.75rem;
+    font-size: var(--font-size-xxxl);
+    margin-left: var(--spacing-size-sm-4);
   }
 
   @media ${theme.bp.desktopXS} {

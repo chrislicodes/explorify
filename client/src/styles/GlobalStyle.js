@@ -23,14 +23,15 @@ const GlobalStyle = createGlobalStyle`
   --font-size-base: 1rem;
   --font-size-xs: 1.2rem;
   --font-size-sm: 1.4rem;
-  --font-size-md: 1.6rem;
+  --font-size-md: 1.5rem;
+  --font-size-md-2: 1.7rem;
   --font-size-lg: 2rem;
   --font-size-xl: 2.4rem;
   --font-size-xxl: 2.8rem;
-  --font-size-xxxl: 3.2rem;
+  --font-size-xxxl: 3.0rem;
 
   --spacing-size-base: 2rem;
-  --spacing-size-xxs: 0.25rem;
+  --spacing-size-xxs: 0.20rem;
   --spacing-size-xs: 0.5rem;
   --spacing-size-s: 0.75rem;
   --spacing-size-sm-1: 1rem;
@@ -38,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
   --spacing-size-sm-3: 1.5rem;
   --spacing-size-sm-4: 1.75rem;
   --spacing-size-md: 2rem;
+  --spacing-size-md-2: 2.5rem;
   --spacing-size-lg: 3rem;
   --spacing-size-xl: 5rem;
   --spacing-size-xxl: 10rem;

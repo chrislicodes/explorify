@@ -69,11 +69,11 @@
 
 /* Title Styling and Hover Effect */
 .songTitle {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-md-2);
   font-weight: 500;
   color: var(--color-white);
 
-  margin-bottom: var(--spacing-size-xs);
+  margin-bottom: var(--spacing-size-xxs);
 }
 
 .songTitle span {
@@ -83,8 +83,8 @@
 .songTitle span::before {
   position: absolute;
   content: "";
-  top: 2.1rem;
-  height: 1rem;
+  top: 2.2rem;
+  height: 0.25rem;
   width: 0px;
   background-color: var(--color-spotify-green);
   transition: all 0.3s ease-in-out;
