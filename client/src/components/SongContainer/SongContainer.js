@@ -11,18 +11,17 @@ const StyledSongContainer = styled.div`
 `;
 
 const SongList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-size-sm-2);
+
   overflow-x: hidden;
   overflow-y: auto;
   padding-right: var(--spacing-size-md);
 
   & li {
     list-style: none;
-    margin-bottom: var(--spacing-size-sm-2);
     text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
-
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
 
   &::-webkit-scrollbar-track {

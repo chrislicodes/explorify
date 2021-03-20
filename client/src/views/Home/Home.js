@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import classes from "./Home.module.css";
 import WelcomeUser from "./components/WelcomeUser/WelcomeUser";
 import SongContainer from "../../components/SongContainer/SongContainer";
 import TopArtist from "./components/TopArtist/TopArtist";
@@ -8,14 +7,41 @@ import TitleWrapper from "../../components/TitleWrapper/TitleWrapper";
 
 import { AuthContext } from "../../context/AuthContext";
 
+import theme from "../../styles/theme";
+import styled from "styled-components/macro";
+
 import {
   getRecentlyPlayed,
   getUsersTopArtistsShort,
   getUsersTopTracksShort,
   getArtistsTopTracks,
-} from "../../api/api";
+} from "../../api";
 
 import Loader from "../../components/Loader/Loader";
+
+const FlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 0 3rem;
+  padding-bottom: 3rem;
+`;
+
+const SongOverview = styled.div`
+  display: flex;
+  gap: 3rem;
+  justify-content: space-between;
+  overflow: hidden;
+
+  & > * {
+    min-width: 0;
+  }
+
+  @media ${theme.bp.desktopXS} {
+    flex-direction: column;
+    margin-bottom: var(--spacing-size-xl-2);
+  }
+`;
 
 const Home = () => {
   const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState(null);
@@ -41,7 +67,7 @@ const Home = () => {
   }, [country]);
 
   return (
-    <div className={classes.gridParent}>
+    <FlexContainer>
       <WelcomeUser />
       {usersTopArtistTopTracks ? (
         <TopArtist
@@ -49,18 +75,17 @@ const Home = () => {
           tracks={usersTopArtistTopTracks}
         />
       ) : (
-        <Loader className={classes.Loader} color="green" />
+        <Loader />
       )}
       {usersTopArtists ? (
         <ArtistScroller artists={usersTopArtists.slice(1)} />
       ) : (
-        <Loader className={classes.Loader} />
+        <Loader />
       )}
-      <div className={classes.songOverview}>
+      <SongOverview>
         {usersTopTracks ? (
           <TitleWrapper
             headline={"Your top tracks"}
-            className={classes.topTracks}
             link={"/analyze/top-tracks"}
           >
             <SongContainer
@@ -69,12 +94,11 @@ const Home = () => {
             />
           </TitleWrapper>
         ) : (
-          <Loader className={classes.Loader} />
+          <Loader />
         )}
         {recentlyPlayedSongs ? (
           <TitleWrapper
             headline={"Recently played songs"}
-            className={classes.recentlyPlayed}
             link={"/analyze/recently-played"}
           >
             <SongContainer
@@ -83,10 +107,10 @@ const Home = () => {
             />
           </TitleWrapper>
         ) : (
-          <Loader className={classes.Loader} />
+          <Loader />
         )}
-      </div>
-    </div>
+      </SongOverview>
+    </FlexContainer>
   );
 };
 

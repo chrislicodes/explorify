@@ -1,5 +1,4 @@
 import React from "react";
-import classes from "./ArtistScroller.module.css";
 import HorizontalCardContainer from "../../../../components/HorizontalCardContainer/HorizontalCardContainer";
 import TitleWrapper from "../../../../components/TitleWrapper/TitleWrapper";
 import ArtistCard from "../../../../components/ArtistCard/ArtistCard";
@@ -12,14 +11,12 @@ const ArtistScroller = ({ artists }) => {
   ));
 
   return (
-    <div className={classes.content}>
-      <TitleWrapper
-        headline={"Your favorite artists"}
-        link={`/analyze/artists/top`}
-      >
-        <HorizontalCardContainer>{cardItems}</HorizontalCardContainer>
-      </TitleWrapper>
-    </div>
+    <TitleWrapper
+      headline={"Your favorite artists"}
+      link={`/analyze/artists/top`}
+    >
+      <HorizontalCardContainer>{cardItems}</HorizontalCardContainer>
+    </TitleWrapper>
   );
 };
 

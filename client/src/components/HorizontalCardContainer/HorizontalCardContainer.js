@@ -11,12 +11,12 @@ const CardList = styled.ul`
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
+  gap: var(--spacing-size-sm-2);
+  padding-bottom: var(--spacing-size-sm-3);
 
   & li {
     list-style: none;
     text-shadow: 0px 2px 10px rgba(124, 97, 97, 0.3);
-    margin: 0 var(--spacing-size-xs);
-    margin-bottom: var(--spacing-size-md);
   }
 
   &::-webkit-scrollbar-track {

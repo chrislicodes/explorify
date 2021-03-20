@@ -41,7 +41,9 @@ const GlobalStyle = createGlobalStyle`
   --spacing-size-md: 2rem;
   --spacing-size-md-2: 2.5rem;
   --spacing-size-lg: 3rem;
+  --spacing-size-lg-2: 3.5rem;
   --spacing-size-xl: 5rem;
+  --spacing-size-xl-2: 7rem;
   --spacing-size-xxl: 10rem;
 }
 
@@ -101,7 +103,6 @@ body {
 img,
 picture {
   width: 100%;
-  max-width: 100%;
   display: block;
 }
 
@@ -133,10 +134,15 @@ button {
   }
 }
 
-@media (max-width: ${theme.bp.desktopXS}) {
+@media ${theme.bp.desktopXS} {
   html {
     font-size: 60.5%; 
   }
-}`;
+}
 
+@media ${theme.bp.tabletS} {
+  html {
+    font-size: 57.5%; 
+  }
+}`;
 export default GlobalStyle;

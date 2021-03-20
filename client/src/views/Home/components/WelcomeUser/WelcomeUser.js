@@ -1,6 +1,11 @@
 import React, { useContext } from "react";
-import classes from "./WelcomeUser.module.css";
 import { AuthContext } from "../../../../context/AuthContext";
+import styled from "styled-components/macro";
+
+const Greeting = styled.h1`
+  color: var(--color-white);
+  font-size: var(--font-size-xxl);
+`;
 
 const determineGreeting = () => {
   const currentHour = new Date().getHours();
@@ -22,7 +27,7 @@ const WelcomeUser = () => {
 
   const greeting = determineGreeting();
 
-  return <h1 className={classes.welcomeUser}>{`${greeting}, ${name}!`}</h1>;
+  return <Greeting>{`${greeting}, ${name}!`}</Greeting>;
 };
 
 export default WelcomeUser;

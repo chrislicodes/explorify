@@ -16,7 +16,7 @@ const ContainerHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
-  padding-bottom: var(--spacing-size-lg);
+  padding-bottom: var(--spacing-size-lg-2);
   min-width: 0;
 `;
 
