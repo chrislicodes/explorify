@@ -1,8 +1,6 @@
 require("dotenv").config();
 
 const express = require("express");
-const path = require("path");
-const bodyParser = require("body-parser");
 const uuid = require("uuid").v4;
 const querystring = require("querystring");
 const axios = require("axios");
@@ -24,7 +22,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
