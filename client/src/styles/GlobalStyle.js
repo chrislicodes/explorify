@@ -89,7 +89,7 @@ html:focus-within {
 body {
   min-height: 100%;
   overflow-x: hidden;
-  background-color: var(--color-black);
+  background-color: var(--color-grey-1);
   color: var(--color-white)
 }
 

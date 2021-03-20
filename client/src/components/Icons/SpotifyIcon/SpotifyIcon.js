@@ -1,9 +1,18 @@
 import React from "react";
-import classes from "./SpotifyIcon.module.css";
 import Icon from "../Icon";
+import styled from "styled-components/macro";
+
+const StyledIcon = styled(Icon)`
+  fill: var(--color-spotify-logo-green);
+
+  & svg {
+    width: 5rem;
+    height: 5rem;
+  }
+`;
 
 const SpotifyIcon = () => {
-  return <Icon type="icon-spotify" className={classes.SpotifyIcon} />;
+  return <StyledIcon type="icon-spotify" />;
 };
 
 export default SpotifyIcon;

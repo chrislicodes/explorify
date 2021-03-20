@@ -1,20 +1,27 @@
 import React from "react";
 import ReactLoaderSpinner from "react-loader-spinner";
-import classes from "./Loader.module.css";
+import styled from "styled-components/macro";
+
+const StyledLoader = styled.div`
+  & svg {
+    height: 5.5rem;
+    width: 5.5rem;
+    fill: ${(props) => props.fillColor || "var(--color-grey-6)"};
+  }
+`;
 
 const Loader = (props) => {
-  const { height, width, visible, className } = props;
+  const { height, width, visible, className, fillColor } = props;
 
   return (
-    <div className={`${classes.Loader} ${className}`}>
+    <StyledLoader className={className} fillColor={fillColor}>
       <ReactLoaderSpinner
         type="Audio"
-        color="#202020"
         height={height ? height : null}
         width={width ? width : null}
         visible={visible ? visible : true}
       />
-    </div>
+    </StyledLoader>
   );
 };
 

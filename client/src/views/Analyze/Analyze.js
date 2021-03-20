@@ -1,8 +1,12 @@
 import React from "react";
-import classes from "./Analyze.module.css";
+import Loader from "../../components/Loader/Loader";
 
 const Analyze = () => {
-  return <div className={classes.testContainer}></div>;
+  return (
+    <div>
+      <Loader />
+    </div>
+  );
 };
 
 export default Analyze;

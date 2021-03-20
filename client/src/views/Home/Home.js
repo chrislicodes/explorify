@@ -49,7 +49,7 @@ const Home = () => {
           tracks={usersTopArtistTopTracks}
         />
       ) : (
-        <Loader className={classes.Loader} />
+        <Loader className={classes.Loader} color="green" />
       )}
       {usersTopArtists ? (
         <ArtistScroller artists={usersTopArtists.slice(1)} />
@@ -63,7 +63,10 @@ const Home = () => {
             className={classes.topTracks}
             link={"/analyze/top-tracks"}
           >
-            <SongContainer tracks={usersTopTracks.slice(0, 10)} image={true} />
+            <SongContainer
+              tracks={usersTopTracks.slice(0, 10)}
+              displayImage={true}
+            />
           </TitleWrapper>
         ) : (
           <Loader className={classes.Loader} />
@@ -76,7 +79,7 @@ const Home = () => {
           >
             <SongContainer
               tracks={recentlyPlayedSongs.slice(0, 10)}
-              image={true}
+              displayImage={true}
             />
           </TitleWrapper>
         ) : (

@@ -25,6 +25,7 @@ const TopArtist = ({ artist, tracks }) => {
         <SongContainer
           tracks={tracks.tracks}
           className={classes.songContainer}
+          displayImage={false}
         />
       </div>
     </TitleWrapper>

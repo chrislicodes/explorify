@@ -1,19 +1,60 @@
 import React from "react";
 import SongItem from "../SongItem";
 
-import classes from "./SongContainer.module.css";
+import styled from "styled-components/macro";
 
-const SongContainer = ({ tracks, className, image }) => {
+const StyledSongContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+`;
+
+const SongList = styled.ul`
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: var(--spacing-size-md);
+
+  & li {
+    list-style: none;
+    margin-bottom: var(--spacing-size-sm-2);
+    text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: var(--color-grey-3);
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.7rem;
+    border-radius: 1rem;
+    background-color: var(--color-grey-6);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
+    background-color: var(--color-grey-6);
+  }
+`;
+
+const SongContainer = ({ tracks, className, displayImage }) => {
   const trackArr = tracks.map((item, index) => (
     <li key={item.id + index}>
-      <SongItem trackData={item} pos={index} noImage={!image} />
+      <SongItem trackData={item} pos={index} displayImage={displayImage} />
     </li>
   ));
 
   return (
-    <div className={`${classes.SongContainer} ${className}`}>
-      <ul className={classes.SongList}>{trackArr}</ul>
-    </div>
+    <StyledSongContainer className={className}>
+      <SongList>{trackArr}</SongList>
+    </StyledSongContainer>
   );
 };
 

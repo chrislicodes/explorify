@@ -10,10 +10,15 @@
 
 .gridParent {
   padding: 3rem;
+  padding-bottom: 0;
 }
 
 .gridParent > * {
   margin-bottom: 5rem;
+}
+
+.gridParent > *:last-child {
+  margin-bottom: 0;
 }
 
 .songOverview {
