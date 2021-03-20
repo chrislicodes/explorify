@@ -29,7 +29,7 @@ const SongTitle = styled.p`
     &::before {
       position: absolute;
       content: "";
-      top: 2.2rem;
+      top: 2.1rem;
       height: 0.25rem;
       width: 0;
       background-color: var(--color-spotify-green);

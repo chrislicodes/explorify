@@ -37,8 +37,11 @@ const SongOverview = styled.div`
     min-width: 0;
   }
 
-  @media ${theme.bp.desktopXS} {
+  @media ${theme.bp.desktopM} {
     flex-direction: column;
+    
+
+  @media ${theme.bp.desktopXS} {
     margin-bottom: var(--spacing-size-xl-2);
   }
 `;

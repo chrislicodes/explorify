@@ -17,7 +17,7 @@ const SongList = styled.ul`
 
   overflow-x: hidden;
   overflow-y: auto;
-  padding-right: var(--spacing-size-md);
+  padding-right: var(--spacing-size-sm-2);
 
   & li {
     list-style: none;
