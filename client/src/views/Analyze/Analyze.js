@@ -5,11 +5,7 @@ import TitleWrapper from "../../components/TitleWrapper";
 import SongContainer from "../../components/SongContainer";
 
 const Analyze = () => {
-  const {
-    recentlyPlayedSongs,
-    recentlyPlayedSongsIsLoading,
-    recentlyPlayedSongsIsError,
-  } = useRecentlyPlayedSongs();
+  const { recentlyPlayedSongs } = useRecentlyPlayedSongs();
   return (
     <div>
       {recentlyPlayedSongs ? (
