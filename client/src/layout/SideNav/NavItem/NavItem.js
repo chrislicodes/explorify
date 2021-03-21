@@ -139,7 +139,7 @@ const NavItemWrapper = styled.li`
 const checkIfActive = (_, location, target) => {
   if (!location) return false;
   const { pathname } = location;
-  return pathname === target;
+  return pathname.startsWith(target);
 };
 
 const NavItem = (props) => {
@@ -156,7 +156,7 @@ const NavItem = (props) => {
       >
         <NavItemDescription>
           <Icon type={props.icon} />
-          <p>{capitalizeWord(target ? target : "Home")}</p>
+          <p>{capitalizeWord(target)}</p>
         </NavItemDescription>
       </NavLinkStyled>
     </NavItemWrapper>

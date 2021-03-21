@@ -6,6 +6,8 @@ import HeaderComponents from "./Header/HeaderComponents";
 import styled from "styled-components/macro";
 import theme from "../styles/theme";
 
+import ROUTES, { RenderRoutes } from "../routes/Routes";
+
 // ---------------------------------------
 // -------------  STYLING
 // ---------------------------------------
@@ -99,7 +101,7 @@ const Header = styled.header`
 // -------------  LOGIC
 // ---------------------------------------
 
-const Explorify = ({ children }) => {
+const Explorify = () => {
   return (
     <AppContainer>
       <NavLayout>
@@ -109,7 +111,9 @@ const Explorify = ({ children }) => {
         <Header>
           <HeaderComponents />
         </Header>
-        <View>{children}</View>
+        <View>
+          <RenderRoutes routes={ROUTES} />
+        </View>
       </ContentLayout>
     </AppContainer>
   );

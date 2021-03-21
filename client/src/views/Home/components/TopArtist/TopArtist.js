@@ -71,7 +71,7 @@ const TopArtist = ({ artist, tracks }) => {
     >
       <ContentWrapper>
         <ArtistImageWrapper>
-          <Link to={`/analyze/artist/${artist.id}`}>
+          <Link to={`/analyze/artists/${artist.id}`}>
             <img src={artist.images[1].url} alt={`${artist.name}`} />
             <ImageOverlay type="icon-notification" />
           </Link>

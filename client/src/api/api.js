@@ -96,3 +96,27 @@ export const useUserTopTracksShort = (limit = 20) => {
     usersTopTracksShortIsError: error,
   };
 };
+
+//-----------------------
+// Track API
+//-----------------------
+
+export const useTrackInformation = (id) => {
+  const { data, error } = useSWR(() => id && `/tracks/${id}`, fetcher);
+
+  return {
+    trackInformation: data,
+    trackInformationIsLoading: !error && !data,
+    trackInformationIsError: error,
+  };
+};
+
+export const useTrackAudioFeatures = (id) => {
+  const { data, error } = useSWR(() => id && `/audio-features/${id}`, fetcher);
+
+  return {
+    trackAudioFeatures: data,
+    trackAudioFeaturesIsLoading: !error && !data,
+    trackAudioFeaturesIsError: error,
+  };
+};
