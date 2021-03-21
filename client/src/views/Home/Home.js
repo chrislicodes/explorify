@@ -11,13 +11,17 @@ import theme from "../../styles/theme";
 import styled from "styled-components/macro";
 
 import {
-  getRecentlyPlayed,
-  getUsersTopArtistsShort,
-  getUsersTopTracksShort,
-  getArtistsTopTracks,
+  useRecentlyPlayedSongs,
+  useUserTopArtistsShort,
+  useUserTopTracksShort,
+  useArtistsTopTrack,
 } from "../../api";
 
 import Loader from "../../components/Loader/Loader";
+
+// ---------------------------------------
+// -------------  STYLING
+// ---------------------------------------
 
 const FlexContainer = styled.div`
   display: flex;
@@ -46,53 +50,45 @@ const SongOverview = styled.div`
   }
 `;
 
+// ---------------------------------------
+// -------------  LOGIC
+// ---------------------------------------
+
 const Home = () => {
-  const [recentlyPlayedSongs, setRecentlyPlayedSongs] = useState(null);
-  const [usersTopTracks, setUsersTopTracks] = useState(null);
-  const [usersTopArtists, setUsersTopArtists] = useState(null);
-  const [usersTopArtistTopTracks, setUsersTopArtistTopTracks] = useState(null);
   const { country } = useContext(AuthContext);
 
-  useEffect(() => {
-    getRecentlyPlayed().then(({ data }) => {
-      const tracks = data.items.map((item) => item.track);
-      setRecentlyPlayedSongs(tracks);
-    });
-
-    getUsersTopArtistsShort()
-      .then(({ data }) => {
-        setUsersTopArtists(data.items);
-        return getArtistsTopTracks(data.items[0].id, country);
-      })
-      .then(({ data }) => setUsersTopArtistTopTracks(data));
-
-    getUsersTopTracksShort().then(({ data }) => setUsersTopTracks(data.items));
-  }, [country]);
+  const { usersTopArtistsShort } = useUserTopArtistsShort();
+  const { artistTopTracks } = useArtistsTopTrack(
+    usersTopArtistsShort?.items[0].id,
+    country
+  );
+  const { usersTopTracksShort } = useUserTopTracksShort();
+  const { recentlyPlayedSongs } = useRecentlyPlayedSongs();
 
   return (
     <FlexContainer>
       <WelcomeUser />
-      {usersTopArtistTopTracks ? (
+      {artistTopTracks ? (
         <TopArtist
-          artist={usersTopArtists[0]}
-          tracks={usersTopArtistTopTracks}
+          artist={usersTopArtistsShort.items[0]}
+          tracks={artistTopTracks}
         />
       ) : (
         <Loader />
       )}
-      {usersTopArtists ? (
-        <ArtistScroller artists={usersTopArtists.slice(1)} />
+      {usersTopArtistsShort ? (
+        <ArtistScroller artists={usersTopArtistsShort.items.slice(1)} />
       ) : (
         <Loader />
       )}
       <SongOverview>
-        {usersTopTracks ? (
+        {usersTopTracksShort ? (
           <TitleWrapper
             headline={"Your top tracks"}
             link={"/analyze/top-tracks"}
           >
             <SongContainer
-              tracks={usersTopTracks.slice(0, 10)}
+              tracks={usersTopTracksShort.items.slice(0, 10)}
               displayImage={true}
             />
           </TitleWrapper>
@@ -105,7 +101,9 @@ const Home = () => {
             link={"/analyze/recently-played"}
           >
             <SongContainer
-              tracks={recentlyPlayedSongs.slice(0, 10)}
+              tracks={recentlyPlayedSongs.items
+                .map((item) => item.track)
+                .slice(0, 10)}
               displayImage={true}
             />
           </TitleWrapper>

@@ -67,6 +67,7 @@ const ArtistName = styled.p`
 const Genre = styled.p`
   color: var(--color-grey-4);
   font-size: var(--font-size-sm);
+  text-align: center;
 `;
 
 // ---------------------------------------
