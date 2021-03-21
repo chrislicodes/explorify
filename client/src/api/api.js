@@ -6,15 +6,6 @@ import useSWR from "swr";
 //---------> SETUP
 //------------------------------------------------
 
-//! Delete
-const headers = {
-  Authorization: `Bearer ${getAccessToken()}`,
-  "Content-Type": "application/json",
-};
-
-//! Delete
-const BASE_URI = `https://api.spotify.com/v1`;
-
 const axiosInstance = axios.create({
   baseURL: "https://api.spotify.com/v1",
   headers: {
@@ -25,6 +16,16 @@ const axiosInstance = axios.create({
 
 const fetcher = (endpointURL) =>
   axiosInstance.get(endpointURL).then((res) => res.data);
+
+//-----------------------
+// FUNCTION CREATOR
+//-----------------------
+
+const createSWRHook = function ({ name, args, endpointURL }) {
+  return (...args) => {
+    const { data, error } = useSWR();
+  };
+};
 
 //-----------------------
 // Artist API
@@ -43,16 +44,11 @@ export const useArtistsTopTrack = (id, country) => {
   };
 };
 
-export const getArtistsTopTracks = (id, country) =>
-  axios.get(`${BASE_URI}/artists/${id}/top-tracks?market=${country}`, {
-    headers,
-  });
-
 //-----------------------
 // User Profile API
 //-----------------------
 
-export const getMe = () => axios.get(`${BASE_URI}/me`, { headers });
+export const getMe = () => axiosInstance.get(`/me`);
 
 //-----------------------
 // Player API
@@ -100,8 +96,3 @@ export const useUserTopTracksShort = (limit = 20) => {
     usersTopTracksShortIsError: error,
   };
 };
-
-export const getUsersTopArtistsShort = (limit = 20) =>
-  axios.get(`${BASE_URI}/me/top/artists?time_range=short_term&limit=${limit}`, {
-    headers,
-  });
