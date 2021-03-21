@@ -1,9 +1,9 @@
 import React from "react";
-import theme from "../../../../styles/theme";
-import mixins from "../../../../styles/mixins";
+import theme from "../../../styles/theme";
+import mixins from "../../../styles/mixins";
 import { NavLink } from "react-router-dom";
-import Icon from "../../../../components/Icons/Icon";
-import { capitalizeWord } from "../../../../utils";
+import Icon from "../../../components/Icons/Icon";
+import { capitalizeWord } from "../../../utils";
 
 import styled from "styled-components/macro";
 

@@ -4,7 +4,7 @@ import SideNav from "./SideNav";
 import HeaderComponents from "./Header/HeaderComponents";
 
 import styled from "styled-components/macro";
-import theme from "../../styles/theme";
+import theme from "../styles/theme";
 
 // ---------------------------------------
 // -------------  STYLING

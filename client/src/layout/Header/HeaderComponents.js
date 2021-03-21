@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { logout } from "../../../auth/auth";
+import { logout } from "../../auth/auth";
 
 import SearchIcon from "./components/SearchIcon/SearchIcon";
-import { AuthContext } from "../../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 
-import Button from "../../../components/Button";
+import Button from "../../components/Button";
 import styled from "styled-components";
 
 const ContentWrapper = styled.div`

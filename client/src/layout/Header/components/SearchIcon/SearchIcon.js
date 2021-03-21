@@ -1,8 +1,8 @@
 import React from "react";
-import Icon from "../../../../../components/Icons/Icon";
+import Icon from "../../../../components/Icons/Icon";
 import styled from "styled-components/macro";
-import theme from "../../../../../styles/theme";
-import mixins from "../../../../../styles/mixins";
+import theme from "../../../../styles/theme";
+import mixins from "../../../../styles/mixins";
 
 const SearchForm = styled.form`
   position: relative;
