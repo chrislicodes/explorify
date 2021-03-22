@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../../../context/AuthContext";
+import React from "react";
 import styled from "styled-components/macro";
+import useSWR from "swr";
 
 const Greeting = styled.h1`
   color: var(--color-white);
@@ -23,11 +23,11 @@ const determineGreeting = () => {
 };
 
 const WelcomeUser = () => {
-  const { display_name: name } = useContext(AuthContext);
-
+  const { data: userData } = useSWR("/me");
+  const userName = userData && userData.display_name;
   const greeting = determineGreeting();
 
-  return <Greeting>{`${greeting}, ${name}!`}</Greeting>;
+  return <Greeting>{`${greeting}, ${userName}!`}</Greeting>;
 };
 
 export default WelcomeUser;

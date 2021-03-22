@@ -1,9 +1,9 @@
 import React from "react";
-import TitleWrapper from "../../../../components/TitleWrapper/TitleWrapper";
-import SongContainer from "../../../../components/SongContainer/SongContainer";
-import Icon from "../../../../components/Icons/Icon/Icon";
+import TitleWrapper from "../../components/TitleWrapper/TitleWrapper";
+import SongContainer from "../../components/SongContainer/SongContainer";
+import Icon from "../../components/Icons/Icon/Icon";
 import { Link } from "react-router-dom";
-import theme from "../../../../styles/theme";
+import theme from "../../styles/theme";
 import styled from "styled-components/macro";
 import useSWR from "swr";
 import Loader from "../../components/Loader/Loader";
@@ -66,31 +66,38 @@ const StyledSongContainer = styled(SongContainer)`
 
 const TopArtist = ({ timeRange = "short_term" }) => {
   const { data: user } = useSWR("/me");
-  const { data: artist } = useSWR(
+  const { data: artistJSON } = useSWR(
     `/me/top/artists?time_range=${timeRange}&limit=1`
   );
   const { data: tracks } = useSWR(
-    () => `/artists/${artist.id}/top-tracks?market=${user.country}`
+    () =>
+      artistJSON &&
+      `/artists/${artistJSON.items[0].id}/top-tracks?market=${user.country}`
   );
+
+  const artist = artistJSON && artistJSON.items[0];
+
   return (
-    <TitleWrapper
-      headline={`TOP ARTIST - ${artist.name}`}
-      link={`/analyze/artists/top`}
-    >
+    <>
       {tracks ? (
-        <ContentWrapper>
-          <ArtistImageWrapper>
-            <Link to={`/analyze/artists/${artist.id}`}>
-              <img src={artist.images[1].url} alt={`${artist.name}`} />
-              <ImageOverlay type="icon-notification" />
-            </Link>
-          </ArtistImageWrapper>
-          <StyledSongContainer tracks={tracks.tracks} displayImage={false} />
-        </ContentWrapper>
+        <TitleWrapper
+          headline={`TOP ARTIST - ${artist.name}`}
+          link={`/analyze/artists/top`}
+        >
+          <ContentWrapper>
+            <ArtistImageWrapper>
+              <Link to={`/analyze/artists/${artist.id}`}>
+                <img src={artist.images[1].url} alt={`${artist.name}`} />
+                <ImageOverlay type="icon-notification" />
+              </Link>
+            </ArtistImageWrapper>
+            <StyledSongContainer tracks={tracks.tracks} displayImage={false} />
+          </ContentWrapper>
+        </TitleWrapper>
       ) : (
         <Loader />
       )}
-    </TitleWrapper>
+    </>
   );
 };
 

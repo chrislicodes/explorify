@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { logout } from "../../auth/auth";
 
 import SearchIcon from "./components/SearchIcon/SearchIcon";
-import { AuthContext } from "../../context/AuthContext";
 
 import Button from "../../components/Button";
 import styled from "styled-components";
+import useSWR from "swr";
 
 const ContentWrapper = styled.div`
   display: flex;
@@ -26,14 +26,16 @@ const UserImage = styled.img`
 `;
 
 const HeaderComponents = () => {
-  let { display_name: username, images: userimage } = useContext(AuthContext);
+  const { data: userData } = useSWR("/me");
+  const userName = userData && userData.display_name;
+  const userImageURL = userData && userData.images[0].url;
 
   return (
     <>
       <ContentWrapper>
         <SearchIcon />
-        <UserImage src={userimage[0].url} alt="user" />
-        <p>{username}</p>
+        <UserImage src={userImageURL} alt="user" />
+        <p>{userName}</p>
         <Button onClick={logout}>LOGOUT</Button>
       </ContentWrapper>
     </>

@@ -7,7 +7,6 @@ import Login from "../views/Login/Login";
 
 import { getAccessToken } from "../auth";
 import Explorify from "../layout/Explorify";
-import { AuthProvider } from "../context/AuthContext";
 
 const axiosInstance = axios.create({
   baseURL: "https://api.spotify.com/v1",
@@ -25,12 +24,11 @@ const App = () => {
   }, []);
 
   return (
-    <AuthProvider>
+    <>
       <GlobalStyles />
       {accessToken ? (
         <SWRConfig
           value={{
-            refreshInterval: 5000,
             fetcher: (endpointURL) =>
               axiosInstance.get(endpointURL).then((res) => res.data),
           }}
@@ -40,7 +38,7 @@ const App = () => {
       ) : (
         <Login />
       )}
-    </AuthProvider>
+    </>
   );
 };
 

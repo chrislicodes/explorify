@@ -1,23 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import WelcomeUser from "./components/WelcomeUser/WelcomeUser";
-import SongContainer from "../../components/SongContainer/SongContainer";
 import TopArtist from "../../container/TopArtist/TopArtist";
-import ArtistScroller from "./components/ArtistScroller/ArtistScroller";
-import TitleWrapper from "../../components/TitleWrapper/TitleWrapper";
-
-import { AuthContext } from "../../context/AuthContext";
+import TopArtistScroller from "../../container/TopArtistScroller/TopArtistScroller";
+import RecentlyPlayedSongs from "../../container/RecentlyPlayedSongs/RecentlyPlayedSongs";
+import TopTracks from "../../container/TopTracks/TopTracks";
 
 import theme from "../../styles/theme";
 import styled from "styled-components/macro";
-
-import {
-  useRecentlyPlayedSongs,
-  useUserTopArtistsShort,
-  useUserTopTracksShort,
-  useArtistsTopTrack,
-} from "../../api";
-
-import Loader from "../../components/Loader/Loader";
 
 // ---------------------------------------
 // -------------  STYLING
@@ -55,54 +44,14 @@ const SongOverview = styled.div`
 // ---------------------------------------
 
 const Home = () => {
-  const { country } = useContext(AuthContext);
-
-  const { usersTopArtistsShort } = useUserTopArtistsShort();
-  const { artistTopTracks } = useArtistsTopTrack(
-    usersTopArtistsShort?.items[0].id,
-    country
-  );
-  const { usersTopTracksShort } = useUserTopTracksShort();
-  const { recentlyPlayedSongs } = useRecentlyPlayedSongs();
-
   return (
     <FlexContainer>
       <WelcomeUser />
       <TopArtist />
-      {usersTopArtistsShort ? (
-        <ArtistScroller artists={usersTopArtistsShort.items.slice(1)} />
-      ) : (
-        <Loader />
-      )}
+      <TopArtistScroller offset={1} />
       <SongOverview>
-        {usersTopTracksShort ? (
-          <TitleWrapper
-            headline={"Your top tracks"}
-            link={"/analyze/top-tracks"}
-          >
-            <SongContainer
-              tracks={usersTopTracksShort.items.slice(0, 10)}
-              displayImage={true}
-            />
-          </TitleWrapper>
-        ) : (
-          <Loader />
-        )}
-        {recentlyPlayedSongs ? (
-          <TitleWrapper
-            headline={"Recently played songs"}
-            link={"/analyze/recently-played"}
-          >
-            <SongContainer
-              tracks={recentlyPlayedSongs.items
-                .map((item) => item.track)
-                .slice(0, 10)}
-              displayImage={true}
-            />
-          </TitleWrapper>
-        ) : (
-          <Loader />
-        )}
+        <TopTracks />
+        <RecentlyPlayedSongs />
       </SongOverview>
     </FlexContainer>
   );

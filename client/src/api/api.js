@@ -18,16 +18,6 @@ const fetcher = (endpointURL) =>
   axiosInstance.get(endpointURL).then((res) => res.data);
 
 //-----------------------
-// FUNCTION CREATOR
-//-----------------------
-
-const createSWRHook = function ({ name, args, endpointURL }) {
-  return (...args) => {
-    const { data, error } = useSWR();
-  };
-};
-
-//-----------------------
 // Artist API
 //-----------------------
 
