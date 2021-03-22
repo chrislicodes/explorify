@@ -9,7 +9,6 @@ function TopTracks({ timeRange = "short_term", limit = 15 }) {
     `/me/top/tracks?time_range=${timeRange}&limit=${limit}`
   );
 
-  console.log(topTracks);
   return (
     <>
       {topTracks ? (
