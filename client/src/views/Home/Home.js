@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import WelcomeUser from "./components/WelcomeUser/WelcomeUser";
 import SongContainer from "../../components/SongContainer/SongContainer";
-import TopArtist from "./components/TopArtist/TopArtist";
+import TopArtist from "../../container/TopArtist/TopArtist";
 import ArtistScroller from "./components/ArtistScroller/ArtistScroller";
 import TitleWrapper from "../../components/TitleWrapper/TitleWrapper";
 
@@ -68,14 +68,7 @@ const Home = () => {
   return (
     <FlexContainer>
       <WelcomeUser />
-      {artistTopTracks ? (
-        <TopArtist
-          artist={usersTopArtistsShort.items[0]}
-          tracks={artistTopTracks}
-        />
-      ) : (
-        <Loader />
-      )}
+      <TopArtist />
       {usersTopArtistsShort ? (
         <ArtistScroller artists={usersTopArtistsShort.items.slice(1)} />
       ) : (
