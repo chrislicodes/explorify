@@ -10,7 +10,7 @@ const CardContainer = styled.div`
 const CardList = styled.ul`
   display: flex;
   overflow-y: hidden;
-  overflow-x: scroll;
+  overflow-x: auto;
   gap: var(--spacing-size-sm-2);
   padding-bottom: var(--spacing-size-sm-3);
 

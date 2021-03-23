@@ -35,6 +35,11 @@ const ImageWrapper = styled.div`
   margin-bottom: var(--spacing-size-sm-1);
   position: relative;
 
+  & img {
+    height: 100%;
+    width: 100%;
+  }
+
   & ${StyledIcon} {
     position: absolute;
     top: 0;
@@ -62,6 +67,7 @@ const ImageWrapper = styled.div`
 
 const ArtistName = styled.p`
   font-weight: bold;
+  text-align: center;
 `;
 
 const Genre = styled.p`
@@ -70,16 +76,44 @@ const Genre = styled.p`
   text-align: center;
 `;
 
+const PlaceholderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--color-grey-1);
+
+  & svg {
+    fill: var(--color-grey-3);
+    width: 10rem;
+    height: 10rem;
+  }
+`;
+
 // ---------------------------------------
 // -------------  LOGIC
 // ---------------------------------------
 
+const PlaceholderIcon = (
+  <PlaceholderWrapper>
+    <Icon type="icon-user" />
+  </PlaceholderWrapper>
+);
+
 const ArtistCard = ({ artist }) => {
+  const imageURL = artist.images.length > 0 && artist.images[1].url;
+
   return (
     <ArtistWrapper>
       <StyledLink to={`/explore/artists/${artist.id}`}>
         <ImageWrapper>
-          <img src={artist.images[1].url} alt={`${artist.name}`} />
+          {imageURL ? (
+            <img src={imageURL} alt={`${artist.name}`} />
+          ) : (
+            PlaceholderIcon
+          )}
           <StyledIcon type="icon-notification" />
         </ImageWrapper>
         <ArtistName>{artist.name}</ArtistName>
