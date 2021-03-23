@@ -7,7 +7,7 @@ import styled from "styled-components/macro";
 const navItems = [
   { target: "/home", icon: "icon-home" },
   { target: "/analyze", icon: "icon-stats-bars" },
-  { target: "/app", icon: "icon-compass" },
+  { target: "/explore", icon: "icon-compass" },
   { target: "/about", icon: "icon-notification" },
 ];
 

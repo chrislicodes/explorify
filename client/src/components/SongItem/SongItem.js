@@ -109,7 +109,7 @@ const SongItem = ({ trackData, displayImage, pos }) => {
 
   return (
     <SongItemWrapper>
-      <Link to={`/analyze/track/${id}`}>
+      <Link to={`/explore/track/${id}`}>
         <SongDisplay>
           {displayImage ? (
             <AlbumCover src={image} alt={album.name + " Album Cover"} />

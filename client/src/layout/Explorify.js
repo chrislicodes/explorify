@@ -43,7 +43,7 @@ const ContentLayout = styled.div`
   }
 `;
 
-const View = styled.main`
+const Page = styled.main`
   height: 100%;
   z-index: 2;
 
@@ -118,9 +118,9 @@ const Explorify = () => {
             <Header>
               <HeaderComponents />
             </Header>
-            <View>
+            <Page>
               <RenderRoutes routes={ROUTES} />
-            </View>
+            </Page>
           </>
         ) : (
           <Loader />

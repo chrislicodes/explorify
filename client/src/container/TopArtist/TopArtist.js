@@ -82,7 +82,7 @@ const TopArtist = ({ timeRange = "short_term" }) => {
       {tracks ? (
         <TitleWrapper
           headline={`TOP ARTIST - ${artist.name}`}
-          link={`/analyze/artists/top`}
+          link={`/explore/artists/top`}
         >
           <ContentWrapper>
             <ArtistImageWrapper>

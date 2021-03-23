@@ -1,8 +1,6 @@
 import React from "react";
 import { logout } from "../../auth/auth";
 
-import SearchIcon from "./components/SearchIcon/SearchIcon";
-
 import Button from "../../components/Button";
 import styled from "styled-components";
 import useSWR from "swr";
@@ -33,7 +31,6 @@ const HeaderComponents = () => {
   return (
     <>
       <ContentWrapper>
-        <SearchIcon />
         <UserImage src={userImageURL} alt="user" />
         <p>{userName}</p>
         <Button onClick={logout}>LOGOUT</Button>

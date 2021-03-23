@@ -27,7 +27,7 @@ const TopArtistScroller = ({
       {cardItems ? (
         <TitleWrapper
           headline={"Your favorite artists"}
-          link={`/analyze/artists/top`}
+          link={`/explore/artists/top`}
         >
           <HorizontalCardContainer>{cardItems}</HorizontalCardContainer>
         </TitleWrapper>

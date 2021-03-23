@@ -134,11 +134,11 @@ button {
   }
 }
 
-@media ${theme.bp.desktopXS} {
+@media ${theme.bp.desktopS} {
   html {
     font-size: 58.5%; 
   }
-}
+};
 
 @media ${theme.bp.tabletS} {
   html {

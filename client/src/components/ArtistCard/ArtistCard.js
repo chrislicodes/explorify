@@ -77,7 +77,7 @@ const Genre = styled.p`
 const ArtistCard = ({ artist }) => {
   return (
     <ArtistWrapper>
-      <StyledLink to={`/analyze/artists/${artist.id}`}>
+      <StyledLink to={`/explore/artists/${artist.id}`}>
         <ImageWrapper>
           <img src={artist.images[1].url} alt={`${artist.name}`} />
           <StyledIcon type="icon-notification" />

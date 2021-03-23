@@ -1,9 +1,11 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import Home from "../views/Home/Home";
-import Analyze from "../views/Analyze/Analyze";
-import TrackOverview from "../views/Analyze/TrackOverview/TrackOverview";
-import ArtistOverview from "../views/Analyze/ArtistOverview/ArtistOverview";
+import Home from "../pages/Home/Home";
+import Analyze from "../pages/Analyze/Analyze";
+import Explore from "../pages/Explore/Explore";
+import About from "../pages/About/About";
+import TrackOverview from "../container/TrackOverview/TrackOverview";
+import ArtistOverview from "../container/ArtistOverview/ArtistOverview";
 import { getAccessToken } from "../auth/auth";
 
 // https://www.ryanjyost.com/react-routing/
@@ -40,22 +42,34 @@ const ROUTES = [
         component: Analyze,
       },
       {
-        path: "/analyze/artists/top",
-        key: "ANALYZE_TOP_ARTISTS",
+        path: "/explore",
+        key: "EXPLORE",
         exact: true,
-        component: Home,
+        component: Explore,
       },
       {
-        path: "/analyze/artists/:artistID",
-        key: "ANALYZE_TRACK",
+        path: "/explore/artists/top",
+        key: "EXPLORE_TOP_ARTISTS",
+        exact: true,
+        component: () => <div>TopArtist</div>,
+      },
+      {
+        path: "/explore/artists/:artistID",
+        key: "EXPLORE_TRACK",
         exact: true,
         component: ArtistOverview,
       },
       {
-        path: "/analyze/track/:trackID",
-        key: "ANALYZE_TRACK",
+        path: "/explore/track/:trackID",
+        key: "EXPLORE_TRACK",
         exact: true,
         component: TrackOverview,
+      },
+      {
+        path: "/about",
+        key: "ABOUT",
+        exact: true,
+        component: About,
       },
     ],
   },

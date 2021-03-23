@@ -1,9 +1,11 @@
 import React from "react";
-import { useTrackInformation } from "../../../api";
+import useSWR from "swr";
 
 function TrackOverview(props) {
   const trackID = props.match.params.trackID;
-  const { trackInformation } = useTrackInformation(trackID);
+  const { data: trackInformation } = useSWR(
+    () => trackID && `/tracks/${trackID}`
+  );
   return (
     <div>
       <pre>
