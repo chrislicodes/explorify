@@ -8,11 +8,12 @@ const GlobalStyle = createGlobalStyle`
 
   --color-black: #121212;
 
-  --color-grey-1: #202020;
-  --color-grey-1-70: rgba(32, 32, 32, 0.7);
-  --color-grey-1-50: rgba(32, 32, 32, 0.5);
-  --color-grey-1-30: rgba(32, 32, 32, 0.3);
-  --color-grey-2: #323232;
+  --color-grey-1: #1c1c1c;
+  --color-grey-1-70: rgba(28, 28, 28, 0.9);
+  --color-grey-1-70: rgba(28, 28, 28, 0.7);
+  --color-grey-1-50: rgba(28, 28, 28, 0.5);
+  --color-grey-1-30: rgba(28, 28, 28, 0.3);
+  --color-grey-2: #2e2e2e;
   --color-grey-3: #5c5c5c;
   --color-grey-4: #9c9898;
   --color-grey-5: #a3a3a3;

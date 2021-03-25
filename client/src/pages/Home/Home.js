@@ -1,6 +1,6 @@
 import React from "react";
 import WelcomeUser from "./components/WelcomeUser/WelcomeUser";
-import TopArtist from "../../container/TopArtist/TopArtist";
+import TopArtist from "../../container/ArtistAndTracks/TopArtist/TopArtist";
 import TopArtistScroller from "../../container/TopArtistScroller/TopArtistScroller";
 import RecentlyPlayedSongs from "../../container/RecentlyPlayedSongs/RecentlyPlayedSongs";
 import TopTracks from "../../container/TopTracks/TopTracks";

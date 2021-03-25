@@ -93,6 +93,7 @@ const SongIndex = styled.p`
 const AlbumCover = styled.img`
   min-height: 6.4rem;
   min-width: 6.4rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 50%);
 `;
 
 const Duration = styled.time`

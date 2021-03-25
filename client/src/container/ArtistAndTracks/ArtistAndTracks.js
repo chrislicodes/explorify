@@ -64,25 +64,18 @@ const StyledSongContainer = styled(SongContainer)`
   min-width: 0;
 `;
 
-const TopArtist = ({ timeRange = "short_term" }) => {
+const AristAndTracks = ({ artist, headline = "Artist" }) => {
   const { data: user } = useSWR("/me");
-  const { data: artistJSON } = useSWR(
-    `/me/top/artists?time_range=${timeRange}&limit=1`
-  );
   const { data: tracks } = useSWR(
-    () =>
-      artistJSON &&
-      `/artists/${artistJSON.items[0].id}/top-tracks?market=${user.country}`
+    () => artist && `/artists/${artist.id}/top-tracks?market=${user.country}`
   );
-
-  const artist = artistJSON && artistJSON.items[0];
 
   return (
     <>
       {tracks ? (
         <TitleWrapper
-          headline={`TOP ARTIST - ${artist.name}`}
-          link={`/explore/artists/top`}
+          headline={`${headline} - ${artist.name}`}
+          link={`/explore/artists/${artist.id}`}
         >
           <ContentWrapper>
             <ArtistImageWrapper>
@@ -101,4 +94,4 @@ const TopArtist = ({ timeRange = "short_term" }) => {
   );
 };
 
-export default TopArtist;
+export default AristAndTracks;

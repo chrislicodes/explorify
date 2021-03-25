@@ -9,7 +9,7 @@ const StyledCardContainer = styled(HorizontalCardContainer)`
   height: 27.5rem;
 `;
 
-const FlexContainer = styled.div`
+const NothingFoundContainer = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -22,32 +22,45 @@ const FlexContainer = styled.div`
   }
 `;
 
-const ArtistScroller = ({ artists, title }) => {
-  let cardItems =
-    !artists || artists?.length === 0 ? (
-      <FlexContainer>
-        <p>Nothing found.. </p>
-        <img
-          src="https://i.pinimg.com/originals/a0/36/74/a03674ba07d318077a4604780d085dfe.jpg"
-          alt="Nothing found"
-        />
-      </FlexContainer>
-    ) : (
-      <Loader />
-    );
+const NothingFound = () => {
+  return (
+    <NothingFoundContainer>
+      <p>Nothing found.. </p>
+      <img
+        src="https://i.pinimg.com/originals/a0/36/74/a03674ba07d318077a4604780d085dfe.jpg"
+        alt="Nothing found"
+      />
+    </NothingFoundContainer>
+  );
+};
 
-  if (Array.isArray(artists) && artists.length > 0) {
-    cardItems = artists.map((artist) => (
-      <li key={artist.id}>
-        <ArtistCard artist={artist} />
-      </li>
-    ));
+const EmptyState = () => {
+  return <p>Ready when you are .. </p>;
+};
+
+const ArtistScroller = ({ artists, title, showEmptyState }) => {
+  let content = undefined;
+
+  if (!showEmptyState && Array.isArray(artists)) {
+    if (artists.length > 0) {
+      content = artists.map((artist) => (
+        <li key={artist.id}>
+          <ArtistCard artist={artist} />
+        </li>
+      ));
+    } else {
+      content = <NothingFound />;
+    }
+  }
+
+  if (showEmptyState) {
+    content = <EmptyState />;
   }
 
   return (
     <>
       <TitleWrapper headline={title || "Artists"} link={`/explore/artists/top`}>
-        <StyledCardContainer>{cardItems}</StyledCardContainer>
+        <StyledCardContainer>{content || <Loader />}</StyledCardContainer>
       </TitleWrapper>
     </>
   );

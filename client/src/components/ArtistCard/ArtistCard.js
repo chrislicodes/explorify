@@ -19,7 +19,7 @@ const ArtistWrapper = styled.div`
     align-items: center;
     justify-content: center;
     background-color: var(--color-grey-1-50);
-    border-radius: 0.4rem;
+    border-radius: 0.5rem;
   }
 
   &:hover ${StyledIcon} {
@@ -34,7 +34,7 @@ const ImageWrapper = styled.div`
   overflow: hidden;
   margin-bottom: var(--spacing-size-sm-1);
   position: relative;
-
+  box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   & img {
     height: 100%;
     width: 100%;
