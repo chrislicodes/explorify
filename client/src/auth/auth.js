@@ -70,7 +70,7 @@ export const getAccessToken = () => {
     refreshAccessToken();
   }
 
-  const localTokenExpiresIn = +getLocalTokenExpiresIn();
+  const localTokenExpiresIn = getLocalTokenExpiresIn();
   const localAccessToken = getLocalAccessToken();
   const localRefreshToken = getLocalRefreshToken();
 
@@ -82,7 +82,10 @@ export const getAccessToken = () => {
   const EXPIRATION_TIME = localTokenExpiresIn * 1000; // 1 hour in milliseconds -> 3600 secounds * 1000 -> 3600 Spotify default
 
   // If access_token is expired -> get new access_token with refresh_token
-  if (Date.now() - getLocalTokenTimestamp() > EXPIRATION_TIME) {
+  if (
+    Date.now() - getLocalTokenTimestamp() > EXPIRATION_TIME &&
+    localRefreshToken
+  ) {
     console.warn("Access token has expired, refreshing token ...");
     refreshAccessToken();
   }
