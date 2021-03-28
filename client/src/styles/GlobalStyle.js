@@ -61,7 +61,7 @@ const GlobalStyle = createGlobalStyle`
 
 html {
   box-sizing: border-box;
-  font-size: 60.5%; /* Usually 62.5% with 1rem = 10px; Browser Default is 16px */
+  font-size: 58.5%; /* Usually 62.5% with 1rem = 10px; Browser Default is 16px */
 
   font-family: "Roboto", sans-serif;
   line-height: 1.6;
@@ -137,7 +137,7 @@ button {
 
 @media ${theme.bp.desktopS} {
   html {
-    font-size: 58.5%; 
+    font-size: 57.5%; 
   }
 };
 

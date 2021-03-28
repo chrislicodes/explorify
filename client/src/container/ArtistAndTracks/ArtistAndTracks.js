@@ -2,6 +2,7 @@ import React from "react";
 import TitleWrapper from "../../components/TitleWrapper/TitleWrapper";
 import SongContainer from "../../components/SongContainer/SongContainer";
 import Icon from "../../components/Icons/Icon/Icon";
+import PlaceholderImage from "../../components/PlaceholderImage/PlaceholderImage";
 import { Link } from "react-router-dom";
 import theme from "../../styles/theme";
 import styled from "styled-components/macro";
@@ -45,11 +46,14 @@ const ImageOverlay = styled(Icon)`
 
 const ArtistImageWrapper = styled.div`
   position: relative;
+  height: var(--content-height);
+  min-width: var(--content-height);
 
   & img {
     height: var(--content-height);
     width: var(--content-height);
     box-shadow: 0px 4px 17px 4px rgba(0, 0, 0, 0.3);
+    object-fit: cover;
   }
 
   &:hover ${ImageOverlay} {
@@ -70,6 +74,8 @@ const AristAndTracks = ({ artist, headline = "Artist" }) => {
     () => artist && `/artists/${artist.id}/top-tracks?market=${user.country}`
   );
 
+  const imageURL = artist.images.length > 0 && artist.images[1].url;
+
   return (
     <>
       {tracks ? (
@@ -79,8 +85,12 @@ const AristAndTracks = ({ artist, headline = "Artist" }) => {
         >
           <ContentWrapper>
             <ArtistImageWrapper>
-              <Link to={`/analyze/artists/${artist.id}`}>
-                <img src={artist.images[1].url} alt={`${artist.name}`} />
+              <Link to={`/explore/artists/${artist.id}`}>
+                {imageURL ? (
+                  <img src={artist.images[1].url} alt={`${artist.name}`} />
+                ) : (
+                  <PlaceholderImage />
+                )}
                 <ImageOverlay type="icon-notification" />
               </Link>
             </ArtistImageWrapper>

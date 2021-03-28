@@ -1,20 +1,24 @@
 import React from "react";
 import ArtistAndTracks from "../../../ArtistAndTracks/ArtistAndTracks";
 
-const sortAndFilterArtistArray = (artists) => {
+const sortArtistArray = (artists) => {
   if (!artists) return;
 
-  const filteredArtists = artists.filter((artist) => artist.genres.length > 0);
-  const sortedArtists = filteredArtists.sort(
-    (a, b) => b.popularity - a.popularity
-  );
+  // const filteredArtists = artists.filter((artist) => artist.genres.length > 0);
+  const sortedArtists = artists.sort((a, b) => b.popularity - a.popularity);
   return sortedArtists;
 };
 
-function ArtistResults({ artists }) {
-  const sortedArtists = sortAndFilterArtistArray(artists);
+const filterArtistArray = (artists) => {
+  if (!artists) return;
 
-  console.log(artists);
+  const filteredArtists = artists.filter((artist) => artist.genres.length > 0);
+  return filteredArtists;
+};
+
+function ArtistResults({ artists }) {
+  const sortedArtists = sortArtistArray(artists);
+
   return (
     <ArtistAndTracks artist={sortedArtists[0]} headline="Artist Top Result" />
   );

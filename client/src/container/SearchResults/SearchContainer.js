@@ -9,12 +9,17 @@ import SearchResults from "./SearchResults/SearchResults";
 const SearchContainer = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
+  const { data: user } = useSWR("/me");
+
   const { data: searchResult } = useSWR(
     () =>
       searchQuery !== "" &&
+      user &&
       `/search?q=${encodeURI(
         searchQuery
-      )}%20NOT%20genre:hoerspiel%20&type=album,track,artist&market=DE&limit=20`
+      )}%20NOT%20genre:hoerspiel%20&type=album,track,artist&market=${
+        user.country
+      }&limit=20`
   );
 
   let component = (searchQuery === "" && <WelcomeScreen />) ||

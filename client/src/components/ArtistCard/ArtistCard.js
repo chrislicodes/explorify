@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Icon from "../../components/Icons/Icon";
+import PlaceholderImage from "../../components/PlaceholderImage/PlaceholderImage";
 import styled from "styled-components/macro";
 
 // ---------------------------------------
@@ -14,6 +15,7 @@ const ArtistWrapper = styled.div`
   & ${StyledLink} {
     height: 25rem;
     width: 20rem;
+    max-width: 20rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,40 +69,21 @@ const ImageWrapper = styled.div`
 
 const ArtistName = styled.p`
   font-weight: bold;
-  text-align: center;
 `;
 
 const Genre = styled.p`
   color: var(--color-grey-4);
   font-size: var(--font-size-sm);
-  text-align: center;
-`;
-
-const PlaceholderWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  height: 100%;
-
-  background-color: var(--color-grey-1);
-
-  & svg {
-    fill: var(--color-grey-3);
-    width: 10rem;
-    height: 10rem;
-  }
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
 `;
 
 // ---------------------------------------
 // -------------  LOGIC
 // ---------------------------------------
-
-const PlaceholderIcon = (
-  <PlaceholderWrapper>
-    <Icon type="icon-user" />
-  </PlaceholderWrapper>
-);
 
 const ArtistCard = ({ artist }) => {
   const imageURL = artist.images.length > 0 && artist.images[1].url;
@@ -112,7 +95,7 @@ const ArtistCard = ({ artist }) => {
           {imageURL ? (
             <img src={imageURL} alt={`${artist.name}`} />
           ) : (
-            PlaceholderIcon
+            <PlaceholderImage />
           )}
           <StyledIcon type="icon-notification" />
         </ImageWrapper>
