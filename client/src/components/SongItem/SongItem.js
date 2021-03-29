@@ -30,7 +30,7 @@ const SongTitle = styled.p`
       position: absolute;
       content: "";
       top: 2.1rem;
-      height: 0.25rem;
+      height: 0.22rem;
       width: 0;
       background-color: var(--color-spotify-green);
       transition: all 0.3s ease-in-out;

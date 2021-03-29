@@ -1,30 +1,30 @@
 import React from "react";
 import HorizontalCardContainer from "../HorizontalCardContainer/HorizontalCardContainer";
 import TitleWrapper from "../TitleWrapper/TitleWrapper";
-import ArtistCard from "../ArtistCard/ArtistCard";
+import AlbumCard from "../AlbumCard/AlbumCard";
 import styled from "styled-components/macro";
-import Loader from "../../components/Loader";
+import Loader from "../Loader/Loader";
 
 const StyledCardContainer = styled(HorizontalCardContainer)`
   height: 27.5rem;
 `;
 
-const ArtistScroller = ({ artists, title }) => {
+const AlbumScroller = ({ albums, title }) => {
   let content = undefined;
 
-  content = artists.map((artist) => (
-    <li key={artist.id}>
-      <ArtistCard artist={artist} />
+  content = albums.map((album) => (
+    <li key={album.id}>
+      <AlbumCard album={album} />
     </li>
   ));
 
   return (
     <>
-      <TitleWrapper headline={title || "Artists"} link={`/explore/artists/top`}>
+      <TitleWrapper headline={title || "Albums"} link={`/explore/artists/top`}>
         <StyledCardContainer>{content || <Loader />}</StyledCardContainer>
       </TitleWrapper>
     </>
   );
 };
 
-export default ArtistScroller;
+export default AlbumScroller;

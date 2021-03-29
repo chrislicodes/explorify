@@ -1,12 +1,7 @@
 import React from "react";
-import RecentlyPlayedSongs from "../../container/RecentlyPlayedSongs/RecentlyPlayedSongs";
 
 const Analyze = () => {
-  return (
-    <div>
-      <RecentlyPlayedSongs />
-    </div>
-  );
+  return <div>Analyze</div>;
 };
 
 export default Analyze;

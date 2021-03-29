@@ -1,7 +1,7 @@
 import React from "react";
 import HorizontalCardContainer from "../HorizontalCardContainer/HorizontalCardContainer";
 import TitleWrapper from "../TitleWrapper/TitleWrapper";
-import ArtistCard from "../ArtistCard/ArtistCard";
+import TrackCard from "../TrackCard/TrackCard";
 import styled from "styled-components/macro";
 import Loader from "../../components/Loader";
 
@@ -9,22 +9,22 @@ const StyledCardContainer = styled(HorizontalCardContainer)`
   height: 27.5rem;
 `;
 
-const ArtistScroller = ({ artists, title }) => {
+const TrackScroller = ({ tracks, title }) => {
   let content = undefined;
 
-  content = artists.map((artist) => (
-    <li key={artist.id}>
-      <ArtistCard artist={artist} />
+  content = tracks.map((track) => (
+    <li key={track.id}>
+      <TrackCard track={track} />
     </li>
   ));
 
   return (
     <>
-      <TitleWrapper headline={title || "Artists"} link={`/explore/artists/top`}>
+      <TitleWrapper headline={title || "Tracks"} link={`/explore/artists/top`}>
         <StyledCardContainer>{content || <Loader />}</StyledCardContainer>
       </TitleWrapper>
     </>
   );
 };
 
-export default ArtistScroller;
+export default TrackScroller;

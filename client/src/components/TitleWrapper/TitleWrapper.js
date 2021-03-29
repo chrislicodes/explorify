@@ -29,7 +29,8 @@ const Headline = styled.h1`
   &::before {
     content: "";
     position: absolute;
-    top: 3ch;
+    display: inline-block;
+    top: 3.7rem;
     left: 0;
     width: 13rem;
     height: 0.4rem;

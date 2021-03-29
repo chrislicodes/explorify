@@ -68,7 +68,7 @@ const StyledSongContainer = styled(SongContainer)`
   min-width: 0;
 `;
 
-const AristAndTracks = ({ artist, headline = "Artist" }) => {
+const ArtistAndTracks = ({ artist, headline = "Artist" }) => {
   const { data: user } = useSWR("/me");
   const { data: tracks } = useSWR(
     () => artist && `/artists/${artist.id}/top-tracks?market=${user.country}`
@@ -104,4 +104,4 @@ const AristAndTracks = ({ artist, headline = "Artist" }) => {
   );
 };
 
-export default AristAndTracks;
+export default ArtistAndTracks;

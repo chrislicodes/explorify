@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Icon from "../../components/Icons/Icon";
-import PlaceholderImage from "../../components/PlaceholderImage/PlaceholderImage";
+import Icon from "../Icons/Icon/Icon";
+import PlaceholderImage from "../PlaceholderImage/PlaceholderImage";
 import styled from "styled-components/macro";
 
 // ---------------------------------------
@@ -33,12 +33,12 @@ const ArtistWrapper = styled.div`
 const ImageWrapper = styled.div`
   width: 16rem;
   height: 16rem;
-  border-radius: 100%;
   overflow: hidden;
   margin-bottom: var(--spacing-size-sm-1);
   position: relative;
   box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   & img {
+    height: 100%;
     width: 100%;
   }
 
@@ -67,7 +67,7 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const ArtistName = styled.p`
+const TrackName = styled.p`
   font-weight: bold;
   width: 100%;
   white-space: nowrap;
@@ -76,7 +76,7 @@ const ArtistName = styled.p`
   text-align: center;
 `;
 
-const Genre = styled.p`
+const ArtistName = styled.p`
   color: var(--color-grey-4);
   font-size: var(--font-size-sm);
   width: 100%;
@@ -90,25 +90,25 @@ const Genre = styled.p`
 // -------------  LOGIC
 // ---------------------------------------
 
-const ArtistCard = ({ artist }) => {
-  const imageURL = artist.images.length > 0 && artist.images[1].url;
+const TrackCard = ({ track }) => {
+  const imageURL = track.album.images.length > 0 && track.album.images[1].url;
 
   return (
     <ArtistWrapper>
-      <StyledLink to={`/explore/artists/${artist.id}`}>
+      <StyledLink to={`/explore/tracks/${track.id}`}>
         <ImageWrapper>
           {imageURL ? (
-            <img src={imageURL} alt={`${artist.name}`} />
+            <img src={imageURL} alt={`${track.name}`} />
           ) : (
             <PlaceholderImage />
           )}
           <StyledIcon type="icon-notification" />
         </ImageWrapper>
-        <ArtistName>{artist.name}</ArtistName>
-        <Genre>{artist.genres[0] || "Artist"}</Genre>
+        <TrackName>{track.name}</TrackName>
+        <ArtistName>{track.artists[0].name}</ArtistName>
       </StyledLink>
     </ArtistWrapper>
   );
 };
 
-export default ArtistCard;
+export default TrackCard;

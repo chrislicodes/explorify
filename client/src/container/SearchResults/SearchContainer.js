@@ -6,6 +6,11 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import WelcomeScreen from "./WelcomeScreen/WelcomeScreen";
 import SearchResults from "./SearchResults/SearchResults";
 
+const FixedSearchbar = styled.div`
+  position: fixed;
+  top: 2.5rem;
+`;
+
 const SearchContainer = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -22,12 +27,16 @@ const SearchContainer = () => {
       }&limit=20`
   );
 
+  searchResult && console.log(searchResult);
+
   let component = (searchQuery === "" && <WelcomeScreen />) ||
     (searchResult && <SearchResults results={searchResult} />) || <Loader />;
 
   return (
     <>
-      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      <FixedSearchbar>
+        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+      </FixedSearchbar>
       {component}
     </>
   );
