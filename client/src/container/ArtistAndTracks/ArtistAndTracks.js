@@ -66,6 +66,9 @@ const StyledSongContainer = styled(SongContainer)`
   padding: 0.35rem 0;
   padding-right: 0;
   min-width: 0;
+  & > ul {
+    overflow: hidden;
+  }
 `;
 
 const ArtistAndTracks = ({ artist, headline = "Artist" }) => {

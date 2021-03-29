@@ -48,6 +48,7 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
         placeholder="Search"
         name="s"
         spellcheck="false"
+        autoFocus
       />
     </form>
   );
