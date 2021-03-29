@@ -38,10 +38,7 @@ function ArtistResults({ artists }) {
   return (
     <FlexContainer>
       {sortedArtists.length > 0 && (
-        <ArtistAndTracks
-          artist={sortedArtists[0]}
-          headline="Artist Top Result"
-        />
+        <ArtistAndTracks artist={sortedArtists[0]} headline="Top Result" />
       )}
       {scrollerArtists && <ArtistScroller artists={scrollerArtists} />}
     </FlexContainer>

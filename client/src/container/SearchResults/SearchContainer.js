@@ -11,6 +11,12 @@ const FixedSearchbar = styled.div`
   top: 2.5rem;
 `;
 
+const FlexContainer = styled.div`
+  display: flex;
+  height: 100%;
+  min-width: 100%;
+`;
+
 const SearchContainer = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -37,7 +43,7 @@ const SearchContainer = () => {
       <FixedSearchbar>
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       </FixedSearchbar>
-      {component}
+      <FlexContainer>{component}</FlexContainer>
     </>
   );
 };

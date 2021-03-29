@@ -24,7 +24,6 @@ const AppContainer = styled.div`
   font-size: var(--font-size-md);
 
   @media ${theme.bp.desktopXS} {
-    height: 100%;
     width: 100%;
     flex-direction: column;
   }

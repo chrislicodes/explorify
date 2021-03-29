@@ -2,12 +2,7 @@ import React from "react";
 import HorizontalCardContainer from "../HorizontalCardContainer/HorizontalCardContainer";
 import TitleWrapper from "../TitleWrapper/TitleWrapper";
 import TrackCard from "../TrackCard/TrackCard";
-import styled from "styled-components/macro";
 import Loader from "../../components/Loader";
-
-const StyledCardContainer = styled(HorizontalCardContainer)`
-  height: 27.5rem;
-`;
 
 const TrackScroller = ({ tracks, title }) => {
   let content = undefined;
@@ -21,7 +16,9 @@ const TrackScroller = ({ tracks, title }) => {
   return (
     <>
       <TitleWrapper headline={title || "Tracks"} link={`/explore/artists/top`}>
-        <StyledCardContainer>{content || <Loader />}</StyledCardContainer>
+        <HorizontalCardContainer>
+          {content || <Loader />}
+        </HorizontalCardContainer>
       </TitleWrapper>
     </>
   );

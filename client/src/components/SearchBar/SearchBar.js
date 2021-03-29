@@ -6,13 +6,13 @@ const SearchInput = styled.input`
   height: 3rem;
   width: 30rem;
   border-radius: 2rem;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   transition: all 0.2s;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
 
   &:active,
   &:focus {
-    border: 1px solid var(--color-spotify-green);
+    border: 2px solid var(--color-spotify-green);
     outline: none;
   }
 `;
@@ -27,9 +27,25 @@ const ScreenReaderLabel = styled.span`
   width: 1px;
 `;
 
+const SearchForm = styled.form`
+  position: relative;
+`;
+
+const SearchIcon = styled(Icon)`
+  position: absolute;
+  top: 0.35rem;
+  right: 1rem;
+
+  & svg {
+    height: 2rem;
+    width: 2rem;
+    fill: var(--color-grey-2);
+  }
+`;
+
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
   return (
-    <form
+    <SearchForm
       action="/"
       method="get"
       autoComplete="off"
@@ -50,7 +66,8 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
         spellcheck="false"
         autoFocus
       />
-    </form>
+      <SearchIcon type="icon-search" />
+    </SearchForm>
   );
 };
 

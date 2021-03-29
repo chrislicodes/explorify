@@ -14,12 +14,19 @@ const StyledLink = styled(Link)`
   width: 4rem;
   height: 100%;
   border-radius: 100%;
-  background-color: var(--color-grey-4);
+  background-color: var(--color-grey-3);
+  padding-top: 0.5rem;
 `;
 
 const StyledIcon = styled(Icon)`
+  &:hover svg {
+    fill: var(--color-spotify-green);
+  }
+
   & svg {
     height: 2rem;
+    fill: var(--color-white);
+    transition: all 0.2s;
   }
 `;
 

@@ -60,7 +60,7 @@ const ROUTES = [
         component: ArtistOverview,
       },
       {
-        path: "/explore/track/:trackID",
+        path: "/explore/tracks/:trackID",
         key: "EXPLORE_TRACK",
         exact: true,
         component: TrackOverview,

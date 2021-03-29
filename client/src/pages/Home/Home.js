@@ -53,20 +53,6 @@ const Home = () => {
         <TopTracks />
         <RecentlyPlayedSongs />
       </SongOverview>
-      <WelcomeUser />
-      <TopArtist />
-      <TopArtistScroller offset={1} />
-      <SongOverview>
-        <TopTracks />
-        <RecentlyPlayedSongs />
-      </SongOverview>
-      <WelcomeUser />
-      <TopArtist />
-      <TopArtistScroller offset={1} />
-      <SongOverview>
-        <TopTracks />
-        <RecentlyPlayedSongs />
-      </SongOverview>
     </FlexContainer>
   );
 };
