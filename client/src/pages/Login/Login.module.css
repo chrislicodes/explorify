@@ -1,114 +1,116 @@
-.LoginContainer{
-    width:100vw;
-    height:100vh;
-    background-image: url("../../assets/images/login-background.jpg");
-    background-position: center;
-    background-size: cover;
-    position:relative;
+.LoginContainer {
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  position: relative;
 }
 
-.LoginBackdrop{
-    width:100vw;
-    height:100vh;
-    background-color:var(--color-black);
-    position: absolute;
-    top:0;
-    left:0;
-    opacity: 0.75;
-    z-index:0;
+.LoginBackdrop {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-black);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.75;
+  z-index: 0;
 }
 
-.LoginLogo{
-    width:auto;
-    height:auto;
-    position: absolute;
-    top:15px;
-    left:15px;
-    z-index:1;
+.LoginLogo {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 1;
 }
 
-.LoginContent{
-    color:var(--color-white);
-    z-index:2;
-    width:100%;
-    height:100%;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+.LoginContent {
+  color: var(--color-white);
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.LoginWrapper{
-    width:80%;
-    height:50%;
+.LoginWrapper {
+  width: 80%;
+  height: 50%;
 }
 
-.LoginHeadline, .LoginSubheadline{
-    width:100%;
+.LoginHeadline,
+.LoginSubheadline {
+  width: 100%;
 }
 
-.LoginSubheadline{
-    margin-bottom:40px;
+.LoginSubheadline {
+  margin-bottom: 40px;
 }
 
-.LoginHeadline > h1{
-    font-weight:lighter;
-    font-size:5rem;
+.LoginHeadline > h1 {
+  font-weight: lighter;
+  font-size: 5rem;
 }
 
-.LoginSubheadline > h2{
-    font-size: 3rem;
-    color:var(--color-grey-6);
-    font-weight:lighter;
+.LoginSubheadline > h2 {
+  font-size: 3rem;
+  color: var(--color-grey-6);
+  font-weight: lighter;
 }
 
-.LoginBtnContainer{
-    width:100%;
-    display:flex;
+.LoginBtnContainer {
+  width: 100%;
+  display: flex;
 }
 
-.LoginBtn, .LoginLearnMoreBtn{
-    padding:10px;
+.LoginBtn,
+.LoginLearnMoreBtn {
+  padding: 10px;
 }
 
-.LoginBtn{
-    background-color:var(--color-spotify-green);
-    color:var(--color-white);
-    border-radius:2px;
-    outline: none;
-    margin-right:20px;
-    transition: all 0.3s ease-in-out;
+.LoginBtn {
+  background-color: var(--color-spotify-green);
+  color: var(--color-white);
+  border-radius: 2px;
+  outline: none;
+  margin-right: 20px;
+  transition: all 0.3s ease-in-out;
 }
 
-.LoginBtn:hover{
-    filter:brightness(0.9);
+.LoginBtn:hover {
+  filter: brightness(0.9);
 }
 
-.LoginLearnMoreBtn{
-    background-color:transparent;
-    border:1px solid var(--color-spotify-green);
-    color:var(--color-spotify-green);
-    transition: all 0.2s ease-in-out;
-    box-sizing: border-box;
-    border-radius: 2px;
+.LoginLearnMoreBtn {
+  background-color: transparent;
+  border: 1px solid var(--color-spotify-green);
+  color: var(--color-spotify-green);
+  transition: all 0.2s ease-in-out;
+  box-sizing: border-box;
+  border-radius: 2px;
 }
 
-.LoginLearnMoreBtn:hover{
-    background-color: var(--color-spotify-green);
-    color:var(--color-white)
+.LoginLearnMoreBtn:hover {
+  background-color: var(--color-spotify-green);
+  color: var(--color-white);
 }
 
-.AppVersion, .AppNote{
-    position: absolute;
-    bottom:15px;
-    color:var(--color-white);
+.AppVersion,
+.AppNote {
+  position: absolute;
+  bottom: 15px;
+  color: var(--color-white);
 }
 
-.AppVersion{
-    left:15px;
+.AppVersion {
+  left: 15px;
 }
 
-.AppNote{
-    right:15px;
+.AppNote {
+  right: 15px;
 }

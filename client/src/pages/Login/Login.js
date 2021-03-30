@@ -1,15 +1,49 @@
 import React from "react";
-
 import classes from "./Login.module.css";
 import SpotifyIcon from "../../components/Icons/SpotifyIcon/SpotifyIcon";
+import styled from "styled-components/macro";
+import Particles from "react-tsparticles";
+import options from "./particleOptions";
+
+const FlexContainer = styled.main`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+`;
+
+const StyledParticles = styled(Particles)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+`;
+
+const Backdrop = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-black);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.75;
+  z-index: 0;
+`;
+
+const SpotifyLogo = styled(SpotifyIcon)`
+  z-index: 3;
+  position: absolute;
+  top: 0;
+  left: 0;
+`;
 
 const Login = () => {
   return (
-    <div className={classes.LoginContainer}>
-      <div className={classes.LoginBackdrop}></div>
-      <div className={classes.LoginLogo}>
-        <SpotifyIcon />
-      </div>
+    <FlexContainer>
+      <StyledParticles id="tsparticles" options={options} />
+      <Backdrop />
+      <SpotifyLogo />
+
       <main className={classes.LoginContent}>
         <div className={classes.LoginWrapper}>
           <div className={classes.LoginHeadline}>
@@ -30,20 +64,13 @@ const Login = () => {
             >
               LOGIN TO SPOTIFY
             </a>
-            <a className={classes.LoginLearnMoreBtn} href="/">
-              LEARN MORE
-            </a>
           </div>
         </div>
       </main>
-      <div className={classes.AppVersion}>
-        v.{process.env.REACT_APP_VERSION}
-      </div>
       <div className={classes.AppNote}>
-        This application is not an official product of Spotify, but uses
-        Spotify's API.
+        We are not storing any data and all data displayed belongs to Spotify. ♥
       </div>
-    </div>
+    </FlexContainer>
   );
 };
 
