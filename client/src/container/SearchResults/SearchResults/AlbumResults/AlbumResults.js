@@ -1,5 +1,5 @@
 import React from "react";
-import AlbumScroller from "../../../../components/AlbumScroller/AlbumScroller";
+import CardSection from "../../../../components/CardSection/CardSection";
 import useSWR from "swr";
 
 const filterArtists = (artists) => {
@@ -36,7 +36,9 @@ function AlbumResults({ albums }) {
       (a, b) => artistObj[b.artists[0].id] - artistObj[a.artists[0].id]
     );
 
-  return <>{filteredAlbums && <AlbumScroller albums={sortedAlbums} />}</>;
+  return (
+    <>{filteredAlbums && <CardSection data={sortedAlbums} type={"album"} />}</>
+  );
 }
 
 export default AlbumResults;

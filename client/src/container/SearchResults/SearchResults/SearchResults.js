@@ -1,7 +1,7 @@
 import React from "react";
 import ArtistResults from "./ArtistResults/ArtistResults";
 import AlbumResults from "./AlbumResults/AlbumResults";
-import TrackScroller from "../../../components/TrackScroller/TrackScroller";
+import CardSection from "../../../components/CardSection/CardSection";
 import styled from "styled-components/macro";
 import NothingFound from "../../../components/NothingFound/NothingFound";
 
@@ -46,7 +46,7 @@ function SearchResults({ results }) {
     <FlexContainer>
       {!artists && !tracks && !albums && <NothingFound />}
       {artists?.length > 0 ? <ArtistResults artists={artists} /> : null}
-      {tracks?.length > 0 ? <TrackScroller tracks={tracks} /> : null}
+      {tracks?.length > 0 ? <CardSection data={tracks} type={"track"} /> : null}
       {albums?.length > 0 ? <AlbumResults albums={albums} /> : null}
     </FlexContainer>
   );

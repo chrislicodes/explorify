@@ -5,6 +5,7 @@ import styled from "styled-components/macro";
 const HeadlineContainer = styled.article`
   display: flex;
   flex-direction: column;
+  min-height: 25rem;
   width: 100%;
   text-transform: uppercase;
   color: var(--color-white);
@@ -52,7 +53,7 @@ const TitleWrapper = ({ children, headline, link }) => {
     <HeadlineContainer>
       <ContainerHeader>
         <Headline>{headline}</Headline>
-        <SeeMoreLink to={link}>See more</SeeMoreLink>
+        <SeeMoreLink to={link}>Show more</SeeMoreLink>
       </ContainerHeader>
       {children}
     </HeadlineContainer>
