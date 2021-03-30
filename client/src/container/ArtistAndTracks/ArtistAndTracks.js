@@ -71,7 +71,7 @@ const StyledSongContainer = styled(SongContainer)`
   }
 `;
 
-const ArtistAndTracks = ({ artist, headline = "Artist" }) => {
+const ArtistAndTracks = ({ artist, headline = "Artist", nTracks = 10 }) => {
   const { data: user } = useSWR("/me");
   const { data: tracks } = useSWR(
     () => artist && `/artists/${artist.id}/top-tracks?market=${user.country}`
@@ -97,7 +97,10 @@ const ArtistAndTracks = ({ artist, headline = "Artist" }) => {
                 <ImageOverlay type="icon-notification" />
               </Link>
             </ArtistImageWrapper>
-            <StyledSongContainer tracks={tracks.tracks} displayImage={false} />
+            <StyledSongContainer
+              tracks={tracks.tracks.slice(0, nTracks)}
+              displayImage={false}
+            />
           </ContentWrapper>
         </TitleWrapper>
       ) : (
