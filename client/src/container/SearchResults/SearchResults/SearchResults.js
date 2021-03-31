@@ -4,6 +4,7 @@ import AlbumResults from "./AlbumResults/AlbumResults";
 import CardSection from "../../../components/CardSection/CardSection";
 import styled from "styled-components/macro";
 import NothingFound from "../NothingFound/NothingFound";
+import theme from "../../../styles/theme";
 
 const sortByPopularity = (items) => {
   if (!items) return;
@@ -27,6 +28,10 @@ const FlexContainer = styled.div`
 
   &::last-child {
     margin-bottom: 3rem;
+
+    @media ${theme.bp.desktopXS} {
+      margin-bottom: 100rem;
+    }
   }
 `;
 
@@ -46,7 +51,9 @@ function SearchResults({ results }) {
     <FlexContainer>
       {!artists && !tracks && !albums && <NothingFound />}
       {artists?.length > 0 ? <ArtistResults artists={artists} /> : null}
-      {tracks?.length > 0 ? <CardSection data={tracks} type={"track"} /> : null}
+      {tracks?.length > 0 ? (
+        <CardSection data={tracks} type={"track"} title="Tracks" />
+      ) : null}
       {albums?.length > 0 ? <AlbumResults albums={albums} /> : null}
     </FlexContainer>
   );

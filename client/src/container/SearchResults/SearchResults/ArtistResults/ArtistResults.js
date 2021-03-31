@@ -45,7 +45,7 @@ function ArtistResults({ artists }) {
         />
       )}
       {scrollerArtists && (
-        <CardSection data={scrollerArtists} type={"artist"} />
+        <CardSection data={scrollerArtists} type={"artist"} title="artists" />
       )}
     </FlexContainer>
   );

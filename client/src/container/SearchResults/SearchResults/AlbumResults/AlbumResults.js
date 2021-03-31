@@ -37,7 +37,11 @@ function AlbumResults({ albums }) {
     );
 
   return (
-    <>{filteredAlbums && <CardSection data={sortedAlbums} type={"album"} />}</>
+    <>
+      {filteredAlbums && (
+        <CardSection data={sortedAlbums} type={"album"} title="albums" />
+      )}
+    </>
   );
 }
 

@@ -40,11 +40,6 @@ const ImageWrapper = styled.div`
   box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   border-radius: ${({ type }) => type === "artist" && "100%"};
 
-  & img {
-    height: 100%;
-    width: 100%;
-  }
-
   & ${StyledIcon} {
     position: absolute;
     top: 0;

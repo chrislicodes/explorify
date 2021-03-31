@@ -50,6 +50,10 @@ const Page = styled.main`
   overflow-x: hidden;
   overflow-y: auto;
 
+  @media ${theme.bp.desktopXS} {
+    margin-bottom: 7rem;
+  }
+
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
     border-radius: 10px;

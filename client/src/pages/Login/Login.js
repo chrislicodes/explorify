@@ -29,7 +29,7 @@ const Backdrop = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0.75;
+  opacity: 0.8;
   z-index: -1;
 `;
 
@@ -45,6 +45,7 @@ const Disclaimer = styled.p`
   bottom: var(--absolute-distance);
   right: var(--absolute-distance);
   font-size: var(--font-size-xs);
+  padding: 3rem;
 `;
 
 const ContentContainer = styled.main`

@@ -1,6 +1,7 @@
 import React from "react";
 import Icon from "../../../components/Icons/Icon";
 import styled from "styled-components/macro";
+import theme from "../../../styles/theme";
 
 const FlexContainer = styled.div`
   display: flex;
@@ -33,6 +34,11 @@ const HeadphoneIcon = styled(Icon)`
   & svg {
     height: 12rem;
     width: 12rem;
+
+    @media ${theme.bp.desktopXS} {
+      height: 9rem;
+      width: 9rem;
+    }
   }
 `;
 
@@ -41,6 +47,10 @@ const Headline = styled.h1`
   align-items: center;
   color: var(--color-white);
   font-size: var(--font-size-xl);
+
+  @media ${theme.bp.desktopXS} {
+    font-size: var(--font-size-lg);
+  }
 `;
 
 function WelcomeScreen() {
@@ -49,7 +59,7 @@ function WelcomeScreen() {
       <HeadphoneIcon type="icon-headphones" />
       <Headline>
         Start <SearchIcon type="icon-search" /> for your favorite artists,
-        tracks and albums
+        tracks or albums
       </Headline>
     </FlexContainer>
   );

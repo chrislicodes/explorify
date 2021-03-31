@@ -15,7 +15,11 @@ const TopArtistScroller = ({
   return (
     <>
       {topArtists ? (
-        <CardSection data={topArtists.items.slice(offset)} type={"artist"} />
+        <CardSection
+          data={topArtists.items.slice(offset)}
+          type={"artist"}
+          title="More artists you enjoy"
+        />
       ) : (
         <Loader />
       )}

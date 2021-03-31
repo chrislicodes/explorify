@@ -25,6 +25,7 @@ const StyledIcon = styled(Icon)`
 
   & svg {
     height: 2rem;
+    width: 100%;
     fill: var(--color-white);
     transition: all 0.2s;
   }

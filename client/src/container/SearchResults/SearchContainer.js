@@ -8,7 +8,7 @@ import SearchResults from "./SearchResults/SearchResults";
 
 const FixedSearchbar = styled.div`
   position: fixed;
-  top: 2.5rem;
+  top: 1.8rem;
 `;
 
 const FlexContainer = styled.div`

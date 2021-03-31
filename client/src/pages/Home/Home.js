@@ -33,10 +33,6 @@ const SongOverview = styled.div`
   @media ${theme.bp.desktopM} {
     flex-direction: column;
   }
-
-  @media ${theme.bp.desktopXS} {
-    margin-bottom: var(--spacing-size-xl-2);
-  }
 `;
 
 // ---------------------------------------
