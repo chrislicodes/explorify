@@ -23,6 +23,7 @@ const ArtistWrapper = styled.div`
     background-color: var(--color-grey-1-50);
     border-radius: 0.5rem;
     padding: 1.5rem;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 60%);
   }
 
   &:hover ${StyledIcon} {

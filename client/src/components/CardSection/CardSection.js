@@ -6,7 +6,7 @@ import styled from "styled-components/macro";
 import Loader from "../Loader/Loader";
 
 const StyledCardContainer = styled(CardContainer)`
-  height: 27.5rem;
+  height: 26rem;
 `;
 
 const CardSection = ({ data, type, title, link = "/" }) => {

@@ -11,8 +11,8 @@ const StyledIcon = styled(Icon)`
   }
 `;
 
-const SpotifyIcon = () => {
-  return <StyledIcon type="icon-spotify" />;
+const SpotifyIcon = ({ className }) => {
+  return <StyledIcon type="icon-spotify" className={className} />;
 };
 
 export default SpotifyIcon;

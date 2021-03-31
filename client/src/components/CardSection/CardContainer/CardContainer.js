@@ -10,11 +10,12 @@ const FlexContainer = styled.div`
 `;
 
 const CardList = styled.ul`
+  --column-size: 190px;
   display: grid;
   overflow-y: hidden;
   grid-auto-rows: 0;
   grid-template-rows: 1fr;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(var(--column-size), 1fr));
   grid-gap: var(--spacing-size-sm-2);
   padding-bottom: var(--spacing-size-sm-3);
 

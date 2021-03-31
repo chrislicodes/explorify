@@ -23,7 +23,7 @@ const particleOptions = {
         distance: 400,
         duration: 2,
         opacity: 0.8,
-        size: 40,
+        size: 50,
       },
       push: {
         quantity: 4,
@@ -53,13 +53,13 @@ const particleOptions = {
       enable: true,
       outMode: "bounce",
       random: false,
-      speed: 0.5,
+      speed: 0.3,
       straight: false,
     },
     number: {
       density: {
         enable: true,
-        value_area: 900,
+        value_area: 1000,
       },
       value: 80,
     },
