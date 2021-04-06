@@ -43,7 +43,7 @@ const refreshAccessToken = () => {
     .get(
       `${
         process.env.REACT_APP_BACKEND_URI
-      }refresh-token?refresh_token=${getLocalRefreshToken()}`
+      }/refresh-token?refresh_token=${getLocalRefreshToken()}`
     )
     .then(({ data }) => {
       const { access_token } = data;

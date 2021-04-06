@@ -3,6 +3,7 @@ import useSWR from "swr";
 import styled from "styled-components/macro";
 import Loader from "../../components/Loader/";
 import { Link } from "react-router-dom";
+import AudioFeaturesBar from "../../components/AudioFeaturesBar/AudioFeaturesBar";
 
 const FlexContainer = styled.div`
   max-width: 1400px;
@@ -13,6 +14,7 @@ const FlexContainer = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 0 3rem;
+  padding-bottom: 5rem;
   gap: 3rem;
 
   & > * {
@@ -45,7 +47,13 @@ const AlbumImageContainer = styled.div`
 `;
 
 const TrackInformation = styled.div``;
-const AudioFeatures = styled.div``;
+const AudioFeatures = styled.div`
+  height: 60%;
+  width: 100%;
+  /* max-width: 1000px; */
+  align-self: flex-start;
+`;
+
 const TrackName = styled.p`
   font-size: var(--font-size-xxxxl);
   font-weight: 600;
@@ -102,8 +110,6 @@ const prepareTrackInformation = function (trackInformation) {
   const album = trackInformation.album;
   const artists = trackInformation.artists;
 
-  console.log(trackInformation);
-
   return {
     albumName: album.name,
     albumImageURL: album.images.length > 0 && album.images[0].url,
@@ -117,6 +123,29 @@ const prepareTrackInformation = function (trackInformation) {
   };
 };
 
+const prepareAudioFeatures = function (audioFeatures) {
+  const relevantMetrics = [
+    "acousticness",
+    "danceability",
+    "energy",
+    "instrumentalness",
+    "liveness",
+    "speechiness",
+    "valence",
+  ];
+
+  let data = [];
+
+  relevantMetrics.forEach((metric) =>
+    data.push({
+      metric: metric,
+      value: Math.round(audioFeatures[metric] * 100) / 100,
+    })
+  );
+
+  return data;
+};
+
 function TrackOverview(props) {
   const trackID = props.match.params.trackID;
 
@@ -124,14 +153,16 @@ function TrackOverview(props) {
     () => trackID && `/tracks/${trackID}`
   );
 
-  console.log(trackInformation);
-  // const { data: audioFeatures } = useSWR(
-  //   () => trackID && `/audio-features/${trackID}`
-  // );
+  const { data: audioFeatures } = useSWR(
+    () => trackID && `/audio-features/${trackID}`
+  );
 
   // const { data: audioAnalysis } = useSWR(
   //   () => trackID && `/audio-analysis/${trackID}`
   // );
+
+  console.log(trackInformation);
+  console.log(audioFeatures);
 
   const {
     albumName,
@@ -144,6 +175,9 @@ function TrackOverview(props) {
     trackPopularity,
     trackLink,
   } = Boolean(trackInformation) && prepareTrackInformation(trackInformation);
+
+  const audioData =
+    (Boolean(audioFeatures) && prepareAudioFeatures(audioFeatures)) || [];
 
   return (
     <FlexContainer>
@@ -168,8 +202,10 @@ function TrackOverview(props) {
               </PlayButton>
             </TrackDescription>
           </TrackHeader>
-          <TrackInformation></TrackInformation>
-          <AudioFeatures>Features</AudioFeatures>
+          <TrackInformation>HERE GOES A GRID</TrackInformation>
+          <AudioFeatures>
+            <AudioFeaturesBar data={audioData} />
+          </AudioFeatures>
         </>
       ) : (
         <Loader />
