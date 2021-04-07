@@ -72,16 +72,16 @@ const BarChart = ({ data }) => {
         valueScale={{ type: "linear" }}
         indexScale={{ type: "band", round: true }}
         colors={[
-          "#1e3842",
-          "#264653",
-          "#516b75",
-          "#2a9d8f",
-          "#179443",
-          "#1db954",
-          "#4ac776",
+          "#1e3842a1",
+          "#264653a1",
+          "#516b75a1",
+          "#2a9d8fa1",
+          "#179443a1",
+          "#1db954a1",
+          "#4ac776a1",
         ]}
         colorBy="index"
-        borderColor={"#222"}
+        borderColor={{ from: "color" }}
         borderWidth="1px"
         axisBottom={{
           tickSize: 5,
