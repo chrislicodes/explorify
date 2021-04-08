@@ -71,7 +71,12 @@ const StyledSongContainer = styled(SongContainer)`
   }
 `;
 
-const ArtistAndTracks = ({ artist, headline = "Artist", nTracks = 10 }) => {
+const ArtistAndTracks = ({
+  artist,
+  headline = "Artist",
+  nTracks = 10,
+  link,
+}) => {
   const { data: user } = useSWR("/me");
   const { data: tracks } = useSWR(
     () => artist && `/artists/${artist.id}/top-tracks?market=${user.country}`
@@ -79,12 +84,14 @@ const ArtistAndTracks = ({ artist, headline = "Artist", nTracks = 10 }) => {
 
   const imageURL = artist.images.length > 0 && artist.images[1].url;
 
+  const titleLink = link || `/explore/artist/${artist.id}`;
+
   return (
     <>
       {tracks ? (
         <TitleWrapper
           headline={`${headline} - ${artist.name}`}
-          link={`/explore/artist/${artist.id}`}
+          link={titleLink}
         >
           <ContentWrapper>
             <ArtistImageWrapper>

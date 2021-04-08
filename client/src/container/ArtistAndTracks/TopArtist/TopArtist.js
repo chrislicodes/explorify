@@ -13,7 +13,11 @@ const TopArtist = ({ timeRange = "short_term" }) => {
   return (
     <>
       {artist ? (
-        <ArtistAndTracks artist={artist} headline="Top Artist" />
+        <ArtistAndTracks
+          artist={artist}
+          headline="Top Artist"
+          link="/top-artists"
+        />
       ) : (
         <Loader />
       )}

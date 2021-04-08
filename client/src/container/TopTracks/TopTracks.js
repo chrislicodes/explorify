@@ -12,7 +12,7 @@ function TopTracks({ timeRange = "short_term", limit = 10 }) {
   return (
     <>
       {topTracks ? (
-        <TitleWrapper headline={"Your top tracks"} link={"/explore/top-tracks"}>
+        <TitleWrapper headline={"Your top tracks"} link={"/top-tracks"}>
           <SongContainer tracks={topTracks.items} displayImage={true} />
         </TitleWrapper>
       ) : (

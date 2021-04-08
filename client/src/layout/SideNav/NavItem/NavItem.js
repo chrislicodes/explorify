@@ -55,13 +55,15 @@ const NavLinkStyled = styled(NavLink).attrs({
 
 const NavItemDescription = styled.div`
   display: flex;
+  /* justify-content: center; */
+  align-items: center;
   width: 20rem;
   z-index: 1;
   transition: ${theme.transition};
 
   & p {
     margin-left: var(--spacing-size-md-2);
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-md-2);
     color: var(--color-grey-5);
     transition: ${theme.transition};
   }
@@ -70,8 +72,8 @@ const NavItemDescription = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 3rem;
+    height: 3rem;
     fill: var(--color-grey-5);
     transition: ${theme.transition};
   }
@@ -83,13 +85,13 @@ const NavItemDescription = styled.div`
 
     & p {
       margin-left: 0;
-      font-size: var(--font-size-md);
+      font-size: var(--font-size-sm);
     }
 
     & div svg {
       width: 2.5rem;
       height: 2.5rem;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.4rem;
       margin-top: 0.5rem;
     }
   }
@@ -145,6 +147,7 @@ const checkIfActive = (_, location, target) => {
 const NavItem = (props) => {
   //Removing the slash in front of target
   const target = props.target.slice(1);
+  const label = props.label || target;
 
   return (
     <NavItemWrapper>
@@ -156,7 +159,7 @@ const NavItem = (props) => {
       >
         <NavItemDescription>
           <Icon type={props.icon} />
-          <p>{capitalizeWord(target)}</p>
+          <p>{capitalizeWord(label)}</p>
         </NavItemDescription>
       </NavLinkStyled>
     </NavItemWrapper>

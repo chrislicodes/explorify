@@ -1,9 +1,8 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "../pages/Home/Home";
-import Analyze from "../pages/Analyze/Analyze";
+import Discover from "../pages/Discover/Discover";
 import Explore from "../pages/Explore/Explore";
-import About from "../pages/About/About";
 import TrackOverview from "../container/TrackOverview/TrackOverview";
 import ArtistOverview from "../container/ArtistOverview/ArtistOverview";
 import { getAccessToken } from "../auth/auth";
@@ -36,10 +35,10 @@ const ROUTES = [
         component: Home,
       },
       {
-        path: "/analyze",
-        key: "ANALYZE",
+        path: "/discover",
+        key: "DISCOVER",
         exact: true,
-        component: Analyze,
+        component: Discover,
       },
       {
         path: "/explore",
@@ -48,14 +47,26 @@ const ROUTES = [
         component: Explore,
       },
       {
-        path: "/explore/artists/top",
-        key: "EXPLORE_TOP_ARTISTS",
+        path: "/top-artists",
+        key: "TOP_ARTISTS",
         exact: true,
         component: () => <div>TopArtist</div>,
       },
       {
+        path: "/top-tracks",
+        key: "TOP_TRACKS",
+        exact: true,
+        component: () => <div>TopTracks</div>,
+      },
+      {
+        path: "/explore/recently-played",
+        key: "RECENTLY_PLAYED",
+        exact: true,
+        component: () => <div>RecentlyPlayed</div>,
+      },
+      {
         path: "/explore/artist/:artistID",
-        key: "EXPLORE_TRACK",
+        key: "EXPLORE_ARTIST",
         exact: true,
         component: ArtistOverview,
       },
@@ -64,12 +75,6 @@ const ROUTES = [
         key: "EXPLORE_TRACK",
         exact: true,
         component: TrackOverview,
-      },
-      {
-        path: "/about",
-        key: "ABOUT",
-        exact: true,
-        component: About,
       },
     ],
   },

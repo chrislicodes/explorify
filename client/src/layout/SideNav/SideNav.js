@@ -6,9 +6,13 @@ import styled from "styled-components/macro";
 
 const navItems = [
   { target: "/home", icon: "icon-home" },
-  { target: "/analyze", icon: "icon-stats-bars" },
-  { target: "/explore", icon: "icon-compass" },
-  { target: "/about", icon: "icon-notification" },
+  { target: "/top-artists", icon: "icon-headphones", label: "Top Artists" },
+  { target: "/top-tracks", icon: "icon-music", label: "Top Tracks" },
+  { target: "/discover", icon: "icon-compass" },
+  {
+    target: "/explore",
+    icon: "icon-search",
+  },
 ];
 
 const NavLinks = styled.ul`
@@ -27,6 +31,7 @@ const SideNav = () => {
             key={navItem.target}
             target={navItem.target}
             icon={navItem.icon}
+            label={navItem.label}
           />
         ))}
       </NavLinks>

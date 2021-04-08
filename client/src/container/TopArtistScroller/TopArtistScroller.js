@@ -19,6 +19,7 @@ const TopArtistScroller = ({
           data={topArtists.items.slice(offset)}
           type={"artist"}
           title="More artists you enjoy"
+          link="/top-artists"
         />
       ) : (
         <Loader />
