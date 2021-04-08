@@ -5,6 +5,8 @@ import Discover from "../pages/Discover/Discover";
 import Explore from "../pages/Explore/Explore";
 import TrackOverview from "../container/TrackOverview/TrackOverview";
 import ArtistOverview from "../container/ArtistOverview/ArtistOverview";
+import AlbumOverview from "../container/AlbumOverview/AlbumOverview";
+import NotFound404 from "../pages/NotFound404/NotFound404";
 import { getAccessToken } from "../auth/auth";
 
 // https://www.ryanjyost.com/react-routing/
@@ -41,12 +43,6 @@ const ROUTES = [
         component: Discover,
       },
       {
-        path: "/explore",
-        key: "EXPLORE",
-        exact: true,
-        component: Explore,
-      },
-      {
         path: "/top-artists",
         key: "TOP_ARTISTS",
         exact: true,
@@ -57,6 +53,12 @@ const ROUTES = [
         key: "TOP_TRACKS",
         exact: true,
         component: () => <div>TopTracks</div>,
+      },
+      {
+        path: "/explore",
+        key: "EXPLORE",
+        exact: true,
+        component: Explore,
       },
       {
         path: "/explore/recently-played",
@@ -75,6 +77,12 @@ const ROUTES = [
         key: "EXPLORE_TRACK",
         exact: true,
         component: TrackOverview,
+      },
+      {
+        path: "/explore/album/:albumID",
+        key: "EXPLORE_ALBUM",
+        exact: true,
+        component: AlbumOverview,
       },
     ],
   },
@@ -102,7 +110,7 @@ export function RenderRoutes({ routes }) {
       {routes.map((route, i) => {
         return <RouteWithSubRoutes key={route.key} {...route} />;
       })}
-      <Route component={() => <h1>Not Found!</h1>} />
+      <Route component={NotFound404} />
     </Switch>
   );
 }

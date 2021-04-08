@@ -1,7 +1,13 @@
 import React from "react";
+import NothingFound from "../../container/SearchResults/NothingFound/NothingFound";
 
 const Error404 = function () {
-  return <div>Error 404 Page</div>;
+  return (
+    <div>
+      <p>Error 404</p>
+      <NothingFound />
+    </div>
+  );
 };
 
 export default Error404;

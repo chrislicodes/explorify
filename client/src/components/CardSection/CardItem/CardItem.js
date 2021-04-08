@@ -26,6 +26,7 @@ const ArtistWrapper = styled.div`
     background-color: var(--color-grey-1-50);
     border-radius: 0.5rem;
     padding: 2.2rem;
+    padding-bottom: 1.5rem;
     box-shadow: 0 2px 8px rgb(0 0 0 / 60%);
   }
 
@@ -41,7 +42,7 @@ const ArtistWrapper = styled.div`
 const ImageWrapper = styled.div`
   width: 100%;
   overflow: hidden;
-  margin-bottom: var(--spacing-size-sm-1);
+  margin-bottom: var(--spacing-size-sm-4);
   position: relative;
   box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   border-radius: ${({ type }) => type === "artist" && "100%"};
@@ -97,7 +98,6 @@ const Info = styled.div`
   min-height: 5rem;
   overflow: hidden;
   width: 100%;
-
   & p {
     white-space: nowrap;
     overflow: hidden;
