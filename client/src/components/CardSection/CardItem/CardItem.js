@@ -15,6 +15,7 @@ const StyledPlaceholderImage = styled(PlaceholderImage)``;
 const ArtistWrapper = styled.div`
   transition: background-color 0.3s;
   margin-top: 1rem;
+  border-radius: 0.5rem;
 
   & ${StyledLink} {
     margin-bottom: 1rem;
@@ -24,7 +25,6 @@ const ArtistWrapper = styled.div`
     align-items: center;
     justify-content: center;
     background-color: var(--color-grey-1-50);
-    border-radius: 0.5rem;
     padding: 2.2rem;
     padding-bottom: 1.5rem;
     box-shadow: 0 2px 8px rgb(0 0 0 / 60%);

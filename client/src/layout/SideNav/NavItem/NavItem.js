@@ -89,10 +89,9 @@ const NavItemDescription = styled.div`
     }
 
     & div svg {
-      width: 2.5rem;
-      height: 2.5rem;
-      margin-bottom: 0.4rem;
-      margin-top: 0.5rem;
+      width: 2.2rem;
+      height: 2.2rem;
+      margin: 0.5rem 0;
     }
   }
 `;
