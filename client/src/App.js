@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { SWRConfig } from "swr";
 
-import GlobalStyles from "./styles/GlobalStyle";
-import Login from "./pages/Login/Login";
+import GlobalStyles from "styles/GlobalStyle";
+import Login from "pages/Login";
 
-import { getAccessToken } from "./auth";
-import Explorify from "./layout";
+import { getAccessToken } from "auth";
+import Explorify from "layout";
 
 const axiosInstance = axios.create({
   baseURL: "https://api.spotify.com/v1",

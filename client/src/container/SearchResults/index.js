@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 import useSWR from "swr";
-import Loader from "../../components/Loader";
-import SearchBar from "../../components/SearchBar";
+import Loader from "components/Loader";
+import SearchBar from "components/SearchBar";
 import WelcomeScreen from "./WelcomeScreen";
 import SearchResults from "./SearchResults";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "..";
+import Icon from "components/Icon";
 import styled from "styled-components/macro";
 
 const StyledIcon = styled(Icon)`

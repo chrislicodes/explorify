@@ -1,8 +1,8 @@
 import React from "react";
 import CardContainer from "./CardContainer";
-import TitleWrapper from "../TitleWrapper";
+import TitleWrapper from "components/TitleWrapper";
 import CardItem from "./CardItem";
-import Loader from "../Loader";
+import Loader from "components/Loader";
 
 const CardSection = ({ data, type, title, link = "/" }) => {
   const content = data.map((item) => (

@@ -1,5 +1,5 @@
 import React from "react";
-import SearchContainer from "../../container/SearchResults";
+import SearchContainer from "container/SearchResults";
 import styled from "styled-components/macro";
 
 const FlexContainer = styled.div`

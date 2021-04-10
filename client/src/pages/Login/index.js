@@ -1,9 +1,9 @@
 import React from "react";
-import SpotifyIcon from "../../components/Icon/SpotifyIcon";
+import SpotifyIcon from "components/Icon/SpotifyIcon";
 import styled from "styled-components/macro";
 import Particles from "react-tsparticles";
 import options from "./particleOptions";
-import theme from "../../styles/theme";
+import theme from "styles/theme";
 
 const FlexContainer = styled.main`
   --absolute-distance: 2rem;

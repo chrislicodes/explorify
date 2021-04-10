@@ -1,7 +1,7 @@
 import React from "react";
-import Loader from "../../components/Loader";
-import TitleWrapper from "../../components/TitleWrapper";
-import SongContainer from "../../components/SongContainer";
+import Loader from "components/Loader";
+import TitleWrapper from "components/TitleWrapper";
+import SongContainer from "container/TrackContainer";
 import useSWR from "swr";
 
 function RecentlyPlayedSongs({ limit = 10 }) {

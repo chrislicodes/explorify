@@ -1,7 +1,7 @@
 import React from "react";
-import Icon from "../Icon";
+import Icon from "components/Icon";
 import { Link } from "react-router-dom";
-import { transformDuration } from "../../utils";
+import { transformDuration } from "utils";
 import styled from "styled-components/macro";
 
 const SongMetaInfo = styled.div`

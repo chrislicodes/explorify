@@ -4,11 +4,11 @@ import SideNav from "./SideNav";
 import HeaderComponents from "./Header";
 
 import styled from "styled-components/macro";
-import theme from "../styles/theme";
+import theme from "styles/theme";
 
-import ROUTES, { RenderRoutes } from "../routes/Routes";
+import ROUTES, { RenderRoutes } from "routes/Routes";
 import useSWR from "swr";
-import Loader from "../components/Loader";
+import Loader from "components/Loader";
 
 // ---------------------------------------
 // -------------  STYLING

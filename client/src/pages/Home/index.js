@@ -1,11 +1,11 @@
 import React from "react";
 import WelcomeUser from "./components/WelcomeUser";
-import TopArtist from "../../container/ArtistAndTracks/TopArtist";
-import TopArtistScroller from "../../container/TopArtistScroller";
-import RecentlyPlayedSongs from "../../container/RecentlyPlayedSongs";
-import TopTracks from "../../container/TopTracks";
+import TopArtist from "container/ArtistAndTracks/TopArtist";
+import TopArtistScroller from "container/TopArtistScroller";
+import RecentlyPlayedSongs from "container/RecentlyPlayedSongs";
+import TopTracks from "container/TopTracks";
 
-import theme from "../../styles/theme";
+import theme from "styles/theme";
 import styled from "styled-components/macro";
 
 // ---------------------------------------

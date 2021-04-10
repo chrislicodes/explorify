@@ -1,5 +1,5 @@
 import React from "react";
-import SongItem from "../SongItem";
+import SongItem from "components/SongItem";
 
 import styled from "styled-components/macro";
 

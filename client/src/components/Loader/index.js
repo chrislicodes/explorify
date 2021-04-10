@@ -6,7 +6,7 @@ const StyledLoader = styled.div`
   & svg {
     height: 5.5rem;
     width: 5.5rem;
-    fill: ${(props) => props.fillColor || "var(--colorgrey-6)"};
+    fill: ${(props) => props.fillColor || "var(--color-grey-6)"};
   }
 `;
 
