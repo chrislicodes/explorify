@@ -7,7 +7,7 @@ import TrackOverview from "../container/TrackOverview/TrackOverview";
 import ArtistOverview from "../container/ArtistOverview/ArtistOverview";
 import AlbumOverview from "../container/AlbumOverview/AlbumOverview";
 import NotFound404 from "../pages/NotFound404/NotFound404";
-import { getAccessToken } from "../auth/auth";
+import { getAccessToken } from "../auth";
 
 // https://www.ryanjyost.com/react-routing/
 

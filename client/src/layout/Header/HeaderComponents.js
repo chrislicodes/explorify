@@ -1,5 +1,5 @@
 import React from "react";
-import { logout } from "../../auth/auth";
+import { logout } from "../../auth";
 
 import Button from "../../components/Button";
 import Icon from "../../components/Icons/Icon";

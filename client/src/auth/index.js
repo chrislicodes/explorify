@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getHashParams } from "../utils";
+import { getHashParams } from "../utils/utils";
 
 //------------------------------------------------
 //---------> AUTH TOKENS

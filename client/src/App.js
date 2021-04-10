@@ -5,7 +5,7 @@ import { SWRConfig } from "swr";
 import GlobalStyles from "./styles/GlobalStyle";
 import Login from "./pages/Login/Login";
 
-import { getAccessToken } from "./auth/auth";
+import { getAccessToken } from "./auth";
 import Explorify from "./layout/Explorify";
 
 const axiosInstance = axios.create({
