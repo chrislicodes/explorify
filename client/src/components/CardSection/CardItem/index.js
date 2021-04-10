@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Icon from "../../Icons/Icon/Icon";
-import PlaceholderImage from "../../PlaceholderImage/PlaceholderImage";
+import Icon from "../../Icon";
+import PlaceholderImage from "../../PlaceholderImage";
 import styled from "styled-components/macro";
 
 // ---------------------------------------

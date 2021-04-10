@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../../../components/Icons/Icon";
+import Icon from "../../../components/Icon";
 import styled from "styled-components/macro";
 import theme from "../../../styles/theme";
 

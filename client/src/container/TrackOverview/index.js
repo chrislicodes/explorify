@@ -1,9 +1,9 @@
 import React from "react";
 import useSWR from "swr";
 import styled from "styled-components/macro";
-import Loader from "../../components/Loader/";
+import Loader from "../../components/Loader";
 import { Link } from "react-router-dom";
-import AudioFeaturesBar from "../../components/AudioFeaturesBar/AudioFeaturesBar";
+import AudioFeaturesBar from "../../components/AudioFeaturesBar";
 
 const FlexContainer = styled.div`
   max-width: 1400px;

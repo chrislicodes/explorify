@@ -1,9 +1,9 @@
 import React from "react";
-import ArtistResults from "./ArtistResults/ArtistResults";
-import AlbumResults from "./AlbumResults/AlbumResults";
-import CardSection from "../../../components/CardSection/CardSection";
+import ArtistResults from "./ArtistResults";
+import AlbumResults from "./AlbumResults";
+import CardSection from "../../../components/CardSection";
 import styled from "styled-components/macro";
-import NothingFound from "../NothingFound/NothingFound";
+import NothingFound from "../NothingFound";
 
 const sortByPopularity = (items) => {
   if (!items) return;

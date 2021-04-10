@@ -1,7 +1,7 @@
 import React from "react";
 
 import SideNav from "./SideNav";
-import HeaderComponents from "./Header/HeaderComponents";
+import HeaderComponents from "./Header";
 
 import styled from "styled-components/macro";
 import theme from "../styles/theme";

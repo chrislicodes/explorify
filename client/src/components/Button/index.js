@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import theme from "../styles/theme";
+import theme from "../../styles/theme";
 
 const ButtonStyled = styled.button`
   height: 100%;

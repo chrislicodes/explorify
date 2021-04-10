@@ -2,7 +2,7 @@ import React from "react";
 import { logout } from "../../auth";
 
 import Button from "../../components/Button";
-import Icon from "../../components/Icons/Icon";
+import Icon from "../../components/Icon";
 import styled from "styled-components";
 import useSWR from "swr";
 import { Link } from "react-router-dom";

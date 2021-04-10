@@ -3,10 +3,10 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import Discover from "../pages/Discover/Discover";
 import Explore from "../pages/Explore/Explore";
-import TrackOverview from "../container/TrackOverview/TrackOverview";
-import ArtistOverview from "../container/ArtistOverview/ArtistOverview";
-import AlbumOverview from "../container/AlbumOverview/AlbumOverview";
-import NotFound404 from "../pages/NotFound404/NotFound404";
+import TrackOverview from "../container/TrackOverview";
+import ArtistOverview from "../container/ArtistOverview";
+import AlbumOverview from "../container/AlbumOverview";
+import NotFound404 from "../pages/NotFound404";
 import { getAccessToken } from "../auth";
 
 // https://www.ryanjyost.com/react-routing/

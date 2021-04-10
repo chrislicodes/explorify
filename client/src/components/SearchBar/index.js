@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../Icons/Icon/Icon";
+import Icon from "../Icon";
 import styled from "styled-components/macro";
 
 const SearchInput = styled.input`

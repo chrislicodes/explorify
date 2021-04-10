@@ -1,5 +1,5 @@
 import React from "react";
-import Icon from "../Icons/Icon";
+import Icon from "../Icon";
 import { Link } from "react-router-dom";
 import { transformDuration } from "../../utils";
 import styled from "styled-components/macro";

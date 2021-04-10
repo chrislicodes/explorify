@@ -1,7 +1,7 @@
 import React from "react";
 import useSWR from "swr";
-import Loader from "../../../components/Loader/Loader";
-import ArtistAndTracks from "../ArtistAndTracks";
+import Loader from "../../../components/Loader";
+import ArtistAndTracks from "..";
 
 const TopArtist = ({ timeRange = "short_term" }) => {
   const { data: artistJSON } = useSWR(

@@ -1,5 +1,5 @@
 import React from "react";
-import SpotifyIcon from "../../components/Icons/SpotifyIcon/SpotifyIcon";
+import SpotifyIcon from "../../components/Icon/SpotifyIcon";
 import styled from "styled-components/macro";
 import Particles from "react-tsparticles";
 import options from "./particleOptions";

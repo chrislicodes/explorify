@@ -1,13 +1,13 @@
 import React from "react";
-import TitleWrapper from "../../components/TitleWrapper/TitleWrapper";
-import SongContainer from "../../components/SongContainer/SongContainer";
-import Icon from "../../components/Icons/Icon/Icon";
-import PlaceholderImage from "../../components/PlaceholderImage/PlaceholderImage";
+import TitleWrapper from "../../components/TitleWrapper";
+import SongContainer from "../../components/SongContainer";
+import Icon from "../../components/Icon";
+import PlaceholderImage from "../../components/PlaceholderImage";
 import { Link } from "react-router-dom";
 import theme from "../../styles/theme";
 import styled from "styled-components/macro";
 import useSWR from "swr";
-import Loader from "../../components/Loader/Loader";
+import Loader from "../../components/Loader";
 
 const ContentWrapper = styled.div`
   --content-height: 25rem;

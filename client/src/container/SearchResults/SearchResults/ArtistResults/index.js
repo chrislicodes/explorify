@@ -1,6 +1,6 @@
 import React from "react";
-import ArtistAndTracks from "../../../ArtistAndTracks/ArtistAndTracks";
-import CardSection from "../../../../components/CardSection/CardSection";
+import ArtistAndTracks from "../../../ArtistAndTracks";
+import CardSection from "../../../../components/CardSection";
 import styled from "styled-components/macro";
 
 const sortArtistArray = (artists) => {

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
 import useSWR from "swr";
-import Loader from "../../components/Loader/Loader";
-import SearchBar from "../../components/SearchBar/SearchBar";
-import WelcomeScreen from "./WelcomeScreen/WelcomeScreen";
-import SearchResults from "./SearchResults/SearchResults";
+import Loader from "../../components/Loader";
+import SearchBar from "../../components/SearchBar";
+import WelcomeScreen from "./WelcomeScreen";
+import SearchResults from "./SearchResults";
 
 const FixedSearchbar = styled.div`
   position: fixed;
