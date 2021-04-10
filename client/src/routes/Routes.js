@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "../pages/Home/Home";
-import Analyze from "../pages/Analyze/Analyze";
+import Discover from "../pages/Discover/Discover";
 import Explore from "../pages/Explore/Explore";
-import About from "../pages/About/About";
-import TrackOverview from "../container/TrackOverview/TrackOverview";
-import ArtistOverview from "../container/ArtistOverview/ArtistOverview";
-import { getAccessToken } from "../auth/auth";
+import TrackOverview from "../container/TrackOverview";
+import ArtistOverview from "../container/ArtistOverview";
+import AlbumOverview from "../container/AlbumOverview";
+import NotFound404 from "../pages/NotFound404";
+import { getAccessToken } from "../auth";
 
 // https://www.ryanjyost.com/react-routing/
 
@@ -36,10 +37,22 @@ const ROUTES = [
         component: Home,
       },
       {
-        path: "/analyze",
-        key: "ANALYZE",
+        path: "/discover",
+        key: "DISCOVER",
         exact: true,
-        component: Analyze,
+        component: Discover,
+      },
+      {
+        path: "/top-artists",
+        key: "TOP_ARTISTS",
+        exact: true,
+        component: () => <div>TopArtist</div>,
+      },
+      {
+        path: "/top-tracks",
+        key: "TOP_TRACKS",
+        exact: true,
+        component: () => <div>TopTracks</div>,
       },
       {
         path: "/explore",
@@ -48,14 +61,14 @@ const ROUTES = [
         component: Explore,
       },
       {
-        path: "/explore/artists/top",
-        key: "EXPLORE_TOP_ARTISTS",
+        path: "/explore/recently-played",
+        key: "RECENTLY_PLAYED",
         exact: true,
-        component: () => <div>TopArtist</div>,
+        component: () => <div>RecentlyPlayed</div>,
       },
       {
         path: "/explore/artist/:artistID",
-        key: "EXPLORE_TRACK",
+        key: "EXPLORE_ARTIST",
         exact: true,
         component: ArtistOverview,
       },
@@ -66,10 +79,10 @@ const ROUTES = [
         component: TrackOverview,
       },
       {
-        path: "/about",
-        key: "ABOUT",
+        path: "/explore/album/:albumID",
+        key: "EXPLORE_ALBUM",
         exact: true,
-        component: About,
+        component: AlbumOverview,
       },
     ],
   },
@@ -97,7 +110,7 @@ export function RenderRoutes({ routes }) {
       {routes.map((route, i) => {
         return <RouteWithSubRoutes key={route.key} {...route} />;
       })}
-      <Route component={() => <h1>Not Found!</h1>} />
+      <Route component={NotFound404} />
     </Switch>
   );
 }

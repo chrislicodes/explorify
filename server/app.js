@@ -20,7 +20,7 @@ if (process.env.NODE_ENV !== "production") {
   FRONTEND_URI = "http://localhost:3000";
 }
 
-const app = express();
+const app = express(); //research: express router -> app.use(router)
 
 app.use(express.json());
 app.use(cookieParser());
@@ -125,7 +125,10 @@ app.get("/refresh-token", (req, res, next) => {
       const { access_token } = response.data;
       res.status(200).json({ access_token });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send(); //check axios documentation for err.response.error
+    });
 });
 
 app.listen(PORT, () => {
