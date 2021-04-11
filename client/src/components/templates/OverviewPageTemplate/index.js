@@ -25,10 +25,9 @@ const OverviewHeader = styled.header`
 
 const ImageContainer = styled.div`
   width: 30rem;
-  height: 30rem;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
 
   & img {
-    height: 100%;
     width: 100%;
   }
 `;
