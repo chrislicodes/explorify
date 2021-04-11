@@ -1,7 +1,6 @@
 import React from "react";
-import Icon from "components/Icon";
+import Icon from "components/shared/Icon";
 import { Link } from "react-router-dom";
-import { transformDuration } from "utils";
 import styled from "styled-components/macro";
 
 const TrackMetaInfo = styled.div`
@@ -16,7 +15,7 @@ const TrackMetaInfo = styled.div`
   }
 `;
 
-const TrackTitle = styled.p`
+const TrackTitle = styled.h1`
   font-size: var(--font-size-md-2);
   font-weight: 500;
   color: var(--color-white);
@@ -100,20 +99,22 @@ const Duration = styled.time`
   margin-left: 1rem;
 `;
 
-const TrackItem = ({ trackData, displayImage, pos }) => {
-  const album = trackData.album;
-  const image = album.images[2].url;
-  const songTitle = trackData.name;
-  const artist = trackData.artists[0];
-  const duration = transformDuration(trackData.duration_ms);
-  const id = trackData.id;
-
+const TrackItem = ({
+  albumName,
+  imageURL,
+  trackTitle,
+  artistName,
+  trackDuration,
+  trackID,
+  displayImage,
+  pos,
+}) => {
   return (
     <TrackItemWrapper>
-      <Link to={`/explore/track/${id}`}>
+      <Link to={`/explore/track/${trackID}`}>
         <TrackDisplay>
           {displayImage ? (
-            <AlbumCover src={image} alt={album.name + " Album Cover"} />
+            <AlbumCover src={imageURL} alt={albumName + " Album Cover"} />
           ) : (
             <TrackIndex>{String(pos + 1).padStart(2, "0")}</TrackIndex>
           )}
@@ -124,17 +125,13 @@ const TrackItem = ({ trackData, displayImage, pos }) => {
         </TrackDisplay>
         <TrackMetaInfo>
           <TrackTitle>
-            <span>{songTitle}</span>
+            <span>{trackTitle}</span>
           </TrackTitle>
           <p>
-            <span>
-              {artist.name} | {album.name}
-            </span>
+            {artistName} | {albumName}
           </p>
         </TrackMetaInfo>
-        <div>
-          <Duration>{duration}</Duration>
-        </div>
+        <Duration>{trackDuration}</Duration>
       </Link>
     </TrackItemWrapper>
   );

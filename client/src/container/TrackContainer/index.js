@@ -1,7 +1,7 @@
 import React from "react";
-import TrackItem from "components/TrackItem";
-
+import TrackItem from "components/items/TrackItem";
 import styled from "styled-components/macro";
+import { transformDuration } from "utils";
 
 const StyledTrackContainer = styled.div`
   display: flex;
@@ -44,11 +44,29 @@ const TrackList = styled.ul`
 `;
 
 const TrackContainer = ({ tracks, className, displayImage }) => {
-  const trackArr = tracks.map((item, index) => (
-    <li key={item.id + index}>
-      <TrackItem trackData={item} pos={index} displayImage={displayImage} />
-    </li>
-  ));
+  const trackArr = tracks.map((track, index) => {
+    const albumName = track.album.name;
+    const imageURL = track.album.images[2].url;
+    const trackTitle = track.name;
+    const artistName = track.artists[0].name;
+    const trackDuration = transformDuration(track.duration_ms);
+    const trackID = track.id;
+
+    return (
+      <li key={trackID + index}>
+        <TrackItem
+          albumName={albumName}
+          imageURL={imageURL}
+          trackTitle={trackTitle}
+          artistName={artistName}
+          trackDuration={trackDuration}
+          trackID={trackID}
+          pos={index}
+          displayImage={displayImage}
+        />
+      </li>
+    );
+  });
 
   return (
     <StyledTrackContainer className={className}>

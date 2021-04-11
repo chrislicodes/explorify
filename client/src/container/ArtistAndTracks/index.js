@@ -1,13 +1,13 @@
 import React from "react";
-import SectionTemplate from "components/SectionTemplate";
+import SectionTemplate from "components/templates/SectionTemplate";
 import TrackContainer from "container/TrackContainer";
-import Icon from "components/Icon";
-import PlaceholderImage from "components/PlaceholderImage";
+import Icon from "components/shared/Icon";
+import PlaceholderImage from "components/shared/PlaceholderImage";
 import { Link } from "react-router-dom";
 import theme from "styles/theme";
 import styled from "styled-components/macro";
 import useSWR from "swr";
-import Loader from "components/Loader";
+import Loader from "components/shared/Loader";
 
 const ContentWrapper = styled.div`
   --content-height: 25rem;

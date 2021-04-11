@@ -1,6 +1,6 @@
 import React from "react";
-import CardSection from "components/CardSection";
-import Loader from "components/Loader";
+import CardSection from "container/CardSection";
+import Loader from "components/shared/Loader";
 import useSWR from "swr";
 
 const TopArtistScroller = ({

@@ -6,7 +6,7 @@ import GlobalStyles from "styles/GlobalStyle";
 import Login from "pages/Login";
 
 import { getAccessToken } from "auth";
-import Explorify from "layout";
+import Explorify from "components/templates/AppTemplate";
 
 const axiosInstance = axios.create({
   baseURL: "https://api.spotify.com/v1",

@@ -1,6 +1,6 @@
 import React from "react";
-import Loader from "components/Loader";
-import SectionTemplate from "components/SectionTemplate";
+import Loader from "components/shared/Loader";
+import SectionTemplate from "components/templates/SectionTemplate";
 import TrackContainer from "container/TrackContainer";
 import useSWR from "swr";
 

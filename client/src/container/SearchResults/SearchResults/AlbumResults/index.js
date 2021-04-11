@@ -1,5 +1,5 @@
 import React from "react";
-import CardSection from "components/CardSection";
+import CardSection from "container/CardSection";
 import useSWR from "swr";
 
 const filterArtists = (artists) => {

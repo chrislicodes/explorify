@@ -1,7 +1,7 @@
 import React from "react";
 import ArtistResults from "./ArtistResults";
 import AlbumResults from "./AlbumResults";
-import CardSection from "components/CardSection";
+import CardSection from "container/CardSection";
 import styled from "styled-components/macro";
 import NothingFound from "../NothingFound";
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { logout } from "auth";
 
-import Button from "components/Button";
-import Icon from "components/Icon";
+import Button from "components/shared/Button";
+import Icon from "components/shared/Icon";
 import styled from "styled-components";
 import useSWR from "swr";
 import { Link } from "react-router-dom";

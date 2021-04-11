@@ -1,9 +1,9 @@
 import React from "react";
 import useSWR from "swr";
 import styled from "styled-components/macro";
-import Loader from "components/Loader";
+import Loader from "components/shared/Loader";
 import { Link } from "react-router-dom";
-import AudioFeaturesBar from "components/AudioFeaturesBarChart";
+import AudioFeaturesBar from "components/shared/AudioFeaturesBarChart";
 
 const FlexContainer = styled.div`
   max-width: 1400px;
@@ -22,7 +22,7 @@ const FlexContainer = styled.div`
   }
 `;
 
-const TrackHeader = styled.div`
+const TrackHeader = styled.header`
   display: flex;
   gap: 3rem;
 `;
