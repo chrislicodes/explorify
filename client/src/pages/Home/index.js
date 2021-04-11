@@ -2,7 +2,7 @@ import React from "react";
 import WelcomeUser from "./components/WelcomeUser";
 import TopArtist from "container/ArtistAndTracks/TopArtist";
 import TopArtistScroller from "container/TopArtistScroller";
-import RecentlyPlayedSongs from "container/RecentlyPlayedSongs";
+import RecentlyPlayedTracks from "container/RecentlyPlayedTracks";
 import TopTracks from "container/TopTracks";
 
 import theme from "styles/theme";
@@ -20,7 +20,7 @@ const FlexContainer = styled.div`
   padding-bottom: 3rem;
 `;
 
-const SongOverview = styled.div`
+const TrackOverview = styled.div`
   display: flex;
   gap: 3rem;
   justify-content: space-between;
@@ -46,10 +46,10 @@ const Home = () => {
       <WelcomeUser />
       <TopArtist />
       <TopArtistScroller offset={1} />
-      <SongOverview>
+      <TrackOverview>
         <TopTracks />
-        <RecentlyPlayedSongs />
-      </SongOverview>
+        <RecentlyPlayedTracks />
+      </TrackOverview>
     </FlexContainer>
   );
 };

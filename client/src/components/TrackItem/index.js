@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { transformDuration } from "utils";
 import styled from "styled-components/macro";
 
-const SongMetaInfo = styled.div`
+const TrackMetaInfo = styled.div`
   flex: 1;
   margin-left: var(--spacing-size-sm-4);
   min-width: 0;
@@ -16,7 +16,7 @@ const SongMetaInfo = styled.div`
   }
 `;
 
-const SongTitle = styled.p`
+const TrackTitle = styled.p`
   font-size: var(--font-size-md-2);
   font-weight: 500;
   color: var(--color-white);
@@ -38,7 +38,7 @@ const SongTitle = styled.p`
   }
 `;
 
-const SongDisplayOverlay = styled(Icon)`
+const TrackDisplayOverlay = styled(Icon)`
   position: absolute;
   top: 0;
   left: 0;
@@ -62,7 +62,7 @@ const SongDisplayOverlay = styled(Icon)`
   }
 `;
 
-const SongItemWrapper = styled.article`
+const TrackItemWrapper = styled.article`
   & a {
     display: flex;
     align-items: center;
@@ -73,20 +73,20 @@ const SongItemWrapper = styled.article`
     letter-spacing: 0.15rem;
   }
 
-  &:hover ${SongDisplayOverlay} {
+  &:hover ${TrackDisplayOverlay} {
     opacity: 1;
   }
 
-  &:hover ${SongTitle} span::before {
+  &:hover ${TrackTitle} span::before {
     width: 100%;
   }
 `;
 
-const SongDisplay = styled.div`
+const TrackDisplay = styled.div`
   position: relative;
 `;
 
-const SongIndex = styled.p`
+const TrackIndex = styled.p`
   font-size: var(--font-size-lg);
 `;
 
@@ -100,7 +100,7 @@ const Duration = styled.time`
   margin-left: 1rem;
 `;
 
-const SongItem = ({ trackData, displayImage, pos }) => {
+const TrackItem = ({ trackData, displayImage, pos }) => {
   const album = trackData.album;
   const image = album.images[2].url;
   const songTitle = trackData.name;
@@ -109,35 +109,35 @@ const SongItem = ({ trackData, displayImage, pos }) => {
   const id = trackData.id;
 
   return (
-    <SongItemWrapper>
+    <TrackItemWrapper>
       <Link to={`/explore/track/${id}`}>
-        <SongDisplay>
+        <TrackDisplay>
           {displayImage ? (
             <AlbumCover src={image} alt={album.name + " Album Cover"} />
           ) : (
-            <SongIndex>{String(pos + 1).padStart(2, "0")}</SongIndex>
+            <TrackIndex>{String(pos + 1).padStart(2, "0")}</TrackIndex>
           )}
-          <SongDisplayOverlay
+          <TrackDisplayOverlay
             type="icon-notification"
             displayImage={displayImage}
           />
-        </SongDisplay>
-        <SongMetaInfo>
-          <SongTitle>
+        </TrackDisplay>
+        <TrackMetaInfo>
+          <TrackTitle>
             <span>{songTitle}</span>
-          </SongTitle>
+          </TrackTitle>
           <p>
             <span>
               {artist.name} | {album.name}
             </span>
           </p>
-        </SongMetaInfo>
+        </TrackMetaInfo>
         <div>
           <Duration>{duration}</Duration>
         </div>
       </Link>
-    </SongItemWrapper>
+    </TrackItemWrapper>
   );
 };
 
-export default SongItem;
+export default TrackItem;

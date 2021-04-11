@@ -1,6 +1,6 @@
 import React from "react";
 import CardContainer from "./CardContainer";
-import TitleWrapper from "components/TitleWrapper";
+import SectionTemplate from "components/SectionTemplate";
 import CardItem from "./CardItem";
 import Loader from "components/Loader";
 
@@ -13,9 +13,9 @@ const CardSection = ({ data, type, title, link = "/" }) => {
 
   return (
     <>
-      <TitleWrapper headline={title || "Section"} link={link}>
+      <SectionTemplate headline={title || "Section"} link={link}>
         <CardContainer>{content || <Loader />}</CardContainer>
-      </TitleWrapper>
+      </SectionTemplate>
     </>
   );
 };

@@ -1,16 +1,16 @@
 import React from "react";
-import SongItem from "components/SongItem";
+import TrackItem from "components/TrackItem";
 
 import styled from "styled-components/macro";
 
-const StyledSongContainer = styled.div`
+const StyledTrackContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
 `;
 
-const SongList = styled.ul`
+const TrackList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-size-sm-2);
@@ -43,18 +43,18 @@ const SongList = styled.ul`
   }
 `;
 
-const SongContainer = ({ tracks, className, displayImage }) => {
+const TrackContainer = ({ tracks, className, displayImage }) => {
   const trackArr = tracks.map((item, index) => (
     <li key={item.id + index}>
-      <SongItem trackData={item} pos={index} displayImage={displayImage} />
+      <TrackItem trackData={item} pos={index} displayImage={displayImage} />
     </li>
   ));
 
   return (
-    <StyledSongContainer className={className}>
-      <SongList>{trackArr}</SongList>
-    </StyledSongContainer>
+    <StyledTrackContainer className={className}>
+      <TrackList>{trackArr}</TrackList>
+    </StyledTrackContainer>
   );
 };
 
-export default SongContainer;
+export default TrackContainer;

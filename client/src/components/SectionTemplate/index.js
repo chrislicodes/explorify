@@ -51,7 +51,7 @@ const ShowMoreLink = styled(Link)`
   }
 `;
 
-const TitleWrapper = ({ children, headline, link }) => {
+const SectionTemplate = ({ children, headline, link }) => {
   return (
     <HeadlineContainer>
       <ContainerHeader>
@@ -66,4 +66,4 @@ const TitleWrapper = ({ children, headline, link }) => {
   );
 };
 
-export default TitleWrapper;
+export default SectionTemplate;
