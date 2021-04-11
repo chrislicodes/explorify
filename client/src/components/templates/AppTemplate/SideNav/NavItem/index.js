@@ -55,7 +55,6 @@ const NavLinkStyled = styled(NavLink).attrs({
 
 const NavItemDescription = styled.div`
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   width: 20rem;
   z-index: 1;
@@ -94,6 +93,18 @@ const NavItemDescription = styled.div`
       margin: 0.5rem 0;
     }
   }
+
+  @media ${theme.bp.mobileM} {
+    & p {
+      font-size: var(--font-size-xs);
+    }
+  }
+
+  @media ${theme.bp.mobileS} {
+    & p {
+      font-size: var(--font-size-base);
+    }
+  }
 `;
 
 const NavItemWrapper = styled.li`
@@ -126,9 +137,6 @@ const NavItemWrapper = styled.li`
     }
   }
 `;
-// ---------------------------------------
-// -------------  LOGIC
-// ---------------------------------------
 
 /**
  * Returns true if the current location is active on the NavItem

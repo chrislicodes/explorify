@@ -12,7 +12,7 @@ const HeadlineContainer = styled.section`
   gap: 2rem;
 `;
 
-const ContainerHeader = styled.div`
+const ContainerHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;

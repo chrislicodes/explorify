@@ -4,10 +4,6 @@ import Icon from "components/shared/Icon";
 import PlaceholderImage from "components/shared/PlaceholderImage";
 import styled from "styled-components/macro";
 
-// ---------------------------------------
-// -------------  STYLING
-// ---------------------------------------
-
 const StyledIcon = styled(Icon)``;
 const StyledLink = styled(Link)``;
 const StyledPlaceholderImage = styled(PlaceholderImage)``;
@@ -105,43 +101,8 @@ const Info = styled.div`
     text-align: center;
   }
 `;
-// ---------------------------------------
-// -------------  LOGIC
-// ---------------------------------------
 
-const processData = (data, type) => {
-  let link = `${type}/${data.id}`;
-  let imageURL = data.images?.length > 0 && data.images[0].url;
-  let primaryInfo = data.name;
-  let secondaryInfo;
-
-  switch (type) {
-    case "artist":
-      secondaryInfo = data.genres[0] || "Artist";
-      break;
-
-    case "album":
-      secondaryInfo = data.artists[0].name;
-      break;
-
-    case "track":
-      imageURL = data.album.images.length > 0 && data.album.images[1].url;
-      secondaryInfo = data.artists[0].name;
-      break;
-
-    default:
-      break;
-  }
-
-  return { imageURL, link, primaryInfo, secondaryInfo };
-};
-
-const CardItem = ({ data, type }) => {
-  const { imageURL, link, primaryInfo, secondaryInfo } = processData(
-    data,
-    type
-  );
-
+const CardItem = ({ imageURL, link, primaryInfo, secondaryInfo, type }) => {
   return (
     <ArtistWrapper>
       <StyledLink to={`/explore/${link}`}>

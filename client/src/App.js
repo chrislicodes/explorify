@@ -6,7 +6,9 @@ import GlobalStyles from "styles/GlobalStyle";
 import Login from "pages/Login";
 
 import { getAccessToken } from "auth";
-import Explorify from "components/templates/AppTemplate";
+import AppTemplate from "components/templates/AppTemplate";
+
+import ROUTES, { RenderRoutes } from "routes/Routes";
 
 const axiosInstance = axios.create({
   baseURL: "https://api.spotify.com/v1",
@@ -33,7 +35,9 @@ const App = () => {
               axiosInstance.get(endpointURL).then((res) => res.data),
           }}
         >
-          <Explorify />
+          <AppTemplate>
+            <RenderRoutes routes={ROUTES} />
+          </AppTemplate>
         </SWRConfig>
       ) : (
         <Login />

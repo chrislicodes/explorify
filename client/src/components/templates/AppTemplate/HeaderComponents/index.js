@@ -1,6 +1,5 @@
 import React from "react";
 import { logout } from "auth";
-
 import Button from "components/shared/Button";
 import Icon from "components/shared/Icon";
 import styled from "styled-components";

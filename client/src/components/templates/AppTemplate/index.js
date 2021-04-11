@@ -1,14 +1,10 @@
 import React from "react";
 
 import SideNav from "./SideNav";
-import HeaderComponents from "./Header";
+import HeaderComponents from "./HeaderComponents";
 
 import styled from "styled-components/macro";
 import theme from "styles/theme";
-
-import ROUTES, { RenderRoutes } from "routes/Routes";
-import useSWR from "swr";
-import Loader from "components/shared/Loader";
 
 // ---------------------------------------
 // -------------  STYLING
@@ -107,30 +103,20 @@ const Header = styled.header`
 // -------------  LOGIC
 // ---------------------------------------
 
-const Explorify = () => {
-  const { data: user } = useSWR("/me");
-
+const AppTemplate = ({ children, user }) => {
   return (
     <AppContainer>
       <NavLayout>
         <SideNav />
       </NavLayout>
       <ContentLayout>
-        {user ? (
-          <>
-            <Header>
-              <HeaderComponents />
-            </Header>
-            <Page>
-              <RenderRoutes routes={ROUTES} />
-            </Page>
-          </>
-        ) : (
-          <Loader />
-        )}
+        <Header>
+          <HeaderComponents user={user} />
+        </Header>
+        <Page>{children}</Page>
       </ContentLayout>
     </AppContainer>
   );
 };
 
-export default Explorify;
+export default AppTemplate;

@@ -1,7 +1,6 @@
 import React from "react";
 import NavItem from "./NavItem";
 import AppTitle from "./AppTitle";
-
 import styled from "styled-components/macro";
 
 const navItems = [

@@ -5,7 +5,7 @@ import styled from "styled-components/macro";
 import theme from "styles/theme";
 import mixins from "styles/mixins";
 
-const SectionTemplate = styled.div`
+const TitleWrapper = styled.div`
   & a {
     ${mixins.flexCenter}
 
@@ -28,12 +28,12 @@ const SectionTemplate = styled.div`
 
 const AppTitle = () => {
   return (
-    <SectionTemplate>
+    <TitleWrapper>
       <Link to="/">
         <SpotifyIcon />
         <h1>Explorify</h1>
       </Link>
-    </SectionTemplate>
+    </TitleWrapper>
   );
 };
 

@@ -1,13 +1,16 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
+import { getAccessToken } from "auth";
 import Home from "pages/Home";
 import Discover from "pages/Discover";
 import Explore from "pages/Explore";
-import TrackOverview from "container/TrackOverview";
-import ArtistOverview from "container/ArtistOverview";
-import AlbumOverview from "container/AlbumOverview";
+import TrackOverview from "pages/Explore/TrackOverview";
+import ArtistOverview from "pages/Explore/ArtistOverview";
+import AlbumOverview from "pages/Explore/AlbumOverview";
+import RecentlyPlayedTracks from "pages/Explore/RecentlyPlayedTracks";
+import TopTracks from "pages/TopTracks";
+import TopArtists from "pages/TopArtists";
 import NotFound404 from "pages/NotFound404";
-import { getAccessToken } from "auth";
 
 // https://www.ryanjyost.com/react-routing/
 
@@ -46,13 +49,13 @@ const ROUTES = [
         path: "/top-artists",
         key: "TOP_ARTISTS",
         exact: true,
-        component: () => <div>TopArtist</div>,
+        component: TopArtists,
       },
       {
         path: "/top-tracks",
         key: "TOP_TRACKS",
         exact: true,
-        component: () => <div>TopTracks</div>,
+        component: TopTracks,
       },
       {
         path: "/explore",
@@ -64,7 +67,7 @@ const ROUTES = [
         path: "/explore/recently-played",
         key: "RECENTLY_PLAYED",
         exact: true,
-        component: () => <div>RecentlyPlayed</div>,
+        component: RecentlyPlayedTracks,
       },
       {
         path: "/explore/artist/:artistID",
