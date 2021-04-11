@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "components/shared/Loader";
 import SectionTemplate from "components/templates/SectionTemplate";
-import TrackContainer from "container/TrackContainer";
+import TrackContainer from "container/TrackWrapperTemplate";
 import useSWR from "swr";
 
 function RecentlyPlayedTracks({ limit = 10 }) {

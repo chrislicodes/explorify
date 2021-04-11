@@ -54,8 +54,8 @@ const CardList = styled.ul`
   }
 `;
 
-const CardContainer = ({ children }) => {
+const CardWrapperTemplate = ({ children }) => {
   return <CardList>{children}</CardList>;
 };
 
-export default CardContainer;
+export default CardWrapperTemplate;

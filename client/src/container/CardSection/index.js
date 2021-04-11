@@ -1,5 +1,5 @@
 import React from "react";
-import CardContainer from "./CardContainer";
+import CardContainer from "../../components/templates/CardWrapperTemplate";
 import SectionTemplate from "components/templates/SectionTemplate";
 import CardItem from "../../components/items/CardItem";
 import Loader from "components/shared/Loader";

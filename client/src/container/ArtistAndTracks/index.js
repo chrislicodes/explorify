@@ -1,6 +1,6 @@
 import React from "react";
 import SectionTemplate from "components/templates/SectionTemplate";
-import TrackContainer from "container/TrackContainer";
+import TrackContainer from "container/TrackWrapperTemplate";
 import Icon from "components/shared/Icon";
 import PlaceholderImage from "components/shared/PlaceholderImage";
 import { Link } from "react-router-dom";

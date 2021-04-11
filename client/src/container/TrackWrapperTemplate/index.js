@@ -3,7 +3,7 @@ import TrackItem from "components/items/TrackItem";
 import styled from "styled-components/macro";
 import { transformDuration } from "utils";
 
-const StyledTrackContainer = styled.div`
+const StyledTrackWrapperTemplate = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -43,7 +43,7 @@ const TrackList = styled.ul`
   }
 `;
 
-const TrackContainer = ({ tracks, className, displayImage }) => {
+const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
   const trackArr = tracks.map((track, index) => {
     const albumName = track.album.name;
     const imageURL = track.album.images[2].url;
@@ -69,10 +69,10 @@ const TrackContainer = ({ tracks, className, displayImage }) => {
   });
 
   return (
-    <StyledTrackContainer className={className}>
+    <StyledTrackWrapperTemplate className={className}>
       <TrackList>{trackArr}</TrackList>
-    </StyledTrackContainer>
+    </StyledTrackWrapperTemplate>
   );
 };
 
-export default TrackContainer;
+export default TrackWrapperTemplate;
