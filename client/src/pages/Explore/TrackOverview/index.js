@@ -4,94 +4,13 @@ import styled from "styled-components/macro";
 import Loader from "components/shared/Loader";
 import { Link } from "react-router-dom";
 import AudioFeaturesBar from "components/shared/AudioFeaturesBarChart";
-
-const FlexContainer = styled.div`
-  max-width: 1400px;
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 0 3rem;
-  padding-bottom: 5rem;
-  gap: 3rem;
-
-  & > * {
-    width: 100%;
-  }
-`;
-
-const TrackHeader = styled.header`
-  display: flex;
-  gap: 3rem;
-`;
-
-const TrackDescription = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  max-height: 100%;
-  gap: 1rem;
-  margin-top: 1rem;
-`;
-
-const AlbumImageContainer = styled.div`
-  width: 30rem;
-  height: 30rem;
-
-  & img {
-    height: 100%;
-    width: 100%;
-  }
-`;
+import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
 
 const TrackInformation = styled.div``;
 const AudioFeatures = styled.div`
-  height: 60%;
+  height: 450px;
   width: 100%;
-  /* max-width: 1000px; */
   align-self: flex-start;
-`;
-
-const TrackName = styled.p`
-  font-size: var(--font-size-xxxxl);
-  font-weight: 600;
-  line-height: 1;
-`;
-const Artists = styled.p`
-  font-size: var(--font-size-xxl);
-  & a {
-    color: var(--color-spotify-green);
-
-    &:hover {
-      border-bottom: 1px solid var(--color-spotify-green);
-    }
-  }
-`;
-const AlbumInfo = styled.p`
-  font-size: var(--font-size-lg);
-  color: var(--color-grey-5);
-`;
-
-const PlayButton = styled.a`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 18rem;
-  height: 4.5rem;
-  margin-top: 1rem;
-  border-radius: 15rem;
-  font-weight: 500;
-  font-size: var(--font-size-md-2);
-  user-select: none;
-  cursor: pointer;
-  background-color: var(--color-spotify-green);
-  transition: all 0.1s ease-in;
-
-  &:hover {
-    background-color: var(--color-spotify-logo-green);
-  }
 `;
 
 const prepareArtists = (artists) => {
@@ -180,37 +99,26 @@ function TrackOverview(props) {
     (Boolean(audioFeatures) && prepareAudioFeatures(audioFeatures)) || [];
 
   return (
-    <FlexContainer>
+    <>
       {trackInformation ? (
         <>
-          <TrackHeader>
-            <AlbumImageContainer>
-              <img src={albumImageURL} alt={albumName} />
-            </AlbumImageContainer>
-            <TrackDescription>
-              <TrackName>{trackName}</TrackName>
-              <Artists>{artists}</Artists>
-              <AlbumInfo>
-                {albumName} · {albumReleaseYear}
-              </AlbumInfo>
-              <PlayButton
-                href={trackLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Play on Spotify
-              </PlayButton>
-            </TrackDescription>
-          </TrackHeader>
-          <TrackInformation>HERE GOES A GRID</TrackInformation>
-          <AudioFeatures>
-            <AudioFeaturesBar data={audioData} />
-          </AudioFeatures>
+          <OverviewPageTemplate
+            imageURL={albumImageURL}
+            title={trackName}
+            secondaryInfo={artists}
+            additionalInfo={`${albumName} · ${albumReleaseYear}`}
+            playLink={trackLink}
+          >
+            <TrackInformation>HERE GOES A GRID</TrackInformation>
+            <AudioFeatures>
+              <AudioFeaturesBar data={audioData} />
+            </AudioFeatures>
+          </OverviewPageTemplate>
         </>
       ) : (
         <Loader />
       )}
-    </FlexContainer>
+    </>
   );
 }
 
