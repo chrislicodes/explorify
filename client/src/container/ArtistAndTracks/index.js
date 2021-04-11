@@ -1,13 +1,13 @@
 import React from "react";
-import TitleWrapper from "../../components/TitleWrapper";
-import SongContainer from "../../components/SongContainer";
-import Icon from "../../components/Icon";
-import PlaceholderImage from "../../components/PlaceholderImage";
+import SectionTemplate from "components/templates/SectionTemplate";
+import TrackContainer from "container/TrackWrapperTemplate";
+import Icon from "components/shared/Icon";
+import PlaceholderImage from "components/shared/PlaceholderImage";
 import { Link } from "react-router-dom";
-import theme from "../../styles/theme";
+import theme from "styles/theme";
 import styled from "styled-components/macro";
 import useSWR from "swr";
-import Loader from "../../components/Loader";
+import Loader from "components/shared/Loader";
 
 const ContentWrapper = styled.div`
   --content-height: 25rem;
@@ -62,7 +62,7 @@ const ArtistImageWrapper = styled.div`
   }
 `;
 
-const StyledSongContainer = styled(SongContainer)`
+const StyledTrackContainer = styled(TrackContainer)`
   padding: 0.35rem 0;
   padding-right: 0;
   min-width: 0;
@@ -89,7 +89,7 @@ const ArtistAndTracks = ({
   return (
     <>
       {tracks ? (
-        <TitleWrapper
+        <SectionTemplate
           headline={`${headline} - ${artist.name}`}
           link={titleLink}
         >
@@ -104,12 +104,12 @@ const ArtistAndTracks = ({
                 <ImageOverlay type="icon-notification" />
               </Link>
             </ArtistImageWrapper>
-            <StyledSongContainer
+            <StyledTrackContainer
               tracks={tracks.tracks.slice(0, nTracks)}
               displayImage={false}
             />
           </ContentWrapper>
-        </TitleWrapper>
+        </SectionTemplate>
       ) : (
         <Loader />
       )}

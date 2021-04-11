@@ -1,7 +1,7 @@
 import React from "react";
-import Loader from "../../components/Loader";
-import TitleWrapper from "../../components/TitleWrapper";
-import SongContainer from "../../components/SongContainer";
+import Loader from "components/shared/Loader";
+import SectionTemplate from "components/templates/SectionTemplate";
+import TrackContainer from "container/TrackWrapperTemplate";
 import useSWR from "swr";
 
 function TopTracks({ timeRange = "short_term", limit = 10 }) {
@@ -12,9 +12,9 @@ function TopTracks({ timeRange = "short_term", limit = 10 }) {
   return (
     <>
       {topTracks ? (
-        <TitleWrapper headline={"Your top tracks"} link={"/top-tracks"}>
-          <SongContainer tracks={topTracks.items} displayImage={true} />
-        </TitleWrapper>
+        <SectionTemplate headline={"Your top tracks"} link={"/top-tracks"}>
+          <TrackContainer tracks={topTracks.items} displayImage={true} />
+        </SectionTemplate>
       ) : (
         <Loader />
       )}

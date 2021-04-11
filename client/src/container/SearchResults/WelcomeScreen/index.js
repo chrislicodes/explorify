@@ -1,7 +1,7 @@
 import React from "react";
-import Icon from "../../../components/Icon";
+import Icon from "components/shared/Icon";
 import styled from "styled-components/macro";
-import theme from "../../../styles/theme";
+import theme from "styles/theme";
 
 const FlexContainer = styled.div`
   display: flex;
