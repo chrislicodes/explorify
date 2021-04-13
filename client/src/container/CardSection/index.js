@@ -80,7 +80,7 @@ const CardSection = ({
         )}
       </SectionTemplate>
     </>
-  ); //the loader here should be within the component because it is UI related
+  );
 };
 
 export default CardSection;
