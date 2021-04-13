@@ -10,7 +10,9 @@ const prepareArtistInformation = function (artist) {
     artistName: artist.name,
     artistImageURL: artist.images.length > 0 && artist.images[0].url,
     artistLink: artist.external_urls.spotify,
-    genres: artist.genres.reduce((prev, cur) => [prev, " | ", cur]),
+    genres:
+      artist.genres.length > 0 &&
+      artist.genres.reduce((prev, cur) => [prev, " | ", cur]),
     followers: artist.followers.total,
     popularity: artist.popularity,
   };
@@ -40,8 +42,6 @@ function ArtistOverview(props) {
       `/artists/${artistID}/top-tracks?country=${user.country}`
   );
 
-  console.log(artistAlbums);
-
   const {
     artistName,
     artistImageURL,
@@ -61,6 +61,7 @@ function ArtistOverview(props) {
             secondaryInfo={genres}
             additionalInfo={`Followers: ${followers} · Popularity: ${popularity}`}
             playLink={artistLink}
+            buttonLabel="Play on Spotify"
           >
             {artistTopTracks ? (
               <CardSection
@@ -76,7 +77,7 @@ function ArtistOverview(props) {
                 data={artistRelatedArtists.artists}
                 type="artist"
                 title="Related Artists"
-              />
+              /> // PROVIDE URL IN THE CONTAINER AND ALSO HANDLE SHOWING THE LOADER THERE
             ) : (
               <Loader />
             )}
