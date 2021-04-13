@@ -74,7 +74,7 @@ const CardSection = ({
     <>
       <SectionTemplate headline={title || "Section"} link={link}>
         {renderData.length > 0 ? (
-          <CardWrapperTemplate>{content || <Loader />}</CardWrapperTemplate>
+          <CardWrapperTemplate>{content}</CardWrapperTemplate>
         ) : (
           <Loader />
         )}
