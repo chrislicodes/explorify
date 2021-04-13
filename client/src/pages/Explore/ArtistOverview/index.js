@@ -1,6 +1,5 @@
 import React from "react";
 import useSWR from "swr";
-import styled from "styled-components/macro";
 import Loader from "components/shared/Loader";
 import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
 import CardSection from "container/CardSection";
@@ -27,21 +26,6 @@ function ArtistOverview(props) {
     () => artistID && `/artists/${artistID}`
   );
 
-  const { data: artistRelatedArtists } = useSWR(
-    () => artistID && `/artists/${artistID}/related-artists`
-  );
-
-  const { data: artistAlbums } = useSWR(
-    () => artistID && `/artists/${artistID}/albums`
-  );
-
-  const { data: artistTopTracks } = useSWR(
-    () =>
-      artistID &&
-      user &&
-      `/artists/${artistID}/top-tracks?country=${user.country}`
-  );
-
   const {
     artistName,
     artistImageURL,
@@ -63,33 +47,28 @@ function ArtistOverview(props) {
             playLink={artistLink}
             buttonLabel="Play on Spotify"
           >
-            {artistTopTracks ? (
-              <CardSection
-                data={artistTopTracks.tracks}
-                type="track"
-                title="Top Tracks"
-              />
-            ) : (
-              <Loader />
-            )}
-            {artistRelatedArtists ? (
-              <CardSection
-                data={artistRelatedArtists.artists}
-                type="artist"
-                title="Related Artists"
-              /> // PROVIDE URL IN THE CONTAINER AND ALSO HANDLE SHOWING THE LOADER THERE
-            ) : (
-              <Loader />
-            )}
-            {artistAlbums ? (
-              <CardSection
-                data={artistAlbums.items}
-                type="album"
-                title="Discography"
-              />
-            ) : (
-              <Loader />
-            )}
+            <CardSection
+              fetchURL={
+                artistID &&
+                user &&
+                `/artists/${artistID}/top-tracks?country=${user.country}`
+              }
+              propertyName="tracks"
+              type="track"
+              title="Top Tracks"
+            />
+            <CardSection
+              fetchURL={artistID && `/artists/${artistID}/related-artists`}
+              propertyName="artists"
+              type="artist"
+              title="Related Artists"
+            />
+            <CardSection
+              fetchURL={artistID && `/artists/${artistID}/albums`}
+              propertyName="items"
+              type="album"
+              title="Discography"
+            />
           </OverviewPageTemplate>
         </>
       ) : (

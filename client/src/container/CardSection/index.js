@@ -1,8 +1,9 @@
 import React from "react";
-import CardContainer from "../../components/templates/CardWrapperTemplate";
+import CardWrapperTemplate from "../../components/templates/CardWrapperTemplate";
 import SectionTemplate from "components/templates/SectionTemplate";
 import CardItem from "../../components/items/CardItem";
 import Loader from "components/shared/Loader";
+import useSWR from "swr";
 
 // Refactor Factory Pattern
 const processData = (data, type) => {
@@ -32,8 +33,25 @@ const processData = (data, type) => {
   return { imageURL, link, primaryInfo, secondaryInfo };
 };
 
-const CardSection = ({ data, type, title, link = "/" }) => {
-  const content = data.map((item) => {
+const CardSection = ({
+  data,
+  fetchURL,
+  propertyName,
+  type,
+  title,
+  link = "/",
+}) => {
+  let { data: fetchData } = useSWR(() => !data && fetchURL);
+
+  let renderData;
+
+  if (fetchURL) {
+    renderData = (fetchData && fetchData[propertyName]) || [];
+  } else {
+    renderData = data || [];
+  }
+
+  const content = renderData.map((item) => {
     const { imageURL, link, primaryInfo, secondaryInfo } = processData(
       item,
       type
@@ -55,10 +73,14 @@ const CardSection = ({ data, type, title, link = "/" }) => {
   return (
     <>
       <SectionTemplate headline={title || "Section"} link={link}>
-        <CardContainer>{content || <Loader />}</CardContainer>
+        {renderData.length > 0 ? (
+          <CardWrapperTemplate>{content || <Loader />}</CardWrapperTemplate>
+        ) : (
+          <Loader />
+        )}
       </SectionTemplate>
     </>
-  );
+  ); //the loader here should be within the component because it is UI related
 };
 
 export default CardSection;
