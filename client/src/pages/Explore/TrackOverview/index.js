@@ -30,10 +30,14 @@ const prepareTrackInformation = function (trackInformation) {
   const artists = trackInformation.artists;
 
   return {
-    albumName: album.name,
+    albumInfo: [
+      <Link key={album.id} to={`/explore/album/${album.id}`}>
+        {album.name}
+      </Link>,
+      <span key={1}>{album.release_date.slice(0, 4)}</span>,
+    ].reduce((prev, cur) => [prev, " · ", cur]),
     albumImageURL: album.images.length > 0 && album.images[0].url,
     albumID: album.id,
-    albumReleaseYear: album.release_date.slice(0, 4),
     artists: prepareArtists(artists),
     trackDuration: trackInformation.duration_ms,
     trackName: trackInformation.name,
@@ -84,7 +88,7 @@ function TrackOverview(props) {
   console.log(audioFeatures);
 
   const {
-    albumName,
+    albumInfo,
     albumImageURL,
     albumID,
     albumReleaseYear,
@@ -106,7 +110,7 @@ function TrackOverview(props) {
             imageURL={albumImageURL}
             title={trackName}
             secondaryInfo={artists}
-            additionalInfo={`${albumName} · ${albumReleaseYear}`}
+            additionalInfo={albumInfo}
             playLink={trackLink}
             buttonLabel="Play on Spotify"
           >
