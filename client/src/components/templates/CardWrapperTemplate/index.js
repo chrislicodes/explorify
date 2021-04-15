@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 import theme from "styles/theme";
 
 const CardList = styled.ul`
-  --column-size: 180px;
+  --column-size: ${(props) => (props.backgroundHidden ? "200px" : "180px")};
   display: grid;
   overflow: ${(props) => (props.overflowHidden ? "hidden" : "unset")};
   grid-auto-rows: ${(props) => (props.overflowHidden ? 0 : 1)};
@@ -54,8 +54,19 @@ const CardList = styled.ul`
   }
 `;
 
-const CardWrapperTemplate = ({ overflowHidden, children }) => {
-  return <CardList overflowHidden={overflowHidden}>{children}</CardList>;
+const CardWrapperTemplate = ({
+  overflowHidden,
+  backgroundHidden,
+  children,
+}) => {
+  return (
+    <CardList
+      overflowHidden={overflowHidden}
+      backgroundHidden={backgroundHidden}
+    >
+      {children}
+    </CardList>
+  );
 };
 
 export default CardWrapperTemplate;

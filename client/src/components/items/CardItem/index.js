@@ -20,10 +20,12 @@ const ArtistWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-grey-1-50);
+    background-color: ${(props) =>
+      props.backgroundHidden ? "none" : "var(--color-grey-1-50);"};
     padding: 2.2rem;
     padding-bottom: 1.5rem;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 60%);
+    box-shadow: ${(props) =>
+      props.backgroundHidden ? "none" : "0 2px 8px rgb(0 0 0 / 60%)"};
   }
 
   &:hover {
@@ -102,9 +104,16 @@ const Info = styled.div`
   }
 `;
 
-const CardItem = ({ imageURL, link, primaryInfo, secondaryInfo, type }) => {
+const CardItem = ({
+  imageURL,
+  link,
+  primaryInfo,
+  secondaryInfo,
+  type,
+  backgroundHidden,
+}) => {
   return (
-    <ArtistWrapper>
+    <ArtistWrapper backgroundHidden={backgroundHidden}>
       <StyledLink to={`/explore/${link}`}>
         <ImageWrapper type={type}>
           {imageURL ? (

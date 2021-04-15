@@ -1,7 +1,13 @@
 import React from "react";
+import PageTemplate from "components/templates/PageTemplate";
+import RecentlyPlayedTracks from "container/RecentlyPlayedTracks";
 
-function RecentlyPlayedTracks() {
-  return <div>RecentlyPlayedTracks</div>;
+function RecentlyPlayedPage() {
+  return (
+    <PageTemplate>
+      <RecentlyPlayedTracks limit={50} link={false} />
+    </PageTemplate>
+  );
 }
 
-export default RecentlyPlayedTracks;
+export default RecentlyPlayedPage;

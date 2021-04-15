@@ -39,6 +39,7 @@ function TopArtists() {
         overflowHidden={false}
         limit={35}
         timeRange={timeRange}
+        backgroundHidden={true}
       />
     </PageTemplate>
   );

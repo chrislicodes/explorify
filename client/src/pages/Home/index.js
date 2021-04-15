@@ -4,7 +4,7 @@ import PageTemplate from "components/templates/PageTemplate";
 import TopArtist from "container/ArtistAndTracks/TopArtist";
 import TopArtistScroller from "container/TopArtistCardSection";
 import RecentlyPlayedTracks from "container/RecentlyPlayedTracks";
-import TopTracks from "container/TopTracks";
+import TopTracks from "container/TopTracksSection";
 
 import theme from "styles/theme";
 import styled from "styled-components/macro";
