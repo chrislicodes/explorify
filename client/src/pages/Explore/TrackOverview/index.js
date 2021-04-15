@@ -108,6 +108,7 @@ function TrackOverview(props) {
             secondaryInfo={artists}
             additionalInfo={`${albumName} · ${albumReleaseYear}`}
             playLink={trackLink}
+            buttonLabel="Play on Spotify"
           >
             <TrackInformation>HERE GOES A GRID</TrackInformation>
             <AudioFeatures>
