@@ -1,7 +1,8 @@
 import React from "react";
 import WelcomeUser from "./components/WelcomeUser";
+import PageTemplate from "components/templates/PageTemplate";
 import TopArtist from "container/ArtistAndTracks/TopArtist";
-import TopArtistScroller from "container/TopArtistScroller";
+import TopArtistScroller from "container/TopArtistCardSection";
 import RecentlyPlayedTracks from "container/RecentlyPlayedTracks";
 import TopTracks from "container/TopTracks";
 
@@ -11,14 +12,6 @@ import styled from "styled-components/macro";
 // ---------------------------------------
 // -------------  STYLING
 // ---------------------------------------
-
-const FlexContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-  padding: 0 3rem;
-  padding-bottom: 3rem;
-`;
 
 const TrackOverview = styled.div`
   display: flex;
@@ -42,7 +35,7 @@ const TrackOverview = styled.div`
 
 const Home = () => {
   return (
-    <FlexContainer>
+    <PageTemplate>
       <WelcomeUser />
       <TopArtist />
       <TopArtistScroller offset={1} />
@@ -50,7 +43,7 @@ const Home = () => {
         <TopTracks />
         <RecentlyPlayedTracks />
       </TrackOverview>
-    </FlexContainer>
+    </PageTemplate>
   );
 };
 

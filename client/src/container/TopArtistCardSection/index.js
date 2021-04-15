@@ -7,6 +7,9 @@ const TopArtistScroller = ({
   timeRange = "short_term",
   limit = 20,
   offset = 0,
+  title = "More artists you enjoy",
+  overflowHidden = true,
+  link = "/top-artists",
 }) => {
   const { data: topArtists } = useSWR(
     `/me/top/artists?time_range=${timeRange}&limit=${limit}`
@@ -18,8 +21,9 @@ const TopArtistScroller = ({
         <CardSection
           data={topArtists.items.slice(offset)}
           type={"artist"}
-          title="More artists you enjoy"
-          link="/top-artists"
+          title={title}
+          link={link}
+          overflowHidden={overflowHidden}
         />
       ) : (
         <Loader />

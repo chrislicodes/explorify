@@ -1,7 +1,7 @@
 import React from "react";
-import CardWrapperTemplate from "../../components/templates/CardWrapperTemplate";
+import CardWrapperTemplate from "components/templates/CardWrapperTemplate";
 import SectionTemplate from "components/templates/SectionTemplate";
-import CardItem from "../../components/items/CardItem";
+import CardItem from "components/items/CardItem";
 import Loader from "components/shared/Loader";
 import useSWR from "swr";
 
@@ -39,12 +39,13 @@ const CardSection = ({
   propertyName,
   type,
   title,
-  link = "/",
+  link,
+  overflowHidden = true
 }) => {
   let { data: fetchData } = useSWR(() => !data && fetchURL);
-
+  
   let renderData;
-
+  
   if (fetchURL) {
     renderData = (fetchData && fetchData[propertyName]) || [];
   } else {
@@ -74,7 +75,7 @@ const CardSection = ({
     <>
       <SectionTemplate headline={title || "Section"} link={link}>
         {renderData.length > 0 ? (
-          <CardWrapperTemplate>{content}</CardWrapperTemplate>
+          <CardWrapperTemplate overflowHidden={overflowHidden}>{content}</CardWrapperTemplate>
         ) : (
           <Loader />
         )}
