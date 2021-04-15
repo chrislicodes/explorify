@@ -59,7 +59,7 @@ const SectionTemplate = ({ children, headline, link }) => {
           <Headline>{headline}</Headline>
           <UnderLine />
         </HeadlineWrapper>
-        <ShowMoreLink to={link}>Show more</ShowMoreLink>
+        {link && <ShowMoreLink to={link}>Show more</ShowMoreLink>}
       </ContainerHeader>
       {children}
     </HeadlineContainer>

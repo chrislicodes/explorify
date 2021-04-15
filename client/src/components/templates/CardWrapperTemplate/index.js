@@ -5,8 +5,8 @@ import theme from "styles/theme";
 const CardList = styled.ul`
   --column-size: 180px;
   display: grid;
-  overflow: hidden;
-  grid-auto-rows: 0;
+  overflow: ${(props) => (props.overflowHidden ? "hidden" : "unset")};
+  grid-auto-rows: ${(props) => (props.overflowHidden ? 0 : 1)};
   grid-template-rows: 1fr;
   grid-template-columns: repeat(auto-fill, minmax(var(--column-size), 1fr));
   column-gap: var(--spacing-size-md-2);
@@ -54,8 +54,8 @@ const CardList = styled.ul`
   }
 `;
 
-const CardWrapperTemplate = ({ children }) => {
-  return <CardList>{children}</CardList>;
+const CardWrapperTemplate = ({ overflowHidden, children }) => {
+  return <CardList overflowHidden={overflowHidden}>{children}</CardList>;
 };
 
 export default CardWrapperTemplate;

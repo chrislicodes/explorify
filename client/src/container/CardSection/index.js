@@ -1,7 +1,7 @@
 import React from "react";
-import CardContainer from "../../components/templates/CardWrapperTemplate";
+import CardWrapperTemplate from "components/templates/CardWrapperTemplate";
 import SectionTemplate from "components/templates/SectionTemplate";
-import CardItem from "../../components/items/CardItem";
+import CardItem from "components/items/CardItem";
 import Loader from "components/shared/Loader";
 
 // Refactor Factory Pattern
@@ -32,7 +32,7 @@ const processData = (data, type) => {
   return { imageURL, link, primaryInfo, secondaryInfo };
 };
 
-const CardSection = ({ data, type, title, link = "/" }) => {
+const CardSection = ({ data, type, title, link, overflowHidden = true }) => {
   const content = data.map((item) => {
     const { imageURL, link, primaryInfo, secondaryInfo } = processData(
       item,
@@ -55,7 +55,9 @@ const CardSection = ({ data, type, title, link = "/" }) => {
   return (
     <>
       <SectionTemplate headline={title || "Section"} link={link}>
-        <CardContainer>{content || <Loader />}</CardContainer>
+        <CardWrapperTemplate overflowHidden={overflowHidden}>
+          {content || <Loader />}
+        </CardWrapperTemplate>
       </SectionTemplate>
     </>
   );
