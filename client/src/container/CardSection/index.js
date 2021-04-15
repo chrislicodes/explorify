@@ -40,12 +40,13 @@ const CardSection = ({
   type,
   title,
   link,
-  overflowHidden = true
+  overflowHidden = true,
+  backgroundHidden = false,
 }) => {
   let { data: fetchData } = useSWR(() => !data && fetchURL);
-  
+
   let renderData;
-  
+
   if (fetchURL) {
     renderData = (fetchData && fetchData[propertyName]) || [];
   } else {
@@ -66,6 +67,7 @@ const CardSection = ({
           primaryInfo={primaryInfo}
           secondaryInfo={secondaryInfo}
           type={type}
+          backgroundHidden={backgroundHidden}
         />
       </li>
     );
@@ -75,7 +77,12 @@ const CardSection = ({
     <>
       <SectionTemplate headline={title || "Section"} link={link}>
         {renderData.length > 0 ? (
-          <CardWrapperTemplate overflowHidden={overflowHidden}>{content}</CardWrapperTemplate>
+          <CardWrapperTemplate
+            overflowHidden={overflowHidden}
+            backgroundHidden={backgroundHidden}
+          >
+            {content}
+          </CardWrapperTemplate>
         ) : (
           <Loader />
         )}

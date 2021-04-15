@@ -4,7 +4,11 @@ import SectionTemplate from "components/templates/SectionTemplate";
 import TrackContainer from "container/TrackWrapperTemplate";
 import useSWR from "swr";
 
-function TopTracks({ timeRange = "short_term", limit = 10 }) {
+function TopTracksSection({
+  timeRange = "short_term",
+  limit = 10,
+  link = "/top-tracks",
+}) {
   const { data: topTracks } = useSWR(
     `/me/top/tracks?time_range=${timeRange}&limit=${limit}`
   );
@@ -12,7 +16,7 @@ function TopTracks({ timeRange = "short_term", limit = 10 }) {
   return (
     <>
       {topTracks ? (
-        <SectionTemplate headline={"Your top tracks"} link={"/top-tracks"}>
+        <SectionTemplate headline={"Your top tracks"} link={link}>
           <TrackContainer tracks={topTracks.items} displayImage={true} />
         </SectionTemplate>
       ) : (
@@ -22,4 +26,4 @@ function TopTracks({ timeRange = "short_term", limit = 10 }) {
   );
 }
 
-export default TopTracks;
+export default TopTracksSection;

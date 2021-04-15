@@ -10,6 +10,7 @@ const TopArtistScroller = ({
   title = "More artists you enjoy",
   overflowHidden = true,
   link = "/top-artists",
+  backgroundHidden = false,
 }) => {
   const { data: topArtists } = useSWR(
     `/me/top/artists?time_range=${timeRange}&limit=${limit}`
@@ -24,6 +25,7 @@ const TopArtistScroller = ({
           title={title}
           link={link}
           overflowHidden={overflowHidden}
+          backgroundHidden={backgroundHidden}
         />
       ) : (
         <Loader />
