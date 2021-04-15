@@ -13,7 +13,7 @@ const StyledTrackWrapperTemplate = styled.div`
 const TrackList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-size-sm-2);
+  gap: var(--spacing-size-sm-3);
 
   overflow-x: hidden;
   overflow-y: auto;
@@ -45,8 +45,8 @@ const TrackList = styled.ul`
 
 const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
   const trackArr = tracks.map((track, index) => {
-    const albumName = track.album.name;
-    const imageURL = track.album.images[2].url;
+    const albumName = track.album?.name;
+    const imageURL = displayImage && track.album.images[2].url;
     const trackTitle = track.name;
     const artistName = track.artists[0].name;
     const trackDuration = transformDuration(track.duration_ms);

@@ -1,7 +1,7 @@
 import React from "react";
 import Loader from "components/shared/Loader";
 import SectionTemplate from "components/templates/SectionTemplate";
-import TrackContainer from "container/TrackWrapperTemplate";
+import TrackWrapperTemplate from "container/TrackWrapperTemplate";
 import useSWR from "swr";
 
 function TopTracksSection({
@@ -17,7 +17,7 @@ function TopTracksSection({
     <>
       {topTracks ? (
         <SectionTemplate headline={"Your top tracks"} link={link}>
-          <TrackContainer tracks={topTracks.items} displayImage={true} />
+          <TrackWrapperTemplate tracks={topTracks.items} displayImage={true} />
         </SectionTemplate>
       ) : (
         <Loader />
