@@ -25,10 +25,10 @@ const OverviewHeader = styled.header`
 
 const ImageContainer = styled.div`
   width: 30rem;
-  box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
 
   & img {
     width: 100%;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   }
 `;
 
@@ -96,6 +96,7 @@ function OverviewPageTemplate({
   additionalInfo,
   playLink,
   children,
+  buttonLabel,
 }) {
   return (
     <FlexContainer>
@@ -108,7 +109,7 @@ function OverviewPageTemplate({
           <SecondaryInfo>{secondaryInfo}</SecondaryInfo>
           <AdditionalInfo>{additionalInfo}</AdditionalInfo>
           <PlayButton href={playLink} target="_blank" rel="noopener noreferrer">
-            Play on Spotify
+            {buttonLabel}
           </PlayButton>
         </Description>
       </OverviewHeader>
