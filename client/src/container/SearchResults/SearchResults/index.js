@@ -15,7 +15,7 @@ const sortByPopularity = (items) => {
 const filterByPopularity = (items) => {
   if (!items) return;
 
-  const filteredItems = [...items].filter((item) => item.popularity > 15);
+  const filteredItems = [...items].filter((item) => item.popularity > 25);
   return filteredItems;
 };
 
@@ -37,8 +37,7 @@ function SearchResults({ results }) {
     results?.tracks.items.length > 0 &&
     filterByPopularity(sortByPopularity(results.tracks.items));
 
-  const albums =
-    results?.albums.items.length > 0 && sortByPopularity(results.albums.items);
+  const albums = results?.albums.items.length > 0 && results.albums.items;
 
   return (
     <GridContainer>

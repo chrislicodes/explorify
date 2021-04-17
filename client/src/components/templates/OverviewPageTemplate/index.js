@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import PlaceholderImage from "components/shared/PlaceholderImage";
 
 const FlexContainer = styled.article`
   max-width: 1600px;
@@ -102,7 +103,7 @@ function OverviewPageTemplate({
     <FlexContainer>
       <OverviewHeader>
         <ImageContainer>
-          <img src={imageURL} alt={title} />
+          {imageURL ? <img src={imageURL} alt={title} /> : <PlaceholderImage />}
         </ImageContainer>
         <Description>
           <Title>{title}</Title>

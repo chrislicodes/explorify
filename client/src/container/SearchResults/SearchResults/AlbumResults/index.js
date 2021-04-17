@@ -8,37 +8,34 @@ const filterArtists = (artists) => {
   return artists.filter((artist) => !artist.genres.includes("hoerspiel"));
 };
 
-const extractRelevantArtistData = (artists) => {
-  let artistObj = {};
-
-  for (const artist of artists) {
-    artistObj[artist.id] = artist.popularity;
-  }
-  return artistObj;
-};
-
 function AlbumResults({ albums }) {
   const artistIDs = albums.map((album) => album.artists[0].id);
+  const albumIDs = albums.map((album) => album.id);
+
   const { data: artists } = useSWR(
     `/artists?ids=${encodeURI(artistIDs.join(","))}`
   );
+
+  const { data: albumsData } = useSWR(
+    `/albums?ids=${encodeURI(albumIDs.join(","))}`
+  );
+
   const filteredArtists = artists && filterArtists(artists.artists);
+
   const filteredAlbums =
     filteredArtists &&
-    albums.filter((album) =>
+    albumsData &&
+    albumsData.albums.filter((album) =>
       filteredArtists.find((artist) => artist.id === album.artists[0].id)
     );
-  const artistObj =
-    filteredArtists && extractRelevantArtistData(filteredArtists);
+
   const sortedAlbums =
-    artistObj &&
-    filteredAlbums.sort(
-      (a, b) => artistObj[b.artists[0].id] - artistObj[a.artists[0].id]
-    );
+    filteredAlbums &&
+    [...filteredAlbums].sort((a, b) => b.popularity - a.popularity);
 
   return (
     <>
-      {filteredAlbums && (
+      {sortedAlbums && (
         <CardSection data={sortedAlbums} type={"album"} title="albums" />
       )}
     </>

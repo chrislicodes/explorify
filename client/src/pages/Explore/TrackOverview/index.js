@@ -36,6 +36,7 @@ const prepareTrackInformation = function (trackInformation) {
       </Link>,
       <span key={1}>{album.release_date.slice(0, 4)}</span>,
     ].reduce((prev, cur) => [prev, " · ", cur]),
+
     albumImageURL: album.images.length > 0 && album.images[0].url,
     albumID: album.id,
     artists: prepareArtists(artists),
