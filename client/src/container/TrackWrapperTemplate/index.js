@@ -44,6 +44,7 @@ const TrackList = styled.ul`
 `;
 
 const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
+  console.log(tracks);
   const trackArr = tracks.map((track, index) => {
     const albumName = track.album?.name;
     const imageURL = displayImage && track.album.images[2].url;
@@ -51,6 +52,7 @@ const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
     const artistName = track.artists[0].name;
     const trackDuration = transformDuration(track.duration_ms);
     const trackID = track.id;
+    const previewURL = track.preview_url;
 
     return (
       <li key={trackID + index}>
@@ -63,6 +65,7 @@ const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
           trackID={trackID}
           pos={index}
           displayImage={displayImage}
+          previewURL={previewURL}
         />
       </li>
     );

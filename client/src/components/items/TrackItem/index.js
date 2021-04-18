@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "components/shared/Icon";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
+import PreviewBar from "./PreviewBar";
 
 const TrackMetaInfo = styled.div`
   flex: 1;
@@ -108,6 +109,7 @@ const TrackItem = ({
   trackID,
   displayImage,
   pos,
+  previewURL,
 }) => {
   return (
     <TrackItemWrapper>
@@ -131,6 +133,7 @@ const TrackItem = ({
             {artistName} | {albumName}
           </p>
         </TrackMetaInfo>
+        {previewURL && <PreviewBar previewURL={previewURL} />}
         <Duration>{trackDuration}</Duration>
       </Link>
     </TrackItemWrapper>

@@ -1,6 +1,6 @@
 import React from "react";
 import SectionTemplate from "components/templates/SectionTemplate";
-import TrackContainer from "container/TrackWrapperTemplate";
+import TrackWrapperTemplate from "container/TrackWrapperTemplate";
 import Icon from "components/shared/Icon";
 import PlaceholderImage from "components/shared/PlaceholderImage";
 import { Link } from "react-router-dom";
@@ -62,7 +62,7 @@ const ArtistImageWrapper = styled.div`
   }
 `;
 
-const StyledTrackContainer = styled(TrackContainer)`
+const StyledTrackWrapperTemplate = styled(TrackWrapperTemplate)`
   padding: 0.35rem 0;
   padding-right: 0;
   min-width: 0;
@@ -104,7 +104,7 @@ const ArtistAndTracks = ({
                 <ImageOverlay type="icon-notification" />
               </Link>
             </ArtistImageWrapper>
-            <StyledTrackContainer
+            <StyledTrackWrapperTemplate
               tracks={tracks.tracks.slice(0, nTracks)}
               displayImage={false}
             />
