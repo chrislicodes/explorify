@@ -2,7 +2,7 @@ import React from "react";
 import Icon from "components/shared/Icon";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
-import PreviewBar from "./PreviewBar";
+import PreviewBar from "../../shared/PreviewBar";
 
 const TrackMetaInfo = styled.div`
   flex: 1;

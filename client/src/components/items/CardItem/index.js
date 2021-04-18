@@ -82,12 +82,12 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const PrimaryInfo = styled.p`
+const PrimaryInfo = styled.div`
   font-weight: bold;
   width: 100%;
 `;
 
-const SecondaryInfo = styled.p`
+const SecondaryInfo = styled.div`
   color: var(--color-grey-4);
   font-size: var(--font-size-sm);
 `;
@@ -96,7 +96,7 @@ const Info = styled.div`
   min-height: 5rem;
   overflow: hidden;
   width: 100%;
-  & p {
+  & div {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

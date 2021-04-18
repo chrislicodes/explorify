@@ -11,7 +11,7 @@ const CardList = styled.ul`
   grid-template-columns: repeat(auto-fill, minmax(var(--column-size), 1fr));
   column-gap: var(--spacing-size-md-2);
 
-  @media ${theme.bp.desktopXS} {
+  @media ${theme.bp.desktopS} {
     --column-size: 160px;
   }
 

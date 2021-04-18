@@ -4,6 +4,7 @@ import SectionTemplate from "components/templates/SectionTemplate";
 import CardItem from "components/items/CardItem";
 import Loader from "components/shared/Loader";
 import useSWR from "swr";
+import PreviewBar from "components/shared/PreviewBar";
 
 // Refactor Factory Pattern
 const processData = (data, type) => {
@@ -11,6 +12,7 @@ const processData = (data, type) => {
   let imageURL = data.images?.length > 0 && data.images[0].url;
   let primaryInfo = data.name;
   let secondaryInfo;
+  let previewURL;
 
   switch (type) {
     case "artist":
@@ -23,7 +25,11 @@ const processData = (data, type) => {
 
     case "track":
       imageURL = data.album.images.length > 0 && data.album.images[1].url;
-      secondaryInfo = data.artists[0].name;
+      previewURL = data.preview_url;
+      secondaryInfo = [
+        <p>{data.artists[0].name}</p>,
+        previewURL && <PreviewBar previewURL={previewURL} />,
+      ];
       break;
 
     default:

@@ -3,6 +3,9 @@ import styled from "styled-components/macro";
 
 const ProgressBar = styled.div`
   height: 5px;
+  width: 100%;
+  max-width: 120px;
+
   border: 1px solid var(--color-grey-3);
   border-radius: 20px;
   overflow: hidden;
@@ -17,8 +20,10 @@ const ProgressBar = styled.div`
 
 const Preview = styled.div`
   display: flex;
+
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   align-self: stretch;
 
   ${ProgressBar} div {
@@ -32,9 +37,9 @@ const Preview = styled.div`
   }
 `;
 
-//TODO: Fix interaction error if user hasnt clicked anywhere, reject audio fetching promise in cleanup
+//TODO: Fix interaction error if user hasnt clicked anywhere, reject audio fetching promise in cleanup, mobile support
 
-function PreviewBar({ previewURL }) {
+function PreviewBar({ previewURL, style }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [audio, setAudio] = useState();
