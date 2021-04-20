@@ -5,7 +5,7 @@ import Loader from "components/shared/Loader";
 import { Link } from "react-router-dom";
 import AudioFeaturesBar from "components/shared/AudioFeaturesBarChart";
 import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
-import PreviewBar from "components/shared/PreviewBar";
+import PreviewBar from "components/shared/SongPreview";
 
 const TrackInformation = styled.div`
   display: grid;

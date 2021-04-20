@@ -4,7 +4,7 @@ import SectionTemplate from "components/templates/SectionTemplate";
 import CardItem from "components/items/CardItem";
 import Loader from "components/shared/Loader";
 import useSWR from "swr";
-import PreviewBar from "components/shared/PreviewBar";
+import PreviewBar from "components/shared/SongPreview";
 
 // Refactor Factory Pattern
 const processData = (data, type) => {
