@@ -44,7 +44,6 @@ const TrackList = styled.ul`
 `;
 
 const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
-  console.log(tracks);
   const trackArr = tracks.map((track, index) => {
     const albumName = track.album?.name;
     const imageURL = displayImage && track.album.images[2].url;

@@ -50,7 +50,6 @@ function AlbumOverview(props) {
     popularity,
     tracks,
   } = Boolean(albumData) && prepareAlbumInformation(albumData);
-  console.log(tracks);
 
   return (
     <OverviewPageTemplate

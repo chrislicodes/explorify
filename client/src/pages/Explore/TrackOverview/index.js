@@ -102,9 +102,6 @@ function TrackOverview(props) {
   //   () => trackID && `/audio-analysis/${trackID}`
   // );
 
-  console.log(trackInformation);
-  console.log(audioFeatures);
-
   const {
     albumInfo,
     albumImageURL,

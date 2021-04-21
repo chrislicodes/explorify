@@ -35,8 +35,6 @@ const SearchContainer = () => {
       }&limit=20`
   );
 
-  console.log(searchResult);
-
   let component = (searchQuery === "" && <WelcomeScreen />) ||
     (searchResult && <SearchResults results={searchResult} />) || <Loader />;
 
