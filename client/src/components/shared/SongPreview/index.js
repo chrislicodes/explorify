@@ -1,6 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components/macro";
 import Icon from "components/shared/Icon";
+import { AudioContext } from "store/AudioContext";
+import Loader from "components/shared/Loader";
+import theme from "styles/theme";
 
 const Preview = styled.div`
   display: flex;
@@ -10,6 +13,10 @@ const Preview = styled.div`
   align-items: center;
   align-self: stretch;
   min-width: 10rem;
+
+  @media ${theme.bp.mobileM} {
+    min-width: 50px;
+  }
 `;
 
 const ProgressBarWrapper = styled.div`
@@ -58,44 +65,45 @@ const PlayControlButton = styled.button`
   }
 `;
 
-function SongPreview({ previewURL }) {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [audio, setAudio] = useState();
+function SongPreview(props) {
+  let {
+    currentSrc,
+    isPlaying,
+    readyState,
+    audioSetter,
+    audioStopper,
+  } = useContext(AudioContext);
 
-  const playPreview = () => {
-    setAudio(new Audio(previewURL));
-  };
-
-  const stopPreview = () => {
-    audio && audio.pause();
-    setIsPlaying(false);
-  };
-
-  const audioHandler = useCallback(() => {
-    audio.play();
-    setIsPlaying(true);
-  }, [audio]);
+  const previewURL = props.previewURL;
+  const curPreviewIsActive = currentSrc === previewURL;
+  const curPreviewIsPlaying = curPreviewIsActive && isPlaying;
+  const curPreviewIsLoading =
+    curPreviewIsActive && !curPreviewIsPlaying && readyState !== 4;
 
   useEffect(() => {
-    console.log("SHOTS FIRED");
-    audio && audio.addEventListener("canplaythrough", audioHandler);
-    audio && audio.addEventListener("ended", () => setIsPlaying(false));
     return () => {
-      if (audio) {
-        audio.removeEventListener("canplaythrough", audioHandler);
-        audio.pause();
-      }
+      return curPreviewIsPlaying && audioStopper();
     };
-  }, [audio, audioHandler]);
+  }, [curPreviewIsPlaying, audioStopper]);
 
   return (
     <Preview>
-      <PlayControlButton onClick={isPlaying ? stopPreview : playPreview}>
-        <Icon type={isPlaying ? "icon-stop" : "icon-play"} />
+      <PlayControlButton
+        onClick={() =>
+          curPreviewIsPlaying
+            ? audioStopper(previewURL)
+            : audioSetter(previewURL)
+        }
+      >
+        {curPreviewIsLoading ? (
+          <Loader />
+        ) : (
+          <Icon type={curPreviewIsPlaying ? "icon-stop" : "icon-play"} />
+        )}
       </PlayControlButton>
 
       <ProgressBarWrapper>
-        <ProgressBar isPlaying={isPlaying} />
+        <ProgressBar isPlaying={curPreviewIsPlaying} />
       </ProgressBarWrapper>
     </Preview>
   );
