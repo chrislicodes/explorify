@@ -65,7 +65,7 @@ const PlayControlButton = styled.button`
   }
 `;
 
-function SongPreview(props) {
+function SongPreview({ previewURL }) {
   let {
     currentSrc,
     isPlaying,
@@ -74,7 +74,6 @@ function SongPreview(props) {
     audioStopper,
   } = useContext(AudioContext);
 
-  const previewURL = props.previewURL;
   const curPreviewIsActive = currentSrc === previewURL;
   const curPreviewIsPlaying = curPreviewIsActive && isPlaying;
   const curPreviewIsLoading =
@@ -90,7 +89,7 @@ function SongPreview(props) {
     <Preview>
       <PlayControlButton
         onClick={() =>
-          curPreviewIsPlaying
+          curPreviewIsPlaying || curPreviewIsLoading
             ? audioStopper(previewURL)
             : audioSetter(previewURL)
         }
