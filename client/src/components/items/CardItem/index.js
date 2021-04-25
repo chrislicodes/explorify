@@ -1,13 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Icon from "components/shared/Icon";
 import PlaceholderImage from "components/shared/PlaceholderImage";
 import styled from "styled-components/macro";
 import SongPreview from "components/shared/SongPreview";
 import theme from "styles/theme";
+import { useHistory } from "react-router-dom";
 
 const StyledIcon = styled(Icon)``;
-const StyledLink = styled(Link)``;
 const StyledPlaceholderImage = styled(PlaceholderImage)``;
 
 const CardWrapper = styled.div`
@@ -16,37 +15,37 @@ const CardWrapper = styled.div`
   position: relative;
   z-index: 1;
 
-  & ${StyledLink} {
-    margin-bottom: 1rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: ${(props) =>
-      props.backgroundHidden ? "none" : "var(--color-grey-1-50);"};
-    padding: 2.2rem;
-    padding-bottom: 1.5rem;
-    box-shadow: ${(props) =>
-      props.backgroundHidden ? "none" : "0 2px 8px rgb(0 0 0 / 60%)"};
-    transition: background-color 0.3s;
-    z-index: 2;
+  margin-bottom: 1rem;
 
-    &:hover {
-      background-color: var(--color-grey-3);
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) =>
+    props.backgroundHidden ? "none" : "var(--color-grey-1-50);"};
+  padding: 2.2rem;
+  padding-bottom: 1.5rem;
+  box-shadow: ${(props) =>
+    props.backgroundHidden ? "none" : "0 2px 8px rgb(0 0 0 / 60%)"};
+  transition: background-color 0.3s;
+  z-index: 2;
+  cursor: pointer;
 
-    &:hover ${StyledIcon} {
-      opacity: 0.8;
-    }
+  &:hover {
+    background-color: var(--color-grey-3);
+  }
+
+  &:hover ${StyledIcon} {
+    opacity: 0.8;
   }
 `;
 
 const ImageWrapper = styled.div`
+  position: relative;
   width: 100%;
+  height: 100%;
   overflow: hidden;
   margin-bottom: var(--spacing-size-sm-4);
-  position: relative;
   box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   border-radius: ${({ type }) => type === "artist" && "100%"};
   padding-bottom: 100%;
@@ -111,14 +110,9 @@ const Info = styled.div`
 
 const SongPreviewWrapper = styled.div`
   position: absolute;
-  bottom: 1%;
-  right: 1%;
+  bottom: 3%;
+  right: 3%;
   z-index: 1000;
-
-  /* @media ${theme.bp.mobileS} {
-    top: 45%;
-    right: 1rem;
-  } */
 `;
 
 const CardItem = ({
@@ -130,36 +124,37 @@ const CardItem = ({
   backgroundHidden,
   previewURL,
 }) => {
+  let history = useHistory();
+
+  function handleClick() {
+    history.push(`/explore/${link}`);
+  }
+
   return (
-    <CardWrapper
-      backgroundHidden={backgroundHidden}
-      onClick={() => console.log("clicked")}
-    >
-      <StyledLink to={`/explore/${link}`}>
-        <ImageWrapper type={type}>
-          {imageURL ? (
-            <img src={imageURL} alt={`${secondaryInfo}`} />
-          ) : (
-            <StyledPlaceholderImage />
-          )}
-          <StyledIcon type="icon-notification" />
-          {previewURL && (
-            <>
-              <SongPreviewWrapper>
-                <SongPreview
-                  progressBar={false}
-                  previewURL={previewURL}
-                  type="rounded"
-                />
-              </SongPreviewWrapper>
-            </>
-          )}
-        </ImageWrapper>
-        <Info>
-          <PrimaryInfo>{primaryInfo}</PrimaryInfo>
-          <SecondaryInfo>{secondaryInfo}</SecondaryInfo>
-        </Info>
-      </StyledLink>
+    <CardWrapper backgroundHidden={backgroundHidden} onClick={handleClick}>
+      <ImageWrapper type={type}>
+        {imageURL ? (
+          <img src={imageURL} alt={`${secondaryInfo}`} />
+        ) : (
+          <StyledPlaceholderImage />
+        )}
+        <StyledIcon type="icon-notification" />
+        {previewURL && (
+          <>
+            <SongPreviewWrapper onClick={(e) => e.stopPropagation()}>
+              <SongPreview
+                progressBar={false}
+                previewURL={previewURL}
+                type="rounded"
+              />
+            </SongPreviewWrapper>
+          </>
+        )}
+      </ImageWrapper>
+      <Info>
+        <PrimaryInfo>{primaryInfo}</PrimaryInfo>
+        <SecondaryInfo>{secondaryInfo}</SecondaryInfo>
+      </Info>
     </CardWrapper>
   );
 };
