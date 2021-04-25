@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components/macro";
 import theme from "styles/theme";
+import SectionTemplate from "components/templates/SectionTemplate";
+import Loader from "components/shared/Loader";
 
 const CardList = styled.ul`
   --column-size: ${(props) => (props.backgroundHidden ? "200px" : "180px")};
@@ -54,19 +56,23 @@ const CardList = styled.ul`
   }
 `;
 
-const CardWrapperTemplate = ({
-  overflowHidden,
-  backgroundHidden,
+const CardSectionTemplate = ({
+  overflowHidden = true,
+  backgroundHidden = false,
   children,
+  link,
+  title,
 }) => {
   return (
-    <CardList
-      overflowHidden={overflowHidden}
-      backgroundHidden={backgroundHidden}
-    >
-      {children}
-    </CardList>
+    <SectionTemplate headline={title || "Section"} link={link}>
+      <CardList
+        overflowHidden={overflowHidden}
+        backgroundHidden={backgroundHidden}
+      >
+        {children?.length > 0 ? children : <Loader />}
+      </CardList>
+    </SectionTemplate>
   );
 };
 
-export default CardWrapperTemplate;
+export default CardSectionTemplate;

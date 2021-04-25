@@ -1,8 +1,6 @@
 import React from "react";
-import CardWrapperTemplate from "components/templates/CardWrapperTemplate";
-import SectionTemplate from "components/templates/SectionTemplate";
+import CardWrapperTemplate from "components/templates/CardSectionTemplate";
 import CardItem from "components/items/CardItem";
-import Loader from "components/shared/Loader";
 import useSWR from "swr";
 import PreviewBar from "components/shared/SongPreview";
 
@@ -26,10 +24,7 @@ const processData = (data, type) => {
     case "track":
       imageURL = data.album.images.length > 0 && data.album.images[1].url;
       previewURL = data.preview_url;
-      secondaryInfo = [
-        <p>{data.artists[0].name}</p>,
-        previewURL && <PreviewBar previewURL={previewURL} />,
-      ];
+      secondaryInfo = [<p>{data.artists[0].name}</p>];
       break;
 
     default:
@@ -81,18 +76,12 @@ const CardSection = ({
 
   return (
     <>
-      <SectionTemplate headline={title || "Section"} link={link}>
-        {renderData.length > 0 ? (
-          <CardWrapperTemplate
-            overflowHidden={overflowHidden}
-            backgroundHidden={backgroundHidden}
-          >
-            {content}
-          </CardWrapperTemplate>
-        ) : (
-          <Loader />
-        )}
-      </SectionTemplate>
+      <CardWrapperTemplate
+        overflowHidden={overflowHidden}
+        backgroundHidden={backgroundHidden}
+      >
+        {content}
+      </CardWrapperTemplate>
     </>
   );
 };

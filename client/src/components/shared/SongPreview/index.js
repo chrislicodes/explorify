@@ -7,26 +7,66 @@ import theme from "styles/theme";
 
 const Preview = styled.div`
   display: flex;
-  gap: 0.3rem;
-
-  justify-content: center;
   align-items: center;
-  align-self: stretch;
-  min-width: 10rem;
+  width: 100%;
+  height: 100%;
 
-  @media ${theme.bp.mobileM} {
-    min-width: 50px;
+  &:hover button {
+    ${({ type }) => type === "rounded" && `background-color: var(--color-spotify-logo-green);
+    transform: translateY(-2px);`}
+    
+  }
+`;
+
+const PlayControlButton = styled.button`
+  width: 100%;
+  height: 100%;
+  height: 4.5rem;
+  width: 4.5rem;
+
+  aspect-ratio: 1/1;
+  background-color: ${({ type }) =>
+    type === "rounded" ? "var(--color-spotify-green)" : "transparent"};
+
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  border-radius: 50%;
+
+  transition: all 0.3s ease;
+
+  /* @media ${theme.bp.mobileM} {
+    height: 3.5rem;
+    width: 3.5rem;
+  } */
+
+  &:hover {
+    & svg {
+      ${({ type }) => type === "bar" && "fill: var(--color-spotify-green)"}
+    }
+  }
+
+  & svg {
+    transition: all 0.2s ease-out;
+    margin-top: 4px;
+    height: 2rem;
+    width: 2rem;
+    fill: ${({ type }) =>
+      type === "rounded" ? "var(--color-white)" : "var(--color-grey-6)"};
   }
 `;
 
 const ProgressBarWrapper = styled.div`
   height: 5px;
-  width: 100%;
-  max-width: 120px;
+  min-width: 7rem;
 
   border: 1px solid var(--color-grey-3);
   border-radius: 20px;
   overflow: hidden;
+
+  @media ${theme.bp.mobileM} {
+    display: none;
+  }
 `;
 
 const ProgressBar = styled.div`
@@ -42,30 +82,12 @@ const ProgressBar = styled.div`
   `}
 `;
 
-const PlayControlButton = styled.button`
-  height: 3rem;
-  width: 3rem;
-  background-color: transparent;
-  outline: 0;
-  border: 0;
-  cursor: pointer;
-
-  &:hover {
-    & svg {
-      fill: var(--color-spotify-green);
-    }
-  }
-
-  & svg {
-    transition: all 0.2s ease-out;
-    margin-top: 4px;
-    height: 1.6rem;
-    width: 1.6rem;
-    fill: var(--color-grey-6);
-  }
-`;
-
-function SongPreview({ previewURL }) {
+function SongPreview({
+  previewURL,
+  progressBar = true,
+  className,
+  type = "bar",
+}) {
   let {
     currentSrc,
     isPlaying,
@@ -86,13 +108,14 @@ function SongPreview({ previewURL }) {
   }, [curPreviewIsPlaying, audioStopper]);
 
   return (
-    <Preview>
+    <Preview className={className} type={type}>
       <PlayControlButton
         onClick={() =>
           curPreviewIsPlaying || curPreviewIsLoading
             ? audioStopper(previewURL)
             : audioSetter(previewURL)
         }
+        type={type}
       >
         {curPreviewIsLoading ? (
           <Loader />
@@ -101,9 +124,11 @@ function SongPreview({ previewURL }) {
         )}
       </PlayControlButton>
 
-      <ProgressBarWrapper>
-        <ProgressBar isPlaying={curPreviewIsPlaying} />
-      </ProgressBarWrapper>
+      {progressBar && (
+        <ProgressBarWrapper>
+          <ProgressBar isPlaying={curPreviewIsPlaying} />
+        </ProgressBarWrapper>
+      )}
     </Preview>
   );
 }

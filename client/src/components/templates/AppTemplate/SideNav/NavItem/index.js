@@ -108,7 +108,6 @@ const NavItemDescription = styled.div`
 `;
 
 const NavItemWrapper = styled.li`
-  flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;

@@ -3,6 +3,7 @@ import useSWR from "swr";
 import Loader from "components/shared/Loader";
 import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
 import CardSection from "container/CardSection";
+import TrackCardSection from "container/CardSections/TrackCardSection";
 
 const prepareArtistInformation = function (artist) {
   return {
@@ -47,14 +48,12 @@ function ArtistOverview(props) {
             playLink={artistLink}
             buttonLabel="Play on Spotify"
           >
-            <CardSection
+            <TrackCardSection
               fetchURL={
                 artistID &&
                 user &&
                 `/artists/${artistID}/top-tracks?country=${user.country}`
               }
-              propertyName="tracks"
-              type="track"
               title="Top Tracks"
             />
             <CardSection

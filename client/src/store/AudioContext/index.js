@@ -38,12 +38,7 @@ export const AudioProvider = ({ children }) => {
   const playAudio = (previewURL) => {
     audio.pause();
     setIsPlaying(false);
-    if (previewURL !== currentSrc) {
-      setAudio(new Audio(previewURL));
-    } else {
-      audio.play();
-      setIsPlaying(true);
-    }
+    setAudio(new Audio(previewURL));
   };
 
   const stopAudio = () => {
@@ -51,11 +46,11 @@ export const AudioProvider = ({ children }) => {
     setIsPlaying(false);
   };
 
-  useEffect(() => {
-    window.addEventListener("blur", stopAudio);
+  // useEffect(() => {
+  //   window.addEventListener("blur", stopAudio);
 
-    return () => window.removeEventListener("blur", stopAudio);
-  });
+  //   return () => window.removeEventListener("blur", stopAudio);
+  // });
 
   const value = {
     currentSrc,
