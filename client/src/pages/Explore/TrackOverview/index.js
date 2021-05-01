@@ -5,8 +5,24 @@ import Loader from "components/shared/Loader";
 import { Link } from "react-router-dom";
 import AudioFeaturesBar from "components/shared/AudioFeaturesBarChart";
 import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
+import PreviewBar from "components/shared/SongPreview";
 
-const TrackInformation = styled.div``;
+const TrackInformation = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . . "
+    ". . . ";
+`;
+
+const TrackInfoItem = styled.div`
+  border: 1px solid var(--color-grey-3);
+  padding: 20px;
+  text-align: center;
+`;
+
 const AudioFeatures = styled.div`
   height: 450px;
   width: 100%;
@@ -44,6 +60,7 @@ const prepareTrackInformation = function (trackInformation) {
     trackName: trackInformation.name,
     trackPopularity: trackInformation.popularity,
     trackLink: trackInformation.external_urls.spotify,
+    previewURL: trackInformation.preview_url,
   };
 };
 
@@ -85,19 +102,16 @@ function TrackOverview(props) {
   //   () => trackID && `/audio-analysis/${trackID}`
   // );
 
-  console.log(trackInformation);
-  console.log(audioFeatures);
-
   const {
     albumInfo,
     albumImageURL,
     albumID,
-    albumReleaseYear,
     artists,
     trackDuration,
     trackName,
     trackPopularity,
     trackLink,
+    previewURL,
   } = Boolean(trackInformation) && prepareTrackInformation(trackInformation);
 
   const audioData =
@@ -115,7 +129,18 @@ function TrackOverview(props) {
             playLink={trackLink}
             buttonLabel="Play on Spotify"
           >
-            <TrackInformation>HERE GOES A GRID</TrackInformation>
+            <TrackInformation>
+              {previewURL && (
+                <TrackInfoItem>
+                  <PreviewBar previewURL={previewURL} />
+                </TrackInfoItem>
+              )}
+              <TrackInfoItem>DURATION</TrackInfoItem>
+              <TrackInfoItem>POPULARITY</TrackInfoItem>
+              <TrackInfoItem>KEY</TrackInfoItem>
+              <TrackInfoItem>MODALITY</TrackInfoItem>
+              <TrackInfoItem>TEMPO</TrackInfoItem>
+            </TrackInformation>
             <AudioFeatures>
               <AudioFeaturesBar data={audioData} />
             </AudioFeatures>

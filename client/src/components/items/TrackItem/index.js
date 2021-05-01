@@ -2,6 +2,7 @@ import React from "react";
 import Icon from "components/shared/Icon";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
+import PreviewBar from "../../shared/SongPreview";
 
 const TrackMetaInfo = styled.div`
   flex: 1;
@@ -62,19 +63,26 @@ const TrackDisplayOverlay = styled(Icon)`
 `;
 
 const TrackItemWrapper = styled.article`
-  & a {
-    display: flex;
-    align-items: center;
+  display: flex;
 
-    font-size: var(--font-size-sm);
-    color: var(--color-grey-4);
-    text-transform: uppercase;
-    letter-spacing: 0.15rem;
+  & > * {
+    min-width: 0;
   }
 
   &:hover ${TrackDisplayOverlay} {
     opacity: 1;
   }
+`;
+
+const StyledLink = styled(Link)`
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+  font-size: var(--font-size-sm);
+  color: var(--color-grey-4);
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
 
   &:hover ${TrackTitle} span::before {
     width: 100%;
@@ -99,6 +107,12 @@ const Duration = styled.time`
   margin-left: 1rem;
 `;
 
+const AdditionalInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const TrackItem = ({
   albumName,
   imageURL,
@@ -108,10 +122,11 @@ const TrackItem = ({
   trackID,
   displayImage,
   pos,
+  previewURL,
 }) => {
   return (
     <TrackItemWrapper>
-      <Link to={`/explore/track/${trackID}`}>
+      <StyledLink to={`/explore/track/${trackID}`}>
         <TrackDisplay>
           {displayImage ? (
             <AlbumCover src={imageURL} alt={albumName + " Album Cover"} />
@@ -131,8 +146,11 @@ const TrackItem = ({
             {artistName} | {albumName}
           </p>
         </TrackMetaInfo>
+      </StyledLink>
+      <AdditionalInfo>
+        {previewURL && <PreviewBar previewURL={previewURL} />}
         <Duration>{trackDuration}</Duration>
-      </Link>
+      </AdditionalInfo>
     </TrackItemWrapper>
   );
 };

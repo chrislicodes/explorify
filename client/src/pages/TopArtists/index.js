@@ -13,7 +13,6 @@ const ButtonWrapper = styled.div`
 function TopArtists() {
   const [timeRange, setTimeRange] = useState("long_term");
 
-  //don't judge me
   const [activeShort, activeMedium, activeLong] = [
     timeRange === "short_term",
     timeRange === "medium_term",

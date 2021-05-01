@@ -1,5 +1,5 @@
 import React from "react";
-import CardSection from "container/CardSection";
+import ArtistCardSection from "container/CardSections/ArtistCardSection";
 import Loader from "components/shared/Loader";
 import useSWR from "swr";
 
@@ -19,7 +19,7 @@ const TopArtistScroller = ({
   return (
     <>
       {topArtists ? (
-        <CardSection
+        <ArtistCardSection
           data={topArtists.items.slice(offset)}
           type={"artist"}
           title={title}

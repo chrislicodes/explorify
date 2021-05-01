@@ -51,6 +51,7 @@ const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
     const artistName = track.artists[0].name;
     const trackDuration = transformDuration(track.duration_ms);
     const trackID = track.id;
+    const previewURL = track.preview_url;
 
     return (
       <li key={trackID + index}>
@@ -63,6 +64,7 @@ const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
           trackID={trackID}
           pos={index}
           displayImage={displayImage}
+          previewURL={previewURL}
         />
       </li>
     );

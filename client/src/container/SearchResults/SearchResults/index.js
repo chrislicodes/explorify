@@ -1,7 +1,7 @@
 import React from "react";
 import ArtistResults from "./ArtistResults";
 import AlbumResults from "./AlbumResults";
-import CardSection from "container/CardSection";
+import TrackCardSection from "container/CardSections/TrackCardSection";
 import styled from "styled-components/macro";
 import NothingFound from "../NothingFound";
 
@@ -44,7 +44,7 @@ function SearchResults({ results }) {
       {!artists && !tracks && !albums && <NothingFound />}
       {artists?.length > 0 ? <ArtistResults artists={artists} /> : null}
       {tracks?.length > 0 ? (
-        <CardSection data={tracks} type={"track"} title="Tracks" />
+        <TrackCardSection data={tracks} type={"track"} title="Tracks" />
       ) : null}
       {albums?.length > 0 ? <AlbumResults albums={albums} /> : null}
     </GridContainer>

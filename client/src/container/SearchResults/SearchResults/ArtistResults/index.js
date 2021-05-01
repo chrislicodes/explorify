@@ -1,6 +1,6 @@
 import React from "react";
 import ArtistAndTracks from "container/ArtistAndTracks";
-import CardSection from "container/CardSection";
+import ArtistCardSection from "container/CardSections/ArtistCardSection";
 import styled from "styled-components/macro";
 
 const sortArtistArray = (artists) => {
@@ -45,7 +45,11 @@ function ArtistResults({ artists }) {
         />
       )}
       {scrollerArtists && (
-        <CardSection data={scrollerArtists} type={"artist"} title="artists" />
+        <ArtistCardSection
+          data={scrollerArtists}
+          type={"artist"}
+          title="artists"
+        />
       )}
     </FlexContainer>
   );
