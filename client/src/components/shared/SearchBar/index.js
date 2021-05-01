@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import Icon from "components/shared/Icon";
 import styled from "styled-components/macro";
+import { SearchContext } from "store/SearchContext";
 
 const SearchInput = styled.input`
   height: 4rem;
@@ -8,6 +9,7 @@ const SearchInput = styled.input`
   border: 2px solid transparent;
   transition: all 0.2s;
   padding-left: 1.5rem;
+  padding-right: 3.2rem;
   width: 100%;
 
   &:active,
@@ -28,7 +30,13 @@ const ScreenReaderLabel = styled.span`
 `;
 
 const SearchForm = styled.form`
+  width: 150px;
   position: relative;
+  transition: all 0.5s;
+
+  &:focus-within {
+    width: 200px;
+  }
 `;
 
 const SearchIcon = styled(Icon)`
@@ -43,13 +51,15 @@ const SearchIcon = styled(Icon)`
   }
 `;
 
-const SearchBar = ({ searchQuery, setSearchQuery }) => {
+const SearchBar = ({ className }) => {
+  let { handleClick, setSearchQuery, searchQuery } = useContext(SearchContext);
   return (
     <SearchForm
       action="/"
       method="get"
       autoComplete="off"
       onSubmit={(e) => e.preventDefault()}
+      className={className}
     >
       <label htmlFor="header-search">
         <ScreenReaderLabel>
@@ -63,8 +73,8 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
         id="header-search"
         placeholder="Search"
         name="s"
-        autoFocus
         spellCheck="false"
+        onClick={handleClick}
       />
       <SearchIcon type="icon-search" />
     </SearchForm>

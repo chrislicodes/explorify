@@ -21,7 +21,6 @@ export const AudioProvider = ({ children }) => {
   const audioHandler = useCallback(() => {
     audio.play();
     setIsPlaying(true);
-    console.log(currentSrc);
   }, [audio]);
 
   useEffect(() => {
@@ -46,12 +45,6 @@ export const AudioProvider = ({ children }) => {
     audio.pause();
     setIsPlaying(false);
   };
-
-  // useEffect(() => {
-  //   window.addEventListener("blur", stopAudio);
-
-  //   return () => window.removeEventListener("blur", stopAudio);
-  // });
 
   const value = {
     currentSrc,
