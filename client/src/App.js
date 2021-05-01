@@ -11,6 +11,7 @@ import AppTemplate from "components/templates/AppTemplate";
 import ROUTES, { RenderRoutes } from "routes/Routes";
 
 import { AudioProvider } from "store/AudioContext";
+import { SearchProvider } from "store/SearchContext";
 
 const axiosInstance = axios.create({
   baseURL: "https://api.spotify.com/v1",
@@ -37,11 +38,13 @@ const App = () => {
               axiosInstance.get(endpointURL).then((res) => res.data),
           }}
         >
-          <AppTemplate>
-            <AudioProvider>
-              <RenderRoutes routes={ROUTES} />
-            </AudioProvider>
-          </AppTemplate>
+          <SearchProvider>
+            <AppTemplate>
+              <AudioProvider>
+                <RenderRoutes routes={ROUTES} />
+              </AudioProvider>
+            </AppTemplate>
+          </SearchProvider>
         </SWRConfig>
       ) : (
         <Login />

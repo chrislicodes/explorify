@@ -1,17 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { SearchContext } from "store/SearchContext";
 import styled from "styled-components/macro";
 import useSWR from "swr";
 import Loader from "components/shared/Loader";
-import SearchBar from "components/shared/SearchBar";
 import WelcomeScreen from "./WelcomeScreen";
 import SearchResults from "./SearchResults";
-
-const FixedSearchbar = styled.div`
-  position: fixed;
-  top: 14px;
-  width: 20%;
-  min-width: 20rem;
-`;
 
 const FlexContainer = styled.div`
   display: flex;
@@ -21,7 +14,7 @@ const FlexContainer = styled.div`
 `;
 
 const SearchContainer = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const { searchQuery } = useContext(SearchContext);
   const { data: user } = useSWR("/me");
 
   const { data: searchResult } = useSWR(
@@ -40,9 +33,9 @@ const SearchContainer = () => {
 
   return (
     <>
-      <FixedSearchbar>
+      {/* <FixedSearchbar>
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      </FixedSearchbar>
+      </FixedSearchbar> */}
       <FlexContainer>{component}</FlexContainer>
     </>
   );
