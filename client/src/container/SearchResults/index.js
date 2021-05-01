@@ -33,9 +33,6 @@ const SearchContainer = () => {
 
   return (
     <>
-      {/* <FixedSearchbar>
-        <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      </FixedSearchbar> */}
       <FlexContainer>{component}</FlexContainer>
     </>
   );
