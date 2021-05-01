@@ -21,6 +21,7 @@ export const AudioProvider = ({ children }) => {
   const audioHandler = useCallback(() => {
     audio.play();
     setIsPlaying(true);
+    console.log(currentSrc);
   }, [audio]);
 
   useEffect(() => {

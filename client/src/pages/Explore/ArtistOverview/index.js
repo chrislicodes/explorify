@@ -2,7 +2,8 @@ import React from "react";
 import useSWR from "swr";
 import Loader from "components/shared/Loader";
 import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
-import CardSection from "container/CardSection";
+import AlbumCardSection from "container/CardSections/AlbumCardSection";
+import ArtistCardSection from "container/CardSections/ArtistCardSection";
 import TrackCardSection from "container/CardSections/TrackCardSection";
 
 const prepareArtistInformation = function (artist) {
@@ -56,13 +57,13 @@ function ArtistOverview(props) {
               }
               title="Top Tracks"
             />
-            <CardSection
+            <ArtistCardSection
               fetchURL={artistID && `/artists/${artistID}/related-artists`}
               propertyName="artists"
               type="artist"
               title="Related Artists"
             />
-            <CardSection
+            <AlbumCardSection
               fetchURL={artistID && `/artists/${artistID}/albums`}
               propertyName="items"
               type="album"

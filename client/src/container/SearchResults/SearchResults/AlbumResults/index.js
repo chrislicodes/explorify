@@ -1,5 +1,5 @@
 import React from "react";
-import CardSection from "container/CardSection";
+import AlbumCardSection from "container/CardSections/AlbumCardSection";
 import useSWR from "swr";
 
 const filterArtists = (artists) => {
@@ -36,7 +36,7 @@ function AlbumResults({ albums }) {
   return (
     <>
       {sortedAlbums && (
-        <CardSection data={sortedAlbums} type={"album"} title="albums" />
+        <AlbumCardSection data={sortedAlbums} type={"album"} title="albums" />
       )}
     </>
   );

@@ -3,7 +3,14 @@ import CardItem from "components/items/CardItem";
 import CardSectionTemplate from "components/templates/CardSectionTemplate";
 import useSWR from "swr";
 
-function TrackCardSection({ data, fetchURL, link, title, backgroundHidden }) {
+function TrackCardSection({
+  data,
+  fetchURL,
+  link,
+  title,
+  backgroundHidden,
+  overflowHidden,
+}) {
   let { data: fetchData } = useSWR(() => !data && fetchURL);
 
   let renderData;
@@ -39,7 +46,11 @@ function TrackCardSection({ data, fetchURL, link, title, backgroundHidden }) {
     });
 
   return (
-    <CardSectionTemplate link={link} title={title}>
+    <CardSectionTemplate
+      link={link}
+      title={title}
+      overflowHidden={overflowHidden}
+    >
       {content}
     </CardSectionTemplate>
   );

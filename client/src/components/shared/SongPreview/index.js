@@ -12,9 +12,10 @@ const Preview = styled.div`
   height: 100%;
 
   &:hover button {
-    ${({ type }) => type === "rounded" && `background-color: var(--color-spotify-logo-green);
+    ${({ type }) =>
+      type === "rounded" &&
+      `background-color: var(--color-spotify-logo-green);
     transform: translateY(-2px);`}
-    
   }
 `;
 
@@ -112,7 +113,7 @@ function SongPreview({
       <PlayControlButton
         onClick={() =>
           curPreviewIsPlaying || curPreviewIsLoading
-            ? audioStopper(previewURL)
+            ? audioStopper()
             : audioSetter(previewURL)
         }
         type={type}
