@@ -115,15 +115,18 @@ const SongPreviewWrapper = styled.div`
   z-index: 1000;
 `;
 
-const CardItem = ({
-  imageURL,
-  link,
-  primaryInfo,
-  secondaryInfo,
-  type,
-  backgroundHidden,
-  previewURL,
-}) => {
+const CardItem = (props) => {
+  let {
+    imageURL,
+    link,
+    primaryInfo,
+    secondaryInfo,
+    type,
+    backgroundHidden,
+    previewURL,
+    onClick,
+  } = props;
+
   let history = useHistory();
 
   function handleClick() {
@@ -131,7 +134,10 @@ const CardItem = ({
   }
 
   return (
-    <CardWrapper backgroundHidden={backgroundHidden} onClick={handleClick}>
+    <CardWrapper
+      backgroundHidden={backgroundHidden}
+      onClick={onClick ? (e) => onClick(e, props) : handleClick}
+    >
       <ImageWrapper type={type}>
         {imageURL ? (
           <img src={imageURL} alt={`${secondaryInfo}`} />
