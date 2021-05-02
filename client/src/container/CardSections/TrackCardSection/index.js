@@ -35,6 +35,7 @@ function TrackCardSection({
         <li key={item.id}>
           <CardItem
             id={item.id}
+            trackURI={item.uri}
             imageURL={imageURL}
             link={link}
             primaryInfo={primaryInfo}

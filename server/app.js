@@ -29,7 +29,7 @@ app.use(cors());
 app.get("/login", (req, res, next) => {
   const state = uuid();
   const scope =
-    "user-read-private user-read-email user-read-recently-played user-top-read";
+    "user-read-private user-read-email user-read-recently-played user-top-read playlist-modify-private";
 
   res.cookie(authStateKey, state);
 

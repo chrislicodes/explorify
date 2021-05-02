@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import PageTemplate from "components/templates/PageTemplate";
 import SectionTemplate from "components/templates/SectionTemplate";
 import DiscoverSearchBar from "./components/DiscoverSearchBar";
@@ -7,10 +7,18 @@ import CardSectionTemplate from "components/templates/CardSectionTemplate";
 import TrackWrapperTemplate from "container/TrackWrapperTemplate";
 import useSWR from "swr";
 import CardItem from "components/items/CardItem";
+import styled from "styled-components/macro";
+import { axiosInstance } from "App";
+
+const FlexContainer = styled.div`
+  display: flex;
+`;
 
 function Discover() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedData, setSelectedData] = useState([]);
+
+  const inputEl = useRef(null);
 
   const { data: topTracks } = useSWR(
     `/me/top/tracks?time_range=short_term&limit=10`
@@ -33,7 +41,8 @@ function Discover() {
       user &&
       `/recommendations?seed_tracks=${selectedData
         .map((data) => data.id)
-        .join(",")}&seed_artists=&seed_genres=&market=${user.country}&limit=30`
+        .join(",")}&seed_artists=&seed_genres=&market=${user.country}&limit=30`,
+    { revalidateOnFocus: false }
   );
 
   const handleClick = (e, data) => {
@@ -52,6 +61,32 @@ function Discover() {
       });
     }
   };
+
+  const createPlaylist = async (e) => {
+    e.preventDefault();
+    const playlistName =
+      inputEl.current.value !== ""
+        ? inputEl.current.value
+        : "Explorify Playlist";
+
+    try {
+      const playlist = await axiosInstance.post(`/users/${user.id}/playlists`, {
+        name: playlistName,
+        description: "Created via Explorify App",
+        public: false,
+      });
+
+      const playlistID = playlist.data.id;
+
+      await axiosInstance.post(`/playlists/${playlistID}/tracks`, {
+        uris: recommendation.tracks.map((data) => data.uri),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(selectedData, recommendation);
 
   return (
     <PageTemplate>
@@ -83,10 +118,16 @@ function Discover() {
       {selectedData.length > 0 && (
         <SectionTemplate headline="Your new Playlist">
           {recommendation && (
-            <TrackWrapperTemplate
-              tracks={recommendation.tracks}
-              displayImage={true}
-            />
+            <FlexContainer>
+              <TrackWrapperTemplate
+                tracks={recommendation.tracks}
+                displayImage={true}
+              />
+              <form>
+                <input type="text" ref={inputEl} placeholder="Playlist Name" />
+                <button onClick={createPlaylist}>Create Playlist</button>
+              </form>
+            </FlexContainer>
           )}
         </SectionTemplate>
       )}

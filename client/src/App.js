@@ -13,7 +13,7 @@ import ROUTES, { RenderRoutes } from "routes/Routes";
 import { AudioProvider } from "store/AudioContext";
 import { SearchProvider } from "store/SearchContext";
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: "https://api.spotify.com/v1",
   headers: {
     Authorization: `Bearer ${getAccessToken()}`,
