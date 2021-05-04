@@ -9,14 +9,32 @@ import useSWR from "swr";
 import CardItem from "components/items/CardItem";
 import styled from "styled-components/macro";
 import { axiosInstance } from "App";
+import PlaylistForm from "./components/PlaylistForm";
 
 const FlexContainer = styled.div`
   display: flex;
+  gap: 4rem;
 `;
 
 function Discover() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedData, setSelectedData] = useState([]);
+  const [sliderValues, setSliderValues] = useState({
+    popularity: [0, 100],
+    valence: [0, 100],
+    energy: [0, 100],
+    acousticness: [0, 100],
+    danceability: [0, 100],
+    tempo: [0, 100],
+  });
+
+  const handleChange = (values, id) => {
+    setSliderValues((prevValues) => {
+      let newValues = Object.assign({}, prevValues);
+      newValues[id] = values;
+      return newValues;
+    });
+  };
 
   const inputEl = useRef(null);
 
@@ -35,15 +53,34 @@ function Discover() {
       )}%20NOT%20genre:hoerspiel%20&type=track&market=${user.country}&limit=10`
   );
 
+  const createRecommendationSearchParams = () =>
+    new URLSearchParams({
+      seed_tracks: selectedData.map((data) => data.id).join(","),
+      min_popularity: sliderValues.popularity[0],
+      max_popularity: sliderValues.popularity[1],
+      min_valence: sliderValues.valence[0] / 100,
+      max_valence: sliderValues.valence[1] / 100,
+      min_energy: sliderValues.energy[0],
+      max_energy: sliderValues.energy[1],
+      min_acousticness: sliderValues.acousticness[0],
+      max_acousticness: sliderValues.acousticness[1],
+      min_danceability: sliderValues.danceability[0],
+      max_danceability: sliderValues.danceability[1],
+      min_tempo: sliderValues.tempo[0],
+      max_tempo: sliderValues.tempo[1],
+      market: user.country,
+      limit: 30,
+    });
+
   const { data: recommendation } = useSWR(
     () =>
       selectedData.length !== 0 &&
       user &&
-      `/recommendations?seed_tracks=${selectedData
-        .map((data) => data.id)
-        .join(",")}&seed_artists=&seed_genres=&market=${user.country}&limit=30`,
+      `/recommendations?${createRecommendationSearchParams()}`,
     { revalidateOnFocus: false }
   );
+
+  console.log(sliderValues);
 
   const handleClick = (e, data) => {
     const findID = selectedData.findIndex((item) => {
@@ -123,10 +160,14 @@ function Discover() {
                 tracks={recommendation.tracks}
                 displayImage={true}
               />
-              <form>
+              {/* <form>
                 <input type="text" ref={inputEl} placeholder="Playlist Name" />
                 <button onClick={createPlaylist}>Create Playlist</button>
-              </form>
+              </form> */}
+              <PlaylistForm
+                changeHandler={handleChange}
+                sliderValues={sliderValues}
+              />
             </FlexContainer>
           )}
         </SectionTemplate>
