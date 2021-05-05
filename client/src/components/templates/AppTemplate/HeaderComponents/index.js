@@ -6,6 +6,7 @@ import styled from "styled-components";
 import useSWR from "swr";
 import { Link } from "react-router-dom";
 import SearchBar from "components/shared/SearchBar";
+import PlaceholderImage from "components/shared/PlaceholderImage";
 
 const StyledLink = styled(Link)`
   display: flex;
@@ -51,10 +52,27 @@ const StyledSearchBar = styled(SearchBar)`
   margin-right: auto;
 `;
 
+const StyledPlaceholderImage = styled(PlaceholderImage)`
+  width: auto;
+  height: 100%;
+  border-radius: 50%;
+`;
+
+const ImageWrapper = styled.div`
+  height: 100%;
+  width: 4rem;
+
+  & svg {
+    width: 2rem;
+    height: 2rem;
+  }
+`;
+
 const HeaderComponents = () => {
   const { data: userData } = useSWR("/me");
+  console.log(userData);
   const userName = userData && userData.display_name;
-  const userImageURL = userData && userData.images[0].url;
+  const userImageURL = userData && userData.images[0]?.url;
 
   return (
     <>
@@ -63,7 +81,13 @@ const HeaderComponents = () => {
         {/* <StyledLink to="/explore">
           <StyledIcon type="icon-search" />
         </StyledLink> */}
-        <UserImage src={userImageURL} alt="user" />
+        {userImageURL ? (
+          <UserImage src={userImageURL} alt="user" />
+        ) : (
+          <ImageWrapper>
+            <StyledPlaceholderImage />
+          </ImageWrapper>
+        )}
         <p>{userName}</p>
         <Button onClick={logout}>LOGOUT</Button>
       </ContentWrapper>
