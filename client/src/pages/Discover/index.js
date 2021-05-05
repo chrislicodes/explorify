@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import PageTemplate from "components/templates/PageTemplate";
 import SectionTemplate from "components/templates/SectionTemplate";
 import DiscoverSearchBar from "./components/DiscoverSearchBar";
@@ -10,10 +10,19 @@ import CardItem from "components/items/CardItem";
 import styled from "styled-components/macro";
 import { axiosInstance } from "App";
 import PlaylistForm from "./components/PlaylistForm";
+import Loader from "components/shared/Loader";
+import Collapsible from "./components/Collapsible";
+import theme from "styles/theme";
 
-const FlexContainer = styled.div`
+const RecommendationWrapper = styled.div`
   display: flex;
   gap: 4rem;
+
+  @media ${theme.bp.tabletS} {
+    flex-direction: column-reverse;
+    height: auto;
+    gap: 1rem;
+  }
 `;
 
 function Discover() {
@@ -25,7 +34,7 @@ function Discover() {
     energy: [0, 100],
     acousticness: [0, 100],
     danceability: [0, 100],
-    tempo: [0, 100],
+    // tempo: [0, 100],
   });
 
   const handleChange = (values, id) => {
@@ -35,8 +44,6 @@ function Discover() {
       return newValues;
     });
   };
-
-  const inputEl = useRef(null);
 
   const { data: topTracks } = useSWR(
     `/me/top/tracks?time_range=short_term&limit=10`
@@ -66,10 +73,10 @@ function Discover() {
       max_acousticness: sliderValues.acousticness[1],
       min_danceability: sliderValues.danceability[0],
       max_danceability: sliderValues.danceability[1],
-      min_tempo: sliderValues.tempo[0],
-      max_tempo: sliderValues.tempo[1],
+      // min_tempo: sliderValues.tempo[0],
+      // max_tempo: sliderValues.tempo[1],
       market: user.country,
-      limit: 30,
+      limit: 40,
     });
 
   const { data: recommendation } = useSWR(
@@ -79,8 +86,6 @@ function Discover() {
       `/recommendations?${createRecommendationSearchParams()}`,
     { revalidateOnFocus: false }
   );
-
-  console.log(sliderValues);
 
   const handleClick = (e, data) => {
     const findID = selectedData.findIndex((item) => {
@@ -99,12 +104,9 @@ function Discover() {
     }
   };
 
-  const createPlaylist = async (e) => {
+  const createPlaylist = async (e, name) => {
     e.preventDefault();
-    const playlistName =
-      inputEl.current.value !== ""
-        ? inputEl.current.value
-        : "Explorify Playlist";
+    const playlistName = name !== "" ? name : "Explorify Playlist";
 
     try {
       const playlist = await axiosInstance.post(`/users/${user.id}/playlists`, {
@@ -122,8 +124,6 @@ function Discover() {
       console.log(error);
     }
   };
-
-  console.log(selectedData, recommendation);
 
   return (
     <PageTemplate>
@@ -154,22 +154,23 @@ function Discover() {
       </SectionTemplate>
       {selectedData.length > 0 && (
         <SectionTemplate headline="Your new Playlist">
-          {recommendation && (
-            <FlexContainer>
+          <RecommendationWrapper>
+            {recommendation ? (
               <TrackWrapperTemplate
                 tracks={recommendation.tracks}
                 displayImage={true}
               />
-              {/* <form>
-                <input type="text" ref={inputEl} placeholder="Playlist Name" />
-                <button onClick={createPlaylist}>Create Playlist</button>
-              </form> */}
+            ) : (
+              <Loader />
+            )}
+            <Collapsible>
               <PlaylistForm
-                changeHandler={handleChange}
+                sliderHandler={handleChange}
                 sliderValues={sliderValues}
+                buttonHandler={createPlaylist}
               />
-            </FlexContainer>
-          )}
+            </Collapsible>
+          </RecommendationWrapper>
         </SectionTemplate>
       )}
     </PageTemplate>
