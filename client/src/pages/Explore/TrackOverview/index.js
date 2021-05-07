@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import AudioFeaturesBar from "components/shared/AudioFeaturesBarChart";
 import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
 import PreviewBar from "components/shared/SongPreview";
+import theme from "styles/theme";
 
 const TrackInformation = styled.div`
   display: grid;
@@ -27,23 +28,24 @@ const AudioFeatures = styled.div`
   height: 450px;
   width: 100%;
   align-self: flex-start;
+
+  @media ${theme.bp.tabletS} {
+    height: 350px;
+  }
 `;
 
 const prepareArtists = (artists) => {
-  const artistElement = artists
+  return artists
     .map((artist) => (
       <Link key={artist.id} to={`/explore/artist/${artist.id}`}>
         {artist.name}
       </Link>
     ))
     .reduce((prev, cur) => [prev, " | ", cur]);
-
-  return artistElement;
 };
 
 const prepareTrackInformation = function (trackInformation) {
-  const album = trackInformation.album;
-  const artists = trackInformation.artists;
+  const { album, artists } = trackInformation;
 
   return {
     albumInfo: [
@@ -130,11 +132,11 @@ function TrackOverview(props) {
             buttonLabel="Play on Spotify"
           >
             <TrackInformation>
-              {previewURL && (
-                <TrackInfoItem>
-                  <PreviewBar previewURL={previewURL} />
-                </TrackInfoItem>
-              )}
+              <TrackInfoItem>
+                {(previewURL && <PreviewBar previewURL={previewURL} />) || (
+                  <p>Preview</p>
+                )}
+              </TrackInfoItem>
               <TrackInfoItem>DURATION</TrackInfoItem>
               <TrackInfoItem>POPULARITY</TrackInfoItem>
               <TrackInfoItem>KEY</TrackInfoItem>

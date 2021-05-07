@@ -13,6 +13,7 @@ import PlaylistForm from "./components/PlaylistForm";
 import Loader from "components/shared/Loader";
 import Collapsible from "./components/Collapsible";
 import theme from "styles/theme";
+import NothingFound from "components/shared/NothingFound";
 
 const RecommendationWrapper = styled.div`
   display: flex;
@@ -39,9 +40,10 @@ function Discover() {
 
   const handleChange = (values, id) => {
     setSliderValues((prevValues) => {
-      let newValues = Object.assign({}, prevValues);
-      newValues[id] = values;
-      return newValues;
+      return {
+        ...prevValues,
+        [id]: values,
+      };
     });
   };
 
@@ -76,7 +78,7 @@ function Discover() {
       // min_tempo: sliderValues.tempo[0],
       // max_tempo: sliderValues.tempo[1],
       market: user.country,
-      limit: 40,
+      limit: 50,
     });
 
   const { data: recommendation } = useSWR(
@@ -97,9 +99,7 @@ function Discover() {
         setSelectedData((prevData) => [...prevData, data]);
     } else {
       setSelectedData((prevData) => {
-        let newData = [...prevData];
-        newData.splice(findID, 1);
-        return newData;
+        return [...prevData].filter((el, index) => index !== findID);
       });
     }
   };
@@ -127,7 +127,7 @@ function Discover() {
 
   return (
     <PageTemplate>
-      <SectionTemplate headline="Combine your favorite tracks to discover new music">
+      <SectionTemplate headline="Click on your favorite tracks to discover new music">
         <DiscoverSearchBar
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
@@ -155,14 +155,15 @@ function Discover() {
       {selectedData.length > 0 && (
         <SectionTemplate headline="Your new Playlist">
           <RecommendationWrapper>
-            {recommendation ? (
+            {(recommendation?.tracks.length > 0 && (
               <TrackWrapperTemplate
                 tracks={recommendation.tracks}
                 displayImage={true}
               />
-            ) : (
-              <Loader />
-            )}
+            )) ||
+              (recommendation?.tracks.length === 0 && <NothingFound />) || (
+                <Loader />
+              )}
             <Collapsible>
               <PlaylistForm
                 sliderHandler={handleChange}

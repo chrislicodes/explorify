@@ -31,7 +31,12 @@ function PlaylistForm({ sliderHandler, sliderValues, buttonHandler }) {
     <FormWrapper>
       <FormHeader>
         <StyledInput type="text" placeholder="Playlist Name" ref={inputEl} />
-        <StyledButton onClick={(e) => buttonHandler(e, inputEl.current.value)}>
+        <StyledButton
+          onClick={(e) => {
+            buttonHandler(e, inputEl.current.value);
+            inputEl.current.value = "";
+          }}
+        >
           Create Playlist
         </StyledButton>
       </FormHeader>
