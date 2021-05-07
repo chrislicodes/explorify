@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components/macro";
 import PlaceholderImage from "components/shared/PlaceholderImage";
+import theme from "styles/theme";
 
 const FlexContainer = styled.article`
   max-width: 1600px;
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -17,11 +19,19 @@ const FlexContainer = styled.article`
   & > * {
     width: 100%;
   }
+
+  @media ${theme.bp.tabletS} {
+    padding: 0 1.5rem;
+  }
 `;
 
 const OverviewHeader = styled.header`
   display: flex;
   gap: 3rem;
+
+  @media ${theme.bp.tabletS} {
+    flex-direction: column;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -30,6 +40,10 @@ const ImageContainer = styled.div`
   & img {
     width: 100%;
     box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+  }
+
+  @media ${theme.bp.tabletS} {
+    align-self: center;
   }
 `;
 
