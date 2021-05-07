@@ -3,7 +3,6 @@ import Icon from "components/shared/Icon";
 import PlaceholderImage from "components/shared/PlaceholderImage";
 import styled from "styled-components/macro";
 import SongPreview from "components/shared/SongPreview";
-import theme from "styles/theme";
 import { useHistory } from "react-router-dom";
 
 const StyledIcon = styled(Icon)``;
@@ -23,7 +22,7 @@ const CardWrapper = styled.div`
   justify-content: center;
   background-color: ${(props) =>
     props.backgroundHidden ? "none" : "var(--color-grey-1-50);"};
-  padding: 2.2rem;
+  padding: ${(props) => (props.backgroundHidden ? "1rem" : "2rem")};
   padding-bottom: 1.5rem;
   box-shadow: ${(props) =>
     props.backgroundHidden ? "none" : "0 2px 8px rgb(0 0 0 / 60%)"};
