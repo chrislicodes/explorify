@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-import theme from "styles/theme";
 
 const ButtonStyled = styled.button`
   max-height: 4rem;
