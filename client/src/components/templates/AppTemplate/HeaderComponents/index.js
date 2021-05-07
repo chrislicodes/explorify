@@ -1,34 +1,20 @@
 import React from "react";
 import { logout } from "auth";
 import Button from "components/shared/Button";
-import Icon from "components/shared/Icon";
 import styled from "styled-components";
 import useSWR from "swr";
-import { Link } from "react-router-dom";
 import SearchBar from "components/shared/SearchBar";
 import PlaceholderImage from "components/shared/PlaceholderImage";
+import theme from "styles/theme";
 
-const StyledLink = styled(Link)`
+const UserWrapper = styled.div`
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 4rem;
-  height: 100%;
-  border-radius: 100%;
-  background-color: var(--color-grey-3);
-  padding-top: 0.5rem;
-`;
+  gap: 1rem;
 
-const StyledIcon = styled(Icon)`
-  &:hover svg {
-    fill: var(--color-spotify-green);
-  }
-
-  & svg {
-    height: 2rem;
-    width: 100%;
-    fill: var(--color-white);
-    transition: all 0.2s;
+  @media ${theme.bp.mobileL} {
+    display: none;
   }
 `;
 
@@ -81,14 +67,16 @@ const HeaderComponents = () => {
         {/* <StyledLink to="/explore">
           <StyledIcon type="icon-search" />
         </StyledLink> */}
-        {userImageURL ? (
-          <UserImage src={userImageURL} alt="user" />
-        ) : (
-          <ImageWrapper>
-            <StyledPlaceholderImage />
-          </ImageWrapper>
-        )}
-        <p>{userName}</p>
+        <UserWrapper>
+          {userImageURL ? (
+            <UserImage src={userImageURL} alt="user" />
+          ) : (
+            <ImageWrapper>
+              <StyledPlaceholderImage />
+            </ImageWrapper>
+          )}
+          <p>{userName}</p>
+        </UserWrapper>
         <Button onClick={logout}>LOGOUT</Button>
       </ContentWrapper>
     </>
