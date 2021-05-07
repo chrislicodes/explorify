@@ -13,8 +13,8 @@ const PlaceholderWrapper = styled.div`
 
   & svg {
     fill: var(--color-grey-3);
-    width: 10rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
   }
 `;
 

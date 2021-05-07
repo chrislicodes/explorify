@@ -1,22 +1,32 @@
-import React, { useContext } from "react";
+import React from "react";
 import Icon from "components/shared/Icon";
 import styled from "styled-components/macro";
-import { SearchContext } from "store/SearchContext";
-import theme from "styles/theme";
 
 const SearchInput = styled.input`
   height: 4rem;
-  border-radius: 2rem;
-  border: 2px solid transparent;
+  border: none;
+  border-bottom: 2px solid var(--color-grey-4);
   transition: all 0.2s;
   padding-left: 1.5rem;
   padding-right: 3.2rem;
   width: 100%;
 
+  background: none;
+
+  transition: all 0.5s;
+
+  color: var(--color-white);
+  font-size: 2rem;
+
   &:active,
   &:focus {
-    border: 2px solid var(--color-spotify-green);
+    border-bottom: 2px solid var(--color-spotify-green);
     outline: none;
+  }
+
+  &::placeholder {
+    color: var(--color-white);
+    font-size: 2rem;
   }
 `;
 
@@ -31,17 +41,8 @@ const ScreenReaderLabel = styled.span`
 `;
 
 const SearchForm = styled.form`
-  width: 150px;
+  width: 100%;
   position: relative;
-  transition: all 0.5s;
-
-  &:focus-within {
-    width: 200px;
-
-    @media ${theme.bp.mobileM} {
-      width: 170px;
-    }
-  }
 `;
 
 const SearchIcon = styled(Icon)`
@@ -52,12 +53,11 @@ const SearchIcon = styled(Icon)`
   & svg {
     height: 2rem;
     width: 2rem;
-    fill: var(--color-grey-2);
+    fill: var(--color-grey-6);
   }
 `;
 
-const SearchBar = ({ className }) => {
-  let { handleClick, setSearchQuery, searchQuery } = useContext(SearchContext);
+const DiscoverSearchBar = ({ className, searchQuery, setSearchQuery }) => {
   return (
     <SearchForm
       action="/"
@@ -66,24 +66,25 @@ const SearchBar = ({ className }) => {
       onSubmit={(e) => e.preventDefault()}
       className={className}
     >
-      <label htmlFor="header-search">
+      <label htmlFor="discover-search">
         <ScreenReaderLabel>
           Search for your favorite tracks, aritsts, ...
         </ScreenReaderLabel>
       </label>
       <SearchInput
         value={searchQuery}
-        onInput={(e) => setSearchQuery(e.target.value)}
+        onInput={(e) => {
+          setSearchQuery(e.target.value);
+        }}
         type="text"
-        id="header-search"
-        placeholder="Search"
+        id="discover-search"
+        placeholder="Search by Track"
         name="s"
         spellCheck="false"
-        onClick={handleClick}
       />
       <SearchIcon type="icon-search" />
     </SearchForm>
   );
 };
 
-export default SearchBar;
+export default DiscoverSearchBar;

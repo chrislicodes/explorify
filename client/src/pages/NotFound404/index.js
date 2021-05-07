@@ -1,5 +1,5 @@
 import React from "react";
-import NothingFound from "container/SearchResults/NothingFound";
+import NothingFound from "components/shared/NothingFound";
 
 const Error404 = function () {
   return (

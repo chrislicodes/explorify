@@ -5,7 +5,7 @@ import SectionTemplate from "components/templates/SectionTemplate";
 import Loader from "components/shared/Loader";
 
 const CardList = styled.ul`
-  --column-size: ${(props) => (props.backgroundHidden ? "200px" : "180px")};
+  --column-size: ${(props) => (props.backgroundHidden ? "200px" : "160px")};
   display: grid;
   overflow: ${(props) => (props.overflowHidden ? "hidden" : "unset")};
   grid-auto-rows: ${(props) => (props.overflowHidden ? 0 : 1)};
@@ -14,19 +14,19 @@ const CardList = styled.ul`
   column-gap: var(--spacing-size-md-2);
 
   @media ${theme.bp.desktopS} {
-    --column-size: 160px;
+    --column-size: 140px;
   }
 
   @media ${theme.bp.tabletL} {
-    --column-size: 150px;
+    --column-size: 130px;
   }
 
   @media ${theme.bp.mobileL} {
-    --column-size: 120px;
+    --column-size: 110px;
   }
 
   @media ${theme.bp.mobileS} {
-    --column-size: 100px;
+    --column-size: 90px;
   }
 
   & li {

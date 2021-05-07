@@ -13,7 +13,7 @@ const prepareArtistInformation = function (artist) {
     artistLink: artist.external_urls.spotify,
     genres:
       artist.genres.length > 0 &&
-      artist.genres.reduce((prev, cur) => [prev, " | ", cur]),
+      artist.genres.slice(0, 5).reduce((prev, cur) => [prev, " | ", cur]),
     followers: artist.followers.total,
     popularity: artist.popularity,
   };

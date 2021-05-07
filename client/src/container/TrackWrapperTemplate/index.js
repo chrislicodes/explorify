@@ -8,9 +8,11 @@ const StyledTrackWrapperTemplate = styled.div`
   flex-direction: column;
   height: 100%;
   width: 100%;
+  min-width: 0;
 `;
 
 const TrackList = styled.ul`
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-size-sm-3);

@@ -10,6 +10,7 @@ function TrackCardSection({
   title,
   backgroundHidden,
   overflowHidden,
+  onCardItemClick,
 }) {
   let { data: fetchData } = useSWR(() => !data && fetchURL);
 
@@ -33,6 +34,8 @@ function TrackCardSection({
       return (
         <li key={item.id}>
           <CardItem
+            id={item.id}
+            trackURI={item.uri}
             imageURL={imageURL}
             link={link}
             primaryInfo={primaryInfo}
@@ -40,6 +43,7 @@ function TrackCardSection({
             type="track"
             backgroundHidden={backgroundHidden}
             previewURL={previewURL}
+            onClick={onCardItemClick}
           />
         </li>
       );

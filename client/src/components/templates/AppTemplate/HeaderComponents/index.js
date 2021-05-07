@@ -1,33 +1,20 @@
 import React from "react";
 import { logout } from "auth";
 import Button from "components/shared/Button";
-import Icon from "components/shared/Icon";
 import styled from "styled-components";
 import useSWR from "swr";
-import { Link } from "react-router-dom";
 import SearchBar from "components/shared/SearchBar";
+import PlaceholderImage from "components/shared/PlaceholderImage";
+import theme from "styles/theme";
 
-const StyledLink = styled(Link)`
+const UserWrapper = styled.div`
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 4rem;
-  height: 100%;
-  border-radius: 100%;
-  background-color: var(--color-grey-3);
-  padding-top: 0.5rem;
-`;
+  gap: 1rem;
 
-const StyledIcon = styled(Icon)`
-  &:hover svg {
-    fill: var(--color-spotify-green);
-  }
-
-  & svg {
-    height: 2rem;
-    width: 100%;
-    fill: var(--color-white);
-    transition: all 0.2s;
+  @media ${theme.bp.mobileL} {
+    display: none;
   }
 `;
 
@@ -51,10 +38,27 @@ const StyledSearchBar = styled(SearchBar)`
   margin-right: auto;
 `;
 
+const StyledPlaceholderImage = styled(PlaceholderImage)`
+  width: auto;
+  height: 100%;
+  border-radius: 50%;
+`;
+
+const ImageWrapper = styled.div`
+  height: 100%;
+  width: 4rem;
+
+  & svg {
+    width: 2rem;
+    height: 2rem;
+  }
+`;
+
 const HeaderComponents = () => {
   const { data: userData } = useSWR("/me");
+  console.log(userData);
   const userName = userData && userData.display_name;
-  const userImageURL = userData && userData.images[0].url;
+  const userImageURL = userData && userData.images[0]?.url;
 
   return (
     <>
@@ -63,8 +67,16 @@ const HeaderComponents = () => {
         {/* <StyledLink to="/explore">
           <StyledIcon type="icon-search" />
         </StyledLink> */}
-        <UserImage src={userImageURL} alt="user" />
-        <p>{userName}</p>
+        <UserWrapper>
+          {userImageURL ? (
+            <UserImage src={userImageURL} alt="user" />
+          ) : (
+            <ImageWrapper>
+              <StyledPlaceholderImage />
+            </ImageWrapper>
+          )}
+          <p>{userName}</p>
+        </UserWrapper>
         <Button onClick={logout}>LOGOUT</Button>
       </ContentWrapper>
     </>

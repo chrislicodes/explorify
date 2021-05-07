@@ -3,6 +3,7 @@ import ReactLoaderSpinner from "react-loader-spinner";
 import styled from "styled-components/macro";
 
 const StyledLoader = styled.div`
+  flex: 1;
   & svg {
     height: 5.5rem;
     width: 5.5rem;

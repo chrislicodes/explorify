@@ -59,7 +59,7 @@ const PlayControlButton = styled.button`
 
 const ProgressBarWrapper = styled.div`
   height: 5px;
-  min-width: 7rem;
+  min-width: 6rem;
 
   border: 1px solid var(--color-grey-3);
   border-radius: 20px;

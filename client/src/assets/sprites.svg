@@ -98,5 +98,11 @@
 <symbol id="icon-stop" viewBox="0 0 32 32">
 <path d="M4 4h24v24h-24z"></path>
 </symbol>
+<symbol id="icon-arrow-up" viewBox="0 0 32 32">
+<path d="M16 1l-15 15h9v16h12v-16h9z"></path>
+</symbol>
+<symbol id="icon-arrow-down" viewBox="0 0 32 32">
+<path d="M16 31l15-15h-9v-16h-12v16h-9z"></path>
+</symbol>
 </defs>
 </svg>

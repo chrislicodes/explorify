@@ -8,6 +8,12 @@ export const AudioContext = React.createContext({
   audioStopper: () => {},
 });
 
+const createAudio = (previewURL) => {
+  const audio = new Audio(previewURL);
+  audio.volume = 0.2;
+  return audio;
+};
+
 export const AudioProvider = ({ children }) => {
   const [audio, setAudio] = useState(new Audio());
   const [isPlaying, setIsPlaying] = useState(false);
@@ -38,7 +44,7 @@ export const AudioProvider = ({ children }) => {
   const playAudio = (previewURL) => {
     audio.pause();
     setIsPlaying(false);
-    setAudio(new Audio(previewURL));
+    setAudio(createAudio(previewURL));
   };
 
   const stopAudio = () => {

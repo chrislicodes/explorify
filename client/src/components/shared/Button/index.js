@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components/macro";
-import theme from "styles/theme";
 
 const ButtonStyled = styled.button`
   max-height: 4rem;
@@ -20,12 +19,16 @@ const ButtonStyled = styled.button`
   font-weight: bold;
 
   cursor: pointer;
-  transition: ${theme.transition};
+  transition: background-color 0.3s, color 0.3s, transform 0.1s;
 
   &:hover {
     background-color: ${({ main }) =>
       main ? "var(--color-spotify-logo-green)" : "var(--color-spotify-green)"};
     color: var(--color-white);
+  }
+
+  &:active {
+    transform: translateY(0.5px);
   }
 `;
 

@@ -3,7 +3,7 @@ import ArtistResults from "./ArtistResults";
 import AlbumResults from "./AlbumResults";
 import TrackCardSection from "container/CardSections/TrackCardSection";
 import styled from "styled-components/macro";
-import NothingFound from "../NothingFound";
+import NothingFound from "../../../components/shared/NothingFound";
 
 const sortByPopularity = (items) => {
   if (!items) return;

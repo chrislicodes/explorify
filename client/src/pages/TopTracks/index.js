@@ -7,7 +7,7 @@ import styled from "styled-components/macro";
 const ButtonWrapper = styled.div`
   display: flex;
   gap: 1rem;
-  height: 3.5rem;
+  height: 4rem;
 `;
 
 function TopTracks() {
