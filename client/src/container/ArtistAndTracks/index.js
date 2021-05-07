@@ -71,12 +71,7 @@ const StyledTrackWrapperTemplate = styled(TrackWrapperTemplate)`
   }
 `;
 
-const ArtistAndTracks = ({
-  artist,
-  headline = "Artist",
-  nTracks = 10,
-  link,
-}) => {
+const ArtistAndTracks = ({ artist, headline = "", nTracks = 10, link }) => {
   const { data: user } = useSWR("/me");
   const { data: tracks } = useSWR(
     () => artist && `/artists/${artist.id}/top-tracks?market=${user.country}`
@@ -90,7 +85,7 @@ const ArtistAndTracks = ({
     <>
       {tracks ? (
         <SectionTemplate
-          headline={`${headline} - ${artist.name}`}
+          headline={`${headline} ${artist.name}`}
           link={titleLink}
         >
           <ContentWrapper>
