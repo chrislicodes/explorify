@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Icon from "components/shared/Icon";
 import styled from "styled-components/macro";
 import { SearchContext } from "store/SearchContext";
+import theme from "styles/theme";
 
 const SearchInput = styled.input`
   height: 4rem;
@@ -36,6 +37,10 @@ const SearchForm = styled.form`
 
   &:focus-within {
     width: 200px;
+
+    @media ${theme.bp.mobileM} {
+      width: 170px;
+    }
   }
 `;
 
