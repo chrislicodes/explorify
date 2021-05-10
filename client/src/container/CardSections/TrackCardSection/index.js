@@ -3,6 +3,26 @@ import CardItem from "components/items/CardItem";
 import CardSectionTemplate from "components/templates/CardSectionTemplate";
 import useSWR from "swr";
 
+export const getTrackData = (item) => {
+  const trackID = item.id;
+  const trackLink = `track/${item.id}`;
+  const imageURL = item.album.images.length > 0 && item.album.images[1].url;
+  const primaryInfo = item.name;
+  const secondaryInfo = item.artists[0].name;
+  const previewURL = item.preview_url;
+  const trackURI = item.uri;
+
+  return {
+    trackID,
+    trackLink,
+    imageURL,
+    primaryInfo,
+    secondaryInfo,
+    previewURL,
+    trackURI,
+  };
+};
+
 function TrackCardSection({
   data,
   fetchURL,
@@ -25,19 +45,22 @@ function TrackCardSection({
   const content =
     renderData.length > 0 &&
     renderData.map((item) => {
-      let link = `track/${item.id}`;
-      let imageURL = item.album.images.length > 0 && item.album.images[1].url;
-      let primaryInfo = item.name;
-      let secondaryInfo = item.artists[0].name;
-      let previewURL = item.preview_url;
-
+      const {
+        trackID,
+        trackLink,
+        imageURL,
+        primaryInfo,
+        secondaryInfo,
+        previewURL,
+        trackURI,
+      } = getTrackData(item);
       return (
-        <li key={item.id}>
+        <li key={trackID}>
           <CardItem
-            id={item.id}
-            trackURI={item.uri}
+            id={trackID}
+            trackURI={trackURI}
             imageURL={imageURL}
-            link={link}
+            link={trackLink}
             primaryInfo={primaryInfo}
             secondaryInfo={secondaryInfo}
             type="track"

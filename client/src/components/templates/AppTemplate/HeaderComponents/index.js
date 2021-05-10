@@ -64,9 +64,6 @@ const HeaderComponents = () => {
     <>
       <ContentWrapper>
         <StyledSearchBar />
-        {/* <StyledLink to="/explore">
-          <StyledIcon type="icon-search" />
-        </StyledLink> */}
         <UserWrapper>
           {userImageURL ? (
             <UserImage src={userImageURL} alt="user" />

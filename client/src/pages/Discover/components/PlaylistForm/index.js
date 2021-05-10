@@ -37,7 +37,7 @@ function PlaylistForm({ sliderHandler, sliderValues, buttonHandler }) {
             inputEl.current.value = "";
           }}
         >
-          Create Playlist
+          Save to Spotify
         </StyledButton>
       </FormHeader>
       <FormBody>
@@ -68,15 +68,6 @@ function PlaylistForm({ sliderHandler, sliderValues, buttonHandler }) {
           maxLabel="Energetic"
           changeHandler={sliderHandler}
         />
-        {/* <Slider
-          id="tempo"
-          title="Tempo"
-          minValue={Number(sliderValues.tempo[0])}
-          maxValue={Number(sliderValues.tempo[1])}
-          minLabel="Slow"
-          maxLabel="Fast"
-          changeHandler={sliderHandler}
-        /> */}
         <Slider
           id="acousticness"
           title="Acousticness"

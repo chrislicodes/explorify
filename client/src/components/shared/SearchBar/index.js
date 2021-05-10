@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import Icon from "components/shared/Icon";
 import styled from "styled-components/macro";
 import { SearchContext } from "store/SearchContext";
 import theme from "styles/theme";
+import { useHistory, useLocation } from "react-router-dom";
 
 const SearchInput = styled.input`
   height: 4rem;
@@ -57,7 +58,24 @@ const SearchIcon = styled(Icon)`
 `;
 
 const SearchBar = ({ className }) => {
-  let { handleClick, setSearchQuery, searchQuery } = useContext(SearchContext);
+  let { setSearchQuery, searchQuery } = useContext(SearchContext);
+
+  let history = useHistory(); //goes into the component
+  let location = useLocation(); //goes into the component
+
+  useEffect(() => {
+    if (location.pathname !== "/explore") {
+      setSearchQuery("");
+    }
+  }, [location, setSearchQuery]);
+
+  const handleClick = () => {
+    console.log(history.location.pathname);
+    if (history.location.pathname !== "/discover") {
+      history.push("/explore");
+    }
+  };
+
   return (
     <SearchForm
       action="/"

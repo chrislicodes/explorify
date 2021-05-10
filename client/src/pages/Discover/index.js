@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import PageTemplate from "components/templates/PageTemplate";
 import SectionTemplate from "components/templates/SectionTemplate";
-import DiscoverSearchBar from "./components/DiscoverSearchBar";
 import TrackCardSection from "container/CardSections/TrackCardSection";
 import CardSectionTemplate from "components/templates/CardSectionTemplate";
 import TrackWrapperTemplate from "container/TrackWrapperTemplate";
@@ -14,6 +13,8 @@ import Loader from "components/shared/Loader";
 import Collapsible from "./components/Collapsible";
 import theme from "styles/theme";
 import NothingFound from "components/shared/NothingFound";
+import { SearchContext } from "store/SearchContext";
+import { getTrackData } from "container/CardSections/TrackCardSection";
 
 const RecommendationWrapper = styled.div`
   display: flex;
@@ -27,7 +28,7 @@ const RecommendationWrapper = styled.div`
 `;
 
 function Discover() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const { searchQuery } = useContext(SearchContext);
   const [selectedData, setSelectedData] = useState([]);
   const [sliderValues, setSliderValues] = useState({
     popularity: [0, 100],
@@ -35,7 +36,6 @@ function Discover() {
     energy: [0, 100],
     acousticness: [0, 100],
     danceability: [0, 100],
-    // tempo: [0, 100],
   });
 
   const handleChange = (values, id) => {
@@ -48,7 +48,7 @@ function Discover() {
   };
 
   const { data: topTracks } = useSWR(
-    `/me/top/tracks?time_range=short_term&limit=10`
+    `/me/top/tracks?time_range=short_term&limit=20`
   );
 
   const { data: user } = useSWR("/me");
@@ -62,21 +62,21 @@ function Discover() {
       )}%20NOT%20genre:hoerspiel%20&type=track&market=${user.country}&limit=10`
   );
 
+  console.log(selectedData);
+
   const createRecommendationSearchParams = () =>
     new URLSearchParams({
-      seed_tracks: selectedData.map((data) => data.id).join(","),
+      seed_tracks: selectedData.map((data) => data.trackID).join(","),
       min_popularity: sliderValues.popularity[0],
       max_popularity: sliderValues.popularity[1],
       min_valence: sliderValues.valence[0] / 100,
       max_valence: sliderValues.valence[1] / 100,
-      min_energy: sliderValues.energy[0],
-      max_energy: sliderValues.energy[1],
-      min_acousticness: sliderValues.acousticness[0],
-      max_acousticness: sliderValues.acousticness[1],
-      min_danceability: sliderValues.danceability[0],
-      max_danceability: sliderValues.danceability[1],
-      // min_tempo: sliderValues.tempo[0],
-      // max_tempo: sliderValues.tempo[1],
+      min_energy: sliderValues.energy[0] / 100,
+      max_energy: sliderValues.energy[1] / 100,
+      min_acousticness: sliderValues.acousticness[0] / 100,
+      max_acousticness: sliderValues.acousticness[1] / 100,
+      min_danceability: sliderValues.danceability[0] / 100,
+      max_danceability: sliderValues.danceability[1] / 100,
       market: user.country,
       limit: 50,
     });
@@ -90,6 +90,7 @@ function Discover() {
   );
 
   const handleClick = (e, data) => {
+    console.log(data);
     const findID = selectedData.findIndex((item) => {
       return item.id === data.id;
     });
@@ -125,13 +126,19 @@ function Discover() {
     }
   };
 
+  useEffect(() => {
+    topTracks &&
+      setSelectedData(
+        [...topTracks.items]
+          .sort(() => 0.5 - Math.random())
+          .slice(0, 5)
+          .map((item) => getTrackData(item))
+      );
+  }, [topTracks]);
+
   return (
     <PageTemplate>
       <SectionTemplate headline="Click on your favorite tracks to discover new music">
-        <DiscoverSearchBar
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
         <TrackCardSection
           data={
             searchQuery !== "" ? searchResult?.tracks.items : topTracks?.items

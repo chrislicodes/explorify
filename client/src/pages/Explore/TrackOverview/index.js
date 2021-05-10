@@ -5,8 +5,29 @@ import Loader from "components/shared/Loader";
 import { Link } from "react-router-dom";
 import AudioFeaturesBar from "components/shared/AudioFeaturesBarChart";
 import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
-import PreviewBar from "components/shared/SongPreview";
+import SongPreview from "components/shared/SongPreview";
 import theme from "styles/theme";
+import { transformDuration } from "utils";
+
+const keyMapping = {
+  0: "C",
+  1: "C♯, D♭",
+  2: "D",
+  3: "D♯, E♭",
+  4: "E",
+  5: "F",
+  6: "F♯, G♭",
+  7: "G",
+  8: "G♯, A♭",
+  9: "A",
+  10: "A♯, B♭",
+  11: "B",
+};
+
+const modeMapping = {
+  0: "minor",
+  1: "Major",
+};
 
 const TrackInformation = styled.div`
   display: grid;
@@ -56,7 +77,6 @@ const prepareTrackInformation = function (trackInformation) {
     ].reduce((prev, cur) => [prev, " · ", cur]),
 
     albumImageURL: album.images.length > 0 && album.images[0].url,
-    albumID: album.id,
     artists: prepareArtists(artists),
     trackDuration: trackInformation.duration_ms,
     trackName: trackInformation.name,
@@ -100,14 +120,9 @@ function TrackOverview(props) {
     () => trackID && `/audio-features/${trackID}`
   );
 
-  // const { data: audioAnalysis } = useSWR(
-  //   () => trackID && `/audio-analysis/${trackID}`
-  // );
-
   const {
     albumInfo,
     albumImageURL,
-    albumID,
     artists,
     trackDuration,
     trackName,
@@ -118,6 +133,9 @@ function TrackOverview(props) {
 
   const audioData =
     (Boolean(audioFeatures) && prepareAudioFeatures(audioFeatures)) || [];
+
+  const { tempo: trackTempo, mode, key } =
+    Boolean(audioFeatures) && audioFeatures;
 
   return (
     <>
@@ -133,15 +151,21 @@ function TrackOverview(props) {
           >
             <TrackInformation>
               <TrackInfoItem>
-                {(previewURL && <PreviewBar previewURL={previewURL} />) || (
-                  <p>Preview</p>
-                )}
+                {(previewURL && (
+                  <SongPreview
+                    previewURL={previewURL}
+                    progressBar={false}
+                    type="rounded"
+                  />
+                )) || <p>Not available</p>}
               </TrackInfoItem>
-              <TrackInfoItem>DURATION</TrackInfoItem>
-              <TrackInfoItem>POPULARITY</TrackInfoItem>
-              <TrackInfoItem>KEY</TrackInfoItem>
-              <TrackInfoItem>MODALITY</TrackInfoItem>
-              <TrackInfoItem>TEMPO</TrackInfoItem>
+              <TrackInfoItem>
+                {transformDuration(trackDuration)} DURATION
+              </TrackInfoItem>
+              <TrackInfoItem>{trackPopularity} Popularity</TrackInfoItem>
+              <TrackInfoItem>{keyMapping[key]}</TrackInfoItem>
+              <TrackInfoItem>{modeMapping[mode]}</TrackInfoItem>
+              <TrackInfoItem>{Math.round(trackTempo * 1)} BPM</TrackInfoItem>
             </TrackInformation>
             <AudioFeatures>
               <AudioFeaturesBar data={audioData} />
