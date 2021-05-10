@@ -1,14 +1,7 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components/macro";
 import Slider from "../Slider";
-import Button from "components/shared/Button";
 
-const FormHeader = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
-  gap: 0.75rem;
-`;
 const FormBody = styled.div`
   display: flex;
   flex-direction: column;
@@ -17,29 +10,9 @@ const FormBody = styled.div`
 
 const FormWrapper = styled.form``;
 
-const StyledButton = styled(Button)`
-  height: 4rem;
-`;
-
-const StyledInput = styled.input`
-  height: 4rem;
-`;
-
 function PlaylistForm({ sliderHandler, sliderValues, buttonHandler }) {
-  const inputEl = useRef(null);
   return (
     <FormWrapper>
-      <FormHeader>
-        <StyledInput type="text" placeholder="Playlist Name" ref={inputEl} />
-        <StyledButton
-          onClick={(e) => {
-            buttonHandler(e, inputEl.current.value);
-            inputEl.current.value = "";
-          }}
-        >
-          Save to Spotify
-        </StyledButton>
-      </FormHeader>
       <FormBody>
         <Slider
           id="popularity"

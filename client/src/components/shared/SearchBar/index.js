@@ -70,7 +70,6 @@ const SearchBar = ({ className }) => {
   }, [location, setSearchQuery]);
 
   const handleClick = () => {
-    console.log(history.location.pathname);
     if (history.location.pathname !== "/discover") {
       history.push("/explore");
     }

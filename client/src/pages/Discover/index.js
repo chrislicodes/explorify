@@ -5,26 +5,27 @@ import TrackCardSection from "container/CardSections/TrackCardSection";
 import CardSectionTemplate from "components/templates/CardSectionTemplate";
 import TrackWrapperTemplate from "container/TrackWrapperTemplate";
 import useSWR from "swr";
-import CardItem from "components/items/CardItem";
+import SelectedCardItem from "components/items/SelectedCardItem";
 import styled from "styled-components/macro";
 import { axiosInstance } from "App";
 import PlaylistForm from "./components/PlaylistForm";
 import Loader from "components/shared/Loader";
 import Collapsible from "./components/Collapsible";
-import theme from "styles/theme";
 import NothingFound from "components/shared/NothingFound";
 import { SearchContext } from "store/SearchContext";
 import { getTrackData } from "container/CardSections/TrackCardSection";
+import Button from "components/shared/Button";
 
 const RecommendationWrapper = styled.div`
   display: flex;
-  gap: 4rem;
+  flex-direction: column;
+  gap: 2rem;
+`;
 
-  @media ${theme.bp.tabletS} {
-    flex-direction: column-reverse;
-    height: auto;
-    gap: 1rem;
-  }
+const StyledButton = styled(Button)`
+  height: 4.5rem;
+  flex-grow: 0;
+  width: 16rem;
 `;
 
 function Discover() {
@@ -37,6 +38,7 @@ function Discover() {
     acousticness: [0, 100],
     danceability: [0, 100],
   });
+  const [buttonText, setButtonText] = useState("Save to Spotify");
 
   const handleChange = (values, id) => {
     setSliderValues((prevValues) => {
@@ -62,11 +64,15 @@ function Discover() {
       )}%20NOT%20genre:hoerspiel%20&type=track&market=${user.country}&limit=10`
   );
 
-  console.log(selectedData);
+  const filterSelectedTracks = (arr = []) => {
+    return arr.filter(
+      (track) => !selectedData.find((item) => item.id === track.id)
+    );
+  };
 
   const createRecommendationSearchParams = () =>
     new URLSearchParams({
-      seed_tracks: selectedData.map((data) => data.trackID).join(","),
+      seed_tracks: selectedData.map((data) => data.id).join(","),
       min_popularity: sliderValues.popularity[0],
       max_popularity: sliderValues.popularity[1],
       min_valence: sliderValues.valence[0] / 100,
@@ -90,7 +96,6 @@ function Discover() {
   );
 
   const handleClick = (e, data) => {
-    console.log(data);
     const findID = selectedData.findIndex((item) => {
       return item.id === data.id;
     });
@@ -105,14 +110,17 @@ function Discover() {
     }
   };
 
-  const createPlaylist = async (e, name) => {
+  const createPlaylist = async (e) => {
     e.preventDefault();
-    const playlistName = name !== "" ? name : "Explorify Playlist";
+    const playlistName = "Explorify Playlist";
 
     try {
+      setButtonText("Saving ..");
       const playlist = await axiosInstance.post(`/users/${user.id}/playlists`, {
         name: playlistName,
-        description: "Created via Explorify App",
+        description: `Created via Explorify App based on ${selectedData
+          .map((item) => item.secondaryInfo + " - " + item.primaryInfo)
+          .join(", ")}`,
         public: false,
       });
 
@@ -121,8 +129,12 @@ function Discover() {
       await axiosInstance.post(`/playlists/${playlistID}/tracks`, {
         uris: recommendation.tracks.map((data) => data.uri),
       });
+      setButtonText("Success!");
+      setTimeout(() => setButtonText("Save to Spotify"), 2000);
     } catch (error) {
       console.log(error);
+      setButtonText("Error");
+      setTimeout(() => setButtonText("Save to Spotify"), 2000);
     }
   };
 
@@ -138,10 +150,12 @@ function Discover() {
 
   return (
     <PageTemplate>
-      <SectionTemplate headline="Click on your favorite tracks to discover new music">
+      <>
         <TrackCardSection
           data={
-            searchQuery !== "" ? searchResult?.tracks.items : topTracks?.items
+            searchQuery !== ""
+              ? filterSelectedTracks(searchResult?.tracks.items)
+              : filterSelectedTracks(topTracks?.items)
           }
           title={(searchQuery !== "" && "Results") || "Your Recent Top Songs"}
           onCardItemClick={handleClick}
@@ -150,36 +164,45 @@ function Discover() {
           <CardSectionTemplate
             overflowHidden={false}
             title="Selected Songs (max. 5)"
+            columnWidthMod={100}
           >
             {selectedData.map((data, index) => (
               <li key={data.id + index}>
-                <CardItem {...data} onClick={handleClick} />
+                <SelectedCardItem {...data} onClick={handleClick} />
               </li>
             ))}
           </CardSectionTemplate>
         )}
-      </SectionTemplate>
+      </>
       {selectedData.length > 0 && (
-        <SectionTemplate headline="Your new Playlist">
-          <RecommendationWrapper>
-            {(recommendation?.tracks.length > 0 && (
-              <TrackWrapperTemplate
-                tracks={recommendation.tracks}
-                displayImage={true}
-              />
-            )) ||
-              (recommendation?.tracks.length === 0 && <NothingFound />) || (
-                <Loader />
-              )}
-            <Collapsible>
-              <PlaylistForm
-                sliderHandler={handleChange}
-                sliderValues={sliderValues}
-                buttonHandler={createPlaylist}
-              />
-            </Collapsible>
-          </RecommendationWrapper>
-        </SectionTemplate>
+        <>
+          <Collapsible>
+            <PlaylistForm
+              sliderHandler={handleChange}
+              sliderValues={sliderValues}
+              buttonHandler={createPlaylist}
+            />
+          </Collapsible>
+          <SectionTemplate headline="Your newly generated Playlist">
+            <RecommendationWrapper>
+              {(recommendation?.tracks.length > 0 && (
+                <>
+                  <StyledButton main={true} onClick={createPlaylist}>
+                    {buttonText}
+                  </StyledButton>
+
+                  <TrackWrapperTemplate
+                    tracks={recommendation.tracks}
+                    displayImage={true}
+                  />
+                </>
+              )) ||
+                (recommendation?.tracks.length === 0 && <NothingFound />) || (
+                  <Loader />
+                )}
+            </RecommendationWrapper>
+          </SectionTemplate>
+        </>
       )}
     </PageTemplate>
   );

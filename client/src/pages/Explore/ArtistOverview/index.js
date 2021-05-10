@@ -5,6 +5,7 @@ import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
 import AlbumCardSection from "container/CardSections/AlbumCardSection";
 import ArtistCardSection from "container/CardSections/ArtistCardSection";
 import TrackCardSection from "container/CardSections/TrackCardSection";
+import { transformFollower } from "utils";
 
 const prepareArtistInformation = function (artist) {
   return {
@@ -14,7 +15,7 @@ const prepareArtistInformation = function (artist) {
     genres:
       artist.genres.length > 0 &&
       artist.genres.slice(0, 5).reduce((prev, cur) => [prev, " | ", cur]),
-    followers: artist.followers.total,
+    followers: transformFollower(artist.followers.total),
     popularity: artist.popularity,
   };
 };

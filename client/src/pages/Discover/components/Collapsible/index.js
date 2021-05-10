@@ -5,22 +5,23 @@ import Icon from "components/shared/Icon";
 const CollapsibleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  max-width: 500px;
 `;
 
 const CollapseButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-grey-3);
+  background-color: var(--color-grey-2);
   cursor: pointer;
   padding: 1.2rem;
-  width: 100%;
+  width: 10rem;
   border: none;
   text-align: left;
   outline: none;
   border-radius: 1rem;
   color: var(--color-white);
+  border: 1px solid var(--color-grey-3);
 
   transition: all 0.3s;
 
@@ -61,8 +62,8 @@ function Collapsible({ children, mountsOpen = false }) {
   return (
     <CollapsibleContainer>
       <CollapseButton onClick={toggleContent}>
-        <p>{isOpen ? "Hide" : "Show"} Playlist Menu</p>
-        <StyledIcon type={isOpen ? "icon-arrow-up" : "icon-arrow-down"} />
+        <StyledIcon type="icon-equalizer" />
+        <p>Options</p>
       </CollapseButton>
       <Content isOpen={isOpen}>{children}</Content>
     </CollapsibleContainer>

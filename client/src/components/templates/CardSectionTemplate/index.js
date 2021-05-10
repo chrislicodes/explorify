@@ -5,28 +5,44 @@ import SectionTemplate from "components/templates/SectionTemplate";
 import Loader from "components/shared/Loader";
 
 const CardList = styled.ul`
-  --column-size: ${(props) => (props.backgroundHidden ? "200px" : "160px")};
+  --column-size: ${(props) => {
+    const width = (props.backgroundHidden ? 200 : 160) + props.columnWidthMod;
+    return `${width}px`;
+  }};
   display: grid;
   overflow: ${(props) => (props.overflowHidden ? "hidden" : "unset")};
   grid-auto-rows: ${(props) => (props.overflowHidden ? 0 : 1)};
   grid-template-rows: 1fr;
   grid-template-columns: repeat(auto-fill, minmax(var(--column-size), 1fr));
   column-gap: var(--spacing-size-md-2);
+  padding: 0 1rem;
 
   @media ${theme.bp.desktopS} {
-    --column-size: 140px;
+    --column-size: ${(props) => {
+      const width = 140 + props.columnWidthMod;
+      return `${width}px`;
+    }};
   }
 
   @media ${theme.bp.tabletL} {
-    --column-size: 130px;
+    --column-size: ${(props) => {
+      const width = 130 + props.columnWidthMod;
+      return `${width}px`;
+    }};
   }
 
   @media ${theme.bp.mobileL} {
-    --column-size: 110px;
+    --column-size: ${(props) => {
+      const width = 110 + props.columnWidthMod;
+      return `${width}px`;
+    }};
   }
 
   @media ${theme.bp.mobileS} {
-    --column-size: 90px;
+    --column-size: ${(props) => {
+      const width = 90 + props.columnWidthMod;
+      return `${width}px`;
+    }};
   }
 
   & li {
@@ -59,15 +75,22 @@ const CardList = styled.ul`
 const CardSectionTemplate = ({
   overflowHidden = true,
   backgroundHidden = false,
+  columnWidthMod = 0,
   children,
   link,
   title,
+  className,
 }) => {
   return (
-    <SectionTemplate headline={title || "Section"} link={link}>
+    <SectionTemplate
+      headline={title || "Section"}
+      link={link}
+      className={className}
+    >
       <CardList
         overflowHidden={overflowHidden}
         backgroundHidden={backgroundHidden}
+        columnWidthMod={columnWidthMod}
       >
         {children?.length > 0 ? children : <Loader />}
       </CardList>

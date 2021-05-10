@@ -56,7 +56,6 @@ const ImageWrapper = styled.div`
 
 const HeaderComponents = () => {
   const { data: userData } = useSWR("/me");
-  console.log(userData);
   const userName = userData && userData.display_name;
   const userImageURL = userData && userData.images[0]?.url;
 

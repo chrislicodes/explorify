@@ -39,6 +39,7 @@ const getLocalRefreshToken = () =>
  * Refresh the access_token if serveral validations in function "getAccessToken" fails
  */
 const refreshAccessToken = () => {
+  console.log("Refreshing Token..");
   axios
     .get(
       `${
@@ -63,6 +64,7 @@ const refreshAccessToken = () => {
  * @returns {string || undefined} access_token
  */
 export const getAccessToken = () => {
+  console.log("Getting Token..");
   const { error, access_token, refresh_token, expires_in } = getHashParams();
 
   // If error exist in getHashParams then refresh access_token

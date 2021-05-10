@@ -4,7 +4,7 @@ import CardSectionTemplate from "components/templates/CardSectionTemplate";
 import useSWR from "swr";
 
 export const getTrackData = (item) => {
-  const trackID = item.id;
+  const id = item.id;
   const trackLink = `track/${item.id}`;
   const imageURL = item.album.images.length > 0 && item.album.images[1].url;
   const primaryInfo = item.name;
@@ -13,7 +13,7 @@ export const getTrackData = (item) => {
   const trackURI = item.uri;
 
   return {
-    trackID,
+    id,
     trackLink,
     imageURL,
     primaryInfo,
@@ -31,6 +31,7 @@ function TrackCardSection({
   backgroundHidden,
   overflowHidden,
   onCardItemClick,
+  cardSize,
 }) {
   let { data: fetchData } = useSWR(() => !data && fetchURL);
 
@@ -46,7 +47,7 @@ function TrackCardSection({
     renderData.length > 0 &&
     renderData.map((item) => {
       const {
-        trackID,
+        id,
         trackLink,
         imageURL,
         primaryInfo,
@@ -55,9 +56,9 @@ function TrackCardSection({
         trackURI,
       } = getTrackData(item);
       return (
-        <li key={trackID}>
+        <li key={id}>
           <CardItem
-            id={trackID}
+            id={id}
             trackURI={trackURI}
             imageURL={imageURL}
             link={trackLink}
@@ -67,6 +68,7 @@ function TrackCardSection({
             backgroundHidden={backgroundHidden}
             previewURL={previewURL}
             onClick={onCardItemClick}
+            cardSize={cardSize}
           />
         </li>
       );

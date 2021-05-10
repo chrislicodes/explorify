@@ -5,7 +5,6 @@ import styled from "styled-components/macro";
 const HeadlineContainer = styled.section`
   display: flex;
   flex-direction: column;
-  min-height: 25rem;
   min-width: 100%;
   text-transform: uppercase;
   color: var(--color-white);

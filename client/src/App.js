@@ -36,6 +36,11 @@ const App = () => {
           value={{
             fetcher: (endpointURL) =>
               axiosInstance.get(endpointURL).then((res) => res.data),
+            onError: (error, key) => {
+              if (error.status === 401) {
+                setAccessToken(getAccessToken());
+              }
+            },
           }}
         >
           <SearchProvider>

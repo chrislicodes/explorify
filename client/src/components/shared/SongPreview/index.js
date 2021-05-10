@@ -8,7 +8,6 @@ import theme from "styles/theme";
 const Preview = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
   height: 100%;
 
   &:hover button {
