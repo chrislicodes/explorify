@@ -15,6 +15,7 @@ import NothingFound from "components/shared/NothingFound";
 import { SearchContext } from "store/SearchContext";
 import { getTrackData } from "container/CardSections/TrackCardSection";
 import Button from "components/shared/Button";
+import Icon from "components/shared/Icon";
 
 const RecommendationWrapper = styled.div`
   display: flex;
@@ -26,6 +27,24 @@ const StyledButton = styled(Button)`
   height: 4.5rem;
   flex-grow: 0;
   width: 16rem;
+`;
+
+const Info = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: -2rem;
+`;
+
+const StyledIcon = styled(Icon)`
+  height: 2.5rem;
+  width: 2.5rem;
+  & svg {
+    height: 100%;
+    width: 100%;
+    fill: var(--color-spotify-green);
+  }
 `;
 
 function Discover() {
@@ -150,30 +169,37 @@ function Discover() {
 
   return (
     <PageTemplate>
-      <>
-        <TrackCardSection
-          data={
-            searchQuery !== ""
-              ? filterSelectedTracks(searchResult?.tracks.items)
-              : filterSelectedTracks(topTracks?.items)
-          }
-          title={(searchQuery !== "" && "Results") || "Your Recent Top Songs"}
-          onCardItemClick={handleClick}
-        />
-        {selectedData.length > 0 && (
-          <CardSectionTemplate
-            overflowHidden={false}
-            title="Selected Songs (max. 5)"
-            columnWidthMod={100}
-          >
-            {selectedData.map((data, index) => (
-              <li key={data.id + index}>
-                <SelectedCardItem {...data} onClick={handleClick} />
-              </li>
-            ))}
-          </CardSectionTemplate>
-        )}
-      </>
+      <Info>
+        <StyledIcon type="icon-notification" />
+        <p>
+          You can use the search bar to find and select your favorite tracks.
+        </p>
+      </Info>
+
+      <TrackCardSection
+        data={
+          searchQuery !== ""
+            ? filterSelectedTracks(searchResult?.tracks.items)
+            : filterSelectedTracks(topTracks?.items)
+        }
+        title={
+          (searchQuery !== "" && "Search Results") || "Your Recent Top Songs"
+        }
+        onCardItemClick={handleClick}
+      />
+      {selectedData.length > 0 && (
+        <CardSectionTemplate
+          overflowHidden={false}
+          title="Selected Songs (max. 5)"
+          columnWidthMod={100}
+        >
+          {selectedData.map((data, index) => (
+            <li key={data.id + index}>
+              <SelectedCardItem {...data} onClick={handleClick} />
+            </li>
+          ))}
+        </CardSectionTemplate>
+      )}
       {selectedData.length > 0 && (
         <>
           <Collapsible>

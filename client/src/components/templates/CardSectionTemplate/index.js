@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import theme from "styles/theme";
 import SectionTemplate from "components/templates/SectionTemplate";
 import Loader from "components/shared/Loader";
@@ -15,6 +15,7 @@ const CardList = styled.ul`
   grid-template-rows: 1fr;
   grid-template-columns: repeat(auto-fill, minmax(var(--column-size), 1fr));
   column-gap: var(--spacing-size-md-2);
+
   padding: 0 1rem;
 
   @media ${theme.bp.desktopS} {
@@ -29,18 +30,28 @@ const CardList = styled.ul`
       const width = 130 + props.columnWidthMod;
       return `${width}px`;
     }};
+
+    ${({ overflowHidden }) => {
+      if (overflowHidden) {
+        return css`
+          grid-auto-flow: column;
+          grid-auto-columns: minmax(var(--column-size), 1fr);
+          overflow-x: scroll;
+        `;
+      }
+    }};
   }
 
   @media ${theme.bp.mobileL} {
     --column-size: ${(props) => {
-      const width = 110 + props.columnWidthMod;
+      const width = 120 + props.columnWidthMod;
       return `${width}px`;
     }};
   }
 
   @media ${theme.bp.mobileS} {
     --column-size: ${(props) => {
-      const width = 90 + props.columnWidthMod;
+      const width = 110 + props.columnWidthMod;
       return `${width}px`;
     }};
   }
@@ -53,6 +64,9 @@ const CardList = styled.ul`
     width: 100%;
   }
 
+  /* -ms-overflow-style: none; /* IE and Edge 
+  scrollbar-width: none; Firefox */
+
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
     border-radius: 10px;
@@ -60,7 +74,8 @@ const CardList = styled.ul`
   }
 
   &::-webkit-scrollbar {
-    height: 1rem;
+    /* display: none; */
+    height: 0.6rem;
     border-radius: 1rem;
     background-color: var(--color-grey-6);
   }

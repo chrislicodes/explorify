@@ -21,6 +21,18 @@ export const axiosInstance = axios.create({
   },
 });
 
+const fetcher = async (endpointURL) => {
+  try {
+    const { data } = await axiosInstance.get(endpointURL);
+    return data;
+  } catch (err) {
+    const error = new Error("An error occurred while fetching the data.");
+    error.status = err.response.status;
+    console.log("Error");
+    throw error;
+  }
+};
+
 const App = () => {
   const [accessToken, setAccessToken] = useState("");
 
@@ -34,9 +46,9 @@ const App = () => {
       {accessToken ? (
         <SWRConfig
           value={{
-            fetcher: (endpointURL) =>
-              axiosInstance.get(endpointURL).then((res) => res.data),
+            fetcher: fetcher,
             onError: (error, key) => {
+              console.log(error, key);
               if (error.status === 401) {
                 setAccessToken(getAccessToken());
               }

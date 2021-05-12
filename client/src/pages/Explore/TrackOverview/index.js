@@ -8,6 +8,7 @@ import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
 import SongPreview from "components/shared/SongPreview";
 import theme from "styles/theme";
 import { transformDuration } from "utils";
+import TrackInfoItem from "./TrackInfoItem";
 
 const keyMapping = {
   0: "C",
@@ -37,12 +38,6 @@ const TrackInformation = styled.div`
   grid-template-areas:
     ". . . "
     ". . . ";
-`;
-
-const TrackInfoItem = styled.div`
-  border: 1px solid var(--color-grey-3);
-  padding: 20px;
-  text-align: center;
 `;
 
 const AudioFeatures = styled.div`
@@ -134,8 +129,11 @@ function TrackOverview(props) {
   const audioData =
     (Boolean(audioFeatures) && prepareAudioFeatures(audioFeatures)) || [];
 
-  const { tempo: trackTempo, mode, key } =
-    Boolean(audioFeatures) && audioFeatures;
+  const {
+    tempo: trackTempo,
+    mode,
+    key,
+  } = Boolean(audioFeatures) && audioFeatures;
 
   return (
     <>
@@ -150,22 +148,29 @@ function TrackOverview(props) {
             buttonLabel="Play on Spotify"
           >
             <TrackInformation>
-              <TrackInfoItem>
-                {(previewURL && (
-                  <SongPreview
-                    previewURL={previewURL}
-                    progressBar={false}
-                    type="rounded"
-                  />
-                )) || <p>Not available</p>}
-              </TrackInfoItem>
-              <TrackInfoItem>
-                {transformDuration(trackDuration)} DURATION
-              </TrackInfoItem>
-              <TrackInfoItem>{trackPopularity} Popularity</TrackInfoItem>
-              <TrackInfoItem>{keyMapping[key]}</TrackInfoItem>
-              <TrackInfoItem>{modeMapping[mode]}</TrackInfoItem>
-              <TrackInfoItem>{Math.round(trackTempo * 1)} BPM</TrackInfoItem>
+              <TrackInfoItem
+                item={
+                  (previewURL && (
+                    <SongPreview
+                      previewURL={previewURL}
+                      progressBar={false}
+                      type="rounded"
+                    />
+                  )) || <p>Not available</p>
+                }
+                fieldName="Song Preview"
+              />
+              <TrackInfoItem
+                item={transformDuration(trackDuration)}
+                fieldName="Duration"
+              />
+              <TrackInfoItem item={trackPopularity} fieldName="Popularity" />
+              <TrackInfoItem item={keyMapping[key]} fieldName="Key" />
+              <TrackInfoItem item={modeMapping[mode]} fieldName="Mode" />
+              <TrackInfoItem
+                item={Math.round(trackTempo * 1)}
+                fieldName="Tempo (BPM)"
+              />
             </TrackInformation>
             <AudioFeatures>
               <AudioFeaturesBar data={audioData} />
