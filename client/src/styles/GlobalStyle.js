@@ -6,8 +6,6 @@ const GlobalStyle = createGlobalStyle`
   --color-spotify-logo-green: #1ed760;
   --color-spotify-green: #1db954;
 
-  --color-complement: #1DB9A2;
-
   --color-black: #121212;
 
   --color-grey-1: #1c1c1c;
@@ -24,15 +22,15 @@ const GlobalStyle = createGlobalStyle`
   --color-white: #f1f1f1;
 
   --font-size-base: 1rem;
-  --font-size-xs: 1.2rem;
-  --font-size-sm: 1.4rem;
-  --font-size-md: 1.5rem;
-  --font-size-md-2: 1.7rem;
-  --font-size-lg: 2rem;
-  --font-size-xl: 2.4rem;
-  --font-size-xxl: 2.8rem;
-  --font-size-xxxl: 3.0rem;
-  --font-size-xxxxl: 4.5rem;
+  --font-size-1: 1.2rem;
+  --font-size-2: 1.44rem;
+  --font-size-3: 1.728rem;
+  --font-size-4: 2.074rem;
+  --font-size-5: 2.488rem;
+  --font-size-6: 2.986rem;
+  --font-size-7: 3.583rem;
+  --font-size-8: 4.3rem;
+  --font-size-9: 5.16rem;
 
   --spacing-size-base: 2rem;
   --spacing-size-xxs: 0.20rem;
@@ -64,10 +62,10 @@ const GlobalStyle = createGlobalStyle`
 
 html {
   box-sizing: border-box;
-  font-size: 58.5%; /* Usually 62.5% with 1rem = 10px; Browser Default is 16px */
+  font-size: 62.5%; /* 62.5% with 1rem = 10px; Browser Default is 16px */
 
   font-family: "Roboto", sans-serif;
-  line-height: 1.6;
+  line-height: 1.75;
   letter-spacing: 1.25px;
 
   -webkit-font-smoothing: antialiased;
@@ -149,4 +147,5 @@ button {
     font-size: 55.5%; 
   }
 }`;
+
 export default GlobalStyle;

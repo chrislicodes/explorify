@@ -54,7 +54,6 @@ const PrimaryInfo = styled.p`
 
 const SecondaryInfo = styled.p`
   color: var(--color-grey-4);
-  font-size: var(--font-size-sm);
 `;
 
 const ImageWrapper = styled.div`

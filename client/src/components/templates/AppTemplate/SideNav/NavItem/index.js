@@ -62,7 +62,7 @@ const NavItemDescription = styled.div`
 
   & p {
     margin-left: var(--spacing-size-md-2);
-    font-size: var(--font-size-md-2);
+    font-size: var(--font-size-3);
     color: var(--color-grey-5);
     transition: ${theme.transition};
   }
@@ -84,7 +84,7 @@ const NavItemDescription = styled.div`
 
     & p {
       margin-left: 0;
-      font-size: var(--font-size-sm);
+      font-size: var(--font-size-2);
     }
 
     & div svg {
@@ -96,7 +96,7 @@ const NavItemDescription = styled.div`
 
   @media ${theme.bp.mobileM} {
     & p {
-      font-size: var(--font-size-xs);
+      font-size: var(--font-size-1);
     }
   }
 

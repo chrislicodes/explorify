@@ -57,13 +57,13 @@ const Description = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: var(--font-size-xxxxl);
+  font-size: var(--font-size-7);
   font-weight: 600;
   line-height: 1;
 `;
 
 const SecondaryInfo = styled.p`
-  font-size: var(--font-size-xxl);
+  font-size: var(--font-size-6);
   & a {
     color: var(--color-spotify-green);
 
@@ -74,7 +74,7 @@ const SecondaryInfo = styled.p`
 `;
 
 const AdditionalInfo = styled.p`
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-4);
   color: var(--color-grey-5);
 `;
 
@@ -87,7 +87,7 @@ const PlayButton = styled.a`
   margin-top: 1rem;
   border-radius: 15rem;
   font-weight: 500;
-  font-size: var(--font-size-md-2);
+  font-size: var(--font-size-3);
   user-select: none;
   cursor: pointer;
   background-color: var(--color-spotify-green);

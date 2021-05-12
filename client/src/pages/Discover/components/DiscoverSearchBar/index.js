@@ -16,7 +16,7 @@ const SearchInput = styled.input`
   transition: all 0.5s;
 
   color: var(--color-white);
-  font-size: 2rem;
+  font-size: var(--font-size-2);
 
   &:active,
   &:focus {
@@ -26,7 +26,7 @@ const SearchInput = styled.input`
 
   &::placeholder {
     color: var(--color-white);
-    font-size: 2rem;
+    font-size: var(--font-size-2);
   }
 `;
 

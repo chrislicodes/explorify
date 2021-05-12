@@ -17,7 +17,7 @@ const TrackMetaInfo = styled.div`
 `;
 
 const TrackTitle = styled.h1`
-  font-size: var(--font-size-md-2);
+  font-size: var(--font-size-3);
   font-weight: 500;
   color: var(--color-white);
 
@@ -79,7 +79,6 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
 
-  font-size: var(--font-size-sm);
   color: var(--color-grey-4);
   text-transform: uppercase;
   letter-spacing: 0.15rem;
@@ -94,7 +93,7 @@ const TrackDisplay = styled.div`
 `;
 
 const TrackIndex = styled.p`
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-4);
 `;
 
 const AlbumCover = styled.img`

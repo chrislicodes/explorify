@@ -4,7 +4,6 @@ import PlaceholderImage from "components/shared/PlaceholderImage";
 import styled from "styled-components/macro";
 import SongPreview from "components/shared/SongPreview";
 import { useHistory } from "react-router-dom";
-import theme from "styles/theme";
 
 const StyledIcon = styled(Icon)``;
 const StyledPlaceholderImage = styled(PlaceholderImage)``;
@@ -93,7 +92,6 @@ const PrimaryInfo = styled.div`
 
 const SecondaryInfo = styled.div`
   color: var(--color-grey-4);
-  font-size: var(--font-size-sm);
 `;
 
 const Info = styled.div`

@@ -24,7 +24,7 @@ const Title = styled.h1`
   text-transform: uppercase;
   color: var(--color-white);
   font-weight: bold;
-  font-size: var(--font-size-xxxl);
+  font-size: var(--font-size-6);
   padding-left: var(--spacing-size-sm-2);
 
   border-left: 2px solid var(--color-white);

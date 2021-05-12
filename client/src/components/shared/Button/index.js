@@ -15,7 +15,7 @@ const ButtonStyled = styled.button`
   color: ${({ main }) =>
     main ? "var(--color-white)" : "var(--color-spotify-green)"};
 
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-2);
   font-weight: bold;
 
   cursor: pointer;

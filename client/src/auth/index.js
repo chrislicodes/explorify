@@ -64,7 +64,6 @@ const refreshAccessToken = () => {
  * @returns {string || undefined} access_token
  */
 export const getAccessToken = () => {
-  console.log("Getting Token..");
   const { error, access_token, refresh_token, expires_in } = getHashParams();
 
   // If error exist in getHashParams then refresh access_token
@@ -88,7 +87,6 @@ export const getAccessToken = () => {
     Date.now() - getLocalTokenTimestamp() > EXPIRATION_TIME &&
     localRefreshToken
   ) {
-    console.warn("Access token has expired, refreshing token ...");
     refreshAccessToken();
   }
 

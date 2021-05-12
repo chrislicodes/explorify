@@ -27,7 +27,7 @@ const SliderWrapper = styled.div`
   --slider-margin-bottom: 7px;
   --slider-border-radius: 5px;
   text-transform: none;
-  font-size: 1.25rem;
+  font-size: var(--font-size-1);
 `;
 
 const StyledRail = styled.div`
@@ -74,7 +74,7 @@ const StyledHandle = styled.div`
 `;
 
 const HandleLabel = styled.div`
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   margin-top: -1.8rem;
 `;
 

@@ -4,7 +4,7 @@ import useSWR from "swr";
 
 const Greeting = styled.h1`
   color: var(--color-white);
-  font-size: var(--font-size-xxl);
+  font-size: var(--font-size-6);
 `;
 
 const determineGreeting = () => {

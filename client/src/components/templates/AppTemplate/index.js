@@ -17,7 +17,7 @@ const AppContainer = styled.div`
 
   --desktop-nav-size: 27rem;
 
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-2);
 
   @media ${theme.bp.desktopXS} {
     width: 100%;
@@ -52,7 +52,7 @@ const Page = styled.main`
 
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    border-radius: 1rem;
     background-color: var(--color-grey-3);
   }
 

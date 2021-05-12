@@ -44,7 +44,7 @@ const Disclaimer = styled.p`
   position: absolute;
   bottom: var(--absolute-distance);
   right: var(--absolute-distance);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-1);
   padding: 3rem;
 `;
 
@@ -60,11 +60,11 @@ const ContentContainer = styled.main`
 
 const Headline = styled.h1`
   font-weight: lighter;
-  font-size: 5rem;
+  font-size: var(--font-size-9);
 `;
 
 const Subheader = styled.h2`
-  font-size: 3rem;
+  font-size: var(--font-size-6);
   font-weight: 300;
   margin-bottom: 3rem;
 
@@ -83,11 +83,11 @@ const LoginButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5.5rem;
-  width: 25rem;
+  height: 5rem;
+  width: 22rem;
   background-color: var(--color-spotify-green);
   color: var(--color-white);
-  font-size: var(--font-size-md-2);
+  font-size: var(--font-size-2);
   font-weight: bold;
   letter-spacing: 0.3rem;
 

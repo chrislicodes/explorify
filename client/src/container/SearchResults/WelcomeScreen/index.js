@@ -45,7 +45,7 @@ const HeadphoneIcon = styled(Icon)`
 
 const Sub = styled.p`
   font-weight: 300;
-  font-size: var(--font-size-md-2);
+  font-size: var(--font-size-3);
   text-align: center;
 `;
 
@@ -53,12 +53,12 @@ const Headline = styled.h1`
   display: flex;
   align-items: center;
   color: var(--color-white);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-5);
   font-weight: normal;
   margin-bottom: 1rem;
 
   @media ${theme.bp.desktopXS} {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-4);
   }
 `;
 
