@@ -63,7 +63,7 @@ const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
           trackTitle={trackTitle}
           artistName={artistName}
           trackDuration={trackDuration}
-          trackID={trackID}
+          id={trackID}
           pos={index}
           displayImage={displayImage}
           previewURL={previewURL}

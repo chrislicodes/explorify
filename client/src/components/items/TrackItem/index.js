@@ -119,14 +119,14 @@ const TrackItem = ({
   trackTitle,
   artistName,
   trackDuration,
-  trackID,
+  id,
   displayImage,
   pos,
   previewURL,
 }) => {
   return (
     <TrackItemWrapper>
-      <StyledLink to={`/explore/track/${trackID}`}>
+      <StyledLink to={`/explore/track/${id}`}>
         <TrackDisplay>
           {displayImage ? (
             <AlbumCover src={imageURL} alt={albumName + " Album Cover"} />

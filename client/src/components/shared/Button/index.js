@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 
 const ButtonStyled = styled.button`
-  max-height: 4rem;
+  max-height: 5rem;
   height: 100%;
   padding: 0 2.1rem;
 

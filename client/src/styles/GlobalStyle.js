@@ -6,6 +6,8 @@ const GlobalStyle = createGlobalStyle`
   --color-spotify-logo-green: #1ed760;
   --color-spotify-green: #1db954;
 
+  --color-complement: #1DB9A2;
+
   --color-black: #121212;
 
   --color-grey-1: #1c1c1c;

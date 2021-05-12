@@ -19,3 +19,7 @@ export const transformDuration = (ms) => {
 export const capitalizeWord = (word) => {
   return word[0].toUpperCase() + word.slice(1);
 };
+
+export const transformFollower = (follower) => {
+  return new Intl.NumberFormat(navigator.lang).format(follower);
+};

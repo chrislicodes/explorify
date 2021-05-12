@@ -56,7 +56,6 @@ const ImageWrapper = styled.div`
 
 const HeaderComponents = () => {
   const { data: userData } = useSWR("/me");
-  console.log(userData);
   const userName = userData && userData.display_name;
   const userImageURL = userData && userData.images[0]?.url;
 
@@ -64,9 +63,6 @@ const HeaderComponents = () => {
     <>
       <ContentWrapper>
         <StyledSearchBar />
-        {/* <StyledLink to="/explore">
-          <StyledIcon type="icon-search" />
-        </StyledLink> */}
         <UserWrapper>
           {userImageURL ? (
             <UserImage src={userImageURL} alt="user" />

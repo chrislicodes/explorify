@@ -23,7 +23,7 @@ const sliderStyle = {
 };
 
 const SliderWrapper = styled.div`
-  --slider-height: 0.7rem;
+  --slider-height: 1.3rem;
   --slider-margin-bottom: 7px;
   --slider-border-radius: 5px;
   text-transform: none;
@@ -47,7 +47,7 @@ const StyledTrack = styled.div`
   bottom: 0;
   height: var(--slider-height);
   margin-bottom: var(--slider-margin-bottom);
-  background-color: #546c91;
+  background-color: var(--color-spotify-green);
   border-radius: var(--slider-border-radius);
   z-index: 1;
   cursor: pointer;
@@ -60,11 +60,11 @@ const HandleWrapper = styled.div``;
 const StyledHandle = styled.div`
   left: ${({ percent }) => `${percent}%`};
   position: absolute;
-  margin-left: -5px;
-  margin-top: 22px;
+  margin-left: calc(2px - var(--slider-height));
+  margin-top: calc(30px - var(--slider-height));
   z-index: 2;
-  width: 15px;
-  height: 15px;
+  width: calc(var(--slider-height) + 5px);
+  height: calc(var(--slider-height) + 5px);
   border: 0;
   text-align: center;
   cursor: pointer;
