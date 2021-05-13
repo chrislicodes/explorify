@@ -11,7 +11,7 @@ const TitleWrapper = styled.div`
   gap: var(--spacing-size-sm-2);
 
   margin-top: var(--spacing-size-md-1);
-  margin-bottom: var(--spacing-size-xxl);
+  margin-bottom: var(--spacing-size-xxxl);
 
   cursor: pointer;
 
