@@ -60,8 +60,8 @@ const SearchIcon = styled(Icon)`
 const SearchBar = ({ className }) => {
   let { setSearchQuery, searchQuery } = useContext(SearchContext);
 
-  let history = useHistory(); //goes into the component
-  let location = useLocation(); //goes into the component
+  let history = useHistory();
+  let location = useLocation();
 
   useEffect(() => {
     if (location.pathname !== "/explore") {

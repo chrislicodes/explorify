@@ -7,13 +7,17 @@ const FlexContainer = styled.article`
   max-width: 1600px;
   width: 100%;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   margin: 0 auto;
   margin-top: var(--spacing-size-md-1);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+
   padding: 0 var(--spacing-size-lg-1);
   padding-bottom: var(--spacing-size-xl);
+
   gap: var(--spacing-size-lg-1);
 
   & > * {
@@ -48,7 +52,6 @@ const ImageContainer = styled.div`
 `;
 
 const Description = styled.div`
-  flex: 1;
   display: flex;
   flex-direction: column;
   max-height: 100%;

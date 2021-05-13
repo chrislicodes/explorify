@@ -19,8 +19,6 @@ const Preview = styled.div`
 `;
 
 const PlayControlButton = styled.button`
-  width: 100%;
-  height: 100%;
   height: 4.5rem;
   width: 4.5rem;
 
@@ -34,11 +32,6 @@ const PlayControlButton = styled.button`
   border-radius: 50%;
 
   transition: all 0.3s ease;
-
-  /* @media ${theme.bp.mobileM} {
-    height: 3.5rem;
-    width: 3.5rem;
-  } */
 
   &:hover {
     & svg {
@@ -84,8 +77,8 @@ const ProgressBar = styled.div`
 
 function SongPreview({
   previewURL,
-  progressBar = true,
   className,
+  progressBar = true,
   type = "bar",
 }) {
   let { currentSrc, isPlaying, readyState, audioSetter, audioStopper } =

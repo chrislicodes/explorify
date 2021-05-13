@@ -63,16 +63,18 @@ const HeaderComponents = () => {
     <>
       <ContentWrapper>
         <StyledSearchBar />
-        <UserWrapper>
-          {userImageURL ? (
-            <UserImage src={userImageURL} alt="user" />
-          ) : (
-            <ImageWrapper>
-              <StyledPlaceholderImage />
-            </ImageWrapper>
-          )}
-          <p>{userName}</p>
-        </UserWrapper>
+        {userData && (
+          <UserWrapper>
+            {userImageURL ? (
+              <UserImage src={userImageURL} alt="user" />
+            ) : (
+              <ImageWrapper>
+                <StyledPlaceholderImage />
+              </ImageWrapper>
+            )}
+            <p>{userName}</p>
+          </UserWrapper>
+        )}
         <Button onClick={logout}>LOGOUT</Button>
       </ContentWrapper>
     </>

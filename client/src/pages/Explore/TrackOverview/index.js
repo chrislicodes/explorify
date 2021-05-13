@@ -7,7 +7,7 @@ import AudioFeaturesBar from "components/shared/AudioFeaturesBarChart";
 import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
 import SongPreview from "components/shared/SongPreview";
 import theme from "styles/theme";
-import { transformDuration } from "utils";
+import { transformDurationFormat } from "utils";
 import TrackInfoItem from "./TrackInfoItem";
 
 const keyMapping = {
@@ -161,7 +161,7 @@ function TrackOverview(props) {
                 fieldName="Song Preview"
               />
               <TrackInfoItem
-                item={transformDuration(trackDuration)}
+                item={transformDurationFormat(trackDuration)}
                 fieldName="Duration"
               />
               <TrackInfoItem item={trackPopularity} fieldName="Popularity" />

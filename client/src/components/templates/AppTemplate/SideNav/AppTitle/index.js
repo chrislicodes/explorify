@@ -29,12 +29,14 @@ const Title = styled.h1`
 
   border-left: 2px solid var(--color-white);
 `;
+
 const AppTitle = () => {
   let history = useHistory();
 
   function handleClick() {
     history.push("/home");
   }
+
   return (
     <TitleWrapper onClick={handleClick}>
       <SpotifyIcon />

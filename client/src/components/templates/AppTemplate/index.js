@@ -6,10 +6,6 @@ import HeaderComponents from "./HeaderComponents";
 import styled from "styled-components/macro";
 import theme from "styles/theme";
 
-// ---------------------------------------
-// -------------  STYLING
-// ---------------------------------------
-
 const AppContainer = styled.div`
   display: flex;
   height: 100vh;
@@ -28,8 +24,10 @@ const AppContainer = styled.div`
 const ContentLayout = styled.div`
   width: 100%;
   min-height: 100%;
+
   display: flex;
   flex-direction: column;
+
   max-width: calc(100% - var(--desktop-nav-size));
   background-color: var(--color-grey-2);
 
@@ -98,10 +96,6 @@ const Header = styled.header`
   display: flex;
   align-items: center;
 `;
-
-// ---------------------------------------
-// -------------  LOGIC
-// ---------------------------------------
 
 const AppTemplate = ({ children, user }) => {
   return (

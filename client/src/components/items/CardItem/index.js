@@ -9,27 +9,29 @@ const StyledIcon = styled(Icon)``;
 const StyledPlaceholderImage = styled(PlaceholderImage)``;
 
 const CardWrapper = styled.div`
-  border-radius: 0.5rem;
   position: relative;
-  z-index: 1;
-
-  margin: var(--spacing-size-sm-1) 0;
-
   display: flex;
+
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) =>
-    props.backgroundHidden ? "none" : "var(--color-grey-1-50);"};
+
+  z-index: 1;
+
+  margin: var(--spacing-size-sm-1) 0;
   padding: ${(props) =>
     props.backgroundHidden
       ? "var(--spacing-size-sm-1)"
       : "var(--spacing-size-sm-3)"};
   padding-bottom: var(--spacing-size-sm-3);
+
+  background-color: ${(props) =>
+    props.backgroundHidden ? "none" : "var(--color-grey-1-50);"};
   box-shadow: ${(props) =>
     props.backgroundHidden ? "none" : "0 2px 8px rgb(0 0 0 / 60%)"};
   transition: background-color 0.3s;
-  z-index: 2;
+
+  border-radius: 0.5rem;
   cursor: pointer;
 
   &:hover {
@@ -46,15 +48,17 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
+
   margin-bottom: var(--spacing-size-sm-4);
+  padding-bottom: 100%;
+
   box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   border-radius: ${({ type }) => type === "artist" && "100%"};
-  padding-bottom: 100%;
 
   & img,
   ${StyledPlaceholderImage} {
-    height: 100%;
-    width: 100%;
+    /* height: 100%; */
+    /* width: 100%; */
     object-fit: cover;
     object-position: center center;
     position: absolute;
@@ -66,8 +70,8 @@ const ImageWrapper = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    /* height: 100%; */
 
     display: flex;
     justify-content: center;
@@ -89,7 +93,7 @@ const ImageWrapper = styled.div`
 
 const PrimaryInfo = styled.div`
   font-weight: bold;
-  width: 100%;
+  /* width: 100%; */
 `;
 
 const SecondaryInfo = styled.div`
@@ -101,6 +105,7 @@ const Info = styled.div`
   min-height: 5rem;
   overflow: hidden;
   width: 100%;
+
   & div {
     white-space: nowrap;
     overflow: hidden;

@@ -1,7 +1,7 @@
 import React from "react";
 import TrackItem from "components/items/TrackItem";
 import styled from "styled-components/macro";
-import { transformDuration } from "utils";
+import { transformDurationFormat } from "utils";
 
 const StyledTrackWrapperTemplate = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
     const imageURL = displayImage && track.album.images[2].url;
     const trackTitle = track.name;
     const artistName = track.artists[0].name;
-    const trackDuration = transformDuration(track.duration_ms);
+    const trackDuration = transformDurationFormat(track.duration_ms);
     const trackID = track.id;
     const previewURL = track.preview_url;
 

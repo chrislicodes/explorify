@@ -71,8 +71,8 @@ const NavItemDescription = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.6rem;
+    height: 2.6rem;
     fill: var(--color-grey-5);
     transition: ${theme.transition};
   }

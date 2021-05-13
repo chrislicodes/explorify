@@ -9,7 +9,7 @@ export const getHashParams = function () {
   return hashParams;
 };
 
-export const transformDuration = (ms) => {
+export const transformDurationFormat = (ms) => {
   return new Intl.DateTimeFormat(navigator.lang, {
     minute: "2-digit",
     second: "2-digit",
@@ -20,6 +20,6 @@ export const capitalizeWord = (word) => {
   return word[0].toUpperCase() + word.slice(1);
 };
 
-export const transformFollower = (follower) => {
+export const transformFollowerFormat = (follower) => {
   return new Intl.NumberFormat(navigator.lang).format(follower);
 };

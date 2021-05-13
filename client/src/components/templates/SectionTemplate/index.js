@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
-import theme from "styles/theme";
 
 const HeadlineContainer = styled.section`
   display: flex;
   flex-direction: column;
-  min-width: 100%;
+  /* width: 100%; */
   text-transform: uppercase;
   color: var(--color-white);
   gap: var(--spacing-size-md-1);
