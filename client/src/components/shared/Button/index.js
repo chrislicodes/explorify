@@ -4,7 +4,7 @@ import styled from "styled-components/macro";
 const ButtonStyled = styled.button`
   max-height: 5rem;
   height: 100%;
-  padding: 0 2.1rem;
+  padding: 0 var(--spacing-size-md-1);
 
   border: 2px solid var(--color-spotify-green);
   border-radius: 2rem;

@@ -21,8 +21,6 @@ const TrackTitle = styled.h1`
   font-weight: 500;
   color: var(--color-white);
 
-  margin-bottom: var(--spacing-size-xxs);
-
   & span {
     position: relative;
 
@@ -103,7 +101,7 @@ const AlbumCover = styled.img`
 `;
 
 const Duration = styled.time`
-  margin-left: 1rem;
+  margin-left: var(--spacing-size-sm-1);
 `;
 
 const AdditionalInfo = styled.div`

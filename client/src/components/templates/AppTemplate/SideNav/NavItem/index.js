@@ -71,8 +71,8 @@ const NavItemDescription = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     fill: var(--color-grey-5);
     transition: ${theme.transition};
   }
@@ -90,7 +90,7 @@ const NavItemDescription = styled.div`
     & div svg {
       width: 2.2rem;
       height: 2.2rem;
-      margin: 0.5rem 0;
+      margin: var(--spacing-size-xs-1) 0;
     }
   }
 

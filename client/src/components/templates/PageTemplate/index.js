@@ -5,12 +5,12 @@ import theme from "styles/theme";
 const PageTemplateWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4rem;
-  padding: 0 3rem;
-  padding-bottom: 3rem;
+  gap: var(--spacing-size-lg-2);
+  padding: 0 var(--spacing-size-lg-1);
+  padding-bottom: var(--spacing-size-lg-1);
 
   @media ${theme.bp.tabletS} {
-    padding: 0 2rem;
+    padding: 0 var(--spacing-size-md-1);
   }
 `;
 

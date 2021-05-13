@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
+import theme from "styles/theme";
 
 const HeadlineContainer = styled.section`
   display: flex;
@@ -8,7 +9,7 @@ const HeadlineContainer = styled.section`
   min-width: 100%;
   text-transform: uppercase;
   color: var(--color-white);
-  gap: 2rem;
+  gap: var(--spacing-size-md-1);
 `;
 
 const ContainerHeader = styled.header`

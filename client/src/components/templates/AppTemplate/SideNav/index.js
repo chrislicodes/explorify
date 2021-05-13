@@ -17,7 +17,7 @@ const navItems = [
 const NavLinks = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-size-md);
+  gap: var(--spacing-size-sm-2);
 `;
 
 const SideNav = () => {

@@ -7,13 +7,12 @@ const StyledIcon = styled(Icon)``;
 
 const CardWrapper = styled.div`
   height: 8rem;
-  margin-top: 1rem;
   border-radius: 0.5rem;
   position: relative;
 
-  gap: 1rem;
+  margin: var(--spacing-size-sm-1) 0;
+  gap: var(--spacing-size-sm-1);
 
-  margin-bottom: 1rem;
   z-index: 1;
 
   display: flex;
@@ -95,7 +94,7 @@ const ImageWrapper = styled.div`
 `;
 
 const SongPreviewWrapper = styled.div`
-  margin-right: 0.5rem;
+  margin-right: var(--spacing-size-sm-1);
 `;
 function SelectedCardItem(props) {
   let { imageURL, primaryInfo, secondaryInfo, previewURL, onClick } = props;

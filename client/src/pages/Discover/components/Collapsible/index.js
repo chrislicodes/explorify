@@ -14,7 +14,7 @@ const CollapseButton = styled.button`
   justify-content: space-between;
   background-color: var(--color-grey-2);
   cursor: pointer;
-  padding: 1.2rem;
+  padding: var(--spacing-size-sm-2);
   width: 10rem;
   border: none;
   text-align: left;
@@ -32,7 +32,7 @@ const CollapseButton = styled.button`
 `;
 
 const Content = styled.div`
-  padding: 0 18px;
+  padding: 0 var(--spacing-size-sm-4);
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.3s;

@@ -45,13 +45,13 @@ const Disclaimer = styled.p`
   bottom: var(--absolute-distance);
   right: var(--absolute-distance);
   font-size: var(--font-size-1);
-  padding: 3rem;
+  padding: var(--spacing-size-lg-1);
 `;
 
 const ContentContainer = styled.main`
-  padding: 3rem;
-  margin-bottom: 7rem;
-  margin-right: 10rem;
+  padding: var(--spacing-size-lg-1);
+  margin-bottom: var(--spacing-size-xxxl);
+  margin-right: var(--spacing-size-xxl);
 
   @media ${theme.bp.desktopXS} {
     margin: 0;
@@ -66,7 +66,7 @@ const Headline = styled.h1`
 const Subheader = styled.h2`
   font-size: var(--font-size-6);
   font-weight: 300;
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-size-lg-1);
 
   & span {
     color: var(--color-spotify-green);
@@ -75,7 +75,7 @@ const Subheader = styled.h2`
   }
 
   @media ${theme.bp.desktopXS} {
-    margin-bottom: 5rem;
+    margin-bottom: var(--spacing-size-xl);
   }
 `;
 
@@ -118,7 +118,8 @@ const Login = () => {
         </LoginButton>
       </ContentContainer>
       <Disclaimer>
-        We are not storing any data and all data displayed belongs to Spotify. ♥
+        We are not storing any data and all data is provided by Spotify via
+        their Web API.
       </Disclaimer>
     </FlexContainer>
   );

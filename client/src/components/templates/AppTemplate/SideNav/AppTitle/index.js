@@ -8,9 +8,9 @@ import mixins from "styles/mixins";
 const TitleWrapper = styled.div`
   ${mixins.flexCenter}
 
-  gap: 10px;
+  gap: var(--spacing-size-sm-2);
 
-  margin-top: var(--spacing-size-md);
+  margin-top: var(--spacing-size-md-1);
   margin-bottom: var(--spacing-size-xxl);
 
   cursor: pointer;

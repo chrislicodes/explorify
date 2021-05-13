@@ -27,7 +27,7 @@ const sortAndFilterArtistArray = (artists) => {
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: var(--spacing-size-lg-1);
 `;
 
 function ArtistResults({ artists }) {

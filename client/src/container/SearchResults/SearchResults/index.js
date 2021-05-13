@@ -21,7 +21,7 @@ const filterByPopularity = (items) => {
 
 const GridContainer = styled.div`
   display: grid;
-  grid-gap: 2.4rem;
+  grid-gap: var(--spacing-size-md-2);
 
   & > * {
     min-width: 0;

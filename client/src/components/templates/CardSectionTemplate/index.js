@@ -14,10 +14,9 @@ const CardList = styled.ul`
   grid-auto-rows: ${(props) => (props.overflowHidden ? 0 : 1)};
   grid-template-rows: 1fr;
   grid-template-columns: repeat(auto-fill, minmax(var(--column-size), 1fr));
-  column-gap: var(--spacing-size-md-2);
+  column-gap: var(--spacing-size-sm-4);
 
-  padding: 0 1rem;
-
+  padding: 0 var(--spacing-size-sm-1);
   @media ${theme.bp.desktopS} {
     --column-size: ${(props) => {
       const width = 140 + props.columnWidthMod;

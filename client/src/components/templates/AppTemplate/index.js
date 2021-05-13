@@ -15,7 +15,7 @@ const AppContainer = styled.div`
   height: 100vh;
   width: 100vw;
 
-  --desktop-nav-size: 27rem;
+  --desktop-nav-size: 26rem;
 
   font-size: var(--font-size-2);
 
@@ -47,7 +47,7 @@ const Page = styled.main`
   overflow-y: auto;
 
   @media ${theme.bp.desktopXS} {
-    margin-bottom: 7rem;
+    margin-bottom: var(--spacing-size-xxl);
   }
 
   &::-webkit-scrollbar-track {

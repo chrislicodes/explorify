@@ -10,7 +10,7 @@ import useSWR from "swr";
 import Loader from "components/shared/Loader";
 
 const ContentWrapper = styled.div`
-  --content-height: 25rem;
+  --content-height: 26rem;
   display: flex;
   align-items: center;
   height: var(--content-height);
@@ -63,8 +63,6 @@ const ArtistImageWrapper = styled.div`
 `;
 
 const StyledTrackWrapperTemplate = styled(TrackWrapperTemplate)`
-  padding: 0.35rem 0;
-  padding-right: 0;
   min-width: 0;
   & > ul {
     overflow: hidden;

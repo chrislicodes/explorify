@@ -8,26 +8,26 @@ const FlexContainer = styled.article`
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  margin-top: 2rem;
+  margin-top: var(--spacing-size-md-1);
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 0 3rem;
-  padding-bottom: 5rem;
-  gap: var(--spacing-size-lg);
+  padding: 0 var(--spacing-size-lg-1);
+  padding-bottom: var(--spacing-size-xl);
+  gap: var(--spacing-size-lg-1);
 
   & > * {
     width: 100%;
   }
 
   @media ${theme.bp.tabletS} {
-    padding: 0 1.5rem;
+    padding: 0 var(--spacing-size-sm-3);
   }
 `;
 
 const OverviewHeader = styled.header`
   display: flex;
-  gap: 3rem;
+  gap: var(--spacing-size-lg-1);
 
   @media ${theme.bp.tabletS} {
     flex-direction: column;
@@ -52,8 +52,8 @@ const Description = styled.div`
   display: flex;
   flex-direction: column;
   max-height: 100%;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: var(--spacing-size-sm-1);
+  margin-top: var(--spacing-size-sm-1);
 `;
 
 const Title = styled.h1`
@@ -84,7 +84,7 @@ const PlayButton = styled.a`
   justify-content: center;
   width: 18rem;
   height: 4.5rem;
-  margin-top: 1rem;
+  margin-top: var(--spacing-size-sm-1);
   border-radius: 15rem;
   font-weight: 500;
   font-size: var(--font-size-3);
@@ -101,7 +101,7 @@ const PlayButton = styled.a`
 const OverviewContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-size-lg);
+  gap: var(--spacing-size-lg-1);
 `;
 
 function OverviewPageTemplate({

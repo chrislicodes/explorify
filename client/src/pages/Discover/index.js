@@ -20,7 +20,7 @@ import Icon from "components/shared/Icon";
 const RecommendationWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--spacing-size-md-1);
 `;
 
 const StyledButton = styled(Button)`
@@ -32,8 +32,8 @@ const StyledButton = styled(Button)`
 const Info = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: var(--spacing-size-sm-1);
+  margin-top: var(--spacing-size-sm-2);
   margin-bottom: -2rem;
 `;
 

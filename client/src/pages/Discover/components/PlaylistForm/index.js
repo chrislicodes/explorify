@@ -5,7 +5,7 @@ import Slider from "../Slider";
 const FormBody = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--spacing-size-md-1);
 `;
 
 const FormWrapper = styled.form``;

@@ -9,12 +9,11 @@ const StyledIcon = styled(Icon)``;
 const StyledPlaceholderImage = styled(PlaceholderImage)``;
 
 const CardWrapper = styled.div`
-  margin-top: 1rem;
   border-radius: 0.5rem;
   position: relative;
   z-index: 1;
 
-  margin-bottom: 1rem;
+  margin: var(--spacing-size-sm-1) 0;
 
   display: flex;
   flex-direction: column;
@@ -22,8 +21,11 @@ const CardWrapper = styled.div`
   justify-content: center;
   background-color: ${(props) =>
     props.backgroundHidden ? "none" : "var(--color-grey-1-50);"};
-  padding: ${(props) => (props.backgroundHidden ? "1rem" : "1.5rem")};
-  padding-bottom: 1.5rem;
+  padding: ${(props) =>
+    props.backgroundHidden
+      ? "var(--spacing-size-sm-1)"
+      : "var(--spacing-size-sm-3)"};
+  padding-bottom: var(--spacing-size-sm-3);
   box-shadow: ${(props) =>
     props.backgroundHidden ? "none" : "0 2px 8px rgb(0 0 0 / 60%)"};
   transition: background-color 0.3s;
@@ -92,6 +94,7 @@ const PrimaryInfo = styled.div`
 
 const SecondaryInfo = styled.div`
   color: var(--color-grey-4);
+  font-size: var(--font-size-1);
 `;
 
 const Info = styled.div`

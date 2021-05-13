@@ -88,13 +88,8 @@ function SongPreview({
   className,
   type = "bar",
 }) {
-  let {
-    currentSrc,
-    isPlaying,
-    readyState,
-    audioSetter,
-    audioStopper,
-  } = useContext(AudioContext);
+  let { currentSrc, isPlaying, readyState, audioSetter, audioStopper } =
+    useContext(AudioContext);
 
   const curPreviewIsActive = currentSrc === previewURL;
   const curPreviewIsPlaying = curPreviewIsActive && isPlaying;

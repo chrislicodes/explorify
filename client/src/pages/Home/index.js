@@ -15,7 +15,7 @@ import styled from "styled-components/macro";
 
 const TrackOverview = styled.div`
   display: flex;
-  gap: 3rem;
+  gap: var(--spacing-size-lg-1);
   justify-content: space-between;
   overflow: hidden;
 
