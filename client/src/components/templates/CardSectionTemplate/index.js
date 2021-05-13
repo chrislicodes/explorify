@@ -106,8 +106,9 @@ const CardSectionTemplate = ({
         backgroundHidden={backgroundHidden}
         columnWidthMod={columnWidthMod}
       >
-        {(children?.length > 0 && children) ||
-          (children?.length === 0 && <p>Nothing Found</p>) || <Loader />}
+        {(children === false && <p>Not enough recent data available.</p>) ||
+          (children === undefined && <Loader />) ||
+          children}
       </CardList>
     </SectionTemplate>
   );

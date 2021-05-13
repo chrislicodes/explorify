@@ -39,7 +39,6 @@ const getLocalRefreshToken = () =>
  * Refresh the access_token if serveral validations in function "getAccessToken" fails
  */
 const refreshAccessToken = () => {
-  console.log("Refreshing Token..");
   axios
     .get(
       `${

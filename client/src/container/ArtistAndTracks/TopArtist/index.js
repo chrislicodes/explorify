@@ -1,6 +1,5 @@
 import React from "react";
 import useSWR from "swr";
-import Loader from "components/shared/Loader";
 import ArtistAndTracks from "container/ArtistAndTracks";
 
 const TopArtist = ({ timeRange = "short_term" }) => {
@@ -8,19 +7,16 @@ const TopArtist = ({ timeRange = "short_term" }) => {
     `/me/top/artists?time_range=${timeRange}&limit=1`
   );
 
-  const artist = artistJSON && artistJSON.items[0];
+  const artist =
+    artistJSON && artistJSON.items.length > 0 && artistJSON.items[0];
 
   return (
     <>
-      {artist ? (
-        <ArtistAndTracks
-          artist={artist}
-          headline="Top Artist"
-          link="/top-artists"
-        />
-      ) : (
-        <Loader />
-      )}
+      <ArtistAndTracks
+        artist={artist}
+        headline="Top Artist"
+        link="/top-artists"
+      />
     </>
   );
 };

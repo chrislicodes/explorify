@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
 
   --color-black: #121212;
   --color-grey-1: #1c1c1c;
-  --color-grey-1-70: rgba(28, 28, 28, 0.9);
+  --color-grey-1-90: rgba(28, 28, 28, 0.9);
   --color-grey-1-70: rgba(28, 28, 28, 0.7);
   --color-grey-1-50: rgba(28, 28, 28, 0.5);
   --color-grey-1-30: rgba(28, 28, 28, 0.3);

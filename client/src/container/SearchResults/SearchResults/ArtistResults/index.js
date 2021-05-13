@@ -38,7 +38,11 @@ function ArtistResults({ artists }) {
   return (
     <FlexContainer>
       {sortedArtists.length > 0 && (
-        <ArtistAndTracks artist={sortedArtists[0]} nTracks={5} />
+        <ArtistAndTracks
+          artist={sortedArtists[0]}
+          nTracks={5}
+          headline="Top Result"
+        />
       )}
       {scrollerArtists && (
         <ArtistCardSection

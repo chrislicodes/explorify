@@ -2,7 +2,7 @@ import React from "react";
 import WelcomeUser from "./components/WelcomeUser";
 import PageTemplate from "components/templates/PageTemplate";
 import TopArtist from "container/ArtistAndTracks/TopArtist";
-import TopArtistScroller from "container/TopArtistCardSection";
+import TopArtistCardSection from "container/TopArtistCardSection";
 import RecentlyPlayedTracks from "container/RecentlyPlayedTracks";
 import TopTracks from "container/TopTracksSection";
 
@@ -38,7 +38,7 @@ const Home = () => {
     <PageTemplate>
       <WelcomeUser />
       <TopArtist />
-      <TopArtistScroller offset={1} />
+      <TopArtistCardSection offset={1} />
       <TrackOverview>
         <TopTracks />
         <RecentlyPlayedTracks />

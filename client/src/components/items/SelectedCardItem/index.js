@@ -120,11 +120,13 @@ function SelectedCardItem(props) {
         <SecondaryInfo>{secondaryInfo}</SecondaryInfo>
       </InfoContainer>
       <SongPreviewWrapper onClick={(e) => e.stopPropagation()}>
-        <SongPreview
-          progressBar={false}
-          previewURL={previewURL}
-          type="rounded"
-        />
+        {previewURL && (
+          <SongPreview
+            progressBar={false}
+            previewURL={previewURL}
+            type="rounded"
+          />
+        )}
       </SongPreviewWrapper>
     </CardWrapper>
   );

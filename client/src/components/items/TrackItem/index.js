@@ -94,8 +94,8 @@ const TrackIndex = styled.p`
 `;
 
 const AlbumCover = styled.img`
-  min-height: 6.4rem;
-  min-width: 6.4rem;
+  height: 6.4rem;
+  width: 6.4rem;
   box-shadow: 0 3px 10px rgb(0 0 0 / 50%);
 `;
 
