@@ -17,7 +17,7 @@ const authStateKey = "spotify_auth_state";
 
 if (process.env.NODE_ENV !== "production") {
   REDIRECT_URI = "http://localhost:8080/callback";
-  FRONTEND_URI = "http://localhost:3000";
+  FRONTEND_URI = "http://localhost:5000";
 }
 
 const app = express(); //research: express router -> app.use(router)
