@@ -3,14 +3,26 @@
   "version": "1.0.0",
   "description": "Server Explorify",
   "main": "app.js",
+  "engines": {
+    "node": "15.5.1"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "client": "cd client/ && npm start",
+    "server": "nodemon server/index.js",
+    "build": "cd client/ && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.7"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "client/node_modules"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrislicodes/explorify.git"
   },
   "dependencies": {
     "axios": "^0.21.1",

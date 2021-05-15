@@ -6,7 +6,6 @@ import styled from "styled-components/macro";
 const sortArtistArray = (artists) => {
   if (!artists) return;
 
-  // const filteredArtists = artists.filter((artist) => artist.genres.length > 0);
   const sortedArtists = artists.sort((a, b) => b.popularity - a.popularity);
   return sortedArtists;
 };

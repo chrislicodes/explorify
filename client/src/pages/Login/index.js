@@ -100,6 +100,11 @@ const LoginButton = styled.a`
   }
 `;
 
+const LOGIN_URI =
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:8080/login"
+    : "https://app-explorify.herokuapp.com/login";
+
 const Login = () => {
   return (
     <FlexContainer>
@@ -113,9 +118,7 @@ const Login = () => {
         <Subheader>
           Explore your favorite songs and artists on <span>Spotify</span>
         </Subheader>
-        <LoginButton href={`${process.env.REACT_APP_BACKEND_URI}login`}>
-          LOGIN TO SPOTIFY
-        </LoginButton>
+        <LoginButton href={LOGIN_URI}>LOGIN TO SPOTIFY</LoginButton>
       </ContentContainer>
       <Disclaimer>
         We are not storing any data and all data is provided by Spotify via
