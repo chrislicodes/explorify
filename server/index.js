@@ -50,7 +50,7 @@ app.get("/callback", (req, res, next) => {
   const state = req.query.state;
   const storedState = req.cookies ? req.cookies[authStateKey] : null;
 
-  console.log(code, state, storedState);
+  console.log("!!!!!!!! OWN LOG:", code, state, storedState);
 
   if (storedState === null || storedState !== state) {
     res.status(302).redirect(
