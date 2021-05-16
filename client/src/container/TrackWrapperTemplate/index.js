@@ -1,7 +1,7 @@
 import React from "react";
 import TrackItem from "components/items/TrackItem";
 import styled from "styled-components/macro";
-import { transformDuration } from "utils";
+import { transformDurationFormat } from "utils";
 
 const StyledTrackWrapperTemplate = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const TrackList = styled.ul`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-size-sm-3);
+  gap: var(--spacing-size-sm-1);
 
   overflow-x: hidden;
   overflow-y: auto;
@@ -25,24 +25,6 @@ const TrackList = styled.ul`
     list-style: none;
     text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
   }
-
-  &::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    background-color: var(--color-grey-3);
-  }
-
-  &::-webkit-scrollbar {
-    width: 0.7rem;
-    border-radius: 1rem;
-    background-color: var(--color-grey-6);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 1rem;
-    box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
-    background-color: var(--color-grey-6);
-  }
 `;
 
 const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
@@ -51,7 +33,7 @@ const TrackWrapperTemplate = ({ tracks, className, displayImage }) => {
     const imageURL = displayImage && track.album.images[2].url;
     const trackTitle = track.name;
     const artistName = track.artists[0].name;
-    const trackDuration = transformDuration(track.duration_ms);
+    const trackDuration = transformDurationFormat(track.duration_ms);
     const trackID = track.id;
     const previewURL = track.preview_url;
 

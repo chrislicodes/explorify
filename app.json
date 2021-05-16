@@ -1,0 +1,17 @@
+{
+  "name": "app-explorify",
+  "description": "web app to explore your spotify taste",
+  "scripts": {},
+  "env": {},
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}

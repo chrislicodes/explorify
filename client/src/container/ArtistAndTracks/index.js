@@ -10,7 +10,7 @@ import useSWR from "swr";
 import Loader from "components/shared/Loader";
 
 const ContentWrapper = styled.div`
-  --content-height: 25rem;
+  --content-height: 26rem;
   display: flex;
   align-items: center;
   height: var(--content-height);
@@ -63,8 +63,6 @@ const ArtistImageWrapper = styled.div`
 `;
 
 const StyledTrackWrapperTemplate = styled(TrackWrapperTemplate)`
-  padding: 0.35rem 0;
-  padding-right: 0;
   min-width: 0;
   & > ul {
     overflow: hidden;
@@ -72,42 +70,46 @@ const StyledTrackWrapperTemplate = styled(TrackWrapperTemplate)`
 `;
 
 const ArtistAndTracks = ({ artist, headline = "", nTracks = 10, link }) => {
-  const { data: user } = useSWR("/me");
+  const { data: user } = useSWR(() => artist && "/me");
   const { data: tracks } = useSWR(
     () => artist && `/artists/${artist.id}/top-tracks?market=${user.country}`
   );
 
-  const imageURL = artist.images.length > 0 && artist.images[1].url;
+  const imageURL = artist && artist.images.length > 0 && artist.images[1].url;
+  const titleLink = link || (artist && `/explore/artist/${artist.id}`);
 
-  const titleLink = link || `/explore/artist/${artist.id}`;
+  let renderData;
+
+  if (artist === false) {
+    renderData = <p>Not enough recent data available.</p>;
+  } else if (tracks?.tracks) {
+    renderData = (
+      <ContentWrapper>
+        <ArtistImageWrapper>
+          <Link to={`/explore/artist/${artist.id}`}>
+            {imageURL ? (
+              <img src={artist.images[1].url} alt={`${artist.name}`} />
+            ) : (
+              <PlaceholderImage />
+            )}
+            <ImageOverlay type="icon-notification" />
+          </Link>
+        </ArtistImageWrapper>
+        <StyledTrackWrapperTemplate
+          tracks={tracks.tracks.slice(0, nTracks)}
+          displayImage={false}
+        />
+      </ContentWrapper>
+    );
+  } else {
+    renderData = <Loader />;
+  }
 
   return (
     <>
-      {tracks ? (
-        <SectionTemplate
-          headline={`${headline} ${artist.name}`}
-          link={titleLink}
-        >
-          <ContentWrapper>
-            <ArtistImageWrapper>
-              <Link to={`/explore/artist/${artist.id}`}>
-                {imageURL ? (
-                  <img src={artist.images[1].url} alt={`${artist.name}`} />
-                ) : (
-                  <PlaceholderImage />
-                )}
-                <ImageOverlay type="icon-notification" />
-              </Link>
-            </ArtistImageWrapper>
-            <StyledTrackWrapperTemplate
-              tracks={tracks.tracks.slice(0, nTracks)}
-              displayImage={false}
-            />
-          </ContentWrapper>
-        </SectionTemplate>
-      ) : (
-        <Loader />
-      )}
+      <SectionTemplate headline={`${headline}`} link={titleLink}>
+        {renderData}
+      </SectionTemplate>
     </>
   );
 };

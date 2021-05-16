@@ -5,10 +5,9 @@ import styled from "styled-components/macro";
 const HeadlineContainer = styled.section`
   display: flex;
   flex-direction: column;
-  min-width: 100%;
   text-transform: uppercase;
   color: var(--color-white);
-  gap: 2rem;
+  gap: var(--spacing-size-md-1);
 `;
 
 const ContainerHeader = styled.header`
@@ -25,7 +24,7 @@ const HeadlineWrapper = styled.div`
 
 const Headline = styled.h1`
   position: relative;
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-5);
   letter-spacing: 1.7px;
   font-weight: bold;
   overflow: hidden;
@@ -40,7 +39,6 @@ const UnderLine = styled.div`
 `;
 
 const ShowMoreLink = styled(Link)`
-  font-size: 1.3rem;
   color: var(--color-spotify-green);
   transition: all 0.3s;
   flex-shrink: 0;

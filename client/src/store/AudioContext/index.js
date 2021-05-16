@@ -10,7 +10,7 @@ export const AudioContext = React.createContext({
 
 const createAudio = (previewURL) => {
   const audio = new Audio(previewURL);
-  audio.volume = 0.2;
+  audio.volume = 0.25;
   return audio;
 };
 

@@ -6,12 +6,13 @@ const querystring = require("querystring");
 const axios = require("axios");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require("path");
 
 const CLIENT_ID = process.env.CLIENT_ID || null;
 const CLIENT_SECRET = process.env.CLIENT_SECRET || null;
 const PORT = process.env.PORT || 8000;
 let REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:8080/callback";
-let FRONTEND_URI = process.env.FRONTEND_URI || "http://localhost:3000";
+let FRONTEND_URI = process.env.FRONTEND_URI || "http://localhost:5000";
 
 const authStateKey = "spotify_auth_state";
 
@@ -129,6 +130,14 @@ app.get("/refresh-token", (req, res, next) => {
       console.log(err);
       res.status(500).send(); //check axios documentation for err.response.error
     });
+});
+
+// Priority serve any static files.
+app.use(express.static(path.resolve(__dirname, "../client/build")));
+
+// All remaining requests return the React app, so it can handle routing.
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
 });
 
 app.listen(PORT, () => {

@@ -62,7 +62,7 @@ const NavItemDescription = styled.div`
 
   & p {
     margin-left: var(--spacing-size-md-2);
-    font-size: var(--font-size-md-2);
+    font-size: var(--font-size-3);
     color: var(--color-grey-5);
     transition: ${theme.transition};
   }
@@ -71,8 +71,8 @@ const NavItemDescription = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 3rem;
-    height: 3rem;
+    width: 2.6rem;
+    height: 2.6rem;
     fill: var(--color-grey-5);
     transition: ${theme.transition};
   }
@@ -84,19 +84,19 @@ const NavItemDescription = styled.div`
 
     & p {
       margin-left: 0;
-      font-size: var(--font-size-sm);
+      font-size: var(--font-size-2);
     }
 
     & div svg {
       width: 2.2rem;
       height: 2.2rem;
-      margin: 0.5rem 0;
+      margin: var(--spacing-size-xs-1) 0;
     }
   }
 
   @media ${theme.bp.mobileM} {
     & p {
-      font-size: var(--font-size-xs);
+      font-size: var(--font-size-1);
     }
   }
 

@@ -28,7 +28,6 @@ const fetcher = async (endpointURL) => {
   } catch (err) {
     const error = new Error("An error occurred while fetching the data.");
     error.status = err.response.status;
-    console.log("Error");
     throw error;
   }
 };
@@ -48,7 +47,6 @@ const App = () => {
           value={{
             fetcher: fetcher,
             onError: (error, key) => {
-              console.log(error, key);
               if (error.status === 401) {
                 setAccessToken(getAccessToken());
               }

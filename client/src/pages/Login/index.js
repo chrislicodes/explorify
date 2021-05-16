@@ -44,14 +44,14 @@ const Disclaimer = styled.p`
   position: absolute;
   bottom: var(--absolute-distance);
   right: var(--absolute-distance);
-  font-size: var(--font-size-xs);
-  padding: 3rem;
+  font-size: var(--font-size-1);
+  padding: var(--spacing-size-lg-1);
 `;
 
 const ContentContainer = styled.main`
-  padding: 3rem;
-  margin-bottom: 7rem;
-  margin-right: 10rem;
+  padding: var(--spacing-size-lg-1);
+  margin-bottom: var(--spacing-size-xxxl);
+  margin-right: var(--spacing-size-xxl);
 
   @media ${theme.bp.desktopXS} {
     margin: 0;
@@ -60,13 +60,13 @@ const ContentContainer = styled.main`
 
 const Headline = styled.h1`
   font-weight: lighter;
-  font-size: 5rem;
+  font-size: var(--font-size-9);
 `;
 
 const Subheader = styled.h2`
-  font-size: 3rem;
+  font-size: var(--font-size-6);
   font-weight: 300;
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-size-lg-1);
 
   & span {
     color: var(--color-spotify-green);
@@ -75,7 +75,7 @@ const Subheader = styled.h2`
   }
 
   @media ${theme.bp.desktopXS} {
-    margin-bottom: 5rem;
+    margin-bottom: var(--spacing-size-xl);
   }
 `;
 
@@ -83,11 +83,11 @@ const LoginButton = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5.5rem;
-  width: 25rem;
+  height: 5rem;
+  width: 22rem;
   background-color: var(--color-spotify-green);
   color: var(--color-white);
-  font-size: var(--font-size-md-2);
+  font-size: var(--font-size-2);
   font-weight: bold;
   letter-spacing: 0.3rem;
 
@@ -99,6 +99,11 @@ const LoginButton = styled.a`
     background-color: var(--color-spotify-logo-green);
   }
 `;
+
+const LOGIN_URI =
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:8080/login"
+    : "https://app-explorify.herokuapp.com/login";
 
 const Login = () => {
   return (
@@ -113,12 +118,11 @@ const Login = () => {
         <Subheader>
           Explore your favorite songs and artists on <span>Spotify</span>
         </Subheader>
-        <LoginButton href={`${process.env.REACT_APP_BACKEND_URI}login`}>
-          LOGIN TO SPOTIFY
-        </LoginButton>
+        <LoginButton href={LOGIN_URI}>LOGIN TO SPOTIFY</LoginButton>
       </ContentContainer>
       <Disclaimer>
-        We are not storing any data and all data displayed belongs to Spotify. ♥
+        We are not storing any data and all data is provided by Spotify via
+        their Web API.
       </Disclaimer>
     </FlexContainer>
   );

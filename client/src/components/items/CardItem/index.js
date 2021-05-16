@@ -4,31 +4,34 @@ import PlaceholderImage from "components/shared/PlaceholderImage";
 import styled from "styled-components/macro";
 import SongPreview from "components/shared/SongPreview";
 import { useHistory } from "react-router-dom";
-import theme from "styles/theme";
 
 const StyledIcon = styled(Icon)``;
 const StyledPlaceholderImage = styled(PlaceholderImage)``;
 
 const CardWrapper = styled.div`
-  margin-top: 1rem;
-  border-radius: 0.5rem;
   position: relative;
-  z-index: 1;
-
-  margin-bottom: 1rem;
-
   display: flex;
+
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  z-index: 1;
+
+  margin: var(--spacing-size-sm-1) 0;
+  padding: ${(props) =>
+    props.backgroundHidden
+      ? "var(--spacing-size-sm-1)"
+      : "var(--spacing-size-sm-3)"};
+  padding-bottom: var(--spacing-size-sm-3);
+
   background-color: ${(props) =>
     props.backgroundHidden ? "none" : "var(--color-grey-1-50);"};
-  padding: ${(props) => (props.backgroundHidden ? "1rem" : "1.5rem")};
-  padding-bottom: 1.5rem;
   box-shadow: ${(props) =>
     props.backgroundHidden ? "none" : "0 2px 8px rgb(0 0 0 / 60%)"};
   transition: background-color 0.3s;
-  z-index: 2;
+
+  border-radius: 0.5rem;
   cursor: pointer;
 
   &:hover {
@@ -45,15 +48,17 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
+
   margin-bottom: var(--spacing-size-sm-4);
+  padding-bottom: 100%;
+
   box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   border-radius: ${({ type }) => type === "artist" && "100%"};
-  padding-bottom: 100%;
 
   & img,
   ${StyledPlaceholderImage} {
-    height: 100%;
-    width: 100%;
+    /* height: 100%; */
+    /* width: 100%; */
     object-fit: cover;
     object-position: center center;
     position: absolute;
@@ -88,18 +93,19 @@ const ImageWrapper = styled.div`
 
 const PrimaryInfo = styled.div`
   font-weight: bold;
-  width: 100%;
+  /* width: 100%; */
 `;
 
 const SecondaryInfo = styled.div`
   color: var(--color-grey-4);
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-1);
 `;
 
 const Info = styled.div`
   min-height: 5rem;
   overflow: hidden;
   width: 100%;
+
   & div {
     white-space: nowrap;
     overflow: hidden;

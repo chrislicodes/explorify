@@ -8,10 +8,10 @@ import mixins from "styles/mixins";
 const TitleWrapper = styled.div`
   ${mixins.flexCenter}
 
-  gap: 10px;
+  gap: var(--spacing-size-sm-2);
 
-  margin-top: var(--spacing-size-md);
-  margin-bottom: var(--spacing-size-xxl);
+  margin-top: var(--spacing-size-md-1);
+  margin-bottom: var(--spacing-size-xxxl);
 
   cursor: pointer;
 
@@ -24,17 +24,19 @@ const Title = styled.h1`
   text-transform: uppercase;
   color: var(--color-white);
   font-weight: bold;
-  font-size: var(--font-size-xxxl);
+  font-size: var(--font-size-6);
   padding-left: var(--spacing-size-sm-2);
 
   border-left: 2px solid var(--color-white);
 `;
+
 const AppTitle = () => {
   let history = useHistory();
 
   function handleClick() {
     history.push("/home");
   }
+
   return (
     <TitleWrapper onClick={handleClick}>
       <SpotifyIcon />

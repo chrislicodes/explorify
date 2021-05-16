@@ -13,7 +13,6 @@ import TopArtists from "pages/TopArtists";
 import NotFound404 from "pages/NotFound404";
 
 // https://www.ryanjyost.com/react-routing/
-
 const authToken = getAccessToken();
 
 const ROUTES = [

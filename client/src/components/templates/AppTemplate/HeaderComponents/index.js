@@ -11,7 +11,7 @@ const UserWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--spacing-size-sm-1);
 
   @media ${theme.bp.mobileL} {
     display: none;
@@ -24,8 +24,8 @@ const ContentWrapper = styled.div`
   align-items: center;
   height: 4rem;
   width: 100%;
-  margin: 0 2rem;
-  gap: 2rem;
+  margin: 0 var(--spacing-size-md-1);
+  gap: var(--spacing-size-md-1);
 `;
 
 const UserImage = styled.img`
@@ -63,16 +63,18 @@ const HeaderComponents = () => {
     <>
       <ContentWrapper>
         <StyledSearchBar />
-        <UserWrapper>
-          {userImageURL ? (
-            <UserImage src={userImageURL} alt="user" />
-          ) : (
-            <ImageWrapper>
-              <StyledPlaceholderImage />
-            </ImageWrapper>
-          )}
-          <p>{userName}</p>
-        </UserWrapper>
+        {userData && (
+          <UserWrapper>
+            {userImageURL ? (
+              <UserImage src={userImageURL} alt="user" />
+            ) : (
+              <ImageWrapper>
+                <StyledPlaceholderImage />
+              </ImageWrapper>
+            )}
+            <p>{userName}</p>
+          </UserWrapper>
+        )}
         <Button onClick={logout}>LOGOUT</Button>
       </ContentWrapper>
     </>

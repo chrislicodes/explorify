@@ -6,18 +6,14 @@ import HeaderComponents from "./HeaderComponents";
 import styled from "styled-components/macro";
 import theme from "styles/theme";
 
-// ---------------------------------------
-// -------------  STYLING
-// ---------------------------------------
-
 const AppContainer = styled.div`
   display: flex;
   height: 100vh;
   width: 100vw;
 
-  --desktop-nav-size: 27rem;
+  --desktop-nav-size: 26rem;
 
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-2);
 
   @media ${theme.bp.desktopXS} {
     width: 100%;
@@ -28,8 +24,10 @@ const AppContainer = styled.div`
 const ContentLayout = styled.div`
   width: 100%;
   min-height: 100%;
+
   display: flex;
   flex-direction: column;
+
   max-width: calc(100% - var(--desktop-nav-size));
   background-color: var(--color-grey-2);
 
@@ -47,12 +45,12 @@ const Page = styled.main`
   overflow-y: auto;
 
   @media ${theme.bp.desktopXS} {
-    margin-bottom: 7rem;
+    margin-bottom: var(--spacing-size-xxl);
   }
 
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
+    border-radius: 1rem;
     background-color: var(--color-grey-3);
   }
 
@@ -98,10 +96,6 @@ const Header = styled.header`
   display: flex;
   align-items: center;
 `;
-
-// ---------------------------------------
-// -------------  LOGIC
-// ---------------------------------------
 
 const AppTemplate = ({ children, user }) => {
   return (

@@ -6,7 +6,6 @@ import styled from "styled-components/macro";
 const sortArtistArray = (artists) => {
   if (!artists) return;
 
-  // const filteredArtists = artists.filter((artist) => artist.genres.length > 0);
   const sortedArtists = artists.sort((a, b) => b.popularity - a.popularity);
   return sortedArtists;
 };
@@ -27,7 +26,7 @@ const sortAndFilterArtistArray = (artists) => {
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: var(--spacing-size-lg-1);
 `;
 
 function ArtistResults({ artists }) {
@@ -38,7 +37,11 @@ function ArtistResults({ artists }) {
   return (
     <FlexContainer>
       {sortedArtists.length > 0 && (
-        <ArtistAndTracks artist={sortedArtists[0]} nTracks={5} />
+        <ArtistAndTracks
+          artist={sortedArtists[0]}
+          nTracks={5}
+          headline="Top Result"
+        />
       )}
       {scrollerArtists && (
         <ArtistCardSection

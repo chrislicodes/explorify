@@ -8,11 +8,11 @@ const FlexContainer = styled.div`
   flex-direction: column;
   width: 100%;
   min-height: 100%;
-  padding: 0 3rem;
-  padding-bottom: 3rem;
+  padding: 0 var(--spacing-size-lg-1);
+  padding-bottom: var(--spacing-size-lg-1);
 
   @media ${theme.bp.tabletS} {
-    padding: 0 1.5rem;
+    padding: 0 var(--spacing-size-sm-3);
   }
 `;
 

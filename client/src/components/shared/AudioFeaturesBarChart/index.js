@@ -20,7 +20,7 @@ const metricDescriptor = {
 };
 
 const Header = styled.p`
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-5);
   font-weight: bold;
 `;
 

@@ -7,7 +7,7 @@ const NothingFoundContainer = styled.div`
   flex-direction: column;
 
   & p {
-    margin-bottom: 2rem;
+    margin-bottom: var(--spacing-size-md-1);
   }
 
   & img {

@@ -3,25 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@nivo/bar": "^0.67.0",
-    "@nivo/core": "^0.67.0",
-    "@nivo/radar": "^0.67.0",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.3",
-    "@testing-library/user-event": "^12.6.2",
+    "@nivo/bar": "^0.69.1",
+    "@nivo/core": "^0.69.0",
     "axios": "^0.21.1",
-    "nivo": "^0.31.0",
-    "react": "^17.0.1",
+    "react": "^17.0.2",
     "react-compound-slider": "^3.3.1",
-    "react-dom": "^17.0.1",
+    "react-dom": "^17.0.2",
     "react-loader-spinner": "^4.0.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
     "react-tsparticles": "^1.24.3",
     "styled-components": "^5.2.1",
     "swr": "^0.5.4",
     "web-vitals": "^0.2.4"
   },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.2",
+    "prettier": "^2.3.0",
+    "react-scripts": "4.0.3",
+    "react-test-renderer": "^17.0.2"
+  },
+  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -33,6 +36,11 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "babelMacros": {
+    "styledComponents": {
+      "pure": true
+    }
   },
   "browserslist": {
     "production": [

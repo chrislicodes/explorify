@@ -6,20 +6,21 @@ import Icon from "components/shared/Icon";
 const StyledIcon = styled(Icon)``;
 
 const CardWrapper = styled.div`
-  height: 8rem;
-  margin-top: 1rem;
-  border-radius: 0.5rem;
   position: relative;
+  display: flex;
 
-  gap: 1rem;
-
-  margin-bottom: 1rem;
+  height: 8rem;
   z-index: 1;
 
-  display: flex;
+  margin: var(--spacing-size-sm-1) 0;
+  gap: var(--spacing-size-sm-1);
+
+  border-radius: 0.5rem;
   background-color: var(--color-grey-1-50);
   box-shadow: 0 2px 8px rgb(0 0 0 / 60%);
+
   transition: background-color 0.3s;
+
   cursor: pointer;
 
   &:hover {
@@ -35,12 +36,17 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   min-height: 5rem;
-  overflow: hidden;
   width: 100%;
+
+  overflow: hidden;
+
   align-self: center;
+
   & p {
     width: 100%;
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -54,15 +60,16 @@ const PrimaryInfo = styled.p`
 
 const SecondaryInfo = styled.p`
   color: var(--color-grey-4);
-  font-size: var(--font-size-sm);
 `;
 
 const ImageWrapper = styled.div`
   position: relative;
   height: 100%;
+
   margin-bottom: var(--spacing-size-sm-4);
   box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
   border-radius: ${({ type }) => type === "artist" && "100%"};
+
   & img {
     width: auto;
     height: 100%;
@@ -96,8 +103,9 @@ const ImageWrapper = styled.div`
 `;
 
 const SongPreviewWrapper = styled.div`
-  margin-right: 0.5rem;
+  margin-right: var(--spacing-size-sm-1);
 `;
+
 function SelectedCardItem(props) {
   let { imageURL, primaryInfo, secondaryInfo, previewURL, onClick } = props;
 
@@ -112,11 +120,13 @@ function SelectedCardItem(props) {
         <SecondaryInfo>{secondaryInfo}</SecondaryInfo>
       </InfoContainer>
       <SongPreviewWrapper onClick={(e) => e.stopPropagation()}>
-        <SongPreview
-          progressBar={false}
-          previewURL={previewURL}
-          type="rounded"
-        />
+        {previewURL && (
+          <SongPreview
+            progressBar={false}
+            previewURL={previewURL}
+            type="rounded"
+          />
+        )}
       </SongPreviewWrapper>
     </CardWrapper>
   );

@@ -6,8 +6,8 @@ const InfoItem = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  padding: 1.5rem 0;
+  gap: var(--spacing-size-sm-1);
+  padding: var(--spacing-size-sm-3) 0;
   border: 1px solid var(--color-grey-3);
 
   & > * {
@@ -16,13 +16,13 @@ const InfoItem = styled.div`
 `;
 
 const Item = styled.div`
-  font-size: 2rem;
+  font-size: var(--font-size-3);
   font-weight: 500;
 `;
 
 const FieldName = styled.h2`
   color: var(--color-grey-5);
-  font-size: 1.5rem;
+  font-size: var(--font-size-2);
   font-weight: 400;
 `;
 

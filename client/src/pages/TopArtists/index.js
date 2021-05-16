@@ -6,7 +6,7 @@ import styled from "styled-components/macro";
 
 const ButtonWrapper = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-size-sm-1);
   height: 4rem;
 `;
 

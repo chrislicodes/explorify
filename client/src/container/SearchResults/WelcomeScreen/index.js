@@ -10,7 +10,7 @@ const FlexContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 50%;
-  margin-top: 10rem;
+  margin-top: var(--spacing-size-xxxl);
 `;
 
 const SearchIcon = styled(Icon)`
@@ -30,7 +30,7 @@ const SearchIcon = styled(Icon)`
 
 const HeadphoneIcon = styled(Icon)`
   fill: var(--color-white);
-  margin-bottom: 3rem;
+  margin-bottom: var(--spacing-size-lg-1);
 
   & svg {
     height: 12rem;
@@ -45,7 +45,7 @@ const HeadphoneIcon = styled(Icon)`
 
 const Sub = styled.p`
   font-weight: 300;
-  font-size: var(--font-size-md-2);
+  font-size: var(--font-size-3);
   text-align: center;
 `;
 
@@ -53,12 +53,12 @@ const Headline = styled.h1`
   display: flex;
   align-items: center;
   color: var(--color-white);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-5);
   font-weight: normal;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-size-sm-2);
 
   @media ${theme.bp.desktopXS} {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-4);
   }
 `;
 

@@ -2,12 +2,11 @@ import React from "react";
 import Icon from "components/shared/Icon";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
-import PreviewBar from "../../shared/SongPreview";
+import SongPreview from "../../shared/SongPreview";
 
 const TrackMetaInfo = styled.div`
-  flex: 1;
-  margin-left: var(--spacing-size-sm-4);
   min-width: 0;
+  margin-left: var(--spacing-size-sm-4);
 
   & > * {
     text-overflow: ellipsis;
@@ -17,11 +16,9 @@ const TrackMetaInfo = styled.div`
 `;
 
 const TrackTitle = styled.h1`
-  font-size: var(--font-size-md-2);
+  font-size: var(--font-size-3);
   font-weight: 500;
   color: var(--color-white);
-
-  margin-bottom: var(--spacing-size-xxs);
 
   & span {
     position: relative;
@@ -79,7 +76,6 @@ const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
 
-  font-size: var(--font-size-sm);
   color: var(--color-grey-4);
   text-transform: uppercase;
   letter-spacing: 0.15rem;
@@ -94,17 +90,17 @@ const TrackDisplay = styled.div`
 `;
 
 const TrackIndex = styled.p`
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-4);
 `;
 
 const AlbumCover = styled.img`
-  min-height: 6.4rem;
-  min-width: 6.4rem;
+  height: 6.4rem;
+  width: 6.4rem;
   box-shadow: 0 3px 10px rgb(0 0 0 / 50%);
 `;
 
 const Duration = styled.time`
-  margin-left: 1rem;
+  margin-left: var(--spacing-size-sm-1);
 `;
 
 const AdditionalInfo = styled.div`
@@ -148,7 +144,7 @@ const TrackItem = ({
         </TrackMetaInfo>
       </StyledLink>
       <AdditionalInfo>
-        {previewURL && <PreviewBar previewURL={previewURL} />}
+        {previewURL && <SongPreview previewURL={previewURL} />}
         <Duration>{trackDuration}</Duration>
       </AdditionalInfo>
     </TrackItemWrapper>
