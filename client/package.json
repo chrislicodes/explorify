@@ -16,6 +16,10 @@
     "swr": "^0.5.4",
     "web-vitals": "^0.2.4"
   },
+  "engines": {
+    "node": "15.14.0",
+    "npm": "7.7.6"
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
