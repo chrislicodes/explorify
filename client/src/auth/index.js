@@ -69,6 +69,7 @@ export const getAccessToken = () => {
 
   // If error exist in getHashParams then refresh access_token
   if (error) {
+    console.log(error);
     refreshAccessToken();
   }
 
