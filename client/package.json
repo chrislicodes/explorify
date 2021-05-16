@@ -14,7 +14,9 @@
     "react-tsparticles": "^1.24.3",
     "styled-components": "^5.2.1",
     "swr": "^0.5.4",
-    "web-vitals": "^0.2.4"
+    "web-vitals": "^0.2.4",
+    "prettier": "^2.3.0",
+    "react-scripts": "4.0.3"
   },
   "engines": {
     "node": "15.14.0",
@@ -24,8 +26,6 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
-    "prettier": "^2.3.0",
-    "react-scripts": "4.0.3",
     "react-test-renderer": "^17.0.2"
   },
   "proxy": "http://localhost:8080",
