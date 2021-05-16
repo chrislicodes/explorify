@@ -99,10 +99,9 @@ const LoginButton = styled.a`
     background-color: var(--color-spotify-logo-green);
   }
 `;
-
 const LOGIN_URI =
   process.env.NODE_ENV !== "production"
-    ? "http://localhost:8080/login"
+    ? "http://localhost:8000/login"
     : "https://app-explorify.herokuapp.com/login";
 
 const Login = () => {

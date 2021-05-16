@@ -151,7 +151,6 @@ function Discover() {
       setButtonText("Success!");
       setTimeout(() => setButtonText("Save to Spotify"), 2000);
     } catch (error) {
-      console.log(error);
       setButtonText("Error");
       setTimeout(() => setButtonText("Save to Spotify"), 2000);
     }

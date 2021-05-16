@@ -11,14 +11,14 @@ const path = require("path");
 const CLIENT_ID = process.env.CLIENT_ID || null;
 const CLIENT_SECRET = process.env.CLIENT_SECRET || null;
 const PORT = process.env.PORT || 8000;
-let REDIRECT_URI = process.env.REDIRECT_URI || "http://localhost:8080/callback";
-let FRONTEND_URI = process.env.FRONTEND_URI || "http://localhost:5000";
+let REDIRECT_URI = process.env.REDIRECT_URI || null;
+let FRONTEND_URI = process.env.FRONTEND_URI || null;
 
 const authStateKey = "spotify_auth_state";
 
-if (process.env.NODE_ENV !== "production") {
-  REDIRECT_URI = "http://localhost:8080/callback";
-  FRONTEND_URI = "http://localhost:3000";
+if (process.env.NODE_ENV.trim() === "dev") {
+  REDIRECT_URI = `http://localhost:${PORT}/callback`;
+  FRONTEND_URI = `http://localhost:3000`;
 }
 
 const app = express(); //research: express router -> app.use(router)
@@ -50,16 +50,6 @@ app.get("/callback", (req, res, next) => {
   const state = req.query.state;
   const storedState = req.cookies ? req.cookies[authStateKey] : null;
 
-  console.log(
-    "!!!!!!!! OWN LOG:",
-    "Code:",
-    code,
-    "State:",
-    state,
-    "StoredState: ",
-    storedState
-  );
-
   if (storedState === null || storedState !== state) {
     res.status(302).redirect(
       `/#${querystring.stringify({
@@ -68,7 +58,6 @@ app.get("/callback", (req, res, next) => {
     );
   } else {
     res.clearCookie(authStateKey);
-
     const data = {
       grant_type: "authorization_code",
       code: code,
@@ -100,6 +89,7 @@ app.get("/callback", (req, res, next) => {
         );
       })
       .catch((err) => {
+        console.log(err);
         res
           .status(302)
           .redirect(`/#${querystring.stringify({ error: "invalid_token" })}`);

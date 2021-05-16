@@ -57,8 +57,7 @@ const ImageWrapper = styled.div`
 
   & img,
   ${StyledPlaceholderImage} {
-    /* height: 100%; */
-    /* width: 100%; */
+    height: 100%;
     object-fit: cover;
     object-position: center center;
     position: absolute;

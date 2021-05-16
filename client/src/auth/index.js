@@ -67,11 +67,8 @@ const refreshAccessToken = () => {
 export const getAccessToken = () => {
   const { error, access_token, refresh_token, expires_in } = getHashParams();
 
-  console.log(error, access_token, refresh_token, expires_in);
-
   // If error exist in getHashParams then refresh access_token
   if (error) {
-    console.log(error);
     refreshAccessToken();
   }
 
