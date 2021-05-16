@@ -38,13 +38,15 @@ const getLocalRefreshToken = () =>
 /**
  * Refresh the access_token if serveral validations in function "getAccessToken" fails
  */
+
+const LOGIN_URI =
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:8080/"
+    : "https://app-explorify.herokuapp.com/";
+
 const refreshAccessToken = () => {
   axios
-    .get(
-      `${
-        process.env.REACT_APP_BACKEND_URI
-      }refresh-token?refresh_token=${getLocalRefreshToken()}`
-    )
+    .get(`${LOGIN_URI}refresh-token?refresh_token=${getLocalRefreshToken()}`)
     .then(({ data }) => {
       const { access_token } = data;
       setLocalAccessToken(access_token);
