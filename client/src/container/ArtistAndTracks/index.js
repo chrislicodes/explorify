@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import SectionTemplate from "components/templates/SectionTemplate";
 import TrackWrapperTemplate from "container/TrackWrapperTemplate";
 import Icon from "components/shared/Icon";
@@ -8,6 +8,7 @@ import theme from "styles/theme";
 import styled from "styled-components/macro";
 import useSWR from "swr";
 import Loader from "components/shared/Loader";
+import { UserContext } from "store/UserContext";
 
 const ContentWrapper = styled.div`
   --content-height: 26rem;
@@ -70,9 +71,12 @@ const StyledTrackWrapperTemplate = styled(TrackWrapperTemplate)`
 `;
 
 const ArtistAndTracks = ({ artist, headline = "", nTracks = 10, link }) => {
-  const { data: user } = useSWR(() => artist && "/me");
+  const { userData } = useContext(UserContext);
   const { data: tracks } = useSWR(
-    () => artist && `/artists/${artist.id}/top-tracks?market=${user.country}`
+    () =>
+      artist &&
+      userData &&
+      `/artists/${artist.id}/top-tracks?market=${userData.country}`
   );
 
   const imageURL = artist && artist.images.length > 0 && artist.images[1].url;

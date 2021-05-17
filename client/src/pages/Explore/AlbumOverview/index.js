@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
 import TrackWrapperTemplate from "container/TrackWrapperTemplate/";
 import useSWR from "swr";
 import { Link } from "react-router-dom";
+import { UserContext } from "store/UserContext";
 
 const prepareArtists = (artists) => {
   const artistElement = artists
@@ -35,8 +36,7 @@ const prepareAlbumInformation = function (album) {
 
 function AlbumOverview(props) {
   const albumID = props.match.params.albumID;
-  const { data: user } = useSWR("/me");
-
+  const { userData: user } = useContext(UserContext);
   const { data: albumData } = useSWR(
     () => user && `albums/${albumID}?market=${user.country}`
   );

@@ -41,7 +41,7 @@ const getLocalRefreshToken = () =>
 
 const LOGIN_URI =
   process.env.NODE_ENV !== "production"
-    ? "http://localhost:8080/"
+    ? "http://localhost:8000/"
     : "https://app-explorify.herokuapp.com/";
 
 const refreshAccessToken = () => {

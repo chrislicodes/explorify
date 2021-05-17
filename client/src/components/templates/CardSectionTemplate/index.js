@@ -3,6 +3,7 @@ import styled, { css } from "styled-components/macro";
 import theme from "styles/theme";
 import SectionTemplate from "components/templates/SectionTemplate";
 import Loader from "components/shared/Loader";
+import NothingFound from "components/shared/NothingFound";
 
 const CardList = styled.ul`
   --column-size: ${({ backgroundHidden, columnWidthMod }) => {
@@ -94,7 +95,15 @@ const CardSectionTemplate = ({
   link,
   title,
   className,
+  cards,
 }) => {
+  let renderData;
+
+  if (Array.isArray(cards)) {
+    renderData = (cards.length > 0 && cards) || <NothingFound />;
+  } else {
+    renderData = <Loader />;
+  }
   return (
     <SectionTemplate
       headline={title || "Section"}
@@ -106,9 +115,7 @@ const CardSectionTemplate = ({
         backgroundHidden={backgroundHidden}
         columnWidthMod={columnWidthMod}
       >
-        {(children === false && <p>Not enough recent data available.</p>) ||
-          (children === undefined && <Loader />) ||
-          children}
+        {renderData}
       </CardList>
     </SectionTemplate>
   );
