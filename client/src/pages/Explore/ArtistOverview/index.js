@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import useSWR from "swr";
 import Loader from "components/shared/Loader";
 import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
@@ -6,6 +6,7 @@ import AlbumCardSection from "container/CardSections/AlbumCardSection";
 import ArtistCardSection from "container/CardSections/ArtistCardSection";
 import TrackCardSection from "container/CardSections/TrackCardSection";
 import { transformFollowerFormat } from "utils";
+import { UserContext } from "store/UserContext";
 
 const prepareArtistInformation = function (artist) {
   return {
@@ -23,8 +24,7 @@ const prepareArtistInformation = function (artist) {
 function ArtistOverview(props) {
   const artistID = props.match.params.artistID;
 
-  const { data: user } = useSWR("/me");
-
+  const { userData: user } = useContext(UserContext);
   const { data: artistInformation } = useSWR(
     () => artistID && `/artists/${artistID}`
   );
@@ -65,7 +65,11 @@ function ArtistOverview(props) {
               title="Related Artists"
             />
             <AlbumCardSection
-              fetchURL={artistID && `/artists/${artistID}/albums`}
+              fetchURL={
+                artistID &&
+                user &&
+                `/artists/${artistID}/albums?market=${user.country}`
+              }
               propertyName="items"
               type="album"
               title="Discography"

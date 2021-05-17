@@ -10,11 +10,13 @@ const TopArtist = ({ timeRange = "short_term" }) => {
   const artist =
     artistJSON && artistJSON.items.length > 0 && artistJSON.items[0];
 
+  const artistName = artist && artist.name;
+
   return (
     <>
       <ArtistAndTracks
         artist={artist}
-        headline="Top Artist"
+        headline={artistName}
         link="/top-artists"
       />
     </>

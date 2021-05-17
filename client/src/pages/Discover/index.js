@@ -13,6 +13,7 @@ import Loader from "components/shared/Loader";
 import Collapsible from "./components/Collapsible";
 import NothingFound from "components/shared/NothingFound";
 import { SearchContext } from "store/SearchContext";
+import { UserContext } from "store/UserContext";
 import { getTrackData } from "container/CardSections/TrackCardSection";
 import Button from "components/shared/Button";
 import Icon from "components/shared/Icon";
@@ -49,6 +50,8 @@ const StyledIcon = styled(Icon)`
 
 function Discover() {
   const { searchQuery } = useContext(SearchContext);
+  const { userData: user } = useContext(UserContext);
+
   const [selectedData, setSelectedData] = useState([]);
   const [sliderValues, setSliderValues] = useState({
     popularity: [0, 100],
@@ -72,8 +75,6 @@ function Discover() {
     `/me/top/tracks?time_range=short_term&limit=20`
   );
 
-  const { data: user } = useSWR("/me");
-
   const { data: searchResult } = useSWR(
     () =>
       searchQuery !== "" &&
@@ -83,7 +84,8 @@ function Discover() {
       )}%20NOT%20genre:hoerspiel%20&type=track&market=${user.country}&limit=10`
   );
 
-  const filterSelectedTracks = (arr = []) => {
+  const filterSelectedTracks = (arr) => {
+    if (!Array.isArray(arr)) return arr;
     return arr.filter(
       (track) => !selectedData.find((item) => item.id === track.id)
     );
@@ -191,13 +193,12 @@ function Discover() {
           overflowHidden={false}
           title="Selected Songs (max. 5)"
           columnWidthMod={100}
-        >
-          {selectedData.map((data, index) => (
+          cards={selectedData.map((data, index) => (
             <li key={data.id + index}>
               <SelectedCardItem {...data} onClick={handleClick} />
             </li>
           ))}
-        </CardSectionTemplate>
+        />
       )}
       {selectedData.length > 0 && (
         <>

@@ -16,41 +16,38 @@ function AlbumCardSection({
   let renderData;
 
   if (fetchURL) {
-    renderData = (fetchData && fetchData["items"]) || [];
+    renderData = fetchData && fetchData["items"];
   } else {
-    renderData = data || [];
+    renderData = data;
   }
 
-  const content =
-    renderData.length > 0 &&
-    renderData.map((item) => {
-      let link = `album/${item.id}`;
-      let imageURL = item.images?.length > 0 && item.images[0].url;
-      let primaryInfo = item.name;
-      let secondaryInfo = item.artists[0].name;
+  const content = renderData?.map((item) => {
+    let link = `album/${item.id}`;
+    let imageURL = item.images?.length > 0 && item.images[0].url;
+    let primaryInfo = item.name;
+    let secondaryInfo = item.artists[0].name;
 
-      return (
-        <li key={item.id}>
-          <CardItem
-            imageURL={imageURL}
-            link={link}
-            primaryInfo={primaryInfo}
-            secondaryInfo={secondaryInfo}
-            type="artist"
-            backgroundHidden={backgroundHidden}
-          />
-        </li>
-      );
-    });
+    return (
+      <li key={item.id}>
+        <CardItem
+          imageURL={imageURL}
+          link={link}
+          primaryInfo={primaryInfo}
+          secondaryInfo={secondaryInfo}
+          type="artist"
+          backgroundHidden={backgroundHidden}
+        />
+      </li>
+    );
+  });
 
   return (
     <CardSectionTemplate
       link={link}
       title={title}
       overflowHidden={overflowHidden}
-    >
-      {content}
-    </CardSectionTemplate>
+      cards={content}
+    />
   );
 }
 

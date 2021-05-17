@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { logout } from "auth";
 import Button from "components/shared/Button";
 import styled from "styled-components";
@@ -6,6 +6,7 @@ import useSWR from "swr";
 import SearchBar from "components/shared/SearchBar";
 import PlaceholderImage from "components/shared/PlaceholderImage";
 import theme from "styles/theme";
+import { UserContext } from "store/UserContext";
 
 const UserWrapper = styled.div`
   height: 100%;
@@ -55,7 +56,7 @@ const ImageWrapper = styled.div`
 `;
 
 const HeaderComponents = () => {
-  const { data: userData } = useSWR("/me");
+  const { userData } = useContext(UserContext);
   const userName = userData && userData.display_name;
   const userImageURL = userData && userData.images[0]?.url;
 

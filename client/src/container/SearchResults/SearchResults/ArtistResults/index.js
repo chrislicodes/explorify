@@ -40,7 +40,7 @@ function ArtistResults({ artists }) {
         <ArtistAndTracks
           artist={sortedArtists[0]}
           nTracks={5}
-          headline="Top Result"
+          headline={sortedArtists[0].name}
         />
       )}
       {scrollerArtists && (

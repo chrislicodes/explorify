@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { SearchContext } from "store/SearchContext";
+import { UserContext } from "store/UserContext";
 import styled from "styled-components/macro";
 import useSWR from "swr";
 import Loader from "components/shared/Loader";
@@ -15,16 +16,16 @@ const FlexContainer = styled.div`
 
 const SearchContainer = () => {
   const { searchQuery } = useContext(SearchContext);
-  const { data: user } = useSWR("/me");
+  const { userData } = useContext(UserContext);
 
   const { data: searchResult } = useSWR(
     () =>
       searchQuery !== "" &&
-      user &&
+      userData &&
       `/search?q=${encodeURI(
         searchQuery
       )}%20NOT%20genre:hoerspiel%20&type=album,track,artist&market=${
-        user.country
+        userData.country
       }&limit=20`
   );
 

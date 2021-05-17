@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
-import useSWR from "swr";
+import { UserContext } from "store/UserContext";
 
 const Greeting = styled.h1`
   color: var(--color-white);
@@ -23,11 +23,15 @@ const determineGreeting = () => {
 };
 
 const WelcomeUser = () => {
-  const { data: userData } = useSWR("/me");
-  const userName = userData && userData.display_name;
+  const { userData } = useContext(UserContext);
   const greeting = determineGreeting();
 
-  return <Greeting>{`${greeting}, ${userName}!`}</Greeting>;
+  return (
+    <Greeting>
+      {`${greeting}`}
+      {userData && `, ${userData.display_name}!`}
+    </Greeting>
+  );
 };
 
 export default WelcomeUser;

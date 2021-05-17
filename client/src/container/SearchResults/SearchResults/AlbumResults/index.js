@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import AlbumCardSection from "container/CardSections/AlbumCardSection";
 import useSWR from "swr";
+import { UserContext } from "store/UserContext";
 
 const filterArtists = (artists) => {
   if (!artists) return;
@@ -12,13 +13,19 @@ function AlbumResults({ albums }) {
   const artistIDs = albums.map((album) => album.artists[0].id);
   const albumIDs = albums.map((album) => album.id);
 
+  const { userData } = useContext(UserContext);
+
   const { data: artists } = useSWR(
-    `/artists?ids=${encodeURI(artistIDs.join(","))}`
+    () => userData && `/artists?ids=${encodeURI(artistIDs.join(","))}`
   );
 
   const { data: albumsData } = useSWR(
-    `/albums?ids=${encodeURI(albumIDs.join(","))}`
+    () =>
+      userData &&
+      `/albums?ids=${encodeURI(albumIDs.join(","))}&market=${userData.country}`
   );
+
+  console.log("HERE", albums);
 
   const filteredArtists = artists && filterArtists(artists.artists);
 

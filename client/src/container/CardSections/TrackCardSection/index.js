@@ -37,51 +37,50 @@ function TrackCardSection({
 
   let renderData;
 
+  console.log("Fetchdata", fetchData);
+
   if (fetchURL) {
-    renderData = (fetchData && fetchData["tracks"]) || [];
+    renderData = fetchData && fetchData["tracks"];
   } else {
-    renderData = data || [];
+    renderData = data;
   }
 
-  const content =
-    renderData.length > 0 &&
-    renderData.map((item) => {
-      const {
-        id,
-        trackLink,
-        imageURL,
-        primaryInfo,
-        secondaryInfo,
-        previewURL,
-        trackURI,
-      } = getTrackData(item);
-      return (
-        <li key={id}>
-          <CardItem
-            id={id}
-            trackURI={trackURI}
-            imageURL={imageURL}
-            link={trackLink}
-            primaryInfo={primaryInfo}
-            secondaryInfo={secondaryInfo}
-            type="track"
-            backgroundHidden={backgroundHidden}
-            previewURL={previewURL}
-            onClick={onCardItemClick}
-            cardSize={cardSize}
-          />
-        </li>
-      );
-    });
+  const content = renderData?.map((item) => {
+    const {
+      id,
+      trackLink,
+      imageURL,
+      primaryInfo,
+      secondaryInfo,
+      previewURL,
+      trackURI,
+    } = getTrackData(item);
+    return (
+      <li key={id}>
+        <CardItem
+          id={id}
+          trackURI={trackURI}
+          imageURL={imageURL}
+          link={trackLink}
+          primaryInfo={primaryInfo}
+          secondaryInfo={secondaryInfo}
+          type="track"
+          backgroundHidden={backgroundHidden}
+          previewURL={previewURL}
+          onClick={onCardItemClick}
+          cardSize={cardSize}
+        />
+      </li>
+    );
+  });
 
   return (
     <CardSectionTemplate
       link={link}
       title={title}
       overflowHidden={overflowHidden}
-    >
-      {content}
-    </CardSectionTemplate>
+      cards={content}
+    />
   );
 }
 

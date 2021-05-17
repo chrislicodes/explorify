@@ -12,6 +12,7 @@ import ROUTES, { RenderRoutes } from "routes/Routes";
 
 import { AudioProvider } from "store/AudioContext";
 import { SearchProvider } from "store/SearchContext";
+import { UserProvider } from "store/UserContext";
 
 export const axiosInstance = axios.create({
   baseURL: "https://api.spotify.com/v1",
@@ -46,20 +47,22 @@ const App = () => {
         <SWRConfig
           value={{
             fetcher: fetcher,
-            onError: (error, key) => {
+            onError: (error) => {
               if (error.status === 401) {
                 setAccessToken(getAccessToken());
               }
             },
           }}
         >
-          <SearchProvider>
-            <AppTemplate>
-              <AudioProvider>
-                <RenderRoutes routes={ROUTES} />
-              </AudioProvider>
-            </AppTemplate>
-          </SearchProvider>
+          <UserProvider>
+            <SearchProvider>
+              <AppTemplate>
+                <AudioProvider>
+                  <RenderRoutes routes={ROUTES} />
+                </AudioProvider>
+              </AppTemplate>
+            </SearchProvider>
+          </UserProvider>
         </SWRConfig>
       ) : (
         <Login />
