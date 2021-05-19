@@ -97,7 +97,7 @@ const Header = styled.header`
   align-items: center;
 `;
 
-const AppTemplate = ({ children, user }) => {
+const AppTemplate = ({ children }) => {
   return (
     <AppContainer>
       <NavLayout>
@@ -105,7 +105,7 @@ const AppTemplate = ({ children, user }) => {
       </NavLayout>
       <ContentLayout>
         <Header>
-          <HeaderComponents user={user} />
+          <HeaderComponents />
         </Header>
         <Page>{children}</Page>
       </ContentLayout>
