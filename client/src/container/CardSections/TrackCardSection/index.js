@@ -37,6 +37,8 @@ function TrackCardSection({
 
   let renderData;
 
+  console.log("Fetchdata", fetchData);
+
   if (fetchURL) {
     renderData = fetchData && fetchData["tracks"];
   } else {

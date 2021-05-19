@@ -103,7 +103,7 @@ const CardSectionTemplate = ({
   } else {
     renderData = <Loader />;
   }
-
+  
   return (
     <SectionTemplate
       headline={title || "Section"}
