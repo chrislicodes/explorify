@@ -71,6 +71,7 @@ function Discover() {
     });
   };
 
+  //should move to container
   const { data: topTracks } = useSWR(
     `/me/top/tracks?time_range=short_term&limit=20`
   );
@@ -151,9 +152,9 @@ function Discover() {
         uris: recommendation.tracks.map((data) => data.uri),
       });
       setButtonText("Success!");
-      setTimeout(() => setButtonText("Save to Spotify"), 2000);
     } catch (error) {
       setButtonText("Error");
+    } finally {
       setTimeout(() => setButtonText("Save to Spotify"), 2000);
     }
   };
@@ -176,7 +177,6 @@ function Discover() {
           You can use the search bar to find and select your favorite tracks.
         </p>
       </Info>
-
       <TrackCardSection
         data={
           searchQuery !== ""

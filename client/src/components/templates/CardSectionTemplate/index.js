@@ -91,7 +91,6 @@ const CardSectionTemplate = ({
   overflowHidden = true,
   backgroundHidden = false,
   columnWidthMod = 0,
-  children,
   link,
   title,
   className,
@@ -104,6 +103,7 @@ const CardSectionTemplate = ({
   } else {
     renderData = <Loader />;
   }
+  
   return (
     <SectionTemplate
       headline={title || "Section"}

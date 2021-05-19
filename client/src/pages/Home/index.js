@@ -29,10 +29,6 @@ const TrackOverview = styled.div`
   }
 `;
 
-// ---------------------------------------
-// -------------  LOGIC
-// ---------------------------------------
-
 const Home = () => {
   return (
     <PageTemplate>
