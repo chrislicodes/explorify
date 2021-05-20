@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import SongPreview from "components/shared/SongPreview";
+import TrackPreview from "components/shared/TrackPreview";
 import Icon from "components/shared/Icon";
 
 const StyledIcon = styled(Icon)``;
@@ -102,7 +102,7 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const SongPreviewWrapper = styled.div`
+const TrackPreviewWrapper = styled.div`
   margin-right: var(--spacing-size-sm-1);
 `;
 
@@ -119,15 +119,15 @@ function SelectedCardItem(props) {
         <PrimaryInfo>{primaryInfo}</PrimaryInfo>
         <SecondaryInfo>{secondaryInfo}</SecondaryInfo>
       </InfoContainer>
-      <SongPreviewWrapper onClick={(e) => e.stopPropagation()}>
+      <TrackPreviewWrapper onClick={(e) => e.stopPropagation()}>
         {previewURL && (
-          <SongPreview
+          <TrackPreview
             progressBar={false}
             previewURL={previewURL}
             type="rounded"
           />
         )}
-      </SongPreviewWrapper>
+      </TrackPreviewWrapper>
     </CardWrapper>
   );
 }

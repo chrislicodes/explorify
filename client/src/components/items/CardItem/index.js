@@ -2,7 +2,7 @@ import React from "react";
 import Icon from "components/shared/Icon";
 import PlaceholderImage from "components/shared/PlaceholderImage";
 import styled from "styled-components/macro";
-import SongPreview from "components/shared/SongPreview";
+import TrackPreview from "components/shared/TrackPreview";
 import { useHistory } from "react-router-dom";
 
 const StyledIcon = styled(Icon)``;
@@ -113,7 +113,7 @@ const Info = styled.div`
   }
 `;
 
-const SongPreviewWrapper = styled.div`
+const TrackPreviewWrapper = styled.div`
   position: absolute;
   bottom: 3%;
   right: 3%;
@@ -130,6 +130,7 @@ const CardItem = (props) => {
     backgroundHidden,
     previewURL,
     onClick,
+    iconType = "icon-info",
   } = props;
 
   let history = useHistory();
@@ -149,16 +150,16 @@ const CardItem = (props) => {
         ) : (
           <StyledPlaceholderImage />
         )}
-        <StyledIcon type="icon-notification" />
+        <StyledIcon type={iconType} />
         {previewURL && (
           <>
-            <SongPreviewWrapper onClick={(e) => e.stopPropagation()}>
-              <SongPreview
+            <TrackPreviewWrapper onClick={(e) => e.stopPropagation()}>
+              <TrackPreview
                 progressBar={false}
                 previewURL={previewURL}
                 type="rounded"
               />
-            </SongPreviewWrapper>
+            </TrackPreviewWrapper>
           </>
         )}
       </ImageWrapper>

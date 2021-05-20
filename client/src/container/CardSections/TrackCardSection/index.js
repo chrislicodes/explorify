@@ -31,7 +31,7 @@ function TrackCardSection({
   backgroundHidden,
   overflowHidden,
   onCardItemClick,
-  cardSize,
+  iconType,
 }) {
   let { data: fetchData } = useSWR(() => !data && fetchURL);
 
@@ -68,7 +68,7 @@ function TrackCardSection({
           backgroundHidden={backgroundHidden}
           previewURL={previewURL}
           onClick={onCardItemClick}
-          cardSize={cardSize}
+          iconType={iconType}
         />
       </li>
     );

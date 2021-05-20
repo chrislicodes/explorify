@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { logout } from "auth";
 import Button from "components/shared/Button";
 import styled from "styled-components";
-import useSWR from "swr";
 import SearchBar from "components/shared/SearchBar";
 import PlaceholderImage from "components/shared/PlaceholderImage";
 import theme from "styles/theme";
 import { UserContext } from "store/UserContext";
+import BackIcon from "components/shared/Icon/BackIcon";
 
 const UserWrapper = styled.div`
   height: 100%;
@@ -35,9 +35,7 @@ const UserImage = styled.img`
   border-radius: 50%;
 `;
 
-const StyledSearchBar = styled(SearchBar)`
-  margin-right: auto;
-`;
+const StyledSearchBar = styled(SearchBar)``;
 
 const StyledPlaceholderImage = styled(PlaceholderImage)`
   width: auto;
@@ -55,6 +53,15 @@ const ImageWrapper = styled.div`
   }
 `;
 
+const ItemWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+  margin-right: auto;
+  gap: var(--spacing-size-sm-2);
+`;
+
 const HeaderComponents = () => {
   const { userData } = useContext(UserContext);
   const userName = userData && userData.display_name;
@@ -63,7 +70,11 @@ const HeaderComponents = () => {
   return (
     <>
       <ContentWrapper>
-        <StyledSearchBar />
+        <ItemWrapper>
+          <StyledSearchBar />
+          <BackIcon />
+        </ItemWrapper>
+
         {userData && (
           <UserWrapper>
             {userImageURL ? (

@@ -115,7 +115,7 @@ const Login = () => {
           Welcome to <strong>EXPLORIFY</strong>.
         </Headline>
         <Subheader>
-          Explore your favorite songs and artists on <span>Spotify</span>
+          Explore your favorite tracks and artists on <span>Spotify</span>
         </Subheader>
         <LoginButton href={LOGIN_URI}>LOGIN TO SPOTIFY</LoginButton>
       </ContentContainer>

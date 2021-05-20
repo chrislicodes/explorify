@@ -11,16 +11,22 @@ const StyledLoader = styled.div`
   }
 `;
 
-const Loader = (props) => {
-  const { height, width, visible, className, fillColor } = props;
-
+const Loader = ({
+  height,
+  width,
+  visible,
+  className,
+  fillColor,
+  type = "Audio",
+}) => {
   return (
     <StyledLoader className={className} fillColor={fillColor}>
       <ReactLoaderSpinner
-        type="Audio"
+        type={type}
         height={height ? height : null}
         width={width ? width : null}
         visible={visible ? visible : true}
+        radius={10}
       />
     </StyledLoader>
   );

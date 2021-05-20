@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useToasts } from "react-toast-notifications";
 import PageTemplate from "components/templates/PageTemplate";
 import SectionTemplate from "components/templates/SectionTemplate";
 import TrackCardSection from "container/CardSections/TrackCardSection";
@@ -39,6 +40,8 @@ const Info = styled.div`
 `;
 
 const StyledIcon = styled(Icon)`
+  min-height: 2rem;
+  min-width: 2rem;
   height: 2.5rem;
   width: 2.5rem;
   & svg {
@@ -61,6 +64,7 @@ function Discover() {
     danceability: [0, 100],
   });
   const [buttonText, setButtonText] = useState("Save to Spotify");
+  const { addToast } = useToasts();
 
   const handleChange = (values, id) => {
     setSliderValues((prevValues) => {
@@ -123,8 +127,14 @@ function Discover() {
     });
 
     if (findID === -1) {
-      selectedData.length < 5 &&
+      if (selectedData.length < 5) {
         setSelectedData((prevData) => [...prevData, data]);
+      } else {
+        addToast("You already selected five tracks.", {
+          appearance: "info",
+          autoDismiss: true,
+        });
+      }
     } else {
       setSelectedData((prevData) => {
         return [...prevData].filter((el, index) => index !== findID);
@@ -174,7 +184,8 @@ function Discover() {
       <Info>
         <StyledIcon type="icon-notification" />
         <p>
-          You can use the search bar to find and select your favorite tracks.
+          Generate a playlist by clicking on and selecting up to 5 tracks. You
+          can also use the search bar to find more from your favorite artists.
         </p>
       </Info>
       <TrackCardSection
@@ -184,14 +195,15 @@ function Discover() {
             : filterSelectedTracks(topTracks?.items)
         }
         title={
-          (searchQuery !== "" && "Search Results") || "Your Recent Top Songs"
+          (searchQuery !== "" && "Search Results") || "Your Recent Top Tracks"
         }
         onCardItemClick={handleClick}
+        iconType={(selectedData.length < 5 && "icon-plus") || "icon-lock"}
       />
       {selectedData.length > 0 && (
         <CardSectionTemplate
           overflowHidden={false}
-          title="Selected Songs (max. 5)"
+          title="Selected Tracks (max. 5)"
           columnWidthMod={100}
           cards={selectedData.map((data, index) => (
             <li key={data.id + index}>

@@ -57,6 +57,8 @@ const SearchIcon = styled(Icon)`
   }
 `;
 
+const regex = new RegExp("/explore.*");
+
 const SearchBar = ({ className }) => {
   let { setSearchQuery, searchQuery } = useContext(SearchContext);
 
@@ -64,7 +66,7 @@ const SearchBar = ({ className }) => {
   let location = useLocation();
 
   useEffect(() => {
-    if (location.pathname !== "/explore") {
+    if (!regex.test(location.pathname)) {
       setSearchQuery("");
     }
   }, [location, setSearchQuery]);

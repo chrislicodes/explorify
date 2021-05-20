@@ -11,6 +11,7 @@ import RecentlyPlayedTracks from "pages/Explore/RecentlyPlayedTracks";
 import TopTracks from "pages/TopTracks";
 import TopArtists from "pages/TopArtists";
 import NotFound404 from "pages/NotFound404";
+import { ToastProvider } from "react-toast-notifications";
 
 // https://www.ryanjyost.com/react-routing/
 const authToken = getAccessToken();
@@ -42,7 +43,11 @@ const ROUTES = [
         path: "/discover",
         key: "DISCOVER",
         exact: true,
-        component: Discover,
+        component: () => (
+          <ToastProvider placement="bottom-right" autoDismissTimeout={4000}>
+            <Discover />
+          </ToastProvider>
+        ),
       },
       {
         path: "/top-artists",
