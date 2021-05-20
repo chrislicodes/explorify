@@ -130,6 +130,7 @@ const CardItem = (props) => {
     backgroundHidden,
     previewURL,
     onClick,
+    iconType = "icon-info",
   } = props;
 
   let history = useHistory();
@@ -149,7 +150,7 @@ const CardItem = (props) => {
         ) : (
           <StyledPlaceholderImage />
         )}
-        <StyledIcon type="icon-notification" />
+        <StyledIcon type={iconType} />
         {previewURL && (
           <>
             <SongPreviewWrapper onClick={(e) => e.stopPropagation()}>
