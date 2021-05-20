@@ -19,7 +19,7 @@ function RecentlyPlayedTracks({
   return (
     <>
       {recentlyPlayedTracks ? (
-        <SectionTemplate headline={"Recently played songs"} link={link}>
+        <SectionTemplate headline={"Recently played tracks"} link={link}>
           <TrackContainer tracks={recentlyPlayedTracks} displayImage={true} />
         </SectionTemplate>
       ) : (

@@ -5,7 +5,7 @@ import Loader from "components/shared/Loader";
 import { Link } from "react-router-dom";
 import AudioFeaturesBar from "components/shared/AudioFeaturesBarChart";
 import OverviewPageTemplate from "components/templates/OverviewPageTemplate";
-import SongPreview from "components/shared/SongPreview";
+import TrackPreview from "components/shared/TrackPreview";
 import theme from "styles/theme";
 import { transformDurationFormat } from "utils";
 import TrackInfoItem from "./TrackInfoItem";
@@ -151,14 +151,14 @@ function TrackOverview(props) {
               <TrackInfoItem
                 item={
                   (previewURL && (
-                    <SongPreview
+                    <TrackPreview
                       previewURL={previewURL}
                       progressBar={false}
                       type="rounded"
                     />
                   )) || <p>Not available</p>
                 }
-                fieldName="Song Preview"
+                fieldName="Track Preview"
               />
               <TrackInfoItem
                 item={transformDurationFormat(trackDuration)}

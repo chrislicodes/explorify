@@ -5,9 +5,9 @@ import styled from "styled-components/macro";
 
 const navItems = [
   { target: "/home", icon: "icon-home" },
-  { target: "/top-artists", icon: "icon-headphones", label: "Top Artists" },
+  { target: "/top-artists", icon: "icon-user", label: "Top Artists" },
   { target: "/top-tracks", icon: "icon-music", label: "Top Tracks" },
-  { target: "/discover", icon: "icon-compass" },
+  { target: "/discover", icon: "icon-headphones", label: "Track Mixer" },
   {
     target: "/explore",
     icon: "icon-search",

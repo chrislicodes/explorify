@@ -75,7 +75,7 @@ const ProgressBar = styled.div`
   `}
 `;
 
-function SongPreview({
+function TrackPreview({
   previewURL,
   className,
   progressBar = true,
@@ -106,7 +106,7 @@ function SongPreview({
         type={type}
       >
         {curPreviewIsLoading ? (
-          <Loader type="Oval" />
+          <Loader type="ThreeDots" />
         ) : (
           <Icon type={curPreviewIsPlaying ? "icon-stop" : "icon-play"} />
         )}
@@ -121,4 +121,4 @@ function SongPreview({
   );
 }
 
-export default SongPreview;
+export default TrackPreview;

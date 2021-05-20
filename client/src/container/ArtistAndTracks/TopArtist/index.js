@@ -16,7 +16,7 @@ const TopArtist = ({ timeRange = "short_term" }) => {
     <>
       <ArtistAndTracks
         artist={artist}
-        headline={artistName}
+        headline={`Top Artist - ${artistName}`}
         link="/top-artists"
       />
     </>

@@ -2,7 +2,7 @@ import React from "react";
 import Icon from "components/shared/Icon";
 import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
-import SongPreview from "../../shared/SongPreview";
+import TrackPreview from "../../shared/TrackPreview";
 
 const TrackMetaInfo = styled.div`
   min-width: 0;
@@ -129,10 +129,7 @@ const TrackItem = ({
           ) : (
             <TrackIndex>{String(pos + 1).padStart(2, "0")}</TrackIndex>
           )}
-          <TrackDisplayOverlay
-            type="icon-notification"
-            displayImage={displayImage}
-          />
+          <TrackDisplayOverlay type="icon-info" displayImage={displayImage} />
         </TrackDisplay>
         <TrackMetaInfo>
           <TrackTitle>
@@ -144,7 +141,7 @@ const TrackItem = ({
         </TrackMetaInfo>
       </StyledLink>
       <AdditionalInfo>
-        {previewURL && <SongPreview previewURL={previewURL} />}
+        {previewURL && <TrackPreview previewURL={previewURL} />}
         <Duration>{trackDuration}</Duration>
       </AdditionalInfo>
     </TrackItemWrapper>

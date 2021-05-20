@@ -96,7 +96,7 @@ const ArtistAndTracks = ({ artist, headline = "", nTracks = 10, link }) => {
             ) : (
               <PlaceholderImage />
             )}
-            <ImageOverlay type="icon-notification" />
+            <ImageOverlay type="icon-info" />
           </Link>
         </ArtistImageWrapper>
         <StyledTrackWrapperTemplate
