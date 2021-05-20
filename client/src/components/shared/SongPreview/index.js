@@ -106,7 +106,7 @@ function SongPreview({
         type={type}
       >
         {curPreviewIsLoading ? (
-          <Loader />
+          <Loader type="Oval" />
         ) : (
           <Icon type={curPreviewIsPlaying ? "icon-stop" : "icon-play"} />
         )}
