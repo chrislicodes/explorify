@@ -187,6 +187,7 @@ function Discover() {
           (searchQuery !== "" && "Search Results") || "Your Recent Top Songs"
         }
         onCardItemClick={handleClick}
+        iconType={(selectedData.length < 5 && "icon-plus") || "icon-lock"}
       />
       {selectedData.length > 0 && (
         <CardSectionTemplate
