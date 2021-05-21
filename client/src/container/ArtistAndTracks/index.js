@@ -70,7 +70,7 @@ const StyledTrackWrapperTemplate = styled(TrackWrapperTemplate)`
   }
 `;
 
-const ArtistAndTracks = ({ artist, headline = "", nTracks = 10, link }) => {
+const ArtistAndTracks = ({ artist, link, headline = "", nTracks = 10 }) => {
   const { userData } = useContext(UserContext);
   const { data: tracks } = useSWR(
     () =>
@@ -85,37 +85,37 @@ const ArtistAndTracks = ({ artist, headline = "", nTracks = 10, link }) => {
   let renderData;
 
   if (artist === false) {
-    renderData = <p>Not enough recent data available.</p>;
+    renderData = (
+      <SectionTemplate headline="Top Artist">
+        <p>Not enough recent data available.</p>
+      </SectionTemplate>
+    );
   } else if (tracks?.tracks) {
     renderData = (
-      <ContentWrapper>
-        <ArtistImageWrapper>
-          <Link to={`/explore/artist/${artist.id}`}>
-            {imageURL ? (
-              <img src={artist.images[1].url} alt={`${artist.name}`} />
-            ) : (
-              <PlaceholderImage />
-            )}
-            <ImageOverlay type="icon-info" />
-          </Link>
-        </ArtistImageWrapper>
-        <StyledTrackWrapperTemplate
-          tracks={tracks.tracks.slice(0, nTracks)}
-          displayImage={false}
-        />
-      </ContentWrapper>
+      <SectionTemplate headline={`${headline}`} link={titleLink}>
+        <ContentWrapper>
+          <ArtistImageWrapper>
+            <Link to={`/explore/artist/${artist.id}`}>
+              {imageURL ? (
+                <img src={artist.images[1].url} alt={`${artist.name}`} />
+              ) : (
+                <PlaceholderImage />
+              )}
+              <ImageOverlay type="icon-info" />
+            </Link>
+          </ArtistImageWrapper>
+          <StyledTrackWrapperTemplate
+            tracks={tracks.tracks.slice(0, nTracks)}
+            displayImage={false}
+          />
+        </ContentWrapper>
+      </SectionTemplate>
     );
   } else {
     renderData = <Loader />;
   }
 
-  return (
-    <>
-      <SectionTemplate headline={`${headline}`} link={titleLink}>
-        {renderData}
-      </SectionTemplate>
-    </>
-  );
+  return <>{renderData}</>;
 };
 
 export default ArtistAndTracks;
