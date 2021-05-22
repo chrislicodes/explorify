@@ -3,6 +3,8 @@ import TrackItem from "components/items/TrackItem";
 import styled from "styled-components/macro";
 import { transformDurationFormat } from "utils";
 
+//TODO: Refactor to real template
+
 const StyledTrackWrapperTemplate = styled.div`
   display: flex;
   flex-direction: column;

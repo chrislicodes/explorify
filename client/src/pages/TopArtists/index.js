@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TopArtistCardSection from "container/TopArtistCardSection";
+import TopArtistCardSection from "container/CardSections/ArtistCardSection/TopArtistCardSection";
 import PageTemplate from "components/templates/PageTemplate";
 import Button from "components/shared/Button";
 import styled from "styled-components/macro";

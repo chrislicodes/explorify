@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import TopTracksSection from "container/TopTracksSection/";
+import TopTracksSection from "container/TrackWrapperTemplate/TopTracksSection";
 import PageTemplate from "components/templates/PageTemplate";
 import Button from "components/shared/Button";
 import styled from "styled-components/macro";
