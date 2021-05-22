@@ -1,23 +1,36 @@
 import React, { useState, useContext, useEffect } from "react";
+import styled from "styled-components/macro";
+import useSWR from "swr";
 import { useToasts } from "react-toast-notifications";
+
+import SelectedCardItem from "components/items/SelectedCardItem";
 import PageTemplate from "components/templates/PageTemplate";
 import SectionTemplate from "components/templates/SectionTemplate";
-import TrackCardSection from "container/CardSections/TrackCardSection";
 import CardSectionTemplate from "components/templates/CardSectionTemplate";
-import TrackWrapperTemplate from "container/TrackWrapperTemplate";
-import useSWR from "swr";
-import SelectedCardItem from "components/items/SelectedCardItem";
-import styled from "styled-components/macro";
-import { axiosInstance } from "App";
-import PlaylistForm from "./components/PlaylistForm";
+import Button from "components/shared/Button";
 import Loader from "components/shared/Loader";
+import Icon from "components/shared/Icon";
+import PlaylistForm from "./components/PlaylistForm";
 import Collapsible from "./components/Collapsible";
 import NothingFound from "components/shared/NothingFound";
+
+import TrackCardSection, {
+  getTrackData,
+} from "container/CardSections/TrackCardSection";
+import TrackWrapperTemplate from "container/TrackWrapperTemplate";
+
 import { SearchContext } from "store/SearchContext";
 import { UserContext } from "store/UserContext";
-import { getTrackData } from "container/CardSections/TrackCardSection";
-import Button from "components/shared/Button";
-import Icon from "components/shared/Icon";
+
+import {
+  createRecommendationSearchParams,
+  filterSelectedTracks,
+  savePlaylist,
+} from "./utils";
+
+//-----------------------------------------
+// Styles
+//-----------------------------------------
 
 const RecommendationWrapper = styled.div`
   display: flex;
@@ -52,6 +65,9 @@ const StyledIcon = styled(Icon)`
 `;
 
 function Discover() {
+  //-----------------------------------------
+  // Hooks
+  //-----------------------------------------
   const { searchQuery } = useContext(SearchContext);
   const { userData: user } = useContext(UserContext);
 
@@ -66,16 +82,10 @@ function Discover() {
   const [buttonText, setButtonText] = useState("Save to Spotify");
   const { addToast } = useToasts();
 
-  const handleChange = (values, id) => {
-    setSliderValues((prevValues) => {
-      return {
-        ...prevValues,
-        [id]: values,
-      };
-    });
-  };
+  //-----------------------------------------
+  // Data Fetching
+  //-----------------------------------------
 
-  //should move to container
   const { data: topTracks } = useSWR(
     `/me/top/tracks?time_range=short_term&limit=20`
   );
@@ -86,90 +96,23 @@ function Discover() {
       user &&
       `/search?q=${encodeURI(
         searchQuery
-      )}%20NOT%20genre:hoerspiel%20&type=track&market=${user.country}&limit=10`
+      )}%20NOT%20genre:hoerspiel%20&type=track&market=${user.country}&limit=15`
   );
-
-  const filterSelectedTracks = (arr) => {
-    if (!Array.isArray(arr)) return arr;
-    return arr.filter(
-      (track) => !selectedData.find((item) => item.id === track.id)
-    );
-  };
-
-  const createRecommendationSearchParams = () =>
-    new URLSearchParams({
-      seed_tracks: selectedData.map((data) => data.id).join(","),
-      min_popularity: sliderValues.popularity[0],
-      max_popularity: sliderValues.popularity[1],
-      min_valence: sliderValues.valence[0] / 100,
-      max_valence: sliderValues.valence[1] / 100,
-      min_energy: sliderValues.energy[0] / 100,
-      max_energy: sliderValues.energy[1] / 100,
-      min_acousticness: sliderValues.acousticness[0] / 100,
-      max_acousticness: sliderValues.acousticness[1] / 100,
-      min_danceability: sliderValues.danceability[0] / 100,
-      max_danceability: sliderValues.danceability[1] / 100,
-      market: user.country,
-      limit: 50,
-    });
 
   const { data: recommendation } = useSWR(
     () =>
       selectedData.length !== 0 &&
       user &&
-      `/recommendations?${createRecommendationSearchParams()}`,
+      `/recommendations?${createRecommendationSearchParams(
+        selectedData,
+        sliderValues,
+        user
+      )}`,
     { revalidateOnFocus: false }
   );
 
-  const handleClick = (e, data) => {
-    const findID = selectedData.findIndex((item) => {
-      return item.id === data.id;
-    });
-
-    if (findID === -1) {
-      if (selectedData.length < 5) {
-        setSelectedData((prevData) => [...prevData, data]);
-      } else {
-        addToast("You already selected five tracks.", {
-          appearance: "info",
-          autoDismiss: true,
-        });
-      }
-    } else {
-      setSelectedData((prevData) => {
-        return [...prevData].filter((el, index) => index !== findID);
-      });
-    }
-  };
-
-  const createPlaylist = async (e) => {
-    e.preventDefault();
-    const playlistName = "Explorify Playlist";
-
-    try {
-      setButtonText("Saving ..");
-      const playlist = await axiosInstance.post(`/users/${user.id}/playlists`, {
-        name: playlistName,
-        description: `Created via Explorify App based on ${selectedData
-          .map((item) => item.secondaryInfo + " - " + item.primaryInfo)
-          .join(", ")}`,
-        public: false,
-      });
-
-      const playlistID = playlist.data.id;
-
-      await axiosInstance.post(`/playlists/${playlistID}/tracks`, {
-        uris: recommendation.tracks.map((data) => data.uri),
-      });
-      setButtonText("Success!");
-    } catch (error) {
-      setButtonText("Error");
-    } finally {
-      setTimeout(() => setButtonText("Save to Spotify"), 2000);
-    }
-  };
-
   useEffect(() => {
+    //pseudo randomly prefill the selected data
     topTracks &&
       setSelectedData(
         [...topTracks.items]
@@ -179,6 +122,61 @@ function Discover() {
       );
   }, [topTracks]);
 
+  //-----------------------------------------
+  // Functions
+  //-----------------------------------------
+
+  const handleSliderChange = (values, id) => {
+    setSliderValues((prevValues) => {
+      return {
+        ...prevValues,
+        [id]: values,
+      };
+    });
+  };
+
+  const handleCardClick = (e, data) => {
+    //check if item is selected
+    const findID = selectedData.findIndex((item) => {
+      return item.id === data.id;
+    });
+
+    if (findID === -1) {
+      //if not and there are less than five, add the item
+      if (selectedData.length < 5) {
+        setSelectedData((prevData) => [...prevData, data]);
+      } else {
+        //if not and there are five show the info toast
+        addToast("You already selected five tracks.", {
+          appearance: "info",
+          autoDismiss: true,
+        });
+      }
+    } else {
+      //if selected remove the clicked item
+      setSelectedData((prevData) => {
+        return [...prevData].filter((el, index) => index !== findID);
+      });
+    }
+  };
+
+  const createPlaylist = async (e) => {
+    try {
+      setButtonText("Saving ..");
+      await savePlaylist(e, user, recommendation.tracks, selectedData);
+      addToast("Playlist successfully saved. :)", {
+        appearance: "success",
+        autoDismiss: true,
+      });
+    } catch (error) {
+      addToast("Something went wrong. :(", {
+        appearance: "error",
+        autoDismiss: true,
+      });
+    } finally {
+      setButtonText("Save to Spotify");
+    }
+  };
   return (
     <PageTemplate>
       <Info>
@@ -191,13 +189,13 @@ function Discover() {
       <TrackCardSection
         data={
           searchQuery !== ""
-            ? filterSelectedTracks(searchResult?.tracks.items)
-            : filterSelectedTracks(topTracks?.items)
+            ? filterSelectedTracks(searchResult?.tracks.items, selectedData)
+            : filterSelectedTracks(topTracks?.items, selectedData)
         }
         title={
           (searchQuery !== "" && "Search Results") || "Your Recent Top Tracks"
         }
-        onCardItemClick={handleClick}
+        onCardItemClick={handleCardClick}
         iconType={(selectedData.length < 5 && "icon-plus") || "icon-lock"}
       />
       {selectedData.length > 0 && (
@@ -207,7 +205,7 @@ function Discover() {
           columnWidthMod={100}
           cards={selectedData.map((data, index) => (
             <li key={data.id + index}>
-              <SelectedCardItem {...data} onClick={handleClick} />
+              <SelectedCardItem {...data} onClick={handleCardClick} />
             </li>
           ))}
         />
@@ -216,9 +214,8 @@ function Discover() {
         <>
           <Collapsible>
             <PlaylistForm
-              sliderHandler={handleChange}
+              sliderHandler={handleSliderChange}
               sliderValues={sliderValues}
-              buttonHandler={createPlaylist}
             />
           </Collapsible>
           <SectionTemplate headline="Your newly generated Playlist">

@@ -25,8 +25,6 @@ function AlbumResults({ albums }) {
       `/albums?ids=${encodeURI(albumIDs.join(","))}&market=${userData.country}`
   );
 
-  console.log("HERE", albums);
-
   const filteredArtists = artists && filterArtists(artists.artists);
 
   const filteredAlbums =
