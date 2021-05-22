@@ -3,6 +3,7 @@ import { axiosInstance } from "App.js";
 
 export const UserContext = React.createContext({
   userData: "",
+  setUserData: () => {},
 });
 
 export const UserProvider = ({ children }) => {
@@ -11,7 +12,6 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        console.log("Fetching User ..");
         const user = await axiosInstance.get("/me");
         setUserData(user.data);
       } catch (error) {
@@ -24,6 +24,7 @@ export const UserProvider = ({ children }) => {
 
   const value = {
     userData,
+    setUserData,
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
