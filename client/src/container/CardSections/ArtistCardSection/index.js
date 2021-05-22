@@ -11,6 +11,8 @@ function ArtistCardSection({
   backgroundHidden,
   overflowHidden,
 }) {
+  //can either receive data directly (only for searchResults the case at the moment) or will fetch the data
+  //for filtering we could pass a comparator function
   let { data: fetchData } = useSWR(() => !data && fetchURL);
 
   let renderData;
