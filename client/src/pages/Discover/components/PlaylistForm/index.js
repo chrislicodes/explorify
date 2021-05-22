@@ -10,7 +10,7 @@ const FormBody = styled.div`
 
 const FormWrapper = styled.form``;
 
-function PlaylistForm({ sliderHandler, sliderValues, buttonHandler }) {
+function PlaylistForm({ sliderHandler, sliderValues }) {
   return (
     <FormWrapper>
       <FormBody>
