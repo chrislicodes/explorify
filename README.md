@@ -23,7 +23,7 @@
 <br />
 <p>
 
-  <h1>🎶 Explorify</h3>
+  <h1>🎶 Explorify</h1>
 
   <p>
     React app to visualize your personalized Spotify data powered by the Spotify API.
