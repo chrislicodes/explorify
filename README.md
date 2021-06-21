@@ -23,7 +23,7 @@
 <br />
 <p>
 
-  <h1>Explorify</h3>
+  <h1>🎶 Explorify</h3>
 
   <p>
     React app to visualize your personalized Spotify data powered by the Spotify API.
@@ -94,7 +94,7 @@ To get a local copy up and running follow these simple steps.
    ```sh
    npm install
    ```
-3. Register a Spotify App and add http://localhost:8000/callback as a Redirect URI in the app settings
+3. Register a Spotify App and add http://localhost:8080/callback as a Redirect URI in the app settings
 4. Create an .env file in the root of the project based on example.env
 5. Open two separate terminals and run
    ```sh
